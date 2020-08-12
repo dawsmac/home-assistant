@@ -1,0 +1,36 @@
+- id: '157942923238593'
+  alias: 'Gate just got open hide ;) '
+  trigger:
+  - entity_id: binary_sensor.garden_gate
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      delay: 00:00:02
+      message: Someones just opened the gate!
+      sonos_entity: media_player.kitchen
+      volume: 0.5
+    service: script.sonos_say
+- id: '1592248865514'
+  alias: New Automation
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: Porch_movement
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.hallway_lights
+    service: light.turn_on
+- id: '1592249060782'
+  alias: Test
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: Test
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.hallway_lights
+    service: light.turn_on

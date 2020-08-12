@@ -1,0 +1,53 @@
+- platform: generic_thermostat
+  name: Kitchen
+  heater: switch.underfloor_heating
+  target_sensor: sensor.underfloor_temperature
+  min_temp: 15
+  max_temp: 28
+  ac_mode: false
+  target_temp: 23.5
+  cold_tolerance: 0.3
+  hot_tolerance: 0
+  min_cycle_duration:
+    seconds: 5
+  keep_alive:
+    minutes: 3
+  initial_hvac_mode: "off"
+  away_temp: 20.5
+  precision: 0.1
+
+- platform: generic_thermostat
+  name: Upstairs
+  heater: switch.upstairs_radiators
+  target_sensor: sensor.upstairs_temperature
+  min_temp: 15
+  max_temp: 25
+  ac_mode: false
+  target_temp: 19
+  cold_tolerance: 0.3
+  hot_tolerance: 0
+  min_cycle_duration:
+   seconds: 5
+  keep_alive:
+   minutes: 3
+  initial_hvac_mode: "off"
+  away_temp: 17
+  precision: 0.1
+
+- platform: generic_thermostat
+  name: Downstairs
+  heater: switch.downstairs_radiators
+  target_sensor: sensor.lounge_temperature
+  min_temp: 15
+  max_temp: 25
+  ac_mode: false
+  target_temp: 19
+  cold_tolerance: 0.3
+  hot_tolerance: 0
+  min_cycle_duration:
+   seconds: 5
+  keep_alive:
+    minutes: 3
+  initial_hvac_mode: "off"
+  away_temp: 17
+  precision: 0.1

@@ -1,0 +1,24 @@
+- platform: group
+  name: Garden lights
+  entities:
+    - light.driveway_light
+    - light.kitchen_outside_lights
+
+- platform: group
+  name: kgl
+  entities:
+    - light.kitchen_island_lights
+    - light.kitchen_side_lights
+    - light.kitchen_dining_lights
+
+- platform: group 
+  name: Lounge bookshelf lights
+  entities:
+    - light.bookshelf_light_right
+    - light.bookshelf_light_left
+
+- platform: group 
+  name: Master bedroom bedside lamps
+  entities:
+    - light.faye_s_bedside_lamp
+    - light.rich_s_bedside_lamp

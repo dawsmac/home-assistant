@@ -1,0 +1,5 @@
+  - platform: group
+    name: Samsung_devices
+    services:
+      - service: mobile_app_sm_g970f
+      - service: mobile_app_sm_g973f

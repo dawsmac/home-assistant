@@ -1,0 +1,60 @@
+
+rd_ub01:
+  hide_if_away: false
+  icon:
+  mac: BT_98:01:A7:A1:8D:BA
+  name: RD-UB01
+  picture:
+  track: true
+
+jabra_speak_510_usb:
+  hide_if_away: false
+  icon:
+  mac: BT_74:5C:4B:A6:3B:78
+  name: Jabra SPEAK 510 USB
+  picture:
+  track: true
+
+aeropex_by_aftershokz:
+  hide_if_away: false
+  icon:
+  mac: BT_20:74:CF:3E:47:03
+  name: Aeropex by AfterShokz
+  picture:
+  track: true
+
+rd_ub01_2:
+  hide_if_away: false
+  icon:
+  mac: BT_F4:7D:EF:5B:69:5E
+  name: RD-UB01
+  picture:
+  track: true
+
+x2:
+  icon:
+  mac: BT_F3:23:54:65:66:7A
+  name: X2
+  picture:
+  track: true
+
+sound_bar_y7:
+  icon:
+  mac: BT_41:42:00:00:00:9E
+  name: Sound bar-Y7
+  picture:
+  track: true
+
+richards_macbook_pro:
+  icon:
+  mac: BT_DC:A9:04:7B:94:6E
+  name: Richard’s MacBook Pro
+  picture:
+  track: true
+
+fayes_macbook_pro:
+  icon:
+  mac: BT_8C:85:90:09:DD:53
+  name: Faye’s MacBook Pro
+  picture:
+  track: true
