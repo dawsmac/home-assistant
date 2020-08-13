@@ -1,0 +1,23 @@
+- id: '4351112009232534'
+  alias: Morning mode
+  trigger:
+    - platform: state
+      entity_id: sensor.ds_pirs
+      to: 'True'
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: sensor.up_pirs
+        state: 'True'
+        for:
+          minutes: 5 
+      - condition: and
+        conditions:
+          - condition: sun
+            after: sunrise 
+  action:
+      - service: homeassistant.turn_on
+        entity_id: automation.evening_mode
+      - service: homeassistant.turn_off
+        entity_id: automation.morning_mode

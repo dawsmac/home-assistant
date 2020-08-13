@@ -1,0 +1,62 @@
+- alias: 'Heating'
+  trigger:
+    - platform: state
+      entity_id: sensor.heating_call
+  action:
+    - delay:
+       seconds: 10  
+    - service_template: >
+        {% if trigger.to_state.state == 'True' %}
+          switch.turn_on
+        {%- else -%}
+          switch.turn_off
+        {% endif %}
+      entity_id: switch.boiler_call
+
+
+- alias: Heating control status
+  trigger:
+    - platform: state
+      entity_id: sensor.heating_controls_status
+  action:
+    - service_template: >
+        {% if trigger.to_state.state == 'True' %}
+          homeassistant.turn_on
+        {%- else -%}
+          homeassistant.turn_off
+        {% endif %}    
+      entity_id: automation.heating
+
+
+- alias: Heating notifcation
+  trigger:
+    - platform: state
+      entity_id: sensor.heating_controls_status
+  action:
+    service: notify.mobile_app_sm_g973f
+    data_template:
+      message: >
+        {% if is_state('sensor.heating_controls_status', 'True') %}
+          Heating Control´s are back on and working!
+        {% else %}
+          Heating Control has been disabled, please investage!
+        {% endif %}
+
+
+- alias: 'Bring Heating on after units are back online '
+  trigger:
+    - platform: state
+      entity_id: sensor.heating_controls_status
+      to: 'True' 
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: 'switch.boiler_call'
+      state: 'off'
+    - condition: state
+      entity_id: 'sensor.heating_call'
+      state: 'True'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.boiler_call

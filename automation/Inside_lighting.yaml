@@ -1,0 +1,188 @@
+
+
+###############################################################
+## Hallway 
+################################################################
+
+- id: '4353452323443534'
+  alias: Motion Sensor Hallway On
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hallway_pir
+    to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.out_side_lux
+    below: 20
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.hallway_lights
+    
+- id: '4351113452323443534'
+  alias: Motion Sensor Hallway Off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_pir
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.hallway_lights
+
+
+###############################################################
+## Playroom
+###############################################################
+
+
+
+- id: '4353452323534'
+  alias: Motion Sensor Playroom On
+  trigger:
+    platform: state
+    entity_id: binary_sensor.playroom_pir
+    to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.out_side_lux
+    below: 20
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.playrooms_light
+    
+- id: '4351113443534'
+  alias: Motion Sensor Playroom Off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.playroom_pir
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.playrooms_light
+
+
+###############################################################
+## Landing
+###############################################################
+
+- id: '4353452323443535'
+  alias: Motion Sensor Landing On
+  trigger:
+    platform: state
+    entity_id: binary_sensor.landing_pir
+    to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.out_side_lux
+    below: 20
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.landing_lights
+    
+- id: '43511134111534'
+  alias: Motion Sensor Landing Off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.landing_pir
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.landing_lights
+
+###############################################################
+## Lila´s Room
+###############################################################
+
+    
+- id: '43511134111333534'
+  alias: Motion Sensor Lila Off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.lila_s_pir
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.lila_s_bedroom_light
+
+###############################################################
+## Thea´s Room
+###############################################################
+
+    
+- id: '434116661333534'
+  alias: Motion Sensor Thea Off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.thea_s_bedroom_pir
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.thea_s_bedroom_light
+
+
+###############################################################
+## mode lighting
+###############################################################
+
+- id: '4351113452323232334'
+  alias: Evening mode
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.out_side_lux
+      below: 5000
+  condition:
+    condition: sun
+    after: sunrise
+    after_offset: "+05:00:00"
+    before: sunset
+  action:
+    - service: homeassistant.turn_on
+      entity_id: scene.evening_lights
+    - service: homeassistant.turn_off
+      entity_id: automation.evening_mode
+    - service: homeassistant.turn_on
+      entity_id: automation.night_mode
+
+
+
+- id: '43511123443534'
+  alias: Night mode
+  trigger:
+    - platform: state
+      entity_id: sensor.us_pirs
+      to: 'True'
+      for:
+        minutes: 20
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sensor.ds_pirs
+        state: 'True'
+        for:
+          minutes: 15
+      - condition: numeric_state
+        entity_id: sensor.out_side_lux
+        below: 4
+      - condition: or
+        conditions:
+          - condition: sun
+            after: sunset
+          - condition: sun
+            before: sunrise
+  action:
+      - service: homeassistant.turn_on
+        entity_id: scene.nightmode
+      - service: homeassistant.turn_on
+        entity_id: automation.morning_mode
+      - service: homeassistant.turn_off
+        entity_id: automation.night_mode
