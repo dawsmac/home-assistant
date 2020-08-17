@@ -3,8 +3,6 @@
     - platform: state
       entity_id: sensor.heating_call
   action:
-    - delay:
-       seconds: 10  
     - service_template: >
         {% if trigger.to_state.state == 'True' %}
           switch.turn_on
