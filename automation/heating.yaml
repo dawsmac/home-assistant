@@ -4,11 +4,11 @@
       entity_id: group.heating_grp
   action:
     - service_template: >
-        {% if trigger.to_state.state == 'on' %}            
+        {% if is_state("group.heating_grp", "on") -%}            
           switch.turn_on
         {%- else -%}
           switch.turn_off
-        {% endif %}
+        {%- endif %}
       entity_id: switch.boiler_call
 
 
