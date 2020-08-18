@@ -1,11 +1,11 @@
 - alias: 'Heating'
   trigger:
-    platform: template
-    value_template: >
-          {{ is_state('switch.downstairs_radiators' , 'on')
-              or is_state('switch.upstairs_radiators' , 'on')
-              or is_state('switch.underfloor_heating' , 'on')
-              or is_state('switch.hotwater' , 'on') }}
+    - platform: state
+      entity_id: 
+        - switch.downstairs_radiators
+        - switch.upstairs_radiators
+        - switch.underfloor_heating
+        - switch.hotwater
   action:
     - service_template: >
         {% if trigger.to_state.state == 'on' %}            
