@@ -1,7 +1,11 @@
 - alias: 'Heating'
   trigger:
     - platform: state
-      entity_id: group.heating_grp
+      entity_id:
+        - switch.downstairs_radiators
+        - switch.upstairs_radiators
+        - switch.underfloor_heating
+        - switch.hotwater
   action:
     - service_template: >
         {% if is_state("group.heating_grp", "on") -%}            
