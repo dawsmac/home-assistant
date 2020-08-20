@@ -1,9 +1,4 @@
-###############################################################
-## Open back gate or door for secrity lights 
-################################################################
-
-- id: '435123443534'
-  alias: Gate or back door opens 
+- alias: Backgate or Backdoor opens 
   trigger:
     platform: state
     entity_id: 
@@ -22,57 +17,40 @@
   action:
     - service: homeassistant.turn_on
       entity_id: light.garden_lights
-    - service: timer.start
-      entity_id: timer.backgarden_secritylights
 
-- id: '4351234435119934'
-  alias: restart time  garden lights
+- alias: Backgate or Backdoor closed
   trigger:
-    platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.backgarden_secritylights
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.kitchen_door
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.garden_gate
-        state: 'on'
-  action:
-      - service: timer.start
-        entity_id: timer.backgarden_secritylights
-
-
-- id: '43512344351133349934'
-  alias: Switch off garden lights
-  trigger:
-    platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.backgarden_secritylights
-  condition:
+    platform: state
+    entity_id: 
+      - binary_sensor.kitchen_door
+      - binary_sensor.garden_gate
+    to: 'off'
+  condition: 
     condition: and
     conditions:
+      - condition: numeric_state
+        entity_id: sensor.out_side_lux
+        below: 30
       - condition: state
-        entity_id: binary_sensor.kitchen_door
-        state: 'off'
-      - condition: state
-        entity_id: binary_sensor.garden_gate
-        state: 'off'
-  action:
-      - service: homeassistant.turn_off
         entity_id: light.garden_lights
+        state: 'on'
+  action:
+    - delay: 00:05
+    - service: homeassistant.turn_on
+      entity_id: light.garden_lights
 
 
-###############################################################
-## Open front gate or front door for secrity lights 
-################################################################
 
-- id: '43512344352134'
-  alias: frnt gate or frnt door opens 
+
+
+
+
+######################################################
+## Open front gate or front door for secrity lights ##
+######################################################
+
+
+- alias: frnt gate or frnt door opens 
   trigger:
     platform: state
     entity_id: 
@@ -94,8 +72,7 @@
     - service: timer.start
       entity_id: timer.frntgarden_secritylights
 
-- id: '4351233334435156934'
-  alias: restart timer frnt garden lights
+- alias: restart timer frnt garden lights
   trigger:
     platform: event
     event_type: timer.finished
@@ -115,8 +92,7 @@
         entity_id: timer.frntgarden_secritylights
 
 
-- id: '435123499889934'
-  alias: Switch off frnt garden lights
+- alias: Switch off frnt garden lights
   trigger:
     platform: event
     event_type: timer.finished

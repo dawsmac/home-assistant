@@ -57,7 +57,3 @@
           {% else %}
              Heating Control´s are back on and working!
           {% endif %}
-
-
-
-
