@@ -32,7 +32,7 @@
         and is_state('binary_sensor.boiler_node_03' , 'on') }}
   action:
     - service: homeassistant.turn_on
-      entity_id: automation.heating
+      entity_id: automation.heating_on
 
 - alias: Heating control are off time to investagate  
   trigger:
@@ -44,7 +44,7 @@
   action:
     - service: homeassistant.turn_off
       entity_id: 
-        - automation.heating
+        - automation.heating_on
         - switch.boiler_call
     - delay: 0:45    
     - service: notify.mobile_app_sm_g973f
