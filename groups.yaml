@@ -11,13 +11,4 @@ bkg_doors:
     - binary_sensor.kitchen_door
     - binary_sensor.garden_gate
 
-heating_grp:
-  name: Heating group
-  entities:
-    - switch.downstairs_radiators
-    - switch.upstairs_radiators
-    - switch.underfloor_heating
-    - switch.hotwater
-
-
 
