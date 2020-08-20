@@ -1,5 +1,5 @@
-- id: '4351112009232534'
-  alias: Morning mode
+
+- alias: Morning mode
   trigger:
     - platform: state
       entity_id: sensor.ds_pirs
