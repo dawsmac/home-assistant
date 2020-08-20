@@ -36,7 +36,7 @@
         state: 'on'
   action:
     - delay: 00:05
-    - service: homeassistant.turn_on
+    - service: homeassistant.turn_off
       entity_id: light.garden_lights
 
 
