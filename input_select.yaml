@@ -4,5 +4,5 @@ house_mode:
     - Morning
     - Evening
     - Night
-  initial: 
+  initial: Morning
     
