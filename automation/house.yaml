@@ -60,10 +60,10 @@
         below: 4
       - condition: or
         conditions:
-      - condition: sun
-        after: sunset
-      - condition: sun
-        before: sunrise
+        - condition: sun
+          after: sunset
+        - condition: sun
+          before: sunrise
   action:
     - service: input_select.set_options
       data:
