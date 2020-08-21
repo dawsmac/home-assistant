@@ -1,5 +1,5 @@
 
-- alias: Morning mode
+- alias: Morning
   trigger:
     - platform: state
       entity_id: sensor.ds_pirs
@@ -17,7 +17,55 @@
           - condition: sun
             after: sunrise 
   action:
-      - service: homeassistant.turn_on
-        entity_id: automation.evening_mode
-      - service: homeassistant.turn_off
-        entity_id: automation.morning_mode
+    - service: input_select.set_options
+      data:
+        entity_id: input_select.house_mode
+        options: Morning
+
+
+- alias: Evening mode
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.out_side_lux
+      below: 5000
+  condition:
+    condition: sun
+    after: sunrise
+    after_offset: "+05:00:00"
+    before: sunset
+  action:
+    - service: input_select.set_options
+      data:
+        entity_id: input_select.house_mode
+        options: Evening
+
+
+- alias: Night mode
+  trigger:
+    - platform: state
+      entity_id: sensor.us_pirs
+      to: 'True'
+      for:
+        minutes: 20
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sensor.ds_pirs
+        state: 'True'
+        for:
+          minutes: 15
+      - condition: numeric_state
+        entity_id: sensor.out_side_lux
+        below: 4
+      - condition: or
+        conditions:
+      - condition: sun
+        after: sunset
+      - condition: sun
+        before: sunrise
+  action:
+    - service: input_select.set_options
+      data:
+        entity_id: input_select.house_mode
+        options: Night
