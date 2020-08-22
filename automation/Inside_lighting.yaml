@@ -44,9 +44,12 @@
     entity_id: binary_sensor.playroom_pir
     to: 'on'
   condition:
-    condition: numeric_state
-    entity_id: sensor.out_side_lux
-    below: 20
+    - condition: numeric_state
+      entity_id: sensor.out_side_lux
+      below: 20
+    - condition: state
+      entity_id: input_boolean.guest_room
+      state: 'off'
   action:
     service: homeassistant.turn_on
     entity_id: light.playrooms_light
@@ -59,6 +62,10 @@
       to: 'off'
       for:
         minutes: 5
+  condition:
+    - condition: state      
+      entity_id: input_boolean.guest_room
+      state: 'off'
   action:
     - service: homeassistant.turn_off
       entity_id: light.playrooms_light
