@@ -23,7 +23,6 @@
 
   - platform: template
     sensors:
-      name: 
       ds_pirs:
         friendly_name: No activity downstairs
         value_template: >-

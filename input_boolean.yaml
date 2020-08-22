@@ -1,19 +1,6 @@
-boiler_master:
-  name: Master heating switch
-  initial: off
-  icon: mdi:mdi-water-boiler
-
-rads_master:
-  name: Master rads switch
-  initial: off
-  icon: mdi:mdi-water-boiler
 
 coop_cleanning:
   name: Coop cleaning 
-  initial: off
-
-eden_night:
-  name: House nightmode
   initial: off
 
 guest_room:
@@ -24,10 +11,6 @@ eating_mode:
   name: Eating
   initial: off
 
-block_night_polling:
-  name: disable nightmode polling
-  initial: off
-  
 
   
   
