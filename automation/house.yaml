@@ -3,9 +3,9 @@
   trigger:
     - platform: state
       entity_id: sensor.ds_pirs
-      to: 'True'
+      to: 'False'
   condition:
-    condition: not
+    condition: and
     conditions:
       - condition: state
         entity_id: sensor.up_pirs
