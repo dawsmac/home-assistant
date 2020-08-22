@@ -6,7 +6,7 @@
       to: 'False'
   condition:
     - condition: state
-      entity_id: sensor.up_pirs
+      entity_id: sensor.us_pirs
       state: 'True'
       for:
         minutes: 5 
