@@ -23,7 +23,9 @@
 
   - platform: template
     sensors:
+      name: 
       ds_pirs:
+        friendly_name: No activity downstairs
         value_template: >-
           {{ is_state('binary_sensor.hallway_pir' , 'off')
               and is_state('binary_sensor.kitchen_pir' , 'off')
@@ -32,6 +34,7 @@
   - platform: template
     sensors:
       us_pirs:
+        friendly_name: No activity upstairs
         value_template: >-
           {{ is_state('binary_sensor.landing_pir' , 'off')
               and is_state('binary_sensor.lila_s_pir' , 'off')

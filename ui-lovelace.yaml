@@ -32,6 +32,7 @@ views:
           - sensor.us_pirs
           - sensor.ds_pirs
           - sensor.out_side_lux
+          - input_select.house_mode
       
   - title: Room
     icon: mdi:home-outline
@@ -139,7 +140,6 @@ views:
           - switch.underfloor_heating
           - switch.hotwater
           - switch.boiler_call
-          - sensor.heating_call
 
 
           
