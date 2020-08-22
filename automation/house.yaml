@@ -5,17 +5,13 @@
       entity_id: sensor.ds_pirs
       to: 'False'
   condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: sensor.up_pirs
-        state: 'True'
-        for:
-          minutes: 5 
-      - condition: and
-        conditions:
-          - condition: sun
-            after: sunrise 
+    - condition: state
+      entity_id: sensor.up_pirs
+      state: 'True'
+      for:
+        minutes: 5 
+    - condition: sun
+      after: sunrise 
   action:
     - service: input_select.set_options
       data:
