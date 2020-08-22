@@ -11,7 +11,8 @@
       for:
         minutes: 5 
     - condition: sun
-      after: sunrise 
+      after: sunrise
+      before: sunset
   action:
     - service: input_select.set_options
       data:
