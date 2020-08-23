@@ -53,14 +53,12 @@
       - binary_sensor.frontgarden_gate
     to: 'on'
   condition: 
-    condition: and
-    conditions:
-      - condition: numeric_state
-        entity_id: sensor.out_side_lux
-        below: 30
-      - condition: state
-        entity_id: light.porch_light
-        state: 'off'
+    - condition: numeric_state
+      entity_id: sensor.out_side_lux
+      below: 30
+    - condition: state
+      entity_id: light.porch_light
+      state: 'off'
   action:
     - service: homeassistant.turn_on
       entity_id: light.porch_light
@@ -74,14 +72,12 @@
       - binary_sensor.frontgarden_gate
     to: 'off' 
   condition: 
-    condition: and
-    conditions:
-      - condition: numeric_state
-        entity_id: sensor.out_side_lux
-        below: 30
-      - condition: state
-        entity_id: light.porch_light
-        state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.out_side_lux
+      below: 30
+    - condition: state
+      entity_id: light.porch_light
+      state: 'on'
   action:
       - delay: 00:05
       - service: homeassistant.turn_off
