@@ -26,26 +26,29 @@ views:
   - title: Heating
     icon: mdi:radiator
     path: heating
-      
+    panel: true
     cards:
-      - type: 'custom:simple-thermostat'
-        entity: climate.downstairs
-        step_size: 1
-        sensors:
-          - entity: sensor.playroom_s_room_humidity
-            name: Humidity
-      - type: 'custom:simple-thermostat'
-        entity: climate.upstairs
-        step_size: 1
-        sensors:
-          - entity: sensor.hallway_humidity
-            name: Humidity
-      - type: 'custom:simple-thermostat'
-        entity: climate.kitchen
-        step_size: 1
-        sensors:
-          - entity: sensor.kitchen_humidity
-            name: Humidity
+      - type: horizontal-stack  
+        
+        cards:
+          - type: 'custom:simple-thermostat'
+            entity: climate.downstairs
+            step_size: 1
+            sensors:
+              - entity: sensor.playroom_s_room_humidity
+                name: Humidity
+          - type: 'custom:simple-thermostat'
+            entity: climate.upstairs
+            step_size: 1
+            sensors:
+              - entity: sensor.hallway_humidity
+                name: Humidity
+          - type: 'custom:simple-thermostat'
+            entity: climate.kitchen
+            step_size: 1
+            sensors:
+              - entity: sensor.kitchen_humidity
+                name: Humidity
 
       - type: glance
         title: Heating Control´s 
