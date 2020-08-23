@@ -6,8 +6,8 @@ views:
     cards:
 
       - type: entities
-        name: 
+        title: Who´s at Home
         entities:
-          - device_tracker.paulus
-          - device_tracker.anne_there
+          - person.faye_dawson
+          - person.richard_dawson
       
