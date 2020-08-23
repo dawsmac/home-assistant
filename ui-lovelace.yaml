@@ -3,24 +3,24 @@ views:
   - title: main
     path: main
     icon: mdi:information-outline
-    
-
-    type: horizontal-stack
-        
+    panel: true
     cards:
-      - type: glance
-        title: Who´s at Home
-        entities:
-          - person.faye_dawson
-          - person.richard_dawson
       
-      - type: glance
-        title: Sensor´s 
-        entities:
-          - sensor.us_pirs
-          - sensor.ds_pirs
-          - sensor.out_side_lux
-          - input_select.house_mode
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            title: Who´s at Home
+            entities:
+              - person.faye_dawson
+              - person.richard_dawson
+      
+          - type: glance
+            title: Sensor´s 
+            entities:
+              - sensor.us_pirs
+              - sensor.ds_pirs
+              - sensor.out_side_lux
+              - input_select.house_mode
 
   - title: Heating
     icon: mdi:radiator
