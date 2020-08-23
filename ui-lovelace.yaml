@@ -3,9 +3,12 @@ views:
   - title: main
     path: main
     icon: mdi:information-outline
-    cards:
+    
 
-      - type: entities
+    type: horizontal-stack
+        
+    cards:
+      - type: glance
         title: Who´s at Home
         entities:
           - person.faye_dawson
