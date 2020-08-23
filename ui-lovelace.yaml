@@ -11,7 +11,7 @@ views:
           - person.faye_dawson
           - person.richard_dawson
       
-      - type: picture-glance
+      - type: glance
         title: Sensor´s 
         entities:
           - sensor.us_pirs
@@ -43,7 +43,7 @@ views:
           - entity: sensor.kitchen_humidity
             name: Humidity
 
-      - type: picture-glance
+      - type: glance
         title: Heating Control´s 
         entities:
           - switch.downstairs_radiators
