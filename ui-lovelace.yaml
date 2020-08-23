@@ -62,7 +62,6 @@ views:
 
   - title: Rooms
     path: rooms
-    panel: true
     icon: mdi:home-outline
 
     cards:
