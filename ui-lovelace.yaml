@@ -1,14 +1,13 @@
 title: Edenbridge
-views:
-  - badges:
-        - sensor.time
-        - sun.sun
-        
+views:  
   - title: main
     path: main
     icon: mdi:information-outline
     cards:
-      - type: glance
+
+      - type: entities
+        name: 
         entities:
           - device_tracker.paulus
           - device_tracker.anne_there
+      
