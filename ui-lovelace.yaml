@@ -137,3 +137,16 @@ views:
           - light.porch_light
           - binary_sensor.frontgarden_gate
           - binary_sensor.front_door
+  
+  
+  - title: Master's Switch's
+    icon: mdi:toggle-switch
+    path: switchs
+    cards:
+     
+      - type: glance
+        entities:
+          - input_boolean.coop_cleanning
+          - input_boolean.eden_night
+          - input_boolean.guest_room
+          - input_boolean.eating_mode
