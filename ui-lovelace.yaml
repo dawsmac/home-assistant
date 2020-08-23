@@ -105,8 +105,11 @@ views:
       - type: glance
         title: Front garden
         entities:
-          - light.porch_light
-          - binary_sensor.frontgarden_gate 
+          - entity: 
+              light.porch_light
+              binary_sensor.frontgarden_gate
+              binary_sensor.front_door
+    
 
 
   - title: Heating
@@ -169,7 +172,6 @@ views:
     cards:
       - type: glance
         entities:
-          - input_boolean.boiler_master
           - input_boolean.coop_cleanning
           - input_boolean.eden_night
           - input_boolean.guest_room
