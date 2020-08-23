@@ -26,7 +26,7 @@ views:
   - title: Heating
     icon: mdi:radiator
     path: heating
-    
+    panel: true
     cards:
       - type: horizontal-stack  
         
@@ -49,8 +49,8 @@ views:
             sensors:
               - entity: sensor.kitchen_humidity
                 name: Humidity
-
-      - type: glance
+       
+      - type: entities
         title: Heating Control´s 
         entities:
           - switch.downstairs_radiators
