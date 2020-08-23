@@ -40,11 +40,6 @@
       entity_id: light.garden_lights
 
 
-
-
-
-
-
 ######################################################
 ## Open front gate or front door for secrity lights ##
 ######################################################
@@ -69,44 +64,25 @@
   action:
     - service: homeassistant.turn_on
       entity_id: light.porch_light
-    - service: timer.start
-      entity_id: timer.frntgarden_secritylights
-
-- alias: restart timer frnt garden lights
-  trigger:
-    platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.frntgarden_secritylights
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.front_door
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.frontgarden_gate
-        state: 'on'
-  action:
-      - service: timer.start
-        entity_id: timer.frntgarden_secritylights
 
 
 - alias: Switch off frnt garden lights
   trigger:
-    platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.frntgarden_secritylights
-  condition:
+    platform: state
+    entity_id: 
+      - binary_sensor.front_door
+      - binary_sensor.frontgarden_gate
+    to: 'off' 
+  condition: 
     condition: and
     conditions:
+      - condition: numeric_state
+        entity_id: sensor.out_side_lux
+        below: 30
       - condition: state
-        entity_id: binary_sensor.front_door
-        state: 'off'
-      - condition: state
-        entity_id: binary_sensor.frontgarden_gate
-        state: 'off'
+        entity_id: light.porch_light
+        state: 'on'
   action:
+      - delay: 00:05
       - service: homeassistant.turn_off
         entity_id: light.porch_light
