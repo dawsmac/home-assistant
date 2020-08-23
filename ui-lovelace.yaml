@@ -17,6 +17,7 @@ views:
           - type: entities
             title: Sensor´s 
             entities:
+              - sun.sun
               - sensor.us_pirs
               - sensor.ds_pirs
               - sensor.out_side_lux
