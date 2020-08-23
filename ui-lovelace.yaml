@@ -11,3 +11,12 @@ views:
           - person.faye_dawson
           - person.richard_dawson
       
+      - type: entities
+        title: Sensor´s 
+        entities:
+          - sensor.us_pirs
+          - sensor.ds_pirs
+          - sensor.out_side_lux
+          - input_select.house_mode
+          
+      
