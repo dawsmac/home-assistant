@@ -59,4 +59,82 @@ views:
           - switch.underfloor_heating
           - switch.hotwater
           - switch.boiler_call
-      
+
+  - title: Rooms
+    path: rooms
+    panel: true
+    icon: mdi:home-outline
+
+    cards:
+        
+      - type: glance
+        title: Master bedroom 
+        entities:
+          - light.master_bedroom_light
+          - light.faye_s_bedside_lamp
+          - light.rich_s_bedside_lamp
+          - light.master_bedroom_bedside_lamps
+          - binary_sensor.raf_s_pir
+          
+      - type: glance
+        title: Lila´s bedroom 
+        entities:
+          - light.lila_s_bedroom_light
+          - binary_sensor.lila_s_pir
+          
+      - type: glance
+        title: Thea´s bedroom 
+        entities:
+           - light.thea_s_bedroom_light
+           - binary_sensor.thea_s_bedroom_pir
+          
+      - type: glance
+        title: Playroom 
+        entities:
+           - light.playrooms_light
+           - binary_sensor.playroom_pir
+           - light.globe_lamp
+                
+          
+      - type: glance
+        title: Lounge 
+        entities:
+          - light.lounge_bookshelf_lights
+          - light.lounge_lights
+          - binary_sensor.lounge_pir
+          
+      - type: glance
+        title: Kitchen 
+        entities:
+          - light.kitchen_dining_lights
+          - light.kitchen_side_lights
+          - light.kitchen_island_lights
+          - light.kitchen_fairy_lights
+          - light.kitchen_lamp
+          - binary_sensor.kitchen_pir
+          
+      - type: glance
+        title: Landing / Hallway
+        entities:
+          - light.landing_lights
+          - light.hallway_lights
+            
+      - type: glance
+        title: Garage
+        entities:
+          - binary_sensor.garage_door
+          - switch.garage_door_lock
+          - light.garage_lights
+          
+      - type: glance
+        title: Back garden
+        entities:
+          - binary_sensor.garden_gate 
+          - light.garden_lights
+          
+      - type: glance
+        title: Front garden
+        entities:
+          - light.porch_light
+          - binary_sensor.frontgarden_gate
+          - binary_sensor.front_door
