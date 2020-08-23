@@ -18,5 +18,38 @@ views:
           - sensor.ds_pirs
           - sensor.out_side_lux
           - input_select.house_mode
-          
+
+  - title: Heating
+    icon: mdi:radiator
+    path: heating
+      
+    cards:
+      - type: 'custom:simple-thermostat'
+        entity: climate.downstairs
+        step_size: 1
+        sensors:
+          - entity: sensor.playroom_s_room_humidity
+            name: Humidity
+      - type: 'custom:simple-thermostat'
+        entity: climate.upstairs
+        step_size: 1
+        sensors:
+          - entity: sensor.hallway_humidity
+            name: Humidity
+      - type: 'custom:simple-thermostat'
+        entity: climate.kitchen
+        step_size: 1
+        sensors:
+          - entity: sensor.kitchen_humidity
+            name: Humidity
+
+      - type: glance
+        title: Heating Control´s 
+        entities:
+          - switch.downstairs_radiators
+          - switch.upstairs_radiators
+          - binary_sensor.cylinder_thermostats
+          - switch.underfloor_heating
+          - switch.hotwater
+          - switch.boiler_call
       
