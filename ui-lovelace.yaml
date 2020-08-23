@@ -147,6 +147,5 @@ views:
       - type: glance
         entities:
           - input_boolean.coop_cleanning
-          - input_boolean.eden_night
           - input_boolean.guest_room
           - input_boolean.eating_mode
