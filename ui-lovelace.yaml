@@ -8,13 +8,13 @@ views:
       
       - type: horizontal-stack
         cards:
-          - type: glance
+          - type: entities
             title: Who´s at Home
             entities:
               - person.faye_dawson
               - person.richard_dawson
       
-          - type: glance
+          - type: entities
             title: Sensor´s 
             entities:
               - sensor.us_pirs
