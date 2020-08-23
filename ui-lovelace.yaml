@@ -20,19 +20,19 @@ views:
       - type: custom:weather-card
         entity: weather.edenbridge
     
-      - type: glance
-        title: People 
-        entities:
-          - person.faye_dawson
-          - person.richard_dawson
+  - type: glance
+    title: People 
+    entities:
+      - person.faye_dawson
+      - person.richard_dawson
        
-      - type: glance
-        title: Sensor´s 
-        entities:
-          - sensor.us_pirs
-          - sensor.ds_pirs
-          - sensor.out_side_lux
-          - input_select.house_mode
+  - type: glance
+    title: Sensor´s 
+    entities:
+      - sensor.us_pirs
+      - sensor.ds_pirs
+      - sensor.out_side_lux
+      - input_select.house_mode
       
   - title: Room
     icon: mdi:home-outline
@@ -105,8 +105,7 @@ views:
       - type: glance
         title: Front garden
         entities:
-          - entity: 
-              light.porch_light
+          -  light.porch_light
               binary_sensor.frontgarden_gate
               binary_sensor.front_door
     
