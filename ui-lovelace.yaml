@@ -51,7 +51,7 @@ views:
                 name: Humidity
     
           
-          - type: horizontal-stack   
+          - type: vertical-stack  
             cards:
 
               - type: entities
