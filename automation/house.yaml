@@ -13,6 +13,7 @@
     - condition: sun
       after: sunrise
       before: sunset
+      before_offset: "-06:00:00"
   action:
     - service: input_select.set_options
       data:
@@ -28,7 +29,7 @@
   condition:
     condition: sun
     after: sunrise
-    after_offset: "+05:00:00"
+    after_offset: "+06:00:00"
     before: sunset
   action:
     - service: input_select.set_options
