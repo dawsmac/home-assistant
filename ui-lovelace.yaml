@@ -30,22 +30,19 @@ views:
       - type: 'custom:simple-thermostat'
         entity: climate.downstairs
         step_size: 1
-        sensors:
-          - entity: sensor.playroom_s_room_humidity
-            name: Humidity
+   #     sensors:
+    #      - entity: sensor.playroom_s_room_humidity
+     #       name: Humidity
       - type: 'custom:simple-thermostat'
         entity: climate.upstairs
         step_size: 1
-        sensors:
-          - entity: sensor.hallway_humidity
-            name: Humidity
+      #  sensors:
+       #   - entity: sensor.hallway_humidity
+        #    name: Humidity
       - type: 'custom:simple-thermostat'
         entity: climate.kitchen
         step_size: 1
-        sensors:
-          - entity: sensor.kitchen_humidity
-            name: Humidity
-    
+        
           
       - type: vertical-stack  
         cards:
@@ -59,6 +56,7 @@ views:
               - switch.underfloor_heating
               - switch.hotwater
               - switch.boiler_call
+###############################################################
 
   - title: Rooms
     path: rooms
