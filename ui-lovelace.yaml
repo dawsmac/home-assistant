@@ -49,16 +49,20 @@ views:
             sensors:
               - entity: sensor.kitchen_humidity
                 name: Humidity
-       
-      - type: entities
-        title: Heating Control´s 
-        entities:
-          - switch.downstairs_radiators
-          - switch.upstairs_radiators
-          - binary_sensor.cylinder_thermostats
-          - switch.underfloor_heating
-          - switch.hotwater
-          - switch.boiler_call
+    
+          
+          - type: horizontal-stack   
+            cards:
+
+              - type: entities
+                title: Heating Control´s 
+                entities:
+                  - switch.downstairs_radiators
+                  - switch.upstairs_radiators
+                  - binary_sensor.cylinder_thermostats
+                  - switch.underfloor_heating
+                  - switch.hotwater
+                  - switch.boiler_call
 
   - title: Rooms
     path: rooms
