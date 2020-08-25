@@ -46,22 +46,20 @@
       for:
         minutes: 20
   condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: sensor.ds_pirs
-        state: 'True'
-        for:
-          minutes: 15
-      - condition: numeric_state
-        entity_id: sensor.out_side_lux
-        below: 4
-      - condition: or
-        conditions:
-        - condition: sun
-          after: sunset
-        - condition: sun
-          before: sunrise
+    - condition: state
+      entity_id: sensor.ds_pirs
+      state: 'True'
+      for:
+        minutes: 15
+    - condition: numeric_state
+      entity_id: sensor.out_side_lux
+      below: 4
+    - condition: sun
+      after: sunset
+      before: sunrise
+    - condition: state
+      entity_id: binary_sensor.lounge_tv_status
+      state: 'off'
   action:
     - service: input_select.set_options
       data:

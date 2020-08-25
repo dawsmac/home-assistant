@@ -28,7 +28,7 @@ views:
           - sensor.ds_pirs
           - sensor.out_side_lux
           - input_select.house_mode
-
+              
   - title: Heating
     icon: mdi:radiator
     path: heating
