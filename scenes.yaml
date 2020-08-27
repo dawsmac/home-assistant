@@ -1,5 +1,4 @@
-- id: '1578349680121'
-  name: Lounge evening lights
+- name: Lounge evening lights
   entities:
     light.bookshelf_light_left:
       friendly_name: Bookshelf light left
@@ -13,8 +12,8 @@
       friendly_name: Lounge
       state: 'off'
       supported_features: 8
-- id: '1578354172863'
-  name: Nightmode
+
+- name: Nightmode
   entities:
     light.bookshelf_light_left:
       friendly_name: Bookshelf light left
@@ -52,8 +51,8 @@
       friendly_name: Lounge lights
       state: 'off'
       supported_features: 8
-- id: '157835489342863'
-  name: Evening light´s
+
+- name: Evening light´s
   entities:
     light.bookshelf_light_left:
       friendly_name: Bookshelf light left
