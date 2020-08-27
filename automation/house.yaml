@@ -17,7 +17,6 @@
         - condition: sun
           before: sunset
           before_offset: "-06:00:00"
-
   action:
     - service: input_select.set_options
       data:
