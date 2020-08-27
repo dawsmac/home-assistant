@@ -29,24 +29,13 @@
     - platform: numeric_state
       entity_id: sensor.out_side_lux
       below: 5000
-<<<<<<< HEAD
     - condition: and
       conditions:
         - condition: sun
           after: sunrise
           after_offset: "+06:00:00"
         - condition: sun
-          before: sunsett
-=======
-  condition: 
-    condition: or
-    conditions: 
-      - condition: sun
-        after: sunrise
-        after_offset: "+06:00:00"
-      - condition: sun
-        before: sunset
->>>>>>> af6b5e54275ce7456593edf8aa404d23624cdadb
+          before: sunset
   action:
     - service: input_select.set_options
       data:
