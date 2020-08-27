@@ -10,7 +10,7 @@
       state: 'True'
       for:
         minutes: 5 
-    - condition: or
+    - condition: and
       conditions:
         - condition: sun
           after: sunrise
@@ -30,7 +30,7 @@
     - platform: numeric_state
       entity_id: sensor.out_side_lux
       below: 5000
-    - condition: or
+    - condition: and
       conditions:
         - condition: sun
           after: sunrise
@@ -60,7 +60,7 @@
     - condition: numeric_state
       entity_id: sensor.out_side_lux
       below: 4
-    - condition: or
+    - condition: and
       conditions:
         - condition: sun
           after: sunset
