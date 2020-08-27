@@ -1,3 +1,7 @@
+###################################################
+## Open and Closing garage door ## 
+###################################################
+
 - alias: Garage door unlock
   trigger:
     platform: state
@@ -31,4 +35,6 @@
       entity_id: switch.garage_door_lock
     - service: homeassistant.turn_off
       entity_id: light.garage_lights
+
+      
     
