@@ -5,6 +5,7 @@
 !*.yaml
 !.gitignore
 !*.md
+!automation
 
 # Ignore folders.
 .storage
@@ -18,6 +19,6 @@ www
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
-secrets.yam
+secrets.yaml
 home-assistant.log
 home-assistant_v2.db
