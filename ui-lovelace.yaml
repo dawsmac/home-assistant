@@ -61,7 +61,7 @@ views:
             entities:
               - switch.downstairs_radiators
               - switch.upstairs_radiators
-              - binary_sensor.cylinder_thermostats
+              - entity:  binary_sensor.cylinder_thermostats
               - switch.underfloor_heating
               - switch.hotwater
               - switch.boiler_call
@@ -75,23 +75,23 @@ views:
       - type: glance
         title: Master bedroom 
         entities:
-          - light.master_bedroom_light
-          - light.faye_s_bedside_lamp
-          - light.rich_s_bedside_lamp
-          - light.master_bedroom_bedside_lamps
-          - binary_sensor.raf_s_pir
+          - entity: light.master_bedroom_light
+          - entity: light.faye_s_bedside_lamp
+          - entity: light.rich_s_bedside_lamp
+          - entity: light.master_bedroom_bedside_lamps
+          - entity:  binary_sensor.raf_s_pir
           
       - type: glance
         title: Lila´s bedroom 
         entities:
-          - light.lila_s_bedroom_light
-          - binary_sensor.lila_s_pir
+          - entity: light.lila_s_bedroom_light
+          - entity:  binary_sensor.lila_s_pir
           
       - type: glance
         title: Thea´s bedroom 
         entities:
-           - light.thea_s_bedroom_light
-           - binary_sensor.thea_s_bedroom_pir
+           - entity: light.thea_s_bedroom_light
+           - entity:  binary_sensor.thea_s_bedroom_pir
           
       - type: glance
         title: Playroom 
@@ -108,45 +108,45 @@ views:
       - type: glance
         title: Lounge 
         entities:
-          - light.lounge_bookshelf_lights
-          - light.lounge_lights
-          - binary_sensor.lounge_pir
+          - entity: light.lounge_bookshelf_lights
+          - entity: light.lounge_lights
+          - entity: binary_sensor.lounge_pir
           
       - type: glance
         title: Kitchen 
         entities:
-          - light.kitchen_dining_lights
-          - light.kitchen_side_lights
-          - light.kitchen_island_lights
-          - light.kitchen_fairy_lights
-          - light.kitchen_lamp
-          - binary_sensor.kitchen_pir
+          - entity: light.kitchen_dining_lights
+          - entity: light.kitchen_side_lights
+          - entity: light.kitchen_island_lights
+          - entity: light.kitchen_fairy_lights
+          - entity: light.kitchen_lamp
+          - entity: binary_sensor.kitchen_pir
           
       - type: glance
         title: Landing / Hallway
         entities:
-          - light.landing_lights
-          - light.hallway_lights
+          - entity: light.landing_lights
+          - entity: light.hallway_lights
             
       - type: glance
         title: Garage
         entities:
-          - binary_sensor.garage_door
-          - switch.garage_door_lock
-          - light.garage_lights
+          - entity: binary_sensor.garage_door
+          - entity: switch.garage_door_lock
+          - entity: light.garage_lights
           
       - type: glance
         title: Back garden
         entities:
-          - binary_sensor.garden_gate 
-          - light.garden_lights
+          - entity: binary_sensor.garden_gate 
+          - entity: light.garden_lights
           
       - type: glance
         title: Front garden
         entities:
-          - light.porch_light
-          - binary_sensor.frontgarden_gate
-          - binary_sensor.front_door
+          - entity: light.porch_light
+          - entity: binary_sensor.frontgarden_gate
+          - entity: binary_sensor.front_door
 
       - type: glance
         title: Bathroom
@@ -176,6 +176,6 @@ views:
      
       - type: glance
         entities:
-          - input_boolean.coop_cleanning
-          - input_boolean.guest_room
-          - input_boolean.eating_mode
+          - entity: input_boolean.coop_cleanning
+          - entity: input_boolean.guest_room
+          - entity: input_boolean.eating_mode
