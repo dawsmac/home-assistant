@@ -154,7 +154,16 @@ views:
           - entity: switch.bathroom_extractor_fan
           - entity: sensor.bathroom_humidity
           - entity: sensor.bathroom_temperature
-  
+      
+      - type: glance
+        title: Downstairs toilet 
+        entities:
+          - entity: switch.downstairs_toilet_extractor_fan
+          - entity: sensor.downstairs_toilet_humidity
+          - entity: sensor.downstairs_toilet_temperature
+          
+
+
   
   - title: Master's Switch's
     icon: mdi:toggle-switch
