@@ -96,9 +96,13 @@ views:
       - type: glance
         title: Playroom 
         entities:
-           - light.playrooms_light
-           - binary_sensor.playroom_pir
-           - light.globe_lamp
+          - entity: light.playrooms_light
+          - entity: binary_sensor.playroom_pir
+          - entity: light.globe_lamp
+          - entity: switch.relay1
+          - entity: switch.relay2
+          - entity: switch.relay3
+          - entity: switch.relay4
                 
           
       - type: glance
@@ -161,7 +165,7 @@ views:
           - entity: switch.downstairs_toilet_extractor_fan
           - entity: sensor.downstairs_toilet_humidity
           - entity: sensor.downstairs_toilet_temperature
-          
+
 
 
   
