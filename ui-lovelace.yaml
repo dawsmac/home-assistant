@@ -143,6 +143,17 @@ views:
           - light.porch_light
           - binary_sensor.frontgarden_gate
           - binary_sensor.front_door
+
+      - type: glance
+        title: Bathroom
+        entities:
+          - entity: light.bathroom_mirror
+          - entity: light.bathroom
+          - entity: binary_sensor.bathroom_switch
+          - entity: binary_sensor.bathroom_mirror_switch
+          - entity: switch.bathroom_extractor_fan
+          - entity: sensor.bathroom_humidity
+          - entity: sensor.bathroom_temperature
   
   
   - title: Master's Switch's
