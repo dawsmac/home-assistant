@@ -1,25 +1,4 @@
      
-  - platform: template
-    sensors:
-      enm:
-        friendly_name: Enable night mode?
-        value_template: >-
-          {% if is_state("group.persons", "home") and is_state("input_boolean.eden_night", "off")-%} 
-            true
-          {%- else -%}
-            false
-          {%- endif %}
-          
-  - platform: template
-    sensors:
-      emm:
-        friendly_name: Enable morning mode?
-        value_template: >-
-          {% if is_state("group.persons", "home") and is_state("input_boolean.eden_night", "on")-%} 
-            true
-          {%- else -%}
-            false
-          {%- endif %}
 
   - platform: template
     sensors:

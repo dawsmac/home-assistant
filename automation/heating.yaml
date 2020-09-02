@@ -39,7 +39,6 @@
     - platform: template
       value_template: >
         {{ is_state('binary_sensor.heating_controls_node_05' , 'off')
-        or is_state('binary_sensor.underfloor_heating_node_02' , 'off' )
         or is_state('binary_sensor.boiler_node_03' , 'off') }}
   action:
     - service: homeassistant.turn_off
@@ -57,3 +56,5 @@
           {% else %}
              Heating Control´s are back on and working!
           {% endif %}
+
+##  or is_state('binary_sensor.underfloor_heating_node_02' , 'off' )
