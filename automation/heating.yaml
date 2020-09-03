@@ -28,7 +28,6 @@
     - platform: template
       value_template: >
         {{ is_state('binary_sensor.heating_controls_node_05' , 'on')
-        and is_state('binary_sensor.underfloor_heating_node_02' , 'on' )
         and is_state('binary_sensor.boiler_node_03' , 'on') }}
   action:
     - service: homeassistant.turn_on
