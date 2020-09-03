@@ -10,12 +10,10 @@
       state: 'True'
       for:
         minutes: 5 
-    - condition: 
-      conditions: # 'twilight' condition: dusk and dawn, in typical locations
-        - condition: template
-          value_template: '{{ state_attr("sun.sun", "elevation") < 0 }}'
-        - condition: template
-          value_template: '{{ state_attr("sun.sun", "elevation") > -6 }}'
+    - condition: time
+    # At least one of the following is required.
+      after: '05:30:00'
+      before: '10:00:00' 
   action:
     - service: input_select.set_options
       data:
@@ -31,10 +29,11 @@
   condition:
     condition: and  # 'twilight' condition: dusk and dawn, in typical locations
     conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "-01:00:00"
       - condition: template
-        value_template: '{{ state_attr("sun.sun", "elevation") < 0 }}'
-      - condition: template
-        value_template: '{{ state_attr("sun.sun", "elevation") > -6 }}'
+        value_template: '{{ state_attr("sun.sun", "elevation") > -18 }}'
   action:
     - service: input_select.set_options
       data:
@@ -61,8 +60,8 @@
     - condition: state
       entity_id: binary_sensor.lounge_tv_status
       state: 'off'
-    - condition: template  
-      value_template: '{{ state_attr("sun.sun", "elevation") < -18 }}'  
+    - condition: template
+      value_template: '{{ state_attr("sun.sun", "elevation") < -18 }}' 
   action:
     - service: input_select.set_options
       data:
