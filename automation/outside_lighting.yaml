@@ -8,12 +8,17 @@
   condition: 
     condition: and
     conditions:
-      - condition: numeric_state
-        entity_id: sensor.out_side_lux
-        below: 30
       - condition: state
         entity_id: light.garden_lights
-        state: 'off'
+        state: 'off'  
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: input_select.house_mode
+            state: Evening
+          - condition: state
+            entity_id: input_select.house_mode
+            state: Night
   action:
     - service: homeassistant.turn_on
       entity_id: light.garden_lights
