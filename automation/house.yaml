@@ -27,13 +27,11 @@
       entity_id: sensor.out_side_lux
       below: 5000
   condition:
-    condition: and  # 'twilight' condition: dusk and dawn, in typical locations
-    conditions:
-      - condition: sun
-        after: sunset
-        after_offset: "-01:00:00"
-      - condition: template
-        value_template: '{{ state_attr("sun.sun", "elevation") > -18 }}'
+    - condition: sun
+      after: sunset
+      after_offset: "-01:00:00"
+    - condition: template
+      value_template: '{{ state_attr("sun.sun", "elevation") > -18 }}'
   action:
     - service: input_select.set_options
       data:
@@ -83,4 +81,34 @@
           {% elif is_state('input_select.house_mode' , 'Night') %}  
             scene.nightmode
           {% endif %}
+
+        
+
+- alias: gone out and left the lights on
+  trigger:
+    - platform: state
+      entity_id:
+        - group.persons
+      to: 'not_home'
+      for:
+        minutes: 20
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sensor.ds_pirs
+        state: 'off'
+        for:
+          minutes: 15
+      - condition: state
+        entity_id: sensor.us_pirs
+        state: 'off'
+        for:
+          minutes: 15
+  action:
+    
+
+
+
+
 
