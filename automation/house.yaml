@@ -106,9 +106,20 @@
         for:
           minutes: 15
   action:
-    
-
-
+  
+- alias: Out hours movment Porch
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.porch_movement
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_select.house_mode
+      state: Night
+  action:
+    - service: notify.mobile_app_sm_g973f
+      data:
+        message: "Movment Porch camere out hours" 
 
 
 
