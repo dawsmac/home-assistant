@@ -1,11 +1,8 @@
-
-
 ###############################################################
 ## Hallway 
 ################################################################
 
-- id: '4353452323443534'
-  alias: Motion Sensor Hallway On
+- alias: Motion Sensor Hallway On
   trigger:
     platform: state
     entity_id: binary_sensor.hallway_pir
@@ -23,8 +20,8 @@
     service: homeassistant.turn_on
     entity_id: light.hallway_lights
     
-- id: '4351113452323443534'
-  alias: Motion Sensor Hallway Off
+
+- alias: Motion Sensor Hallway Off
   trigger:
     - platform: state
       entity_id: binary_sensor.hallway_pir
@@ -40,10 +37,7 @@
 ## Playroom
 ###############################################################
 
-
-
-- id: '4353452323534'
-  alias: Motion Sensor Playroom On
+- alias: Motion Sensor Playroom On
   trigger:
     platform: state
     entity_id: binary_sensor.playroom_pir
@@ -61,14 +55,13 @@
             state: Evening
           - condition: state
             entity_id: input_select.house_mode
-            state: Night
-   
+            state: Night 
   action:
     service: homeassistant.turn_on
     entity_id: light.playrooms_light
-    
-- id: '4351113443534'
-  alias: Motion Sensor Playroom Off
+      
+
+- alias: Motion Sensor Playroom Off
   trigger:
     - platform: state
       entity_id: binary_sensor.playroom_pir
@@ -88,8 +81,8 @@
 ## Landing
 ###############################################################
 
-- id: '4353452323443535'
-  alias: Motion Sensor Landing On
+
+- alias: Motion Sensor Landing On
   trigger:
     platform: state
     entity_id: binary_sensor.landing_pir
@@ -102,8 +95,8 @@
     service: homeassistant.turn_on
     entity_id: light.landing_lights
     
-- id: '43511134111534'
-  alias: Motion Sensor Landing Off
+
+- alias: Motion Sensor Landing Off
   trigger:
     - platform: state
       entity_id: binary_sensor.landing_pir
@@ -116,11 +109,9 @@
 
 ###############################################################
 ## Lila´s Room
-###############################################################
+###############################################################  
 
-    
-- id: '43511134111333534'
-  alias: Motion Sensor Lila Off
+- alias: Motion Sensor Lila Off
   trigger:
     - platform: state
       entity_id: binary_sensor.lila_s_pir
@@ -134,10 +125,8 @@
 ###############################################################
 ## Thea´s Room
 ###############################################################
-
     
-- id: '434116661333534'
-  alias: Motion Sensor Thea Off
+- alias: Motion Sensor Thea Off
   trigger:
     - platform: state
       entity_id: binary_sensor.thea_s_bedroom_pir
