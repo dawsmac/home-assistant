@@ -15,7 +15,7 @@
       after: '05:30:00'
       before: '10:00:00' 
   action:
-    - service: input_select.set_options
+    - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
         options: Morning
@@ -33,7 +33,7 @@
     - condition: template
       value_template: '{{ state_attr("sun.sun", "elevation") > -18 }}'
   action:
-    - service: input_select.set_options
+    - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
         options: Evening
@@ -61,7 +61,7 @@
     - condition: template
       value_template: '{{ state_attr("sun.sun", "elevation") < -18 }}' 
   action:
-    - service: input_select.set_options
+    - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
         options: Night
