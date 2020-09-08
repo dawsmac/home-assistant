@@ -18,7 +18,7 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
-        options: Morning
+        option: Morning
 
 
 - alias: Evening mode
@@ -37,7 +37,7 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
-        options: Evening
+        option: Evening
 
 
 - alias: Night mode
@@ -65,7 +65,7 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
-        options: Night
+        option: Night
 
 - alias: Set Scene House Mode
   trigger:
