@@ -30,7 +30,7 @@
     - condition: template
       value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
     - condition: template
-      value_template: '{{ state_attr("sun.sun", "elevation") > -18 }}'
+      value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
   action:
     - service: input_select.select_option
       data:
