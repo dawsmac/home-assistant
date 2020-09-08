@@ -27,12 +27,10 @@
       entity_id: sensor.out_side_lux
       below: 5000
   condition:
-    condition: and
-    conditions:
-      - condition: template
-        value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
-      - condition: template
-        value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
   action:
     - service: input_select.select_option
       data:
