@@ -28,7 +28,7 @@
       below: 5000
   condition:
     - condition: template
-      value_template: "{{ state_attr('sun.sun', 'rising') false }}"
+      value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
     - condition: template
       value_template: '{{ state_attr("sun.sun", "elevation") > -18 }}'
   action:
