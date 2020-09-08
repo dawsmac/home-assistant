@@ -51,6 +51,10 @@
       friendly_name: Lounge lights
       state: 'off'
       supported_features: 8
+    light.boiler_lamp:
+      friendly_name: Boiler lamp
+      state: 'off'
+      supported_features: 8
 
 - name: Evening light´s
   entities:
@@ -80,5 +84,9 @@
       supported_features: 8
     light.rich_s_bedside_lamp:
       friendly_name: Rich's bedside lamp
+      state: 'on'
+      supported_features: 8
+    light.boiler_lamp:
+      friendly_name: Boiler lamp
       state: 'on'
       supported_features: 8
