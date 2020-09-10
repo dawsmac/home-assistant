@@ -15,8 +15,8 @@
         minutes: 5
   action:
     - service: light.turn_off
-      entities: light.kitchen_side_lights
+      entity_id: light.kitchen_side_lights
     - service: light.turn_off
-      entities: light.kitchen_island_lights
-    - service: light.turn_off
-      entities: light.kitchen_dining_lights
+      entity_id: light.kitchen_island_lights
+    - sersvice: light.turn_off
+      entity_id: light.kitchen_dining_lights
