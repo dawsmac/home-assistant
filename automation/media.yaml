@@ -15,5 +15,5 @@
         minutes: 5
   action:
     - service: light.turn_off
-      entity_id: light.kitchen_side_lights
+      entity_id: light.kgl
   
