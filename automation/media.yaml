@@ -14,7 +14,7 @@
       for:
         minutes: 5
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entities:
         - light.kitchen_side_lights
         - light.kitchen_island_lights
