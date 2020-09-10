@@ -2,7 +2,6 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.lounge_tv_status
-      from:  'off'
       to:  'on'
   condition:
     - condition: state
