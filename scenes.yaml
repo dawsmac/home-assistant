@@ -90,3 +90,5 @@
       friendly_name: Boiler lamp
       state: 'on'
       supported_features: 8
+
+- name: Morning 

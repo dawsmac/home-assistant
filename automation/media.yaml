@@ -1,0 +1,21 @@
+- alias: Switch kitchen light off TV on
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.lounge_tv_status
+      from:  'off'
+      to:  'on'
+  condition:
+    - condition: state
+      entity_id: input_select.house_mode
+      state:  Evening
+    - condition: state
+      entity_id: binary_sensor.kitchen_pir
+      state: 'off'
+      for:
+        minutes: 5
+  action:
+    - service: homeassistant.turn_off
+      entities:
+        - light.kitchen_side_lights
+        - light.kitchen_island_lights
+        - light.kitchen_dining_lights
