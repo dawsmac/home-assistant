@@ -55,6 +55,10 @@
       friendly_name: Boiler lamp
       state: 'off'
       supported_features: 8
+    light.fairy_lights_telescope:
+      friendly_name: telescope lights
+      state: 'off'
+      supported_features: 8
 
 - name: Evening light´s
   entities:
@@ -88,6 +92,10 @@
       supported_features: 8
     light.boiler_lamp:
       friendly_name: Boiler lamp
+      state: 'on'
+      supported_features: 8
+    light.fairy_lights_telescope:
+      friendly_name: telescope lights
       state: 'on'
       supported_features: 8
 
