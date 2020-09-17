@@ -2,8 +2,8 @@
 ## Open and Closing chickehn coop door to garden ## 
 ###################################################
 
-- id: '499992888323443534'
-  alias: Morning open chicken´s coop door
+
+- alias: Morning open chicken´s coop door
   trigger:
     platform: numeric_state
     entity_id: sensor.out_side_lux
@@ -13,8 +13,8 @@
     entity_id: switch.coop_door_open
     
 
-- id: '49999288832377766534'
-  alias: Night time for chicken´s close coop door
+
+- alias: Night time for chicken´s close coop door
   trigger:
     platform: numeric_state
     entity_id: sensor.out_side_lux

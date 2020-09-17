@@ -99,10 +99,7 @@ views:
           - entity: light.playrooms_light
           - entity: binary_sensor.playroom_pir
           - entity: light.globe_lamp
-          - entity: switch.relay1
-          - entity: switch.relay2
-          - entity: switch.relay3
-          - entity: switch.relay4
+          - entity: switch.tv
                 
           
       - type: glance
