@@ -31,11 +31,6 @@
       - binary_sensor.garden_gate
     to: 'off'
   condition: 
-    condition: and
-    conditions:
-      - condition: numeric_state
-        entity_id: sensor.out_side_lux
-        below: 30
       - condition: state
         entity_id: light.garden_lights
         state: 'on'
@@ -77,9 +72,6 @@
       - binary_sensor.frontgarden_gate
     to: 'off' 
   condition: 
-    - condition: numeric_state
-      entity_id: sensor.out_side_lux
-      below: 30
     - condition: state
       entity_id: light.porch_light
       state: 'on'
