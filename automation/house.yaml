@@ -121,12 +121,12 @@
   condition:
     - condition: state
       entity_id: input_select.house_mode
-      state: Morning
+      state: Night
   action:
     - service: notify.mobile_app_sm_g973f
       data:
         message: >
-          {{trigger.to_state.name}} Might want to check camera! 
+          {{trigger.to_state.name}} might want to check camera! 
 
 
 
