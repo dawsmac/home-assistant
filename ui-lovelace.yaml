@@ -28,6 +28,15 @@ views:
           - sensor.ds_pirs
           - sensor.out_side_lux
           - input_select.house_mode
+      
+      - type: entities
+        title: Outside Movement 
+        entities:
+          - binary_sensor.backgarden_movement
+          - binary_sensor.coop_movement
+          - binary_sensor.driveway_movement
+          - binary_sensor.porch_movement
+          - binary_sensor.sidedrive_movement
               
   - title: Heating
     icon: mdi:radiator
