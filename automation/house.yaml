@@ -121,7 +121,7 @@
   condition:
     - condition: state
       entity_id: input_select.house_mode
-      state: Night
+      state: Morning
   action:
     - service: notify.mobile_app_sm_g973f
       data:
