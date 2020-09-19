@@ -119,7 +119,7 @@
   action:
     - service: notify.mobile_app_sm_g973f
       data:
-        title: "Motion Detected in Porch"
+        message: "Motion Detected in front garden" 
 
 
 
