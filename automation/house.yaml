@@ -119,7 +119,7 @@
   action:
     - service: notify.mobile_app_sm_g973f
       data:
-        message: "Movment Porch camere out hours" 
+        title: "Motion Detected in Porch"
 
 
 
