@@ -59,6 +59,11 @@
       friendly_name: telescope lights
       state: 'off'
       supported_features: 8
+    light.kitchen_island_lights:
+      friendly_name: Kitchen island light
+      state: 'off'
+      supported_features: 8
+
 
 - name: Evening light´s
   entities:
