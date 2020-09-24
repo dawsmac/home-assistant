@@ -22,12 +22,6 @@ lovelace:
 tts:
   - platform: google_translate
 
-alexa_media:
-  accounts:
-    - email: r.dawson@me.com  
-      password: Farmer79
-      url: amazon.co.uk
-
 group: !include groups.yaml
 automation: !include_dir_merge_list automation
 script: !include scripts.yaml
