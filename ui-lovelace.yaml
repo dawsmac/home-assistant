@@ -70,7 +70,7 @@ views:
             entities:
               - switch.downstairs_radiators
               - switch.upstairs_radiators
-              - entity:  binary_sensor.cylinder_thermostats
+              - binary_sensor.cylinder_thermostats
               - switch.underfloor_heating
               - switch.hotwater
               - switch.boiler_call
@@ -195,4 +195,11 @@ views:
         title: TV players
         entities:
           - entity: media_player.playroom
+      
+      - type: glance
+        title: Music players
+        entities:
+          - entity: media_player.lounge
+          - entity: media_player.garden
+          - entity: media_player.kitchen
      
