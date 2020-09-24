@@ -31,7 +31,7 @@ climate: !include climate.yaml
 light: !include light.yaml
 cloud: !include cloud.yaml
 sensor: !include sensor.yaml
-# notify: !include notify.yaml
+notify: !include notify.yaml
 timer: !include timer.yaml
 # sonos: !include sonos.yaml
 binary_sensor: !include binary_sensor.yaml
