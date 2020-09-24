@@ -3,3 +3,6 @@
     services:
       - service: mobile_app_sm_g970f
       - service: mobile_app_sm_g973f
+
+  - platform: alexa_media
+    name: alexa_media
