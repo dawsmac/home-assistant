@@ -185,3 +185,14 @@ views:
           - entity: input_boolean.coop_cleanning
           - entity: input_boolean.guest_room
           - entity: input_boolean.eating_mode
+
+  - title: Media
+    path: Media
+    icon: mdi:music
+    cards:
+           
+      - type: glance
+        title: TV players
+        entities:
+          - entity: media_player.playroom
+     
