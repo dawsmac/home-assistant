@@ -48,6 +48,9 @@
       - condition: state
         entity_id: input_boolean.guest_room
         state: 'off'
+      - condition: state
+        edtity_id: light.globe_lamp
+        state: 'off'
       - condition: or
         conditions:
           - condition: state
