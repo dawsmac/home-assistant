@@ -7,6 +7,10 @@ default_config:
 #  purge_keep_days: 5
 #  db_url: mysql://hassio:Farmer79@192.168.111.2/hass?charset=utf8
 
+spotify:
+  client_id: c067b910851c444397028bf135460551
+  client_secret: 354b0b1d7ff749089fd67acb82ce550c
+
 logger:
 
 history: 
