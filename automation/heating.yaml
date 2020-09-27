@@ -15,6 +15,7 @@
     - platform: template
       value_template: >
         {{ is_state('switch.downstairs_radiators', 'off') and
+           is_state('switch.underfloor_heating', 'off') and
            is_state('switch.upstairs_radiators', 'off') and
            is_state('switch.hotwater', 'off') }}
   action:
@@ -26,8 +27,9 @@
   trigger:
     - platform: template
       value_template: >
-        {{ is_state('binary_sensor.heating_controls_node_05' , 'on')
-        and is_state('binary_sensor.boiler_node_03' , 'on') }}
+        {{ is_state('binary_sensor.heating_controls_node_05' , 'on') and
+           is_state('binary_sensor.heating_controls_node_02' , 'on') and
+           is_state('binary_sensor.boiler_node_03' , 'on') }}
   action:
     - service: homeassistant.turn_on
       entity_id: automation.heating_on
@@ -36,23 +38,22 @@
   trigger:
     - platform: template
       value_template: >
-        {{ is_state('binary_sensor.heating_controls_node_05' , 'off')
-        or is_state('binary_sensor.boiler_node_03' , 'off') }}
+        {{ is_state('binary_sensor.heating_controls_node_05' , 'off') or
+           is_state('binary_sensor.heating_controls_node_02' , 'off') or
+           is_state('binary_sensor.boiler_node_03' , 'off') }}
   action:
     - service: homeassistant.turn_off
       entity_id: 
         - automation.heating_on
         - switch.boiler_call
-    - delay: 0:45    
+    - delay: 2:00    
     - service: notify.mobile_app_sm_g973f
       data_template:
         message: >
-          {% if is_state('binary_sensor.heating_controls_node_05' , 'off')
-          or is_state('binary_sensor.underfloor_heating_node_02' , 'off' )
-          or is_state('binary_sensor.boiler_node_03' , 'off') %}
-              Heating Control has been disabled, please investage!
+          {% if is_state('binary_sensor.heating_controls_node_05' , 'off') or
+             is_state('binary_sensor.underfloor_heating_node_02' , 'off' ) or
+             is_state('binary_sensor.boiler_node_03' , 'off') %}
+            Heating Control has been disabled, please investage!
           {% else %}
              Heating Control´s are back on and working!
           {% endif %}
-
-##  or is_state('binary_sensor.underfloor_heating_node_02' , 'off' )
