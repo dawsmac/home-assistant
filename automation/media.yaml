@@ -15,4 +15,25 @@
   action:
     - service: light.turn_off
       entity_id: light.kgl
+
+- alias: Switch playroom tv and player
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.playroom_pir
+      to:  'off'
+      for:
+        minutes: 10
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: media_player.playroom
+        state:  'Playing'
+      - condition: state
+        entity_id: switch.tv
+        state: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.tv
+      
   
