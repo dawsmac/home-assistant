@@ -147,7 +147,7 @@
 
   
 - alias: Notification Time for School
-  initial_state: 'on'
+  initial_state: on
   trigger:
     platform: time
     at: '07:30:00'

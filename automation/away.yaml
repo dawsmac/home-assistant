@@ -17,12 +17,6 @@
         state:  Night
   action:
     - service: notify.mobile_app_sm_g973f
-      data_template:
-        message: >
-          {% if is_state('binary_sensor.heating_controls_node_05' , 'off')
-          or is_state('binary_sensor.underfloor_heating_node_02' , 'off' )
-          or is_state('binary_sensor.boiler_node_03' , 'off') %}
-              Heating Control has been disabled, please investage!
-          {% else %}
-              Heating Control´s are back on and working!
-          {% endif %}
+s      data:
+        message: '{{ trigger.payload }}'
+      
