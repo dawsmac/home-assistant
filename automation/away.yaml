@@ -6,6 +6,7 @@
       - binary_sensor.backgarden_movement
       - binary_sensor.driveway_movement
       - binary_sensor.porch_movement
+    to: 'on'
   condition:
     condition: or
     conditions:
