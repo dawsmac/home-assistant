@@ -1,9 +1,4 @@
 alexa:
   filter:
     include_entities:
-      - sensor.outside_temperature
-  entity_config:
-    sensor.outside_temperature:
-      name: Outside Temperature
-      description: Outside Temperature at home
-      display_categories: TEMPERATURE_SENSOR
+      - switch.tv
