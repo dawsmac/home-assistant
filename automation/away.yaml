@@ -17,6 +17,6 @@
         state:  Night
   action:
     - service: notify.mobile_app_sm_g973f
-s      data:
+      data:
         message: '{{ trigger.payload }}'
       
