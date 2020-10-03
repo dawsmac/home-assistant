@@ -18,6 +18,5 @@
   action:
     - service: notify.mobile_app_sm_g973f
       data:
-        message: >
-          {{ trigger.payload }}
+        message: '{{ trigger.payload }}'
       
