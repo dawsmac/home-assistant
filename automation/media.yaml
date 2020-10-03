@@ -28,7 +28,7 @@
     conditions:
       - condition: state
         entity_id: media_player.playroom
-        state:  'Playing'
+        state:  'playing'
       - condition: state
         entity_id: switch.tv
         state: 'off'
