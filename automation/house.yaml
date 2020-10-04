@@ -105,6 +105,8 @@
         for:
           minutes: 15
   action:
+    - service: light.turn_off
+      entity_id: all
 
   
 - alias: Out hours movment
