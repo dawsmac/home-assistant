@@ -118,7 +118,7 @@
     - service: notify.mobile_app_sm_g973f
       data:
         message: >
-          Night mode enabled: At  "{{sensor.time}}" movement on {{trigger.to_state.name}} camera!
+          Night mode enabled: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
 
 - alias: Someone has entered house perimeter
   trigger:
