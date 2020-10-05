@@ -81,7 +81,6 @@
             scene.nightmode
           {% endif %}
 
-        
 
 - alias: gone out and left the lights on
   trigger:
@@ -119,7 +118,7 @@
     - service: notify.mobile_app_sm_g973f
       data:
         message: >
-          {{trigger.to_state.name}} might want to check camera! 
+          Night mode enabled: movement on {{trigger.to_state.name}} camera! {{}}
 
 - alias: Someone has entered house perimeter
   trigger:
