@@ -86,24 +86,16 @@
 - alias: gone out and left the lights on
   trigger:
     - platform: state
-      entity_id:
-        - group.persons
-      to: 'not_home'
+      entity_id: sensor.all_pirs
+      to: 'true'
       for:
         minutes: 20
   condition:
-    condition: and
+    condition: not
     conditions:
       - condition: state
-        entity_id: sensor.ds_pirs
-        state: 'off'
-        for:
-          minutes: 15
-      - condition: state
-        entity_id: sensor.us_pirs
-        state: 'off'
-        for:
-          minutes: 15
+        entity_id: group.persons
+        state: 'home'
   action:
     - service: light.turn_off
       entity_id: all
