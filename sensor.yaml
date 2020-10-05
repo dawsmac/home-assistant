@@ -30,7 +30,7 @@
               and is_state('binary_sensor.raf_s_pir' , 'off')
               and is_state('binary_sensor.kitchen_pir' , 'off')
               and is_state('binary_sensor.lounge_pir' , 'off') 
-              and if state ('binary_sensor.playroom_pir' , 'off')
+              and is_state ('binary_sensor.playroom_pir' , 'off')
               and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
                             
 
