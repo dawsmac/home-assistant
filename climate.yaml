@@ -3,7 +3,7 @@
   heater: switch.underfloor_heating
   target_sensor: sensor.underfloor_temperature
   min_temp: 15
-  max_temp: 28
+  max_temp: 27
   ac_mode: false
   target_temp: 23.5
   cold_tolerance: 0.3
@@ -27,11 +27,11 @@
   cold_tolerance: 0.3
   hot_tolerance: 0
   min_cycle_duration:
-   seconds: 5
+    seconds: 5
   keep_alive:
-   minutes: 3
+    minutes: 3
   initial_hvac_mode: "off"
-  away_temp: 17
+  away_temp: 18
   precision: 0.1
 
 - platform: generic_thermostat
@@ -45,9 +45,9 @@
   cold_tolerance: 0.3
   hot_tolerance: 0
   min_cycle_duration:
-   seconds: 5
+    seconds: 5
   keep_alive:
     minutes: 3
   initial_hvac_mode: "off"
-  away_temp: 17
+  away_temp: 18
   precision: 0.1
