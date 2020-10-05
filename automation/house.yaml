@@ -120,7 +120,7 @@
         message: >
           Night mode enabled: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
 
-- alias: Someone has entered house perimeter
+- alias: Someone has entered house perimeter (no one is home)
   trigger:
     - platform: state
       entity_id:
@@ -129,14 +129,16 @@
         - binary_sensor.driveway_movement
       to: 'on'
   condition:
-    - condition: state
-      entity_id: group.persons
-      state: not_home
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: group.persons
+        state: 'home'
   action:
     - service: notify.mobile_app_sm_g973f
       data:
         message: >
-          {{trigger.to_state.name}} might want to check camera! 
+          Everyone is out: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
 
   
 - alias: Notification Time for School
