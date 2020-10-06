@@ -2,10 +2,10 @@
   name: Kitchen
   heater: switch.underfloor_heating
   target_sensor: sensor.kitchen_temperature
-  min_temp: 15
-  max_temp: 27
+  min_temp: 18
+  max_temp: 23
   ac_mode: false
-  target_temp: 23.5
+  target_temp: 20.5
   cold_tolerance: 0.3
   hot_tolerance: 0
   min_cycle_duration:
