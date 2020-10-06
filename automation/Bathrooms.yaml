@@ -1,0 +1,31 @@
+- alias: Evening motion master bathroom
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bathroom_switch
+    to: 'on'
+  condition: 
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.bathroom
+        state: 'off'  
+      - condition: state
+        entity_id: input_select.house_mode
+        state: Evening
+  action:
+    - service: homeassistant.turn_on
+      entity_id: light.bathroom
+
+- alias: No motion master bathroom
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bathroom_switch
+    to: 'off'
+  condition: 
+    - condition: state
+      entity_id: light.bathroom
+      state: 'on'
+  action:
+    - delay: 00:05
+    - service: homeassistant.turn_off
+      entity_id: light.bathroom
