@@ -50,6 +50,7 @@
         entity_id: light.bathroom_mirror
         state: 'on'
   action:
-    - delay: 00:05
     - service: homeassistant.turn_off
-      entity_id: light.bathroom
+      entity_id: 
+        - light.bathroom
+        - light.bathroom_mirror
