@@ -80,7 +80,6 @@ views:
     icon: mdi:home-outline
 
     cards:
-        
       - type: glance
         title: Master bedroom 
         entities:
@@ -99,8 +98,8 @@ views:
       - type: glance
         title: Thea´s bedroom 
         entities:
-           - entity: light.thea_s_bedroom_light
-           - entity:  binary_sensor.thea_s_bedroom_pir
+          - entity: light.thea_s_bedroom_light
+          - entity:  binary_sensor.thea_s_bedroom_pir
           
       - type: glance
         title: Playroom 
@@ -109,7 +108,6 @@ views:
           - entity: binary_sensor.playroom_pir
           - entity: light.globe_lamp
           - entity: switch.tv
-                
           
       - type: glance
         title: Lounge 
@@ -179,7 +177,6 @@ views:
     icon: mdi:toggle-switch
     path: switchs
     cards:
-     
       - type: glance
         entities:
           - entity: input_boolean.coop_cleanning
@@ -190,7 +187,6 @@ views:
     path: Media
     icon: mdi:music
     cards:
-           
       - type: glance
         title: TV players
         entities:
@@ -206,5 +202,3 @@ views:
           - entity: media_player.master_bedroom
           - entity: media_player.thea_bedroom
           - entity: media_player.lila_bedroom
-
-     

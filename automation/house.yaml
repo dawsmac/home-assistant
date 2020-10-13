@@ -1,25 +1,28 @@
-
-- alias: Morning
+- alias: Morning mode
   trigger:
     - platform: state
-      entity_id: sensor.ds_pirs
+      entity_id: 
+        - sensor.ds_pirs
+        - snesor.us_pirs
       to: 'False'
   condition:
-    - condition: state
-      entity_id: sensor.us_pirs
-      state: 'True'
-      for:
-        minutes: 5 
-    - condition: time
-    # At least one of the following is required.
-      after: '05:30:00'
-      before: '10:00:00' 
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: 
+        - sensor.sm_g973f_charger_type  
+        - sensor.sm_g970f_charger_type
+        state: 'wireless' 
+      - condition: and
+        conditions:
+          condition: time 
+          after: '20:00:00'
+          before: '20:30:00' 
   action:
     - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
         option: Morning
-
 
 - alias: Evening mode
   trigger:
@@ -75,6 +78,8 @@
         entity_id: >
           {%- if is_state('input_select.house_mode' , 'Morning') %}
             scene.morning
+          {%- if is_state('input_select.house_mode' , 'Day') %}
+            scene.day
           {% elif is_state('input_select.house_mode' , 'Evening') %}
             scene.evening_lights
           {% elif is_state('input_select.house_mode' , 'Night') %}  
