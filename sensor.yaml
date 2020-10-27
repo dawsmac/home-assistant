@@ -68,10 +68,11 @@
   
   - platform: template
     sensors:
-    rich_next_alarm:
-      entity_id:
-        - sensor.sm_g973f_next_alarm
-        - sensor.time
-      friendly_name: "Rich Next Alarm"
-      value_template: >-
-        {{now().strftime("%a %h %d %H:%M %Z %Y") == (((state_attr('sensor.sm_g973f_next_alarm', 'Time in Milliseconds') | int / 1000) + 0*60 ) | timestamp_custom('%a %h %d %H:%M %Z %Y'))}}
+      rich_next_alarm:
+        entity_id:
+          - sensor.sm_g973f_next_alarm
+          - sensor.time
+        friendly_name: "Rich Next Alarm"
+        value_template: >-
+          {{now().strftime("%a %h %d %H:%M %Z %Y") == (((state_attr('sensor.sm_g973f_next_alarm', 'Time in Milliseconds') | int / 1000) + 0*60 ) | timestamp_custom('%a %h %d %H:%M %Z %Y'))}}
+  
