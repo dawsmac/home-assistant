@@ -32,9 +32,6 @@
               and is_state ('binary_sensor.playroom_pir' , 'off')
               and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
 
-  - platform: 
-    sensors: 
-      
   - platform: min_max
     entity_ids:
       - sensor.porch
