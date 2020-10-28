@@ -19,6 +19,11 @@ views:
         entities:
           - person.faye_dawson
           - person.richard_dawson
+
+      - type: entities
+        title: Sensor´s 
+        entities:
+          - input_datetime.rd_android_alarm
       
       - type: entities
         title: Sensor´s 
