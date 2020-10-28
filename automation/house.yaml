@@ -146,36 +146,6 @@
           Everyone is out: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
 
   
-- alias: Notification Time for School
-  initial_state: on
-  trigger:
-    platform: time
-    at: '07:30:00'
-  condition:
-    condition: time
-    weekday:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
-  action:
-    - service: notify.alexa_media
-      data:
-        target: 
-          - media_player.thea_bedroom
-          - media_player.lila_bedroom
-        #title: "My title for Echo show"
-        data:
-          type: tts
-          #method: all
-        message: "Good moring, it time to get up for school"
-    - delay: 0:20
-    - service: media_player.play_media
-      data:
-        target: 
-          - media_player.thea_bedroom
-          - media_player.lila_bedroom
 
 
 
