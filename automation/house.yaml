@@ -78,7 +78,7 @@
         entity_id: >
           {%- if is_state('input_select.house_mode' , 'Morning') %}
             scene.morning
-          {%- if is_state('input_select.house_mode' , 'Day') %}
+          {%- elif is_state('input_select.house_mode' , 'Day') %}
             scene.day
           {% elif is_state('input_select.house_mode' , 'Evening') %}
             scene.evening_lights
