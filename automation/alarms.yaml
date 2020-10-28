@@ -16,10 +16,7 @@
     - service: input_datetime.set_datetime
       entity_id: input_datetime.rd_android_alarm
       data_template:
-        datetime: "{{ as_timestamp(states('sensor.sm_g973f_next_alarm'))|timestamp_custom('%Y-%m-%d %H:%M:00') }} "
-
-
-
+        datetime: "{{ as_timestamp(states('sensor.sm_g973f_next_alarm'))|timestamp_custom('%Y-%m-%d %H:%M:00') }}"
 
 - alias: Notification Time for School
   initial_state: on
