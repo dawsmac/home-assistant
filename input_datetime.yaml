@@ -1,0 +1,13 @@
+rd_android_alarm:
+  name: Rich Android Alarm Time
+  has_time: true
+  has_date: true
+  icon: mdi:android
+
+fd_android_alarm:
+  name: Faye Android Alarm Time
+  has_time: true
+  has_date: true
+  icon: mdi:android
+
+  

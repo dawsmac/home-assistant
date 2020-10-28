@@ -40,4 +40,5 @@ timer: !include timer.yaml
 # sonos: !include sonos.yaml
 binary_sensor: !include binary_sensor.yaml
 input_select: !include input_select.yaml
+input_datetime: !include input_datetime.yaml
 
