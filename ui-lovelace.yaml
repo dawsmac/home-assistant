@@ -207,3 +207,14 @@ views:
           - entity: media_player.master_bedroom
           - entity: media_player.thea_bedroom
           - entity: media_player.lila_bedroom
+
+  - title: Chickhen´s
+    path: chickhens
+    icon: mdi:bird
+    cards:
+      - type: glance
+        entities:
+          - entity: switch.coop_door_close
+          - entity: switch.coop_door_open
+          - entity: binary_sensor.chickens_coop_door
+          - entity: binary_sensor.chickens_garden_door
