@@ -1,31 +1,27 @@
-
-
-
-- alias: Day mode
+- alias: Morning mode
   trigger:
-    - platform: time
-      at:
-        - sensor.ds_pirs
-        - snesor.us_pirs
-      to: 'False'
+    platform: time
+    at: input_datetime.rd_android_alarm
   condition:
-    condition: not
-    conditions:
-      - condition: state
-        entity_id: 
-        - sensor.sm_g973f_charger_type  
-        - sensor.sm_g970f_charger_type
-        state: 'wireless' 
-      - condition: and
-        conditions:
-          condition: time 
-          after: '20:00:00'
-          before: '20:30:00' 
+    - condition: time 
+      after: '05:00:00'
+      before: '09:30:00' 
   action:
     - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
         option: Morning
+
+
+- alias: Day mode
+  trigger:
+    - platform: time
+      at: "10:00:00"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: Day
 
 - alias: Evening mode
   trigger:
