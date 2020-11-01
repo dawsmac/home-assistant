@@ -2,6 +2,10 @@
   trigger:
     platform: time
     at: input_datetime.rd_android_alarm
+  condition:
+    - condition: time 
+      after: '05:00:00'
+      before: '09:59:00' 
   action:
     - service: input_select.select_option
       data:

@@ -1,22 +1,3 @@
-- alias: Android Set Datetime
-  trigger:
-    platform: state
-    entity_id: sensor.sm_g973f_next_alarm
-  mode: restart
-  condition:
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: sensor.sm_g973f_next_alarm
-          state:
-            - unavailable
-            - unknown
-  action:
-    - delay: 00:00:30
-    - service: input_datetime.set_datetime
-      entity_id: input_datetime.rd_android_alarm
-      data:
-        datetime: "{{ as_timestamp(states('sensor.sm_g973f_next_alarm'))|timestamp_custom('%Y-%m-%d %H:%M:00') }}"
 
 
 - alias: Notification Time for School
