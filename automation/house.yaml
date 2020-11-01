@@ -5,13 +5,13 @@
   condition:
     - condition: time 
       after: '05:00:00'
-      before: '10:10:00' 
+      before: '10:30:00' 
   action:
     - service: input_select.select_option
       data_template:
         entity_id: input_select.house_mode
         option: >
-          {% if 'sensor.out_side_lux' > '2000' %}
+          {% if 'sensor.out_side_lux' < '2000' %}
             Morning
           {% else %}
             Morning+lights
@@ -21,7 +21,7 @@
 - alias: Day mode
   trigger:
     - platform: time
-      at: "10:10:00"
+      at: "10:00:00"
   action:
     - service: input_select.select_option
       data:
