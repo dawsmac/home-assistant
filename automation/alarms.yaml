@@ -1,31 +1,22 @@
-
-
-- alias: Notification Time for School
+- alias: Android Set Datetime
   trigger:
-    platform: time
-    at: '07:30:00'
+    platform: state
+    entity_id: sensor.sm_g973f_next_alarm
+  mode: restart
   condition:
-    condition: time
-    weekday:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: sensor.sm_g973f_next_alarm
+          state:
+            - unavailable
+            - unknown
   action:
-    - service: notify.alexa_media
+    - delay: 00:00:30
+    - service: input_datetime.set_datetime
+      entity_id: input_datetime.rd_android_alarm
       data:
-        target: 
-          - media_player.thea_bedroom
-          - media_player.lila_bedroom
-        #title: "My title for Echo show"
-        data:
-          type: tts
-          #method: all
-        message: "Good moring, it time to get up for school"
-    - delay: 0:20
-    - service: media_player.play_media
-      data:
-        target: 
-          - media_player.thea_bedroom
-          - media_player.lila_bedroom
+        datetime: "{{ as_timestamp(states('sensor.sm_g973f_next_alarm'))|timestamp_custom('%Y-%m-%d %H:%M:00') }}"
+
+
+
