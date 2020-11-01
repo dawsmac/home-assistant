@@ -1,7 +1,22 @@
 - alias: Morning mode
   trigger:
-    - platform: state
-      entity_id: 
+    platform: time
+    at: input_datetime.rd_android_alarm
+  condition:
+    - condition: time 
+      after: '05:00:00'
+      before: '09:59:00' 
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: Morning
+
+
+- alias: Day mode
+  trigger:
+    - platform: time
+      at:
         - sensor.ds_pirs
         - snesor.us_pirs
       to: 'False'

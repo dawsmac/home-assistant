@@ -19,14 +19,6 @@
         datetime: "{{ as_timestamp(states('sensor.sm_g973f_next_alarm'))|timestamp_custom('%Y-%m-%d %H:%M:00') }}"
 
 
-- alias: test alarm
-  trigger:
-    platform: time
-    at: input_datetime.rd_android_alarm
-  action:
-    service: light.turn_on
-    entity_id: light.globe_lamp
-
 - alias: Notification Time for School
   initial_state: on
   trigger:
