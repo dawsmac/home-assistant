@@ -5,7 +5,7 @@
   condition:
     - condition: time 
       after: '05:00:00'
-      before: '09:30:00' 
+      before: '09:59:00' 
   action:
     - service: input_select.select_option
       data:
