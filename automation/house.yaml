@@ -1,16 +1,21 @@
 - alias: Morning mode
   trigger:
-    platform: time
-    at: input_datetime.rd_android_alarm
+    - platform: time
+      at: input_datetime.rd_android_alarm
   condition:
     - condition: time 
       after: '05:00:00'
       before: '09:59:00' 
   action:
     - service: input_select.select_option
-      data:
+      data_template:
         entity_id: input_select.house_mode
-        option: Morning
+        option: >
+          {% if is_state('sensor.out_side_lux' > 2000) %}
+            Morning
+          {% else %}
+            Morning+lights
+          {% endif %}
 
 
 - alias: Day mode
