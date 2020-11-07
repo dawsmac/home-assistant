@@ -42,6 +42,13 @@ views:
           - binary_sensor.driveway_movement
           - binary_sensor.porch_movement
           - binary_sensor.sidedrive_movement
+      
+      - type: entities
+        title: Edenbridge Temp´s
+        entities:
+          - sensor.outside_temperature
+          - sensor.downstairs_temperature
+          - sensor.upstairs_temperature
               
   - title: Heating
     icon: mdi:radiator
@@ -92,19 +99,22 @@ views:
           - entity: light.faye_s_bedside_lamp
           - entity: light.rich_s_bedside_lamp
           - entity: light.master_bedroom_bedside_lamps
-          - entity:  binary_sensor.raf_s_pir
+          - entity: binary_sensor.raf_s_pir
+          - entity: sensor.master_room_temperature
           
       - type: glance
         title: Lila´s bedroom 
         entities:
           - entity: light.lila_s_bedroom_light
-          - entity:  binary_sensor.lila_s_pir
+          - entity: binary_sensor.lila_s_pir
+          - entity: sensor.lila_room_temperature
           
       - type: glance
         title: Thea´s bedroom 
         entities:
           - entity: light.thea_s_bedroom_light
-          - entity:  binary_sensor.thea_s_bedroom_pir
+          - entity: binary_sensor.thea_s_bedroom_pir
+          - entity: sensor.thea_room_temperature
           
       - type: glance
         title: Playroom 
@@ -113,6 +123,7 @@ views:
           - entity: binary_sensor.playroom_pir
           - entity: light.globe_lamp
           - entity: switch.tv
+          - entity: sensor.playroom_s_room_temperature
           
       - type: glance
         title: Lounge 
@@ -121,6 +132,7 @@ views:
           - entity: light.lounge_lights
           - entity: binary_sensor.lounge_pir
           - entity: light.fairy_lights_telescope
+          - entity: sensor.lounge_temperature
           
       - type: glance
         title: Kitchen 
@@ -131,11 +143,17 @@ views:
           - entity: light.kitchen_fairy_lights
           - entity: binary_sensor.kitchen_pir
           - entity: light.boiler_lamp
+          - entity: sensor.kitchen_temperature
+          - entity: sensor.underfloor_temperature
+
+
       - type: glance
         title: Landing / Hallway
         entities:
           - entity: light.landing_lights
           - entity: light.hallway_lights
+          - entity: sensor.landing_temperature
+          - entity: sensor.hallway_temperature
             
       - type: glance
         title: Garage
@@ -143,6 +161,7 @@ views:
           - entity: binary_sensor.garage_door
           - entity: switch.garage_door_lock
           - entity: light.garage_lights
+          - entity: sensor.driveway
           
       - type: glance
         title: Back garden
@@ -156,6 +175,7 @@ views:
           - entity: light.porch_light
           - entity: binary_sensor.frontgarden_gate
           - entity: binary_sensor.front_door
+          - entity: sensor.porch
 
       - type: glance
         title: Bathroom
