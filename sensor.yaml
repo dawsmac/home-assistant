@@ -50,7 +50,6 @@
 
   - platform: min_max
     entity_ids:
-      - sensor.hallway_temperature
       - sensor.lounge_temperature
       - sensor.playroom_s_room_temperature
       - sensor.downstairs_toilet_temperature
