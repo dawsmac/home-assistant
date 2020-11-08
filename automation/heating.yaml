@@ -63,12 +63,14 @@
   - platform: template
     value_template: "{{ states('sensor.time') == ( states.input_datetime.rd_android_alarm.attributes.timestamp | int - 1800 ) | timestamp_custom('%H:%M', False) }}"
   condition:
-    - condition: state
-      entity_id: 'person.richard_dawson'
-      state: 'home' 
-    - condition: state
-      entity_id: 'person.faye_dawson'
-      state: 'home'  
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: 'person.richard_dawson'
+        state: 'home' 
+      - condition: state
+        entity_id: 'person.faye_dawson'
+        state: 'home'  
   action:
     - service: climate.set_temperature
       data:
