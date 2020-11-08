@@ -63,17 +63,42 @@
   - platform: template
     value_template: "{{ states('sensor.time') == ( states.input_datetime.rd_android_alarm.attributes.timestamp | int - 1800 ) | timestamp_custom('%H:%M', False) }}"
   condition:
-    condition: or
+    condition: and
     conditions:
-      - condition: state
-        entity_id: 'person.richard_dawson'
-        state: 'home' 
-      - condition: state
-        entity_id: 'person.faye_dawson'
-        state: 'home'  
+      - condition: time
+        after: " 05:00:00"
+        before: " 10:00:00"
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: 'person.richard_dawson'
+            state: 'home' 
+          - condition: state
+            entity_id: 'person.faye_dawson'
+            state: 'home'  
   action:
     - service: climate.set_temperature
       data:
         entity_id: climate.upstairs
         temperature: 21.5
         hvac_mode: heat
+
+- alias: Night mode Heating
+  trigger:
+  - platform: state
+    entity_id: input_select.house_mode
+    from:  Evening
+    to:  Night
+  action:
+    action:
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.upstairs
+          temperature: 18.5
+          hvac_mode: heat
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.downstairs
+          temperature: 18.5
+          hvac_mode: heat
+  
