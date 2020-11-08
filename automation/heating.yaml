@@ -64,5 +64,7 @@
       {{ states('sensor.time') == ( states.input_datetime.rd_android_alarm.attributes.timestamp | int - 1800 ) | timestamp_custom('%H:%M', False) }}
   action:
     - service: climate.set_temperature
-      entity_id: climate.upstairs
-      temperature: 21.5
+      data:
+        entity_id: climate.upstairs
+        temperature: 21.5
+        hvac_mode: heat
