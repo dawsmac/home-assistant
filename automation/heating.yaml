@@ -113,7 +113,7 @@
         hvac_mode: heat
     - service: climate.set_temperature
       data:
-        entity_id: climate.downstairs§
+        entity_id: climate.downstairs
         temperature: 20
         hvac_mode: heat
 
