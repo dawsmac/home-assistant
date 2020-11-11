@@ -4,8 +4,37 @@
       value_template: >
         {{ is_state('switch.downstairs_radiators', 'on') or
           is_state('switch.upstairs_radiators', 'on') or
-          is_state('switch.underfloor_heating', 'on') or
-          is_state('switch.hotwater', 'on') }}
+          is_state('switch.underfloor_heating', 'on') }}
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: switch.boiler_call
+        state: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.boiler_call
+
+- alias: Hotwater on
+  trigger:
+    - platform: state
+      entiity_id: switch.hotwater
+      to: 'on'
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: person.richard_dawson
+        state: 'not_home'
+      - condition: state
+        entity_id: person.faye_dawson
+        state: 'not_home'
+      - condition: state
+        entity_id: switch.boiler_call
+        state: 'on'
+      - condition: state
+        entity_id: input_select.house_mode
+        state: 'Night'
   action:
     - service: switch.turn_on
       entity_id: switch.boiler_call
@@ -105,4 +134,44 @@
         entity_id: climate.downstairs
         temperature: 18
         hvac_mode: heat
-  
+
+- alias: Day mode Heating
+  trigger:
+  - platform: state
+    entity_id: input_select.house_mode
+    from:  Morning
+    to:  Day
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.upstairs
+        temperature: 18
+        hvac_mode: heat
+
+- alias: No ones home turn of Heating
+  trigger:
+    - platform: template
+      value_template: >
+        {{ is_state('person.faye_dawson', 'not_home') and
+          is_state('person.richard_dawson', 'not_home') }}
+  action:
+    - service: climate.kitchen
+      preset_mode: away
+    - service: climate.upstairs
+      preset_mode: away
+    - service: climate.downstairs
+      preset_mode: away
+
+- alias: home Turn on Heating
+  trigger:
+    - platform: template
+      value_template: >
+        {{ is_state('person.faye_dawson', 'home') or
+          is_state('person.richard_dawson', 'home') }}
+  action:
+    - service: climate.kitchen
+      preset_mode: none
+    - service: climate.upstairs
+      preset_mode: none
+    - service: climate.downstairs
+      preset_mode: none
