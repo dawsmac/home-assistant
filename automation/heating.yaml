@@ -155,12 +155,18 @@
         {{ is_state('person.faye_dawson', 'not_home') and
           is_state('person.richard_dawson', 'not_home') }}
   action:
-    - service: climate.kitchen
-      preset_mode: away
-    - service: climate.upstairs
-      preset_mode: away
-    - service: climate.downstairs
-      preset_mode: away
+    - service: climate.set_preset_mode 
+      data:
+        entity_id: climate.kitchen
+        preset_mode: away
+    - service: climate.set_preset_mode 
+      data:
+        entity_id: climate.upstairs
+        preset_mode: away
+    - service: climate.set_preset_mode 
+      data:
+        entity_id: climate.downstairs
+        preset_mode: away
 
 - alias: home Turn on Heating
   trigger:
@@ -169,9 +175,15 @@
         {{ is_state('person.faye_dawson', 'home') or
           is_state('person.richard_dawson', 'home') }}
   action:
-    - service: climate.kitchen
-      preset_mode: none
-    - service: climate.upstairs
-      preset_mode: none
-    - service: climate.downstairs
-      preset_mode: none
+    - service: climate.set_preset_mode 
+      data:
+        entity_id: climate.kitchen
+        preset_mode: none
+    - service: climate.set_preset_mode 
+      data:
+        entity_id: climate.upstairs
+        preset_mode: none
+    - service: climate.set_preset_mode 
+      data:
+        entity_id: climate.downstairs
+        preset_mode: none
