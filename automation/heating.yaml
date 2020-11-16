@@ -19,7 +19,7 @@
   trigger:
   - platform: state
     entity_id: switch.hotwater
-    to: 'on'
+    to: 'off'
   condition:
     condition: not
     conditions:
