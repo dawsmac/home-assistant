@@ -1,10 +1,10 @@
 - alias: Heating On
   trigger:
-    - platform: template
-      value_template: >
-        {{ is_state('switch.downstairs_radiators', 'on') or
-          is_state('switch.upstairs_radiators', 'on') or
-          is_state('switch.underfloor_heating', 'on') }}
+  - platform: template
+    value_template: >
+      {{ is_state('switch.downstairs_radiators', 'on') or
+        is_state('switch.upstairs_radiators', 'on') or
+        is_state('switch.underfloor_heating', 'on') }}
   condition:
     condition: not
     conditions:
@@ -12,14 +12,14 @@
         entity_id: switch.boiler_call
         state: 'on'
   action:
-    - service: switch.turn_on
-      entity_id: switch.boiler_call
+  - service: switch.turn_on
+    entity_id: switch.boiler_call
 
 - alias: Hotwater on
   trigger:
-    - platform: state
-      entiity_id: switch.hotwater
-      to: 'on'
+  - platform: state
+    entiity_id: switch.hotwater
+    to: 'on'
   condition:
     condition: not
     conditions:
@@ -36,61 +36,61 @@
         entity_id: input_select.house_mode
         state: 'Night'
   action:
-    - service: switch.turn_on
-      entity_id: switch.boiler_call
+  - service: switch.turn_on
+    entity_id: switch.boiler_call
 
 - alias: Heating Off
   trigger:
-    - platform: template
-      value_template: >
-        {{ is_state('switch.downstairs_radiators', 'off') and
-          is_state('switch.underfloor_heating', 'off') and
-          is_state('switch.upstairs_radiators', 'off') and
-          is_state('switch.hotwater', 'off') }}
+  - platform: template
+    value_template: >
+      {{ is_state('switch.downstairs_radiators', 'off') and
+        is_state('switch.underfloor_heating', 'off') and
+        is_state('switch.upstairs_radiators', 'off') and
+        is_state('switch.hotwater', 'off') }}
   action:
-    - service: switch.turn_off
-      entity_id: switch.boiler_call
-      
+  - service: switch.turn_off
+    entity_id: switch.boiler_call
+    
       
 - alias: Heating control are on and working 
   trigger:
-    - platform: template
-      value_template: >
-        {{ is_state('binary_sensor.heating_controls_node_05' , 'on') and
-          is_state('binary_sensor.heating_controls_node_02' , 'on') and
-          is_state('binary_sensor.boiler_node_03' , 'on') }}
+  - platform: template
+    value_template: >
+      {{ is_state('binary_sensor.heating_controls_node_05' , 'on') and
+        is_state('binary_sensor.heating_controls_node_02' , 'on') and
+        is_state('binary_sensor.boiler_node_03' , 'on') }}
   action:
-    - service: homeassistant.turn_on
-      entity_id: automation.heating_on
+  - service: homeassistant.turn_on
+    entity_id: automation.heating_on
 
 - alias: Heating control are off time to investagate  
   trigger:
-    - platform: template
-      value_template: >
-        {{ is_state('binary_sensor.heating_controls_node_05' , 'off') or
-          is_state('binary_sensor.heating_controls_node_02' , 'off') or
-          is_state('binary_sensor.boiler_node_03' , 'off') }}
+  - platform: template
+    value_template: >
+      {{ is_state('binary_sensor.heating_controls_node_05' , 'off') or
+        is_state('binary_sensor.heating_controls_node_02' , 'off') or
+        is_state('binary_sensor.boiler_node_03' , 'off') }}
   action:
-    - service: homeassistant.turn_off
-      entity_id: 
-        - automation.heating_on
-        - switch.boiler_call
-    - delay: 2:00    
-    - service: notify.mobile_app_sm_g973f
-      data_template:
-        message: >
-          {% if is_state('binary_sensor.heating_controls_node_05' , 'off') or
-            is_state('binary_sensor.underfloor_heating_node_02' , 'off' ) or
-            is_state('binary_sensor.boiler_node_03' , 'off') %}
-            Heating Control has been disabled, please investage!
-          {% else %}
-            Heating Control´s are back on and working!
-          {% endif %}
+  - service: homeassistant.turn_off
+    entity_id: 
+      - automation.heating_on
+      - switch.boiler_call
+  - delay: 2:00    
+  - service: notify.mobile_app_sm_g973f
+    data_template:
+      message: >
+        {% if is_state('binary_sensor.heating_controls_node_05' , 'off') or
+          is_state('binary_sensor.underfloor_heating_node_02' , 'off' ) or
+          is_state('binary_sensor.boiler_node_03' , 'off') %}
+          Heating Control has been disabled, please investage!
+        {% else %}
+          Heating Control´s are back on and working!
+        {% endif %}
 
 - alias: Morning Heating 
   trigger:
-    - platform: template
-      value_template: "{{ states('sensor.time') == ( states.input_datetime.rd_android_alarm.attributes.timestamp | int - 1800 ) | timestamp_custom('%H:%M', False) }}"
+  - platform: template
+    value_template: "{{ states('sensor.time') == ( states.input_datetime.rd_android_alarm.attributes.timestamp | int - 1800 ) | timestamp_custom('%H:%M', False) }}"
   condition:
     condition: and
     conditions:
@@ -106,84 +106,84 @@
             entity_id: 'person.faye_dawson'
             state: 'home'  
   action:
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.upstairs
-        temperature: 20
-        hvac_mode: heat
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.downstairs
-        temperature: 20
-        hvac_mode: heat
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.upstairs
+      temperature: 20
+      hvac_mode: heat
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.downstairs
+      temperature: 20
+      hvac_mode: heat
 
 - alias: Night mode Heating
   trigger:
-    - platform: state
-      entity_id: input_select.house_mode
-      from:  Evening
-      to:  Night
+  - platform: state
+    entity_id: input_select.house_mode
+    from:  Evening
+    to:  Night
   action:
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.upstairs
-        temperature: 18
-        hvac_mode: heat
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.downstairs
-        temperature: 18
-        hvac_mode: heat
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.upstairs
+      temperature: 18
+      hvac_mode: heat
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.downstairs
+      temperature: 18
+      hvac_mode: heat
 
 - alias: Day mode Heating
   trigger:
-    - platform: state
-      entity_id: input_select.house_mode
-      from:  Morning
-      to:  Day
+  - platform: state
+    entity_id: input_select.house_mode
+    from:  Morning
+    to:  Day
   action:
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.upstairs
-        temperature: 18
-        hvac_mode: heat
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.upstairs
+      temperature: 18
+      hvac_mode: heat
 
 - alias: No ones home turn of Heating
   trigger:
-    - platform: template
-      value_template: >
-        {{ is_state('person.faye_dawson', 'not_home') and
-          is_state('person.richard_dawson', 'not_home') }}
+  - platform: template
+    value_template: >
+      {{ is_state('person.faye_dawson', 'not_home') and
+        is_state('person.richard_dawson', 'not_home') }}
   action:
-    - service: climate.set_preset_mode 
-      data:
-        entity_id: climate.kitchen
-        preset_mode: away
-    - service: climate.set_preset_mode 
-      data:
-        entity_id: climate.upstairs
-        preset_mode: away
-    - service: climate.set_preset_mode 
-      data:
-        entity_id: climate.downstairs
-        preset_mode: away
+  - service: climate.set_preset_mode 
+    data:
+      entity_id: climate.kitchen
+      preset_mode: away
+  - service: climate.set_preset_mode 
+    data:
+      entity_id: climate.upstairs
+      preset_mode: away
+  - service: climate.set_preset_mode 
+    data:
+      entity_id: climate.downstairs
+      preset_mode: away
 
 - alias: home Turn on Heating
   trigger:
-    - platform: template
-      value_template: >
-        {{ is_state('person.faye_dawson', 'home') or
-          is_state('person.richard_dawson', 'home') }}
+  - platform: template
+    value_template: >
+      {{ is_state('person.faye_dawson', 'home') or
+        is_state('person.richard_dawson', 'home') }}
   action:
-    - service: climate.set_preset_mode 
-      data:
-        entity_id: climate.kitchen
-        preset_mode: none
-    - service: climate.set_preset_mode 
-      data:
-        entity_id: climate.upstairs
-        preset_mode: none
-    - service: climate.set_preset_mode 
-      data:
-        entity_id: climate.downstairs
-        preset_mode: none
+  - service: climate.set_preset_mode 
+    data:
+      entity_id: climate.kitchen
+      preset_mode: none
+  - service: climate.set_preset_mode 
+    data:
+      entity_id: climate.upstairs
+      preset_mode: none
+  - service: climate.set_preset_mode 
+    data:
+      entity_id: climate.downstairs
+      preset_mode: none

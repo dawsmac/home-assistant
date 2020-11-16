@@ -5,20 +5,20 @@
 
 - alias: Morning open chicken´s coop door
   trigger:
-    platform: numeric_state
+  - platform: numeric_state
     entity_id: sensor.out_side_lux
     above: 300
   action:
-    service: homeassistant.turn_on
+  - service: homeassistant.turn_on
     entity_id: switch.coop_door_open
     
 
 
 - alias: Night time for chicken´s close coop door
   trigger:
-    platform: numeric_state
+  - platform: numeric_state
     entity_id: sensor.out_side_lux
     below: 200
   action:
-    service: homeassistant.turn_on
+  - service: homeassistant.turn_on
     entity_id: switch.coop_door_close
