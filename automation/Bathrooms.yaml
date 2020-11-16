@@ -1,8 +1,8 @@
 - alias: Evening motion master bathroom
   trigger:
-    platform: state
-    entity_id: binary_sensor.bathroom_switch
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.bathroom_switch
+      to: 'on'
   condition: 
     condition: and
     conditions:
@@ -19,9 +19,9 @@
 
 - alias: Night motion master bathroom
   trigger:
-    platform: state
-    entity_id: binary_sensor.bathroom_switch
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.bathroom_switch
+      to: 'on'
   condition: 
     condition: and
     conditions:
@@ -37,9 +37,9 @@
   
 - alias: No motion master bathroom
   trigger:
-    platform: state
-    entity_id: binary_sensor.bathroom_switch
-    to: 'off'
+    - platform: state
+      entity_id: binary_sensor.bathroom_switch
+      to: 'off'
   condition:
     condition: or
     conditions: 
