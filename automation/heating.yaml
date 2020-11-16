@@ -15,3 +15,26 @@
   - service: switch.turn_on
     entity_id: switch.boiler_call
 
+- alias: Hotwater on
+  trigger:
+  - platform: state
+    entiity_id: switch.hotwater
+    to: 'on'
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: person.richard_dawson
+        state: 'not_home'
+      - condition: state
+        entity_id: person.faye_dawson
+        state: 'not_home'
+      - condition: state
+        entity_id: switch.boiler_call
+        state: 'on'
+      - condition: state
+        entity_id: input_select.house_mode
+        state: 'Night'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.boiler_call
