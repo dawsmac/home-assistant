@@ -4,9 +4,9 @@
 
 - alias: Motion Sensor Hallway On
   trigger:
-    - platform: state
-      entity_id: binary_sensor.hallway_pir
-      to: 'on'
+  - platform: state
+    entity_id: binary_sensor.hallway_pir
+    to: 'on'
   condition:
     condition: or
     conditions:
@@ -23,14 +23,14 @@
 
 - alias: Motion Sensor Hallway Off
   trigger:
-    - platform: state
-      entity_id: binary_sensor.hallway_pir
-      to: 'off'
-      for:
-        minutes: 5
+  - platform: state
+    entity_id: binary_sensor.hallway_pir
+    to: 'off'
+    for:
+      minutes: 5
   action:
-    - service: homeassistant.turn_off
-      entity_id: light.hallway_lights
+  - service: homeassistant.turn_off
+    entity_id: light.hallway_lights
 
 
 ###############################################################
@@ -39,9 +39,9 @@
 
 - alias: Motion Sensor Playroom On
   trigger:
-    - platform: state
-      entity_id: binary_sensor.playroom_pir
-      to: 'on'
+  - platform: state
+    entity_id: binary_sensor.playroom_pir
+    to: 'on'
   condition:
     condition: and
     conditions:
@@ -59,24 +59,24 @@
             entity_id: input_select.house_mode
             state: Night 
   action:
-    - service: homeassistant.turn_on
-      entity_id: light.playrooms_light
-      
+  - service: homeassistant.turn_on
+    entity_id: light.playrooms_light
+    
 
 - alias: Motion Sensor Playroom Off
   trigger:
-    - platform: state
-      entity_id: binary_sensor.playroom_pir
-      to: 'off'
-      for:
-        minutes: 5
+  - platform: state
+    entity_id: binary_sensor.playroom_pir
+    to: 'off'
+    for:
+      minutes: 5
   condition:
-    - condition: state      
-      entity_id: input_boolean.guest_room
-      state: 'off'
+  - condition: state      
+    entity_id: input_boolean.guest_room
+    state: 'off'
   action:
-    - service: homeassistant.turn_off
-      entity_id: light.playrooms_light
+  - service: homeassistant.turn_off
+    entity_id: light.playrooms_light
 
 
 ###############################################################
@@ -86,9 +86,9 @@
 
 - alias: Motion Sensor Landing On
   trigger:
-    - platform: state
-      entity_id: binary_sensor.landing_pir
-      to: 'on'
+  - platform: state
+    entity_id: binary_sensor.landing_pir
+    to: 'on'
   condition:
     condition: or
     conditions:
@@ -99,20 +99,20 @@
         entity_id: input_select.house_mode
         state: Night
   action:
-    - service: homeassistant.turn_on
-      entity_id: light.landing_lights
-    
+  - service: homeassistant.turn_on
+    entity_id: light.landing_lights
+  
 
 - alias: Motion Sensor Landing Off
   trigger:
-    - platform: state
-      entity_id: binary_sensor.landing_pir
-      to: 'off'
-      for:
-        minutes: 5
+  - platform: state
+    entity_id: binary_sensor.landing_pir
+    to: 'off'
+    for:
+      minutes: 5
   action:
-    - service: homeassistant.turn_off
-      entity_id: light.landing_lights
+  - service: homeassistant.turn_off
+    entity_id: light.landing_lights
 
 ###############################################################
 ## Lila´s Room
@@ -120,14 +120,14 @@
 
 - alias: Motion Sensor Lila Off
   trigger:
-    - platform: state
-      entity_id: binary_sensor.lila_s_pir
-      to: 'off'
-      for:
-        minutes: 5
+  - platform: state
+    entity_id: binary_sensor.lila_s_pir
+    to: 'off'
+    for:
+      minutes: 5
   action:
-    - service: homeassistant.turn_off
-      entity_id: light.lila_s_bedroom_light
+  - service: homeassistant.turn_off
+    entity_id: light.lila_s_bedroom_light
 
 ###############################################################
 ## Thea´s Room
@@ -135,11 +135,11 @@
     
 - alias: Motion Sensor Thea Off
   trigger:
-    - platform: state
-      entity_id: binary_sensor.thea_s_bedroom_pir
-      to: 'off'
-      for:
-        minutes: 5
+  - platform: state
+    entity_id: binary_sensor.thea_s_bedroom_pir
+    to: 'off'
+    for:
+      minutes: 5
   action:
-    - service: homeassistant.turn_off
-      entity_id: light.thea_s_bedroom_light
+  - service: homeassistant.turn_off
+    entity_id: light.thea_s_bedroom_light
