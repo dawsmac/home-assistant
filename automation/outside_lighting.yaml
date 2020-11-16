@@ -47,11 +47,11 @@
 
 - alias: frnt gate or frnt door opens (Lights)
   trigger:
-    platform: state
-    entity_id: 
-      - binary_sensor.front_door
-      - binary_sensor.frontgarden_gate
-    to: 'on'
+    - platform: state
+      entity_id: 
+        - binary_sensor.front_door
+        - binary_sensor.frontgarden_gate
+      to: 'on'
   condition: 
     - condition: numeric_state
       entity_id: sensor.out_side_lux
@@ -66,11 +66,11 @@
 
 - alias: frnt gate or frnt door close (Lights)
   trigger:
-    platform: state
-    entity_id: 
-      - binary_sensor.front_door
-      - binary_sensor.frontgarden_gate
-    to: 'off' 
+    - platform: state
+      entity_id: 
+        - binary_sensor.front_door
+        - binary_sensor.frontgarden_gate
+      to: 'off' 
   condition: 
     - condition: state
       entity_id: light.porch_light

@@ -4,9 +4,9 @@
 
 - alias: Motion Sensor Hallway On
   trigger:
-    platform: state
-    entity_id: binary_sensor.hallway_pir
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.hallway_pir
+      to: 'on'
   condition:
     condition: or
     conditions:
@@ -39,9 +39,9 @@
 
 - alias: Motion Sensor Playroom On
   trigger:
-    platform: state
-    entity_id: binary_sensor.playroom_pir
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.playroom_pir
+      to: 'on'
   condition:
     condition: and
     conditions:
@@ -86,9 +86,9 @@
 
 - alias: Motion Sensor Landing On
   trigger:
-    platform: state
-    entity_id: binary_sensor.landing_pir
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.landing_pir
+      to: 'on'
   condition:
     condition: or
     conditions:

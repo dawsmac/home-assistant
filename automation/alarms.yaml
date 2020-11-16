@@ -1,8 +1,8 @@
 - alias: Android Set Datetime
   trigger:
-    platform: state
-    entity_id: sensor.sm_g973f_next_alarm
-  mode: restart
+    - platform: state
+      entity_id: sensor.sm_g973f_next_alarm
+      mode: restart
   condition:
     - condition: not
       conditions:
@@ -21,8 +21,8 @@
 
 - alias: Notification Time for School
   trigger:
-    platform: time
-    at: '07:30:00'
+    - platform: time
+      at: '07:30:00'
   condition:
     condition: time
     weekday:
