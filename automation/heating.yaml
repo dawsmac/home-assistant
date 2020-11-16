@@ -89,8 +89,8 @@
 
 - alias: Morning Heating 
   trigger:
-  - platform: template
-    value_template: "{{ states('sensor.time') == ( states.input_datetime.rd_android_alarm.attributes.timestamp | int - 1800 ) | timestamp_custom('%H:%M', False) }}"
+    - platform: template
+      value_template: "{{ states('sensor.time') == ( states.input_datetime.rd_android_alarm.attributes.timestamp | int - 1800 ) | timestamp_custom('%H:%M', False) }}"
   condition:
     condition: and
     conditions:
@@ -119,10 +119,10 @@
 
 - alias: Night mode Heating
   trigger:
-  - platform: state
-    entity_id: input_select.house_mode
-    from:  Evening
-    to:  Night
+    - platform: state
+      entity_id: input_select.house_mode
+      from:  Evening
+      to:  Night
   action:
     - service: climate.set_temperature
       data:
@@ -137,10 +137,10 @@
 
 - alias: Day mode Heating
   trigger:
-  - platform: state
-    entity_id: input_select.house_mode
-    from:  Morning
-    to:  Day
+    - platform: state
+      entity_id: input_select.house_mode
+      from:  Morning
+      to:  Day
   action:
     - service: climate.set_temperature
       data:
