@@ -59,8 +59,8 @@
             entity_id: input_select.house_mode
             state: Night 
   action:
-    service: homeassistant.turn_on
-    entity_id: light.playrooms_light
+    - service: homeassistant.turn_on
+      entity_id: light.playrooms_light
       
 
 - alias: Motion Sensor Playroom Off
@@ -99,8 +99,8 @@
         entity_id: input_select.house_mode
         state: Night
   action:
-    service: homeassistant.turn_on
-    entity_id: light.landing_lights
+    - service: homeassistant.turn_on
+      entity_id: light.landing_lights
     
 
 - alias: Motion Sensor Landing Off
