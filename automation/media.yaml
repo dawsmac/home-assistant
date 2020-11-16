@@ -1,28 +1,28 @@
 - alias: Switch kitchen light off TV on
   trigger:
-    - platform: state
-      entity_id: binary_sensor.kitchen_pir
-      to: 'off'
-      for: 
-        minutes: 5
+  - platform: state
+    entity_id: binary_sensor.kitchen_pir
+    to: 'off'
+    for: 
+      minutes: 5
   condition:
-    - condition: state
-      entity_id: input_select.house_mode
-      state:  Evening
-    - condition: state
-      entity_id: binary_sensor.lounge_tv_status
-      state: 'on'
+  - condition: state
+    entity_id: input_select.house_mode
+    state:  Evening
+  - condition: state
+    entity_id: binary_sensor.lounge_tv_status
+    state: 'on'
   action:
-    - service: light.turn_off
-      entity_id: light.kgl
+  - service: light.turn_off
+    entity_id: light.kgl
 
 - alias: Switch playroom tv and player
   trigger:
-    - platform: state
-      entity_id: binary_sensor.playroom_pir
-      to:  'off'
-      for:
-        minutes: 10
+  - platform: state
+    entity_id: binary_sensor.playroom_pir
+    to:  'off'
+    for:
+      minutes: 10
   condition:
     condition: not
     conditions:
@@ -33,5 +33,5 @@
         entity_id: switch.tv
         state: 'off'
   action:
-    - service: homeassistant.turn_off
-      entity_id: switch.tv
+  - service: homeassistant.turn_off
+    entity_id: switch.tv

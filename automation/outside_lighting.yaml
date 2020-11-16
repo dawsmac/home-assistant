@@ -1,6 +1,6 @@
 - alias: Backgate or Backdoor opens 
   trigger:
-    platform: state
+  - platform: state
     entity_id: 
       - binary_sensor.kitchen_door
       - binary_sensor.garden_gate
@@ -20,24 +20,24 @@
             entity_id: input_select.house_mode
             state: Night
   action:
-    - service: homeassistant.turn_on
-      entity_id: light.garden_lights
+  - service: homeassistant.turn_on
+    entity_id: light.garden_lights
 
 - alias: Backgate or Backdoor closed
   trigger:
-    platform: state
+  - platform: state
     entity_id: 
       - binary_sensor.kitchen_door
       - binary_sensor.garden_gate
     to: 'off'
   condition: 
-      - condition: state
-        entity_id: light.garden_lights
-        state: 'on'
+  - condition: state
+    entity_id: light.garden_lights
+    state: 'on'
   action:
-    - delay: 00:05
-    - service: homeassistant.turn_off
-      entity_id: light.garden_lights
+  - delay: 00:05
+  - service: homeassistant.turn_off
+    entity_id: light.garden_lights
 
 
 ######################################################
@@ -47,35 +47,35 @@
 
 - alias: frnt gate or frnt door opens (Lights)
   trigger:
-    - platform: state
-      entity_id: 
-        - binary_sensor.front_door
-        - binary_sensor.frontgarden_gate
-      to: 'on'
+  - platform: state
+    entity_id: 
+      - binary_sensor.front_door
+      - binary_sensor.frontgarden_gate
+    to: 'on'
   condition: 
-    - condition: numeric_state
-      entity_id: sensor.out_side_lux
-      below: 30
-    - condition: state
-      entity_id: light.porch_light
-      state: 'off'
+  - condition: numeric_state
+    entity_id: sensor.out_side_lux
+    below: 30
+  - condition: state
+    entity_id: light.porch_light
+    state: 'off'
   action:
-    - service: homeassistant.turn_on
-      entity_id: light.porch_light
+  - service: homeassistant.turn_on
+    entity_id: light.porch_light
 
 
 - alias: frnt gate or frnt door close (Lights)
   trigger:
-    - platform: state
-      entity_id: 
-        - binary_sensor.front_door
-        - binary_sensor.frontgarden_gate
-      to: 'off' 
+  - platform: state
+    entity_id: 
+      - binary_sensor.front_door
+      - binary_sensor.frontgarden_gate
+    to: 'off' 
   condition: 
-    - condition: state
-      entity_id: light.porch_light
-      state: 'on'
+  - condition: state
+    entity_id: light.porch_light
+    state: 'on'
   action:
-      - delay: 00:05
-      - service: homeassistant.turn_off
-        entity_id: light.porch_light
+  - delay: 00:05
+  - service: homeassistant.turn_off
+    entity_id: light.porch_light
