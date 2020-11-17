@@ -19,22 +19,22 @@
   trigger:
   - platform: state
     entity_id: switch.hotwater
-    to: 'off'
+    to: 'on'
   condition:
     condition: not
     conditions:
-      - condition: state
-        entity_id: person.richard_dawson
-        state: 'not_home'
-      - condition: state
-        entity_id: person.faye_dawson
-        state: 'not_home'
-      - condition: state
-        entity_id: switch.boiler_call
-        state: 'on'
-      - condition: state
-        entity_id: input_select.house_mode
-        state: 'Night'
+    - condition: state
+      entity_id: person.richard_dawson
+      state: 'not_home'
+    - condition: state
+      entity_id: person.faye_dawson
+      state: 'not_home'
+    - condition: state
+      entity_id: switch.boiler_call
+      state: 'on'
+    - condition: state
+      entity_id: input_select.house_mode
+      state: 'Night'
   action:
   - service: switch.turn_on
     entity_id: switch.boiler_call
