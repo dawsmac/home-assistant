@@ -101,7 +101,7 @@ views:
           - entity: light.master_bedroom_bedside_lamps
           - entity: binary_sensor.raf_s_pir
           - entity: sensor.master_room_temperature
-          
+
       - type: glance
         title: Lila´s bedroom 
         entities:
@@ -153,7 +153,7 @@ views:
           - entity: light.landing_lights
           - entity: light.hallway_lights
           - entity: sensor.landing_temperature
-                      
+
       - type: glance
         title: Garage
         entities:
