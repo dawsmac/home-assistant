@@ -11,12 +11,11 @@
     data_template:
       entity_id: input_select.house_mode
       option: >
-        {% if 'sensor.out_side_lux' > '2000' %}
+        {% if states('sensor.out_side_lux') > '2000' %}
           Morning
         {% else %}
           Morning+lights
         {% endif %}
-
 
 - alias: Day mode
   trigger:
