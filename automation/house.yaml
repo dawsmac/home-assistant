@@ -34,7 +34,7 @@
     below: 2500
   condition:
   - condition: time 
-    after: '16:30:00' 
+    after: '15:15:00' 
   - condition: template
     value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
   - condition: template
