@@ -150,8 +150,23 @@
       message: >
         Everyone is out: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
 
-
-
+- alias: Testing
+  trigger:
+  - platform: state
+    entity_id: input_boolean.testing_switch
+    to: 'on' 
+  action:
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.house_mode
+      option: >
+        {% if states('sensor.out_side_lux') > '2000' %}
+          Morning
+        {% else %}
+          Morning+lights
+        {% endif %}
+    
+  
 
 
 
