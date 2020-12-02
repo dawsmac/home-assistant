@@ -11,6 +11,10 @@ eating_mode:
   name: Eating
   initial: off
 
+testing_switch:
+  name: Testing switch
+  initial: off
+
 
   
   
