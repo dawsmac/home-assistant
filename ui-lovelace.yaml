@@ -238,3 +238,12 @@ views:
           - entity: switch.coop_door_open
           - entity: binary_sensor.chickens_coop_door
           - entity: binary_sensor.chickens_garden_door
+ 
+  - title: Christmas
+    path: Christmas
+    icon: mdi:string-lights
+    cards:
+      - type: glance
+        entities:
+          - entity: light.mega_tree_r_psu1
+          - entity: light.mega_tree_r_psu2
