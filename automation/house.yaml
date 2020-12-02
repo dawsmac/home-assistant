@@ -33,6 +33,8 @@
     entity_id: sensor.out_side_lux
     below: 2500
   condition:
+    condition: and
+    conditions:
     - condition: time 
       after: '15:45:00' 
     - condition: template
