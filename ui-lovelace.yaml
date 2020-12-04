@@ -243,9 +243,23 @@ views:
     icon: mdi:string-lights
     cards:
       - type: glance
+        title: Fiary light's power
         entities:
           - entity: switch.mega_tree_r_psu1
           - entity: switch.mega_tree_r_psu2
           - entity: switch.lounge_windows_led_psu
           - entity: switch.smallbedroom_windows_led_psu
           - entity: switch.front_bush_led_psu
+      
+      - type: glance
+        title: WLED Controllers
+        entities:
+          - entity: light.frontbush_node_242
+          - entity: light.frontbushr_node_243
+          - entity: light.smallbedroom_node_244
+          - entity: light.loungewindow_node_245
+          - entity: light.megatrnode_247
+          - entity: light.megatrnode_248
+          - entity: light.megatrnode_249
+          - entity: light.megatrnode_250
+  
