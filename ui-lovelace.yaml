@@ -246,3 +246,6 @@ views:
         entities:
           - entity: light.mega_tree_r_psu1
           - entity: light.mega_tree_r_psu2
+          - entity: switch.lounge_windows_led_psu
+          - entity: switch.smallbedroom_windows_led_psu
+          - entity: switch.front_bush_led_psu
