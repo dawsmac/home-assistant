@@ -10,7 +10,7 @@
   - service: light.turn_on
     data:
       entity_id: light.front_christmas_lights
-      effect_list: Merry Christmas
+      effect: Merry Christmas
 
 
 - alias: Outside christmas lights off
