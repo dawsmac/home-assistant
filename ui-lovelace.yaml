@@ -235,6 +235,7 @@ views:
       - type: glance
         title: Fiary light's power
         entities:
+          - entity: group.christmas_lights_psu
           - entity: switch.mega_tree_r_psu1
           - entity: switch.mega_tree_r_psu2
           - entity: switch.lounge_windows_led_psu
@@ -244,6 +245,7 @@ views:
       - type: glance
         title: WLED Controllers
         entities:
+          - entity: light.front_christmas_lights
           - entity: light.frontbush_node_242
           - entity: light.frontbushr_node_243
           - entity: light.smallbedroom_node_244
