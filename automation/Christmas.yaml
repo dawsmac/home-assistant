@@ -1,0 +1,8 @@
+- alias: Outside christmas lights on
+  trigger:
+  - platform: state
+    entity_id: input_select.house_mode
+    to: 'Evening'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.lila_s_bedroom_light

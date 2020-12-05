@@ -22,3 +22,15 @@
   entities:
     - light.faye_s_bedside_lamp
     - light.rich_s_bedside_lamp
+
+- platform: group
+  name: Front christmas lights
+  entities:
+    - light.frontbush_node_242
+    - light.frontbushr_node_243
+    - light.smallbedroom_node_244
+    - light.loungewindow_node_245
+    - light.megatrnode_247
+    - light.megatrnode_248
+    - light.megatrnode_249
+    - light.megatrnode_250

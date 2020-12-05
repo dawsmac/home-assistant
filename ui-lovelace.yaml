@@ -1,13 +1,3 @@
-resources:
-  - url: /local/plugins/card-modder.js?v=1
-    type: js
-  - url: /local/simple-thermostat.js
-    type: module
-  - url: /local/auto-entities.js
-    type: module
-  - url: /local/weather-card/weather-card.js
-    type: module
-
 title: Edenbridge
 views:  
   - title: main
