@@ -6,6 +6,11 @@
   action:
   - service: homeassistant.turn_on
     entity_id: group.christmas_lights_psu
+  - delay: 00:00:30
+  - service: homeassistant.turn_on
+    data:
+      entity_id: light.front_christmas_lights
+      effect_list: Merry Christmas
 
 
 - alias: Outside christmas lights off
