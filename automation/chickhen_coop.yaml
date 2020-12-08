@@ -34,7 +34,6 @@
       hours: 5
     state: 'off'
   action:
-    - service: notify.mobile_app_sm_g970f
-    - service: notify.mobile_app_sm_g973f
+    - service: notify.samsung_devices
       data:
         message: "No one has Checked on the Chickens food & water!"   
