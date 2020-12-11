@@ -22,3 +22,18 @@
   action:
   - service: homeassistant.turn_on
     entity_id: switch.coop_door_close
+
+- alias: Feed the chickhens 
+  trigger:
+  - platform: time
+    at: "08:45:00"
+  condition:
+  - condition: state
+    entity_id: binary_sensor.chickens_coop_door
+    for:
+      hours: 5
+    state: 'off'
+  action:
+    - service: notify.samsung_devices
+      data:
+        message: "No one has Checked on the Chickens food & water!"   
