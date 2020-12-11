@@ -1,3 +1,7 @@
+resources:
+  - url: /local/simple-thermostat.js
+    type: module
+
 title: Edenbridge
 views:  
   - title: main
