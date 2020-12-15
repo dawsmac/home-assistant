@@ -64,9 +64,11 @@
       state: 'off'
       supported_features: 8
     light.redberrys_lights:
+      friendly_name: Christmas berrys
       state: 'off'
       supported_features: 8
     light.advent_lights:
+      friendly_name: Advent lights
       state: 'off'
       supported_features: 8
 
@@ -110,9 +112,11 @@
       state: 'on'
       supported_features: 8
     light.redberrys_lights:
+      friendly_name: Christmas berrys
       state: 'on'
       supported_features: 8
     light.advent_lights:
+      friendly_name: Advent lights
       state: 'on'
       supported_features: 8
 
