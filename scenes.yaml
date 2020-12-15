@@ -63,6 +63,12 @@
       friendly_name: Kitchen island light
       state: 'off'
       supported_features: 8
+    light.redberrys_lights:
+      state: 'off'
+      supported_features: 8
+    light.advent_lights:
+      state: 'off'
+      supported_features: 8
 
 
 - name: Evening light´s
@@ -103,4 +109,12 @@
       friendly_name: telescope lights
       state: 'on'
       supported_features: 8
+    light.redberrys_lights:
+      state: 'on'
+      supported_features: 8
+    light.advent_lights:
+      state: 'on'
+      supported_features: 8
+
+
 
