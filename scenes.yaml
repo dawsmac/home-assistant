@@ -13,7 +13,135 @@
       state: 'off'
       supported_features: 8
 
-- name: Nightmode
+- name: nightmode
+  entities:
+    light.bookshelf_light_left:
+      friendly_name: Bookshelf light left
+      state: 'off'
+      supported_features: 8
+    light.bookshelf_light_right:
+      friendly_name: Bookshelf light right
+      state: 'off'
+      supported_features: 8
+    light.globe_lamp:
+      friendly_name: Globe lamp
+      state: 'off'
+      supported_features: 8
+    light.kitchen_dining_lights:
+      friendly_name: Kitchen dining lights
+      state: 'off'
+      supported_features: 8
+    light.kitchen_fairy_lights:
+      friendly_name: Kitchen fairy lights
+      state: 'off'
+      supported_features: 8
+    light.kitchen_lamp:
+      friendly_name: Kitchen Lamp
+      state: 'off'
+      supported_features: 8
+    light.kitchen_side_lights:
+      friendly_name: Kitchen side lights
+      state: 'off'
+      supported_features: 8
+    light.landing_lights:
+      friendly_name: Landing lights
+      state: 'off'
+      supported_features: 8
+    light.lounge_lights:
+      friendly_name: Lounge lights
+      state: 'off'
+      supported_features: 8
+    light.boiler_lamp:
+      friendly_name: Boiler lamp
+      state: 'off'
+      supported_features: 8
+    light.fairy_lights_telescope:
+      friendly_name: telescope lights
+      state: 'off'
+      supported_features: 8
+    light.kitchen_island_lights:
+      friendly_name: Kitchen island light
+      state: 'off'
+      supported_features: 8
+    light.redberrys_lights:
+      friendly_name: Christmas berrys
+      state: 'off'
+      supported_features: 8
+    light.advent_lights:
+      friendly_name: Advent lights
+      state: 'off'
+      supported_features: 8
+
+
+- name: evening light´s
+  entities:
+    light.bookshelf_light_left:
+      friendly_name: Bookshelf light left
+      state: 'on'
+      supported_features: 8
+    light.bookshelf_light_right:
+      friendly_name: Bookshelf light right
+      state: 'on'
+      supported_features: 8
+    light.faye_s_bedside_lamp:
+      friendly_name: Faye's bedside lamp
+      state: 'on'
+      supported_features: 8
+    light.globe_lamp:
+      friendly_name: Globe lamp
+      state: 'on'
+      supported_features: 8
+    light.kitchen_fairy_lights:
+      friendly_name: Kitchen fairy lights
+      state: 'on'
+      supported_features: 8
+    light.kitchen_lamp:
+      friendly_name: Kitchen Lamp
+      state: 'on'
+      supported_features: 8
+    light.rich_s_bedside_lamp:
+      friendly_name: Rich's bedside lamp
+      state: 'on'
+      supported_features: 8
+    light.boiler_lamp:
+      friendly_name: Boiler lamp
+      state: 'on'
+      supported_features: 8
+    light.fairy_lights_telescope:
+      friendly_name: telescope lights
+      state: 'on'
+      supported_features: 8
+    light.redberrys_lights:
+      friendly_name: Christmas berrys
+      state: 'on'
+      supported_features: 8
+    light.advent_lights:
+      friendly_name: Advent lights
+      state: 'on'
+      supported_features: 8
+
+
+
+- name: morning+lights
+  entities:
+    light.redberrys_lights:
+      friendly_name: Christmas berrys
+      state: 'on'
+      supported_features: 8
+    light.advent_lights:
+      friendly_name: Advent lights
+      state: 'on'
+      supported_features: 8
+    light.fairy_lights_telescope:
+      friendly_name: telescope lights
+      state: 'on'
+      supported_features: 8
+    light.kitchen_fairy_lights:
+      friendly_name: Kitchen fairy lights
+      state: 'on'
+      supported_features: 8
+
+- name: day
   entities:
     light.bookshelf_light_left:
       friendly_name: Bookshelf light left
@@ -119,6 +247,3 @@
       friendly_name: Advent lights
       state: 'on'
       supported_features: 8
-
-
-
