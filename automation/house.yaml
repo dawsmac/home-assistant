@@ -84,7 +84,7 @@
         {%- elif is_state('input_select.house_mode' , 'Day') %}
           scene.day
         {%- elif is_state('input_select.house_mode' , 'Morning+lights') %}
-          scene.Morning+lights
+          scene.morning_lights
         {% elif is_state('input_select.house_mode' , 'Evening') %}
           scene.evening_lights
         {% elif is_state('input_select.house_mode' , 'Night') %}  
