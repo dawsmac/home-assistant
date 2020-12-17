@@ -152,6 +152,23 @@
 
 
 
-
+- alias: Test mode
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.out_side_lux
+    below: 2500
+  condition:
+    - condition: time
+      after: '16:00:00'
+      before: '18:00:00' 
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.house_mode
+      option: Evening
 
 
