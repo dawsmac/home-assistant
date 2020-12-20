@@ -26,7 +26,6 @@
     above: 3000
   condition: not
     - condition: state
-      conditions:
       entity_id: input_select.house_mode
       state: 'Day'
     action:
