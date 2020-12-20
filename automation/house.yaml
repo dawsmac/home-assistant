@@ -20,13 +20,11 @@
 - alias: Day mode
   trigger:
   - platform: time
-    at: "10:00:00"
+    at: '10:00:00'
   - platform: numeric_state
     entity_id: sensor.out_side_lux
     above: 3000
-  condition:
-    condition: not
-    conditions:
+  condition: not
       - condition: state
         entity_id: input_select.house_mode
         state: 'Day'
