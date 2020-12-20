@@ -24,11 +24,11 @@
   - platform: numeric_state
     entity_id: sensor.out_side_lux
     above: 3000
-  condition:
+  condition: not
     - condition: state
       entity_id: input_select.house_mode
-      state: 'Night'
-    action:
+      state: 'Day'
+  action:
   - service: input_select.select_option
     data:
       entity_id: input_select.house_mode
