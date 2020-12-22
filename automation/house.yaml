@@ -170,20 +170,19 @@
 - alias: Test mode
   trigger:
   - platform: numeric_state
-    entity_id: sensor.out_side_lux
+    entity_id: input_number.slider1
     below: 2500
   condition:
     - condition: time
-      after: '14:00:00'
-      before: '16:00:00' 
+      after: '08:00:00'
+      before: '10:00:00' 
     - condition: template
       value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
     - condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
   action:
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.house_mode
-      option: Evening
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.testing_switch
+      
 
 
