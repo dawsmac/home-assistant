@@ -1,0 +1,6 @@
+slider1:
+  name: Debug_Slider
+  initial: 0
+  min: 0
+  max: 5000
+  step: 1
