@@ -172,21 +172,21 @@
 
 - alias: Test mode
   trigger:
-  - platform: numeric_state
-    entity_id: input_number.slider1
-    below: 2500
+    - platform: numeric_state
+      entity_id: input_number.slider1
+      below: 2500
   condition:
     - condition: time
-      after: '08:00:00'
-      before: '10:00:00' 
-    - condition: template
-      value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
-    - condition: template
-      value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
+      after: '23:00:00'
+      before: '01:00:00' 
+ #   - condition: template
+#      value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
+ #   - condition: template
+  #    value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
   action:
-  - service: input_boolean.turn_on
-    data:
-      entity_id: input_boolean.testing_switch
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.testing_switch
       
 
 
