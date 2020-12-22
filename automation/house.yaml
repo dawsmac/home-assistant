@@ -181,8 +181,9 @@
     - condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
   action:
-  - service: homeassistant.turn_on
-    entity_id: input_boolean.testing_switch
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.testing_switch
       
 
 
