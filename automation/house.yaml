@@ -23,7 +23,7 @@
       at: '10:00:00'
     - platform: numeric_state
       entity_id: sensor.out_side_lux
-      above: 3000
+      above: 2000
   condition:
     condition: not
     conditions:
