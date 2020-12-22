@@ -24,7 +24,15 @@
   - platform: numeric_state
     entity_id: sensor.out_side_lux
     above: 3000
+  condition:
   condition: not
+  conditions:
+    - condition: state
+      entity_id: input_select.house_mode
+      state: 'Night'
+    - condition: state
+      entity_id: input_select.house_mode
+      state: 'Evening'
     - condition: state
       entity_id: input_select.house_mode
       state: 'Day'
