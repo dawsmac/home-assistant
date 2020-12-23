@@ -52,8 +52,6 @@
       after: '15:00:00'
       before: '18:00:00' 
     - condition: template
-      value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
-    - condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
   action:
   - service: input_select.select_option
@@ -179,10 +177,8 @@
     - condition: time
       after: '23:00:00'
       before: '01:00:00' 
- #   - condition: template
-#      value_template: "{{ state_attr('sun.sun', 'rising') == false }}"
- #   - condition: template
-  #    value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
   action:
     - service: input_boolean.turn_on
       data:
