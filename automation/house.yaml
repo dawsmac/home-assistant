@@ -2,10 +2,19 @@
   trigger:
   - platform: time
     at: input_datetime.rd_android_alarm
+  - platform: state
+    entity_id: sensor.ds_pirs
+    to: 'false'
+  - platform: time
+    at: '07:00:00'
   condition:
   - condition: time 
     after: '05:00:00'
-    before: '09:59:00' 
+  - condition: state
+    entity_id: input_select.house_mode
+    state: 'Night'
+  - condition: template
+    value_template: "{{ (state_attr('sun.sun','rising') == true) }}"
   action:
   - service: input_select.select_option
     data_template:
@@ -19,23 +28,20 @@
 
 - alias: Day mode
   trigger:
-    - platform: time
-      at: '10:00:00'
-    - platform: numeric_state
-      entity_id: sensor.out_side_lux
-      above: 2000
+  - platform: numeric_state
+    entity_id: sensor.out_side_lux
+    above: 2000
+    for:
+      minutes: 10
   condition:
-    condition: not
+    condition: or
     conditions:
       - condition: state
         entity_id: input_select.house_mode
-        state: 'Night'
+        state: 'Morning'
       - condition: state
         entity_id: input_select.house_mode
-        state: 'Evening'
-      - condition: state
-        entity_id: input_select.house_mode
-        state: 'Day'
+        state: 'Morning+lights'
   action:
   - service: input_select.select_option
     data:
@@ -47,12 +53,16 @@
   - platform: numeric_state
     entity_id: sensor.out_side_lux
     below: 2500
+    for:
+      minutes: 10
   condition:
-    - condition: time
-      after: '15:00:00'
-      before: '18:00:00' 
+    - condition: template
+      value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
     - condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
+    - condition: state
+      entity_id: input_select.house_mode
+      state: 'day'
   action:
   - service: input_select.select_option
     data:
@@ -73,14 +83,14 @@
     state: 'True'
     for:
       minutes: 15
-  - condition: numeric_state
-    entity_id: sensor.out_side_lux
-    below: 4  
+  - condition: template
+    value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
   - condition: state
     entity_id: binary_sensor.lounge_tv_status
     state: 'off'
-  - condition: template
-    value_template: '{{ state_attr("sun.sun", "elevation") < -18 }}'  
+  - condition: state
+    entity_id: input_select.house_mode
+    state: 'Evening'
   action:
   - service: input_select.select_option
     data:
@@ -166,23 +176,5 @@
       message: >
         Everyone is out: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
 
-
-
-- alias: Test mode
-  trigger:
-    - platform: numeric_state
-      entity_id: input_number.slider1
-      below: 2500
-  condition:
-    - condition: time
-      after: '23:00:00'
-      before: '01:00:00' 
-    - condition: template
-      value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
-  action:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.testing_switch
-      
 
 
