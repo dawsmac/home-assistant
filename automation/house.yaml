@@ -62,7 +62,7 @@
       value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
     - condition: state
       entity_id: input_select.house_mode
-      state: 'day'
+      state: 'Day'
   action:
   - service: input_select.select_option
     data:
