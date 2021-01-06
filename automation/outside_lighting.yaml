@@ -19,6 +19,9 @@
           - condition: state
             entity_id: input_select.house_mode
             state: Night
+          - condition: state
+            entity_id: input_select.house_mode
+            state: Morning+lights
   action:
   - service: homeassistant.turn_on
     entity_id: light.garden_lights
@@ -34,6 +37,12 @@
   - condition: state
     entity_id: light.garden_lights
     state: 'on'
+  - condition: state
+    entity_id: binary_sensor.kitchen_door
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.garden_gate
+    state: 'off'
   action:
   - delay: 00:05
   - service: homeassistant.turn_off
