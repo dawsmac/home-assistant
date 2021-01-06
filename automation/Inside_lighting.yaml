@@ -159,7 +159,7 @@
 ## Master bedroom
 ###############################################################
 
-- alias: Motion Sensor Thea Off
+- alias: Motion Sensor Masterbedroom Off
   trigger:
   - platform: state
     entity_id: binary_sensor.raf_s_pir
@@ -170,3 +170,21 @@
     - service: homeassistant.turn_off
       entity_id: 
         - light.master_bedroom_light
+
+
+
+###############################################################
+## Lounge bedroom
+###############################################################
+
+- alias: Motion Sensor Lounge Off
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.lounge_pir
+    to: 'off'
+    for:
+      minutes: 5
+  action:
+    - service: homeassistant.turn_off
+      entity_id: 
+        - light.lounge_lights
