@@ -155,9 +155,7 @@
       temperature: 18
       hvac_mode: heat
 
-
-
-- alias: No ones home turn of Heating
+- alias: No ones home turn off Heating
   trigger:
   - platform: template
     value_template: >
@@ -166,10 +164,6 @@
     for:
       minutes: 20
   action:
-  - service: climate.set_preset_mode 
-    data:
-      entity_id: climate.kitchen
-      preset_mode: away
   - service: climate.set_preset_mode 
     data:
       entity_id: climate.upstairs
@@ -198,18 +192,3 @@
     data:
       entity_id: climate.downstairs
       preset_mode: none
-
-- alias: Heating test 
-  trigger:
-  - platform: template
-    value_template: >
-      {{ is_state('person.faye_dawson', 'home') and
-        is_state('person.richard_dawson', 'home') }}
-    for:
-      minutes: 2
-  action:
-  - service: climate.set_preset_mode 
-    data:
-      entity_id: climate.downstairs
-      preset_mode: away
-    
