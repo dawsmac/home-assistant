@@ -85,6 +85,8 @@
       minutes: 15
   - condition: template
     value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
+  - condition: template
+    value_template: "{{ state_attr('sun.sun', 'elevation') < -18 }}"
   - condition: state
     entity_id: binary_sensor.lounge_tv_status
     state: 'off'
