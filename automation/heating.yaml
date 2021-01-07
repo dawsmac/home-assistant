@@ -163,7 +163,8 @@
     value_template: >
       {{ is_state('person.faye_dawson', 'not_home') and
         is_state('person.richard_dawson', 'not_home') }}
-    for: 30min 
+    for:
+      minutes: 20
   action:
   - service: climate.set_preset_mode 
     data:
@@ -197,3 +198,18 @@
     data:
       entity_id: climate.downstairs
       preset_mode: none
+
+- alias: Heating test 
+  trigger:
+  - platform: template
+    value_template: >
+      {{ is_state('person.faye_dawson', 'home') and
+        is_state('person.richard_dawson', 'home') }}
+    for:
+      minutes: 2
+  action:
+  - service: climate.set_preset_mode 
+    data:
+      entity_id: climate.downstairs
+      preset_mode: away
+    
