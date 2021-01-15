@@ -184,11 +184,14 @@
     data:
       entity_id: climate.kitchen
       preset_mode: none
+      hvac_mode: heat
   - service: climate.set_preset_mode 
     data:
       entity_id: climate.upstairs
       preset_mode: none
+      hvac_mode: heat
   - service: climate.set_preset_mode 
     data:
       entity_id: climate.downstairs
       preset_mode: none
+      hvac_mode: heat
