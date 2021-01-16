@@ -40,6 +40,21 @@
     entity_id: switch.boiler_call
 
 
+- alias: Hotwater HA restart
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_select.house_mode
+      to: "Morning"
+  condition: 
+    - condition: state
+      entity_id: binary_sensor.cylinder_thermostats
+      state:   "off"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.hotwater
+
 
 - alias: Heating Off
   trigger:
