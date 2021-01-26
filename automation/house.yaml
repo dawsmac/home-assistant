@@ -70,13 +70,13 @@
       option: Evening
 
 
-- alias: Night mode
+- alias: Night mode (PIR)
   trigger:
   - platform: state
     entity_id: sensor.us_pirs
     to: 'True'
     for:
-      minutes: 20
+      minutes: 20 
   condition:
   - condition: state
     entity_id: sensor.ds_pirs
@@ -98,6 +98,34 @@
     data:
       entity_id: input_select.house_mode
       option: Night
+
+
+- alias: Night mode (Phone_charging)
+  trigger:
+  - platform: template
+    value_template: >
+      {{ is_state('sensor.sm_g970f_charger_type', 'wireless') and
+        is_state('sensor.sm_g973f_charger_type', 'wireless') }}
+    for:
+      minutes: 10   
+  condition:
+  - condition: template
+    value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
+  - condition: template
+    value_template: "{{ state_attr('sun.sun', 'elevation') < -18 }}"
+  - condition: state
+    entity_id: binary_sensor.lounge_tv_status
+    state: 'off'
+  - condition: state
+    entity_id: input_select.house_mode
+    state: 'Evening'
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.house_mode
+      option: Night
+    
+
 
 - alias: Set Scene House Mode
   trigger:
