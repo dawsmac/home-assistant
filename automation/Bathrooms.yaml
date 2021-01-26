@@ -40,6 +40,8 @@
   - platform: state
     entity_id: binary_sensor.bathroom_switch
     to: 'off'
+    for:
+      minutes: 5
   condition:
     condition: or
     conditions: 
