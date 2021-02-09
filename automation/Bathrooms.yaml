@@ -55,4 +55,6 @@
   - service: homeassistant.turn_off
     entity_id: 
       - light.bathroom
+  - service: homeassistant.turn_off
+    entity_id: 
       - light.bathroom_mirror
