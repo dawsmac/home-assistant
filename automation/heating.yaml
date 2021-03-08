@@ -105,15 +105,15 @@
       - switch.boiler_call
   - delay: 2:00    
   - service: notify.mobile_app_sm_g973f
+    data:
+      ttl: 0
+      priority: high
     data_template:
       message: >
         {% if is_state('binary_sensor.heating_controls_node_05' , 'off') or
           is_state('binary_sensor.underfloor_heating_node_02' , 'off' ) or
           is_state('binary_sensor.boiler_node_03' , 'off') %}
           Heating Control has been disabled, please investage!
-          data:
-            ttl: 0
-            priority: high
         {% else %}
           Heating Control´s are back on and working!
         {% endif %}
