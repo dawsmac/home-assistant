@@ -111,6 +111,9 @@
           is_state('binary_sensor.underfloor_heating_node_02' , 'off' ) or
           is_state('binary_sensor.boiler_node_03' , 'off') %}
           Heating Control has been disabled, please investage!
+          data:
+            ttl: 0
+            priority: high
         {% else %}
           Heating Control´s are back on and working!
         {% endif %}
