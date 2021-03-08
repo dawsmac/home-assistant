@@ -15,7 +15,6 @@
   - service: switch.turn_on
     entity_id: switch.boiler_call
 
-
 - alias: Hotwater on
   trigger:
   - platform: state
@@ -39,23 +38,6 @@
   - service: switch.turn_on
     entity_id: switch.boiler_call
 
-
-- alias: Hotwater HA restart
-  trigger:
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: input_select.house_mode
-      to: "Morning"
-  condition: 
-    - condition: state
-      entity_id: binary_sensor.cylinder_thermostats
-      state:   "off"
-  action:
-    - service: switch.turn_on
-      entity_id: switch.hotwater
-
-
 - alias: Heating Off
   trigger:
   - platform: template
@@ -64,11 +46,36 @@
         is_state('switch.underfloor_heating', 'off') and
         is_state('switch.upstairs_radiators', 'off') and
         is_state('switch.hotwater', 'off') }}
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: switch.boiler_call
+        state: 'off'
   action:
   - service: switch.turn_off
-    entity_id: switch.boiler_call
-    
-      
+    entity_id: switch.boiler_call 
+
+
+- alias: HA restart hotwater
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_select.house_mode
+      to: "Morning"
+  condition: 
+    - condition: state
+      entity_id: switch.hotwater
+      state:   "on"
+    - condition: state
+      entity_id: switch.boiler_call
+      state: "off"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.boiler_call
+
+
 - alias: Heating control are on and working 
   trigger:
   - platform: template
@@ -76,6 +83,10 @@
       {{ is_state('binary_sensor.heating_controls_node_05' , 'on') and
         is_state('binary_sensor.heating_controls_node_02' , 'on') and
         is_state('binary_sensor.boiler_node_03' , 'on') }}
+  condition: 
+  - condition: state
+    entity_id: automation.heating_on
+    state: "off"
   action:
   - service: homeassistant.turn_on
     entity_id: automation.heating_on
