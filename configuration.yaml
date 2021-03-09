@@ -17,7 +17,7 @@ influxdb:
   ssl: false
   host: 192.168.110.113
   post: 8086
-  token: 073244d65ddc5000
+  token: zGT-LCYewUKC7xTf765YPyXMcfgkedB8TqFZmSaWJq1id4LLI-zqrYX0jFj5SJXgvEADAm-grZx_iBCoNmCP2Q==
   organization: ha_grp
   bucket: home_assistant
   tags:
