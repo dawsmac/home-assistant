@@ -13,10 +13,15 @@ spotify:
 
 
 influxdb:
+  api_version: 2
+  ssl: false
   host: 192.168.110.113
-  database: home_assistant
-  username: ha
-  password: Farmer79!!
+  post: 8086
+  token: 073244d65ddc5000
+  organization: d91f1d9e2e3f0302
+  bucket: home_assistant
+  tags:
+    source: HA
 
   include:
     entities:
