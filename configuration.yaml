@@ -13,7 +13,7 @@ spotify:
 
 
 influxdb:
-  host: 192.168.2.113
+  host: 192.168.110.113
   include:
     entities:
       - sensor.outside_temperature
