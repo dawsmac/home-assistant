@@ -14,6 +14,10 @@ spotify:
 
 influxdb:
   host: 192.168.110.113
+  database: home_assistant
+  username: ha
+  password: Farmer79!!
+
   include:
     entities:
       - sensor.outside_temperature
