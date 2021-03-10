@@ -13,18 +13,13 @@ spotify:
 
 
 influxdb:
-  api_version: 2
   ssl: false
   host: 192.168.110.113
   port: 8086
-  token: zGT-LCYewUKC7xTf765YPyXMcfgkedB8TqFZmSaWJq1id4LLI-zqrYX0jFj5SJXgvEADAm-grZx_iBCoNmCP2Q==
-  organization: d91f1d9e2e3f0302
-  bucket: home_assistant
+  database: home_assistant
   tags:
     source: HA
-  tags_attributes:
-    - friendly_name
-  default_measurement: units
+  default_measurement: state
   include:
     entities:
       - sensor.outside_temperature
