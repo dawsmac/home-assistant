@@ -194,12 +194,14 @@
       minutes: 20
   action:
   - service: climate.set_preset_mode 
-    data:
+    target:
       entity_id: climate.upstairs
+    data:
       preset_mode: away
   - service: climate.set_preset_mode 
-    data:
+    target:
       entity_id: climate.downstairs
+    data:
       preset_mode: away
 
 - alias: home Turn on Heating
@@ -221,17 +223,20 @@
           state: 'home' 
   action:
   - service: climate.set_preset_mode 
-    data:
+    target:
       entity_id: climate.kitchen
+    data:
       preset_mode: none
       hvac_mode: heat
   - service: climate.set_preset_mode 
-    data:
+    target:
       entity_id: climate.upstairs
+    data:
       preset_mode: none
       hvac_mode: heat
   - service: climate.set_preset_mode 
-    data:
+    target:
       entity_id: climate.downstairs
+    data:
       preset_mode: none
       hvac_mode: heat
