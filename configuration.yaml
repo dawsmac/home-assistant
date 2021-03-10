@@ -18,7 +18,7 @@ influxdb:
   host: 192.168.110.113
   post: 8086
   token: zGT-LCYewUKC7xTf765YPyXMcfgkedB8TqFZmSaWJq1id4LLI-zqrYX0jFj5SJXgvEADAm-grZx_iBCoNmCP2Q==
-  organization: ha_grp
+  organization: d91f1d9e2e3f0302
   bucket: home_assistant
   tags:
     source: HA
