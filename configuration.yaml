@@ -20,11 +20,6 @@ influxdb:
   tags:
     source: HA
   default_measurement: state
-  include:
-    entities:
-      - sensor.outside_temperature
-      - sensor.downstairs_temperature
-      - sensor.upstairs_temperature
 
 logger:
 
