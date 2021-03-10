@@ -202,12 +202,12 @@
     target:
       entity_id: climate.upstairs
     data:
-      preset_mode: 'away'
+      preset_mode: away
   - service: climate.set_preset_mode 
     target:
       entity_id: climate.downstairs
     data:
-      preset_mode: 'away'
+      preset_mode: away
 
 - alias: home Turn on Heating
   trigger:
@@ -231,17 +231,17 @@
     target:
       entity_id: climate.kitchen
     data:
-      preset_mode: 'none'
+      preset_mode: none
       hvac_mode: heat
   - service: climate.set_preset_mode 
     target:
       entity_id: climate.upstairs
     data:
-      preset_mode: 'none'
+      preset_mode: none
       hvac_mode: heat
   - service: climate.set_preset_mode 
     target:
       entity_id: climate.downstairs
     data:
-      preset_mode: 'none'
+      preset_mode: none
       hvac_mode: heat
