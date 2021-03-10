@@ -1,5 +1,5 @@
 resources:
-  - url: /local/simple-thermostat.js?v=1
+  - url: /hacsfiles/simple-thermostat/simple-thermostat.js
     type: module
 
 title: Edenbridge
