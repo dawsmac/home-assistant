@@ -230,20 +230,21 @@
           entity_id: 'person.faye_dawson'
           state: 'home' 
   action:
-  - service: climate.set_preset_mode 
-    target:
-      entity_id:
-        - climate.kitchen
-        - climate.upstairs
-        - climate.downstairs
-    data:
-      preset_mode: none
-  - service: climate.set_temperature
-    target:
-      entity_id:
-        - climate.kitchen
-        - climate.upstairs
-        - climate.downstairs
-    data:  
-      hvac_mode: heat
-      target_temp_low: 18
+    - service: climate.set_preset_mode 
+      target:
+        entity_id:
+          - climate.kitchen
+          - climate.upstairs
+          - climate.downstairs
+      data:
+        preset_mode: none
+    - service: climate.set_temperature
+      target:
+        entity_id:
+          - climate.kitchen
+          - climate.upstairs
+          - climate.downstairs
+      data:  
+        hvac_mode: heat
+        target_temp_low: 18
+      
