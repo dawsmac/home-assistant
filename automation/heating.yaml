@@ -237,7 +237,7 @@
         - climate.upstairs
         - climate.downstairs
     data:
-      preset_mode: "none"
+      preset_mode: none
   - service: climate.set_temperature
     target:
       entity_id:
@@ -246,3 +246,4 @@
         - climate.downstairs
     data:  
       hvac_mode: heat
+      target_temp_low: 18
