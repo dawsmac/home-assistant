@@ -11,6 +11,16 @@ spotify:
   client_id: c067b910851c444397028bf135460551
   client_secret: 354b0b1d7ff749089fd67acb82ce550c
 
+
+influxdb:
+  ssl: false
+  host: 192.168.110.113
+  port: 8086
+  database: home_assistant
+  tags:
+    source: HA
+  default_measurement: state
+
 logger:
 
 history: 

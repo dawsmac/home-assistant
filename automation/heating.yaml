@@ -15,7 +15,6 @@
   - service: switch.turn_on
     entity_id: switch.boiler_call
 
-
 - alias: Hotwater on
   trigger:
   - platform: state
@@ -39,8 +38,26 @@
   - service: switch.turn_on
     entity_id: switch.boiler_call
 
+- alias: Heating Off
+  trigger:
+  - platform: template
+    value_template: >
+      {{ is_state('switch.downstairs_radiators', 'off') and
+        is_state('switch.underfloor_heating', 'off') and
+        is_state('switch.upstairs_radiators', 'off') and
+        is_state('switch.hotwater', 'off') }}
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: switch.boiler_call
+        state: 'off'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.boiler_call 
 
-- alias: Hotwater HA restart / Morning
+
+- alias: HA restart hotwater
   trigger:
     - platform: homeassistant
       event: start
@@ -52,27 +69,16 @@
       to: "Morning+lights"
   condition: 
     - condition: state
-      entity_id: binary_sensor.cylinder_thermostats
-      state:   "off"
+      entity_id: switch.hotwater
+      state:   "on"
+    - condition: state
+      entity_id: switch.boiler_call
+      state: "off"
   action:
     - service: switch.turn_on
-      entity_id: switch.hotwater
+      entity_id: switch.boiler_call
 
 
-- alias: Heating Off
-  trigger:
-  - platform: template
-    value_template: >
-      {{ is_state('switch.downstairs_radiators', 'off') and
-        is_state('switch.underfloor_heating', 'off') and
-        is_state('switch.upstairs_radiators', 'off') and
-        is_state('switch.hotwater', 'off') }}
-  action:
-  - service: switch.turn_off
-    entity_id: switch.boiler_call
-  
-
-    
 - alias: Heating control are on and working 
   trigger:
   - platform: template
@@ -80,6 +86,10 @@
       {{ is_state('binary_sensor.heating_controls_node_05' , 'on') and
         is_state('binary_sensor.heating_controls_node_02' , 'on') and
         is_state('binary_sensor.boiler_node_03' , 'on') }}
+  condition: 
+  - condition: state
+    entity_id: automation.heating_on
+    state: "off"
   action:
   - service: homeassistant.turn_on
     entity_id: automation.heating_on
@@ -98,6 +108,9 @@
       - switch.boiler_call
   - delay: 2:00    
   - service: notify.mobile_app_sm_g973f
+    data:
+      ttl: 0
+      priority: high
     data_template:
       message: >
         {% if is_state('binary_sensor.heating_controls_node_05' , 'off') or
@@ -133,28 +146,31 @@
             entity_id: 'person.faye_dawson'
             state: 'home'  
   action:
-  - service: climate.set_temperature
-    data:
-      entity_id: climate.upstairs
-      temperature: 20
-      hvac_mode: heat
-  - service: climate.set_temperature
-    data:
-      entity_id: climate.downstairs
-      temperature: 20
-      hvac_mode: heat
-
+    - service: climate.set_temperature 
+      target:
+        entity_id: climate.upstairs
+      data:
+        temperature: 20
+        hvac_mode: heat
+    - service: climate.set_temperature 
+      target:
+        entity_id: climate.downstairs
+      data:
+        temperature: 20
+        hvac_mode: heat
+  
 - alias: Day mode Heating
   trigger:
   - platform: state
     entity_id: input_select.house_mode
     to:  Day
   action:
-  - service: climate.set_temperature
-    data:
-      entity_id: climate.upstairs
-      temperature: 18
-      hvac_mode: heat
+    - service: climate.set_temperature 
+      target:
+        entity_id: climate.upstairs
+      data:
+        temperature: 18
+        hvac_mode: heat
 
 - alias: Night mode Heating
   trigger:
@@ -163,17 +179,19 @@
     from:  Evening
     to:  Night
   action:
-  - service: climate.set_temperature
-    data:
-      entity_id: climate.upstairs
-      temperature: 18
-      hvac_mode: heat
-  - service: climate.set_temperature
-    data:
-      entity_id: climate.downstairs
-      temperature: 18
-      hvac_mode: heat
-
+    - service: climate.set_temperature 
+      target:
+        entity_id: climate.upstairs
+      data:
+        temperature: 18
+        hvac_mode: heat
+    - service: climate.set_temperatue
+      target:
+        entity_id: climate.downstairs
+      data:
+        temperature: 18
+        hvac_mode: heat
+  
 - alias: No ones home turn off Heating
   trigger:
   - platform: template
@@ -184,12 +202,14 @@
       minutes: 20
   action:
   - service: climate.set_preset_mode 
-    data:
+    target:
       entity_id: climate.upstairs
+    data:
       preset_mode: away
   - service: climate.set_preset_mode 
-    data:
+    target:
       entity_id: climate.downstairs
+    data:
       preset_mode: away
 
 - alias: home Turn on Heating
@@ -198,19 +218,31 @@
     value_template: >
       {{ is_state('person.faye_dawson', 'home') or
         is_state('person.richard_dawson', 'home') }}
+  - platform: homeassistant
+    event: start
+  condition:
+    - condition: or
+      conditions: 
+        - condition: state
+          entity_id: 'person.richard_dawson'
+          state: 'home' 
+        - condition: state
+          entity_id: 'person.faye_dawson'
+          state: 'home' 
   action:
   - service: climate.set_preset_mode 
+    target:
+      entity_id:
+        - climate.kitchen
+        - climate.upstairs
+        - climate.downstairs
     data:
-      entity_id: climate.kitchen
       preset_mode: none
-      hvac_mode: heat
-  - service: climate.set_preset_mode 
-    data:
-      entity_id: climate.upstairs
-      preset_mode: none
-      hvac_mode: heat
-  - service: climate.set_preset_mode 
-    data:
-      entity_id: climate.downstairs
-      preset_mode: none
+  - service: climate.set_temperature
+    target:
+      entity_id:
+        - climate.kitchen
+        - climate.upstairs
+        - climate.downstairs
+    data:  
       hvac_mode: heat
