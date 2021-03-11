@@ -237,7 +237,7 @@
         - climate.upstairs
         - climate.downstairs
     data:
-      preset_mode: none
+      preset_mode: "none"
   - service: climate.set_temperature
     target:
       entity_id:
