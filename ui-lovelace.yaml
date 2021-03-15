@@ -147,6 +147,7 @@ views:
           - entity: light.landing_lights
           - entity: light.hallway_lights
           - entity: sensor.landing_temperature
+          - entity: binary_sensor.hallway_pir
 
       - type: glance
         title: Garage
