@@ -171,6 +171,7 @@ views:
           - entity: sensor.office_temperature
           - entity: sensor.office_humidity
           - entity: sensor.office_atc_battery_level
+          - entity: switch.office_heater
                     
       - type: glance
         title: Back garden
