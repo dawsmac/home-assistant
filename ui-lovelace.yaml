@@ -155,6 +155,7 @@ views:
           - entity: light.landing_lights
           - entity: light.hallway_lights
           - entity: sensor.landing_temperature
+          - entity: binary_sensor.hallway_pir
 
       - type: glance
         title: Garage
@@ -163,7 +164,14 @@ views:
           - entity: switch.garage_door_lock
           - entity: light.garage_lights
           - entity: sensor.driveway
-          
+      
+      - type: glance
+        title: Office
+        entities:
+          - entity: sensor.office_temperature
+          - entity: sensor.office_humidity
+          - entity: sensor.office_atc_battery_level
+                    
       - type: glance
         title: Back garden
         entities:
