@@ -102,6 +102,10 @@ views:
           - entity: light.lila_s_bedroom_light
           - entity: binary_sensor.lila_s_pir
           - entity: sensor.lila_room_temperature
+          - entity: switch.lila_s_multi_psu_socket_1
+          - entity: switch.lila_s_multi_psu_socket_2
+          - entity: switch.lila_s_multi_psu_socket_3
+          - entity: switch.lila_s_multi_psu_usb
           
       - type: glance
         title: Thea´s bedroom 
@@ -109,6 +113,10 @@ views:
           - entity: light.thea_s_bedroom_light
           - entity: binary_sensor.thea_s_bedroom_pir
           - entity: sensor.thea_room_temperature
+          - entity: switch.thea_s_multi_psu_socket_1
+          - entity: switch.thea_s_multi_psu_socket_2
+          - entity: switch.thea_s_multi_psu_socket_3
+          - entity: switch.thea_s_multi_psu_usb
           
       - type: glance
         title: Playroom 
@@ -164,7 +172,8 @@ views:
           - entity: sensor.office_temperature
           - entity: sensor.office_humidity
           - entity: sensor.office_atc_battery_level
-              
+          - entity: switch.office_heater
+                    
       - type: glance
         title: Back garden
         entities:
@@ -197,9 +206,6 @@ views:
           - entity: sensor.downstairs_toilet_humidity
           - entity: sensor.downstairs_toilet_temperature
 
-
-
-  
   - title: Master's Switch's
     icon: mdi:toggle-switch
     path: switchs
@@ -240,31 +246,3 @@ views:
           - entity: switch.coop_door_open
           - entity: binary_sensor.chickens_coop_door
           - entity: binary_sensor.chickens_garden_door
- 
-  - title: Christmas
-    path: Christmas
-    icon: mdi:string-lights
-    cards:
-      - type: glance
-        title: Fiary light's power
-        entities:
-          - entity: group.christmas_lights_psu
-          - entity: switch.mega_tree_r_psu1
-          - entity: switch.mega_tree_r_psu2
-          - entity: switch.lounge_windows_led_psu
-          - entity: switch.smallbedroom_windows_led_psu
-          - entity: switch.front_bush_led_psu
-      
-      - type: glance
-        title: WLED Controllers
-        entities:
-          - entity: light.front_christmas_lights
-          - entity: light.frontbush_node_242
-          - entity: light.frontbushr_node_243
-          - entity: light.smallbedroom_node_244
-          - entity: light.loungewindow_node_245
-          - entity: light.megatrnode_247
-          - entity: light.megatrnode_248
-          - entity: light.megatrnode_249
-          - entity: light.megatrnode_250
-  
