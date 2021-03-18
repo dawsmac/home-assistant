@@ -147,6 +147,7 @@ views:
           - entity: light.landing_lights
           - entity: light.hallway_lights
           - entity: sensor.landing_temperature
+          - entity: sensor.hallway_temperature
           - entity: binary_sensor.hallway_pir
 
       - type: glance
@@ -163,7 +164,7 @@ views:
           - entity: sensor.office_temperature
           - entity: sensor.office_humidity
           - entity: sensor.office_atc_battery_level
-                    
+              
       - type: glance
         title: Back garden
         entities:
