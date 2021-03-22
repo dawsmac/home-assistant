@@ -11,8 +11,8 @@ views:
       - type: entities
         title: Who´s at Home
         entities:
-          - person.faye_dawson
-          - person.richard_dawson
+          - person.faye
+          - person.richard
 
       - type: entities
         title: Sensor´s 
