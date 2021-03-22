@@ -185,7 +185,6 @@ views:
         title: Front garden
         entities:
           - entity: light.porch_light
-          - entity: binary_sensor.frontgarden_gate
           - entity: binary_sensor.front_door
           - entity: sensor.porch_temperature
 
