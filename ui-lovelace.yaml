@@ -165,7 +165,7 @@ views:
           - entity: binary_sensor.garage_door
           - entity: switch.garage_door_lock
           - entity: light.garage_lights
-          - entity: sensor.driveway
+          - entity: sensor.driveway_temperature
       
       - type: glance
         title: Office
@@ -187,7 +187,7 @@ views:
           - entity: light.porch_light
           - entity: binary_sensor.frontgarden_gate
           - entity: binary_sensor.front_door
-          - entity: sensor.porch
+          - entity: sensor.porch_temperature
 
       - type: glance
         title: Bathroom
