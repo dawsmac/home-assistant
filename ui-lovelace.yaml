@@ -125,7 +125,7 @@ views:
           - entity: binary_sensor.playroom_pir
           - entity: light.globe_lamp
           - entity: switch.tv
-          - entity: sensor.playroom_s_room_temperature
+          - entity: sensor.playroom_temperature
           
       - type: glance
         title: Lounge 

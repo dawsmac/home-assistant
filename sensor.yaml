@@ -51,8 +51,9 @@
   - platform: min_max
     entity_ids:
       - sensor.lounge_temperature
-      - sensor.playroom_s_room_temperature
+      - sensor.playroom_temperature
       - sensor.downstairs_toilet_temperature
+      - sensor.hallway_temperature
     type: mean
     name: Downstairs temperature
 
