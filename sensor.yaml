@@ -34,8 +34,8 @@
 
   - platform: min_max
     entity_ids:
-      - sensor.porch
-      - sensor.driveway
+      - sensor.porch_temperature
+      - sensor.driveway_temperature
     type: mean
     name: Outside temperature 
 

@@ -11,13 +11,3 @@ bkg_doors:
     - binary_sensor.kitchen_door
     - binary_sensor.garden_gate
 
-christmas_lights_psu:
-  name: Christmas PSU's
-  entities:
-    - switch.mega_tree_r_psu1
-    - switch.mega_tree_r_psu2
-    - switch.lounge_windows_led_psu
-    - switch.smallbedroom_windows_led_psu
-    - switch.front_bush_led_psu
-    
-
