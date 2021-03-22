@@ -24,10 +24,10 @@
   - condition: not
     conditions:
       - condition: state
-        entity_id: person.richard_dawson
+        entity_id: person.richard
         state: 'not_home'
       - condition: state
-        entity_id: person.faye_dawson
+        entity_id: person.faye
         state: 'not_home'
       - condition: state
         entity_id: switch.boiler_call
@@ -140,10 +140,10 @@
       - condition: or
         conditions:
           - condition: state
-            entity_id: 'person.richard_dawson'
+            entity_id: 'person.richard'
             state: 'home' 
           - condition: state
-            entity_id: 'person.faye_dawson'
+            entity_id: 'person.faye'
             state: 'home'  
   action:
     - service: climate.set_temperature 
@@ -196,8 +196,8 @@
   trigger:
   - platform: template
     value_template: >
-      {{ is_state('person.faye_dawson', 'not_home') and
-        is_state('person.richard_dawson', 'not_home') }}
+      {{ is_state('person.faye', 'not_home') and
+        is_state('person.richard', 'not_home') }}
     for:
       minutes: 20
   action:
@@ -216,18 +216,18 @@
   trigger:
   - platform: template
     value_template: >
-      {{ is_state('person.faye_dawson', 'home') or
-        is_state('person.richard_dawson', 'home') }}
+      {{ is_state('person.faye', 'home') or
+        is_state('person.richard', 'home') }}
   - platform: homeassistant
     event: start
   condition:
     - condition: or
       conditions: 
         - condition: state
-          entity_id: 'person.richard_dawson'
+          entity_id: 'person.richard'
           state: 'home' 
         - condition: state
-          entity_id: 'person.faye_dawson'
+          entity_id: 'person.faye'
           state: 'home' 
   action:
     - service: climate.set_preset_mode 
