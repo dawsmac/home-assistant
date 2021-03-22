@@ -147,6 +147,7 @@ views:
           - entity: light.boiler_lamp
           - entity: sensor.kitchen_temperature
           - entity: sensor.underfloor_temperature
+          - entity: switch.dishwasher_switch
 
 
       - type: glance
