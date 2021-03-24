@@ -13,6 +13,7 @@
         state: 'on'
   action:
   - service: switch.turn_on
+    target:
     entity_id: switch.boiler_call
 
 
@@ -58,7 +59,8 @@
         state: 'off'
   action:
   - service: switch.turn_off
-    entity_id: switch.boiler_call 
+    target:
+      entity_id: switch.boiler_call 
 
 
 - alias: HA restart hotwater
@@ -80,7 +82,8 @@
       state: "off"
   action:
     - service: switch.turn_on
-      entity_id: switch.boiler_call
+      target:
+        entity_id: switch.boiler_call
 
 
 - alias: Heating control are on and working 
