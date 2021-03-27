@@ -3,6 +3,7 @@
   device_class: motion
   state_topic: "Blueiris/Porch"
   payload_on: "on"
+  payload_off: "off"
   off_delay: 30
 
 - platform: mqtt
