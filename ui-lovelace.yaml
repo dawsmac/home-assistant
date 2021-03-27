@@ -17,11 +17,6 @@ views:
       - type: entities
         title: Sensor´s 
         entities:
-          - input_datetime.rd_android_alarm
-      
-      - type: entities
-        title: Sensor´s 
-        entities:
           - sun.sun
           - sensor.us_pirs
           - sensor.ds_pirs
