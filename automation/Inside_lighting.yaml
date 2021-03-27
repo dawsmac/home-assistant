@@ -50,8 +50,11 @@
     conditions:
       - condition: state
         entity_id: 
-          - input_boolean.guest_room
           - light.globe_lamp
+        state: 'off'
+      - condition: state
+        entity_id: 
+          - input_boolean.guest_room
         state: 'off'
       - condition: or
         conditions:
