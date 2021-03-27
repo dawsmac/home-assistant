@@ -45,6 +45,4 @@ sensor: !include sensor.yaml
 notify: !include notify.yaml
 binary_sensor: !include binary_sensor.yaml
 input_select: !include input_select.yaml
-input_datetime: !include input_datetime.yaml
-
-
+# input_datetime: !include input_datetime.yaml
