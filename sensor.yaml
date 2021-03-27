@@ -65,6 +65,7 @@
   - platform: template
     sensors:
         next_alarm:
+          friendly_name: Morning Alarm
           value_template: "{{ [states('sensor.faye_phone_next_alarm'), states('sensor.rich_phone_next_alarm')] | min }}"
           attribute_templates:
             alarm_time: >-
