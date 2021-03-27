@@ -6,15 +6,6 @@
     above: 2000
     for:
       minutes: 10
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: input_select.house_mode
-        state: 'Morning'
-      - condition: state
-        entity_id: input_select.house_mode
-        state: 'Morning+lights'
   action:
   - service: input_select.select_option
     data:
@@ -33,9 +24,6 @@
       value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
     - condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
-    - condition: state
-      entity_id: input_select.house_mode
-      state: 'Day'
   action:
   - service: input_select.select_option
     data:
