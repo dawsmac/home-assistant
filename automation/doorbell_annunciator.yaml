@@ -1,0 +1,20 @@
+- alias: Doorbell Annunciator
+  initial_state: true
+  # someone pushing the button on my Ring triggers automation
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.porch_movement
+      to: 'on'
+  # will only fire if the sonos speakers by the pool are playing
+  condition:
+    - condition: state
+      entity_id: media_player.kitchen
+      state: 'playing'
+  # calls the sonos_say script to announce that someone is at the door
+  action:   
+    - service: script.sonos_say
+      data:
+        sonos_entity: media_player.kitchen
+        volume: 0.7
+        message: 'someone is at the front door'
+        delay: '00:00:05'
