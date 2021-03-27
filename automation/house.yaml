@@ -6,6 +6,9 @@
     above: 2000
     for:
       minutes: 10
+  condition:
+    - condition: time
+      after: '09:01'
   action:
   - service: input_select.select_option
     data:
