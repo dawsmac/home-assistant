@@ -1,0 +1,33 @@
+- alias: Turn on Heating and set house to morning mode
+  description: ''
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.alarm_heating_on
+      to: 'on'
+  condition:
+    - condition: time
+      after: '05:00'
+      before: '09:00'
+  action:
+    - service: climate.set_temperature 
+      target:
+        entity_id: climate.upstairs
+      data:
+        temperature: 20
+        hvac_mode: heat
+    - service: climate.set_temperature 
+      target:
+        entity_id: climate.downstairs
+      data:
+        temperature: 20
+        hvac_mode: heat
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.house_mode
+        option: >
+          {% if states('sensor.out_side_lux')| float  > 2000 %}
+            Morning
+          {% else %}
+            Morning+lights
+          {% endif %}  
+  mode: single

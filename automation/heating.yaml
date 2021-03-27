@@ -86,48 +86,6 @@
         entity_id: switch.boiler_call
 
 
-
-- alias: Morning Heating 
-  trigger:
-  - platform: template
-    value_template: "{{ states('sensor.time') == ( states.input_datetime.rd_android_alarm.attributes.timestamp | int - 1800 ) | timestamp_custom('%H:%M', False) }}"
-  - platform: state
-    entity_id: input_select.house_mode
-    to:  Morning
-  - platform: state
-    entity_id: input_select.house_mode
-    to:  Morning+lights
-  condition:
-    condition: and
-    conditions:
-      - condition: time
-        after: " 05:00:00"
-        before: " 10:00:00"
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: 'person.richard'
-            state: 'home' 
-          - condition: state
-            entity_id: 'person.faye'
-            state: 'home'  
-  action:
-    - service: climate.set_temperature 
-      target:
-        entity_id: climate.upstairs
-      data:
-        temperature: 20
-        hvac_mode: heat
-    - service: climate.set_temperature 
-      target:
-        entity_id: climate.downstairs
-      data:
-        temperature: 20
-        hvac_mode: heat
-  
-
-
-
 - alias: Day mode Heating
   trigger:
   - platform: state
@@ -216,14 +174,3 @@
       data:  
         hvac_mode: heat
 
-
-
-- alias: Turn on heat 1 hour before wake-up
-  trigger:
-  - platform: numeric_state
-    entity_id: sensor.rich_phone_next_alarm
-    below: '5'
-  action:
-  - service: switch.turn_on
-    target:
-      entity_id: switch.boiler_call
