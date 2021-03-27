@@ -34,3 +34,17 @@
   state_topic: "Blueiris/Driveway"
   payload_on: "on"
   off_delay: 30
+
+
+
+- platform: template
+  sensors:
+    alarm_heating_on:
+      value_template: >-
+        {% set alarm_time = as_timestamp(states('sensor.next_alarm')) %}
+        {% set time_now = as_timestamp(now()) %}
+        {% if alarm_time != None %}
+          {{ time_now >= alarm_time - 1800 }}
+        {% else %}
+          {{ unavailable }}
+        {% endif %}
