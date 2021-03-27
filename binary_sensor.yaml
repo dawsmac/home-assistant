@@ -34,6 +34,7 @@
   device_class: motion
   state_topic: "Blueiris/Driveway"
   payload_on: "on"
+  payload_off: "off"
   off_delay: 30
 
 
