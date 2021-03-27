@@ -47,10 +47,9 @@
     to: 'on'
   condition:
     - condition: state
-      entity_id: light.globe_lamp
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.guest_room
+      entity_id: 
+        - light.globe_lamp
+        - input_boolean.guest_room
       state: 'off'
     - condition: or
       conditions:
@@ -65,8 +64,8 @@
           state: Morning+lights
   action:
   - service: homeassistant.turn_on
-    entity_id: light.playrooms_light
-    
+    entity_id: light.playroom_s_light
+
 
 - alias: Motion Sensor Playroom Off
   trigger:
