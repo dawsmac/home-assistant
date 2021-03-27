@@ -229,9 +229,8 @@ views:
         title: Music players
         entities:
           - entity: media_player.lounge
-          - entity: media_player.garden
+          - entity: media_player.playroom
           - entity: media_player.kitchen
-          - entity: media_player.kitchen_2
           - entity: media_player.master_bedroom
           - entity: media_player.thea_bedroom
           - entity: media_player.lila_bedroom
