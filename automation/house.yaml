@@ -117,7 +117,7 @@
       entity_id: input_select.house_mode
       state: Night
   action:
-    - service: notify.mobile_app_sm_g973f
+    - service: notify.mobile_app_rich_phone
       data:
         message: >
           Night mode enabled: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
@@ -137,7 +137,7 @@
         entity_id: group.persons
         state: 'home'
   action:
-    - service: notify.mobile_app_sm_g973f
+    - service: notify.mobile_app_rich_phone
       data:
         message: >
           Everyone is out: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
