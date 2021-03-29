@@ -1,96 +1,96 @@
 
 - alias: Day mode
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.out_side_lux
-    above: 2000
-    for:
-      minutes: 10
+    - platform: numeric_state
+      entity_id: sensor.out_side_lux
+      above: 2000
+      for:
+        minutes: 10
   condition:
     - condition: time
-      after: '09:01'
+      after: "09:01"
   action:
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.house_mode
-      option: Day
-
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: Day
+  
 - alias: Evening mode
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.out_side_lux
-    below: 2500
-    for:
-      minutes: 10
+    - platform: numeric_state
+      entity_id: sensor.out_side_lux
+      below: 2500
+      for:
+        minutes: 10
   condition:
     - condition: template
       value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
     - condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
   action:
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.house_mode
-      option: Evening
-
-
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: Evening
+  
+  
 - alias: Night mode
   trigger:
-  - platform: state
-    entity_id: sensor.us_pirs
-    to: 'True'
-    for:
-      minutes: 20
+    - platform: state
+      entity_id: sensor.us_pirs
+      to: 'True'
+      for:
+        minutes: 20
   condition:
-  - condition: state
-    entity_id: sensor.ds_pirs
-    state: 'True'
-    for:
-      minutes: 15
-  - condition: template
-    value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
-  - condition: template
-    value_template: "{{ state_attr('sun.sun', 'elevation') < -18 }}"
-  - condition: state
-    entity_id: binary_sensor.lounge_tv_status
-    state: 'off'
-  - condition: state
-    entity_id: input_select.house_mode
-    state: 'Evening'
-  action:
-  - service: input_select.select_option
-    data:
+    - condition: state
+      entity_id: sensor.ds_pirs
+      state: 'True'
+      for:
+        minutes: 15
+    - condition: template
+      value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') < -18 }}"
+    - condition: state
+      entity_id: binary_sensor.lounge_tv_status
+      state: 'off'
+    - condition: state
       entity_id: input_select.house_mode
-      option: Night
+      state: 'Evening'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: Night
 
 - alias: Set Scene House Mode
   trigger:
-  - platform: state
-    entity_id: input_select.house_mode
+    - platform: state
+      entity_id: input_select.house_mode
   action:
-  - service: scene.turn_on
-    data_template:
-      entity_id: >
-        {%- if is_state('input_select.house_mode' , 'Morning') %}
-          scene.morning
-        {%- elif is_state('input_select.house_mode' , 'Day') %}
-          scene.day
-        {%- elif is_state('input_select.house_mode' , 'Morning+lights') %}
-          scene.morning_lights
-        {% elif is_state('input_select.house_mode' , 'Evening') %}
-          scene.evening_lights
-        {% elif is_state('input_select.house_mode' , 'Night') %}  
-          scene.nightmode
-        {% endif %}
-
+    - service: scene.turn_on
+      data_template:
+        entity_id: >
+          {%- if is_state('input_select.house_mode' , 'Morning') %}
+            scene.morning
+          {%- elif is_state('input_select.house_mode' , 'Day') %}
+            scene.day
+          {%- elif is_state('input_select.house_mode' , 'Morning+lights') %}
+            scene.morning_lights
+          {% elif is_state('input_select.house_mode' , 'Evening') %}
+            scene.evening_lights
+          {% elif is_state('input_select.house_mode' , 'Night') %}  
+            scene.nightmode
+          {% endif %}
+  
 
 - alias: gone out and left the lights on
   trigger:
-  - platform: state
-    entity_id: sensor.all_pirs
-    to: 'true'
-    for:
-      minutes: 20
+    - platform: state
+      entity_id: sensor.all_pirs
+      to: 'true'
+      for:
+        minutes: 20
   condition:
     condition: not
     conditions:
@@ -98,38 +98,38 @@
         entity_id: group.persons
         state: 'home'
   action:
-  - service: light.turn_off
-    entity_id: all
-
+    - service: light.turn_off
+      entity_id: all
+  
   
 - alias: Out hours movment
   trigger:
-  - platform: state
-    entity_id:
-      - binary_sensor.porch_movement
-      - binary_sensor.backgarden_movement
-      - binary_sensor.coop_movement
-      - binary_sensor.driveway_movement
-      - binary_sensor.sidedrive_movement
-    to: 'on'
+    - platform: state
+      entity_id:
+        - binary_sensor.porch_movement
+        - binary_sensor.backgarden_movement
+        - binary_sensor.coop_movement
+        - binary_sensor.driveway_movement
+        - binary_sensor.sidedrive_movement
+      to: 'on'
   condition:
-  - condition: state
-    entity_id: input_select.house_mode
-    state: Night
+    - condition: state
+      entity_id: input_select.house_mode
+      state: Night
   action:
-  - service: notify.mobile_app_sm_g973f
-    data:
-      message: >
-        Night mode enabled: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
+    - service: notify.mobile_app_sm_g973f
+      data:
+        message: >
+          Night mode enabled: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
 
 - alias: Someone has entered house perimeter (no one is home)
   trigger:
-  - platform: state
-    entity_id:
-      - binary_sensor.porch_movement
-      - binary_sensor.backgarden_movement
-      - binary_sensor.driveway_movement
-    to: 'on'
+    - platform: state
+      entity_id:
+        - binary_sensor.porch_movement
+        - binary_sensor.backgarden_movement
+        - binary_sensor.driveway_movement
+      to: 'on'
   condition:
     condition: not
     conditions:
@@ -137,10 +137,10 @@
         entity_id: group.persons
         state: 'home'
   action:
-  - service: notify.mobile_app_sm_g973f
-    data:
-      message: >
-        Everyone is out: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
+    - service: notify.mobile_app_sm_g973f
+      data:
+        message: >
+          Everyone is out: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
 
 
 
