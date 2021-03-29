@@ -14,7 +14,7 @@
       data:
         entity_id: input_select.house_mode
         option: Day
-  
+
 - alias: Evening mode
   trigger:
     - platform: numeric_state
@@ -32,8 +32,7 @@
       data:
         entity_id: input_select.house_mode
         option: Evening
-  
-  
+
 - alias: Night mode
   trigger:
     - platform: state
@@ -82,7 +81,6 @@
           {% elif is_state('input_select.house_mode' , 'Night') %}  
             scene.nightmode
           {% endif %}
-  
 
 - alias: gone out and left the lights on
   trigger:
@@ -100,8 +98,7 @@
   action:
     - service: light.turn_off
       entity_id: all
-  
-  
+
 - alias: Out hours movment
   trigger:
     - platform: state
@@ -141,6 +138,4 @@
       data:
         message: >
           Everyone is out: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
-
-
 
