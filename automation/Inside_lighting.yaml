@@ -12,13 +12,10 @@
     conditions:
       - condition: state
         entity_id: input_select.house_mode
-        state: Evening
-      - condition: state
-        entity_id: input_select.house_mode
         state: Night
       - condition: state
         entity_id: input_select.house_mode
-        state: Morning+lights
+        state: Day+lights
   action:
     - service: homeassistant.turn_on
       entity_id: light.hallway_lights
@@ -55,13 +52,10 @@
       conditions:
         - condition: state
           entity_id: input_select.house_mode
-          state: Evening
-        - condition: state
-          entity_id: input_select.house_mode
           state: Night
         - condition: state
           entity_id: input_select.house_mode
-          state: Morning+lights
+          state: Day+lights
   action:
     - service: homeassistant.turn_on
       entity_id: light.playroom_s_light
@@ -98,13 +92,10 @@
     conditions:
       - condition: state
         entity_id: input_select.house_mode
-        state: Evening
-      - condition: state
-        entity_id: input_select.house_mode
         state: Night
       - condition: state
         entity_id: input_select.house_mode
-        state: Morning+lights
+        state: Day+lights
   action:
     - service: homeassistant.turn_on
       entity_id: light.landing_lights
