@@ -1,37 +1,4 @@
 
-- alias: Day mode
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.out_side_lux
-      above: 2000
-      for:
-        minutes: 10
-  condition:
-    - condition: time
-      after: "09:01"
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.house_mode
-        option: Day
-
-- alias: Evening mode
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.out_side_lux
-      below: 2500
-      for:
-        minutes: 10
-  condition:
-    - condition: template
-      value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
-    - condition: template
-      value_template: "{{ state_attr('sun.sun', 'elevation') > -18 }}"
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.house_mode
-        option: Evening
 
 - alias: Night mode
   trigger:
