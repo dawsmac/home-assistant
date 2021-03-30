@@ -53,7 +53,7 @@
     - service: input_select.select_option
       data_template:
         entity_id: input_select.house_mode
-        option: >
+        option: >-
           {% if states('sensor.out_side_lux')| float  > 2000 %}
             Day
           {% else %}
