@@ -37,14 +37,10 @@
     - service: scene.turn_on
       data_template:
         entity_id: >
-          {%- if is_state('input_select.house_mode' , 'Morning') %}
-            scene.morning
-          {%- elif is_state('input_select.house_mode' , 'Day') %}
+          {%- if is_state('input_select.house_mode' , 'Day') %}
             scene.day
-          {%- elif is_state('input_select.house_mode' , 'Morning+lights') %}
+          {%- elif is_state('input_select.house_mode' , 'Day+lights') %}
             scene.morning_lights
-          {% elif is_state('input_select.house_mode' , 'Evening') %}
-            scene.evening_lights
           {% elif is_state('input_select.house_mode' , 'Night') %}  
             scene.nightmode
           {% endif %}
