@@ -39,7 +39,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.out_side_lux
-      above: 0
+      above: -0
   condition:
     - condition: time
       after: "09:01"
