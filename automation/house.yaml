@@ -20,9 +20,6 @@
     - condition: state
       entity_id: binary_sensor.lounge_tv_status
       state: 'off'
-    - condition: state
-      entity_id: input_select.house_mode
-      state: 'Evening'
   action:
     - service: input_select.select_option
       data:
