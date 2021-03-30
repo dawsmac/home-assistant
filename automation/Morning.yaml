@@ -33,13 +33,11 @@
   mode: single
  
 
-
-
-- alias: Day mode
+- alias: Day mode Lights
   trigger:
     - platform: numeric_state
       entity_id: sensor.out_side_lux
-      above: -0
+      below: 2000 
   condition:
     - condition: time
       after: "09:01"
@@ -51,12 +49,28 @@
           state: "Night"
   action:
     - service: input_select.select_option
-      data_template:
+      target:
         entity_id: input_select.house_mode
-        option: >-
-          {% if states('sensor.out_side_lux')| float  > 2000 %}
-            Day
-          {% else %}
-            Day+lights
-          {% endif %}
-  mode: restart
+      data:
+        option: Day+lights
+
+- alias: Day mode
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.out_side_lux
+      above: 2000
+  condition:
+    - condition: time
+      after: "09:01"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id:
+            - input_select.house_mode
+          state: "Night"
+  action:
+    - service: input_select.select_option
+      target:
+        entity_id: input_select.house_mode
+      data:
+        option: Day
