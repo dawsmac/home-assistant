@@ -31,13 +31,14 @@
             Day+lights
           {% endif %}  
   mode: single
- 
 
 - alias: Day mode Lights
   trigger:
     - platform: numeric_state
       entity_id: sensor.out_side_lux
-      below: 2000 
+      below: 2000
+      for:
+        minutes: 10
   condition:
     - condition: time
       after: "09:01"
@@ -59,6 +60,8 @@
     - platform: numeric_state
       entity_id: sensor.out_side_lux
       above: 2000
+      for:
+        minutes: 10
   condition:
     - condition: time
       after: "09:01"
