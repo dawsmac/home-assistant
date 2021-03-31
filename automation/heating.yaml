@@ -28,7 +28,7 @@
       conditions:
         - condition: state
           entity_id: switch.boiler_call
-          state: 'on'
+          state: 'off'
         - condition: or
           conditions: 
             - condition: state
