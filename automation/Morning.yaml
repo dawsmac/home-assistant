@@ -40,14 +40,16 @@
       for:
         minutes: 10
   condition:
-    - condition: time
-      after: "09:01"
-    - condition: not
+    - condition: and
       conditions:
-        - condition: state
-          entity_id:
-            - input_select.house_mode
-          state: "Night"
+        - condition: time
+          after: "09:01"
+        - condition: not
+          conditions:
+            - condition: state
+              entity_id:
+                - input_select.house_mode
+              state: "Night"
   action:
     - service: input_select.select_option
       target:
@@ -63,14 +65,16 @@
       for:
         minutes: 10
   condition:
-    - condition: time
-      after: "09:01"
-    - condition: not
+    - condition: and
       conditions:
-        - condition: state
-          entity_id:
-            - input_select.house_mode
-          state: "Night"
+        - condition: time
+          after: "09:01"
+        - condition: not
+          conditions:
+            - condition: state
+              entity_id:
+                - input_select.house_mode
+              state: "Night"
   action:
     - service: input_select.select_option
       target:
