@@ -24,22 +24,27 @@
       entity_id: switch.hotwater
       to: 'on'
   condition:
-    condition: not
-    conditions:
-      - condition: state
-        entity_id: switch.boiler_call
-        state: 'on'
-      - condition: state
-        entity_id: input_select.house_mode
-        state: 'Night'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: person.richard
-            state: 'home'
-          - condition: state
-            entity_id: person.faye
-            state: 'home'
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: switch.boiler_call
+          state: 'on'
+        - condition: or
+          conditions: 
+            - condition: state
+              entity_id: input_select.house_mode
+              state: 'Day+lights'
+            - condition: state
+              entity_id: input_select.house_mode
+              state: 'Day'
+            - condition: or
+              conditions:
+                - condition: state
+                  entity_id: person.richard
+                  state: 'home'
+                - condition: state
+                  entity_id: person.faye
+                  state: 'home'
   action:
     - service: switch.turn_on
       target:
