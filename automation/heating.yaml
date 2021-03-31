@@ -24,7 +24,7 @@
       entity_id: switch.hotwater
       to: 'on'
   action:
-    - condition: and
+    - condition: not
       conditions:
         - condition: state
           entity_id: switch.boiler_call
