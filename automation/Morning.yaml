@@ -53,15 +53,13 @@
       target:
         entity_id: input_select.house_mode
       data:
-        option: Day+lights
+        option: "Day+lights"
 
 - alias: Day mode
   trigger:
     - platform: numeric_state
       entity_id: sensor.out_side_lux
       above: 2000
-      for:
-        minutes: 10
   condition:
     - condition: time
       after: "09:01"
@@ -76,4 +74,4 @@
       target:
         entity_id: input_select.house_mode
       data:
-        option: Day
+        option: "Day"
