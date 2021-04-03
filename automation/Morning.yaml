@@ -62,6 +62,8 @@
     - platform: numeric_state
       entity_id: sensor.out_side_lux
       above: 2000
+      for:
+        seconds: 5
   condition:
     - condition: and
       conditions:
