@@ -45,8 +45,7 @@
         - condition: not
           conditions:
             - condition: state
-              entity_id:
-                - input_select.house_mode
+              entity_id: input_select.house_mode
               state: "Night"
   action:
     - service: input_select.select_option
