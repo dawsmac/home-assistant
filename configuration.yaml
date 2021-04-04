@@ -18,6 +18,12 @@ influxdb:
     source: HA
   default_measurement: state
 
+recorder:
+  purge_keep_days: 7
+  exclude:
+    entities:
+      - binary_sensor.*pir*
+
 logger:
 
 history: 
