@@ -38,7 +38,7 @@
       entity_id: sensor.out_side_lux
       below: 2000
       for:
-        minutes: 2
+        minutes: '00:02:00'
   condition:
     - condition: and
       conditions:
@@ -62,8 +62,7 @@
     - platform: numeric_state
       entity_id: sensor.out_side_lux
       above: 2001 
-      for:
-        minutes: 2
+      for: '00:02:00'
   condition:
     - condition: and
       conditions:
