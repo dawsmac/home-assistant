@@ -37,6 +37,9 @@ mobile_app:
 
 lovelace:
   mode: yaml
+  resources:
+    - url: /local/simple-thermostat.js
+      type: module
 
 # Text to speech
 tts:
@@ -56,6 +59,3 @@ binary_sensor: !include binary_sensor.yaml
 input_select: !include input_select.yaml
 # resources: !include lovelace/rescources/resources.yaml
 # input_datetime: !include input_datetime.yaml
-resources:
-  - url: /local/simple-thermostat.js
-    type: module
