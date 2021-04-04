@@ -1,9 +1,11 @@
-- alias: Turn on Heating and set house to morning mode
+- alias: Heating set & house set to morning mode
   description: ''
   trigger:
     - platform: state
       entity_id: binary_sensor.alarm_heating_on
       to: 'on'
+    - platform: time
+      at: "09:00:10"
   condition:
     - condition: time
       after: '05:00'
@@ -11,13 +13,9 @@
   action:
     - service: climate.set_temperature 
       target:
-        entity_id: climate.upstairs
-      data:
-        temperature: 20
-        hvac_mode: heat
-    - service: climate.set_temperature 
-      target:
-        entity_id: climate.downstairs
+        entity_id: 
+        - climate.upstairs
+        - climate.downstairs
       data:
         temperature: 20
         hvac_mode: heat
@@ -39,16 +37,12 @@
       above: 2001
       below: 2000
   condition:
-    - condition: and
+    - condition: not
       conditions:
-        - condition: time
-          after: "09:01"
-        - condition: not
-          conditions:
-            - condition: state
-              entity_id:
-                - input_select.house_mode
-              state: "Night"
+        - condition: state
+          entity_id:
+            - input_select.house_mode
+          state: "Night"
   action:
     - service: input_select.select_option
       data_template:
