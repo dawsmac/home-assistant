@@ -57,5 +57,5 @@ input_select: !include input_select.yaml
 # resources: !include lovelace/rescources/resources.yaml
 # input_datetime: !include input_datetime.yaml
 resources:
-  - url: /local/simple-thermostat.js?v=1
+  - url: www/local/simple-thermostat.js?v=1
     type: module
