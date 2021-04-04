@@ -61,7 +61,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.out_side_lux
-      above: 2000
+      above: 2001 
       for:
         minutes: 2
   condition:
