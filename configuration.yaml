@@ -22,7 +22,16 @@ recorder:
   purge_keep_days: 7
   exclude:
     entities:
-      - binary_sensor.*pir*
+      - binary_sensor.hallway_pir
+      - binary_sensor.kitchen_pir
+      - binary_sensor.landing_pir
+      - binary_sensor.lila_s_pir
+      - binary_sensor.lounge_pir
+      - binary_sensor.playroom_pir
+      - binary_sensor.raf_s_pir
+      - sensor.ds_pirs
+      - sensor.us_pirs
+      - binary_sensor.thea_s_bedroom_pir
 
 logger:
 
