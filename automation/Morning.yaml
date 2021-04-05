@@ -29,7 +29,7 @@
           {% endif %}  
   mode: single
 
-- alias: Mode for day 
+- alias: Mode for day
   trigger:
     - platform: numeric_state
       entity_id: sensor.out_side_lux
