@@ -42,13 +42,12 @@
             scene.nightmode
           {% endif %}
 
-- alias: gone out and left the lights on
+- alias: Gone out switch lights and power off
   trigger:
     - platform: state
       entity_id: sensor.all_pirs
       to: 'true'
-      for:
-        minutes: 20
+      for: '00:20:00'
   condition:
     condition: not
     conditions:
@@ -58,6 +57,8 @@
   action:
     - service: light.turn_off
       entity_id: all
+    - service: homeassistant.turn_off
+      entity_id: switch.dishwasher_switch
 
 - alias: Out hours movment
   trigger:
