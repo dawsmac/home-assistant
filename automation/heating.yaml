@@ -93,65 +93,27 @@
       target:
         entity_id: switch.boiler_call
 
-
-- alias: Day mode Heating
-  trigger:
-    - platform: state
-      entity_id: input_select.house_mode
-      to:  Day
-  action:
-    - service: climate.set_temperature 
-      target:
-        entity_id: climate.upstairs
-      data:
-        temperature: 18
-        hvac_mode: heat
-
-- alias: Night mode Heating
-  trigger:
-    - platform: state
-      entity_id: input_select.house_mode
-      to:  Night
-  action:
-    - service: climate.set_temperature 
-      target:
-        entity_id: climate.upstairs
-      data:
-        temperature: 18
-        hvac_mode: heat
-    - service: climate.set_temperatue
-      target:
-        entity_id: climate.downstairs
-      data:
-        temperature: 18
-        hvac_mode: heat
   
 - alias: No ones home turn off Heating
   trigger:
-    - platform: template
-      value_template: >
-        {{ is_state('person.faye', 'not_home') and
-          is_state('person.richard', 'not_home') }}
-      for:
-        minutes: 20
+    - platform: state
+      entity_id: group.persons
+      to: 'not_home'
+      for: "00:05:00"
   action:
     - service: climate.set_preset_mode 
       target:
-        entity_id: climate.upstairs
-      data:
-        preset_mode: away
-    - service: climate.set_preset_mode 
-      target:
-        entity_id: climate.downstairs
+        entity_id: 
+          - climate.upstairs
+          - climate.downstairs
       data:
         preset_mode: away
 
 - alias: home Turn on Heating
   trigger:
-    - platform: template
-      value_template: >
-        {{ is_state('person.faye', 'home') or
-          is_state('person.richard', 'home') }}
+    - platform: state
+      entity_id: group.persons
+      to: 'home'
     - platform: homeassistant
       event: start
   condition:
