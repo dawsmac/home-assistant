@@ -14,8 +14,8 @@
     - service: climate.set_temperature 
       target:
         entity_id: 
-        - climate.upstairs
-        - climate.downstairs
+          - climate.upstairs
+          - climate.downstairs
       data:
         temperature: 20
         hvac_mode: heat
