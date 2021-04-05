@@ -1,5 +1,4 @@
 - alias: Heating set & house set to morning mode
-  description: ''
   trigger:
     - platform: state
       entity_id: binary_sensor.alarm_heating_on
@@ -30,7 +29,7 @@
           {% endif %}  
   mode: single
 
-- alias: Mode for Day 
+- alias: Mode for day 
   trigger:
     - platform: numeric_state
       entity_id: sensor.out_side_lux
