@@ -1,3 +1,103 @@
+- alias: Morning with lights
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.out_side_lux
+      below: 2000
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('sun.sun','rising') == true) }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') < 6 }}"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: input_select.house_mode
+          state: "Night"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_select.house_mode
+          state: "Morning+lights"
+        - condition: state
+          entity_id: input_select.house_mode
+          state: "Morning"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: "Morning+lights"
+
+- alias: Morning without lights
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.out_side_lux
+      above: 2000
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('sun.sun','rising') == true) }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') < 6 }}"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: input_select.house_mode
+          state: "Night"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: input_select.house_mode
+          state: "Morning+lights"
+        - condition: state
+          entity_id: input_select.house_mode
+          state: "Morning"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: "Morning"
+
+
+- alias: Evening without lights
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.out_side_lux
+      above: 2000
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') < 6 }}"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: input_select.house_mode
+          state: "Night"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: "Evening"
+
+- alias: Evening with lights
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.out_side_lux
+      below: 2000
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') < 6 }}"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: input_select.house_mode
+          state: "Night"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: "Evening+lights"
 
 
 - alias: Night mode
@@ -24,7 +124,8 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
-        option: Night
+        option: "Night"
+
 
 - alias: Set Scene House Mode
   trigger:

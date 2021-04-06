@@ -15,9 +15,9 @@
         entity_id: input_select.house_mode
         option: >
           {% if states('sensor.out_side_lux')| float  > 2000 %}
-            Day
+            Morning
           {% else %}
-            Day+lights
+            Morning+lights
           {% endif %}
     - condition: and
       conditions:
@@ -39,49 +39,5 @@
       data:
         hvac_mode: heat
 
-- alias: Day Mode with Lights
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.out_side_lux
-      below: 2000
-  condition:
-    condition: not
-    conditions:
-      - condition: state
-        entity_id: input_select.house_mode
-        state: "Night"
-  action:
-    - service: input_select.select_option
-      data_template:
-        entity_id: input_select.house_mode
-        option: >
-          {% if states('sensor.out_side_lux')| float  > 2000 %}
-            Day
-          {% else %}
-            Day+lights
-          {% endif %} 
-  mode: single
 
-- alias: Day Mode with out Lights
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.out_side_lux
-      above: 2000
-  condition:
-    condition: not
-    conditions:
-      - condition: state
-        entity_id: input_select.house_mode
-        state: "Night"
-  action:
-    - service: input_select.select_option
-      data_template:
-        entity_id: input_select.house_mode
-        option: >
-          {% if states('sensor.out_side_lux')| float  > 2000 %}
-            Day
-          {% else %}
-            Day+lights
-          {% endif %} 
-  mode: single
 

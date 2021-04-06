@@ -1,7 +1,11 @@
 house_mode:
   name: House Mode
   options:
-    - Day+lights
+    - Morning
+    - Morning+lights 
     - Day
+    - Day+lights
+    - Evening
+    - Evening+lights
     - Night
     
