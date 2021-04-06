@@ -108,7 +108,7 @@
       entity_id: sensor.us_pirs
       to: 'True'
       for:
-        minutes: 2
+        minutes: 20
   condition:
     - condition: state
       entity_id: sensor.ds_pirs
