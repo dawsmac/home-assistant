@@ -56,7 +56,7 @@
         entity_id: input_select.house_mode
         option: "Morning"
 
-  
+
 - alias: Day Time
   trigger:
     - platform: template
