@@ -32,6 +32,16 @@
               and is_state ('binary_sensor.playroom_pir' , 'off')
               and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
 
+  - platform: template
+    sensors:
+      all_pirs:
+        friendly_name: Morning Mode lights
+        value_template: >-
+          {{ is_state_attr( 'sun.sun','rising', true ) 
+              and state_attr('sun.sun', 'elevation') < 6  
+              and states('sensor.out_side_lux') | float  < 2000 }}
+  
+
   - platform: min_max
     entity_ids:
       - sensor.porch_temperature
