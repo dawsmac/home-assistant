@@ -57,6 +57,21 @@
         option: "Morning"
 
   
+- alias: Day Time
+  trigger:
+    - platform: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') > 6 }}"
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.house_mode
+        option: >
+          {% if states('sensor.out_side_lux')| float  > 2000 %}
+            Day
+          {% else %}
+            Day+lights
+          {% endif %}
+
 
 
 - alias: Evening without lights
