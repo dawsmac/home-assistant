@@ -11,7 +11,7 @@
       to: 'Awake+lights' 
   condition:
     - condition: template
-      value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
+      value_template: "{{ state_attr('sun.sun','rising') == false }}"
     - condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') < 6 }}"
     - condition: not
