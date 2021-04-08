@@ -33,10 +33,10 @@
           conditions: 
             - condition: state
               entity_id: input_select.house_mode
-              state: 'Day+lights'
+              state: 'Awake+lights'
             - condition: state
               entity_id: input_select.house_mode
-              state: 'Day'
+              state: 'Awake'
             - condition: or
               conditions:
                 - condition: state
@@ -77,10 +77,10 @@
       event: start
     - platform: state
       entity_id: input_select.house_mode
-      to: "Day"
+      to: "Awake"
     - platform: state
       entity_id: input_select.house_mode
-      to: "Day+lights"
+      to: "Awake+lights"
   condition: 
     - condition: state
       entity_id: switch.hotwater
