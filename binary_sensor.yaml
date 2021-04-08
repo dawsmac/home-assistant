@@ -50,3 +50,11 @@
         {% else %}
           {{ unavailable }}
         {% endif %}
+
+
+- platform: template
+  sensors:
+    Lights?:
+      friendly_name: "Enable auto lights"
+      value_template: >-
+        {{ states('sensor.lux')|float > 2000 }}
