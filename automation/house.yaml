@@ -1,6 +1,6 @@
 
 
-- alias: Evening without lights
+- alias: Evening with lights
   trigger:
     - platform: state
       entity_id: binary_sensor.lights
