@@ -62,12 +62,6 @@
     - platform: state
       entity_id: input_select.house_mode
       to: 'Night'
-  condition:
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: input_select.house_mode
-          state: 'Night'
   action:
     - service: scene.turn_on
       data: {}
