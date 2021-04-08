@@ -2,9 +2,10 @@
 
 - alias: Evening without lights
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.out_side_lux
-      above: 2000
+    - platform: state
+      entity_id: binary_sensor.lights
+      from: 'off'
+      to: 'on'
   condition:
     - condition: template
       value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
@@ -16,31 +17,11 @@
           entity_id: input_select.house_mode
           state: "Night"
   action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.house_mode
-        option: "Evening"
-
-- alias: Evening with lights
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.out_side_lux
-      below: 2000
-  condition:
-    - condition: template
-      value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
-    - condition: template
-      value_template: "{{ state_attr('sun.sun', 'elevation') < 6 }}"
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: input_select.house_mode
-          state: "Night"
-  action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.house_mode
-        option: "Evening+lights"
+    - service: scene.turn_on
+      data: {}
+      target:
+        entity_id: scene.evening_lights
+      
 
 
 - alias: Night mode
@@ -68,23 +49,6 @@
       data:
         entity_id: input_select.house_mode
         option: "Night"
-
-
-- alias: Set Scene House Mode
-  trigger:
-    - platform: state
-      entity_id: input_select.house_mode
-  action:
-    - service: scene.turn_on
-      data_template:
-        entity_id: >
-          {%- if is_state('input_select.house_mode' , 'Day') %}
-            scene.day
-          {%- elif is_state('input_select.house_mode' , 'Day+lights') %}
-            scene.morning_lights
-          {% elif is_state('input_select.house_mode' , 'Night') %}  
-            scene.nightmode
-          {% endif %}
 
 - alias: Gone out switch lights and power off
   trigger:
