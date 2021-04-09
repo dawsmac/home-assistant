@@ -15,9 +15,9 @@
         entity_id: input_select.house_mode
         option: >
           {% if state('sensor.out_side_lux')| float  > 2000 %}
-            Awake
+            'Awake' 
           {% else %}
-            Awake+lights
+            'Awake+lights'
           {% endif %}
     - condition: and
       conditions:
