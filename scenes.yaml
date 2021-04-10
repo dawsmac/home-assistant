@@ -7,6 +7,16 @@
     light.lounge:
       state: 'off'
 
+- name: appliances
+  entities:
+    switch.dishwasher_switch:
+      state: 'on'
+    switch.washing_machine:
+      state: 'on'
+    switch.tumble_dryer:
+      state: 'on'
+
+
 
 - name: nightmode
   entities:
@@ -42,7 +52,12 @@
       state: 'off'
     switch.thea_s_multi_psu_socket_1:
       state: 'off'
-  
+    switch.dishwasher_switch:
+      state: 'off'
+    switch.washing_machine:
+      state: 'off'
+    switch.tumble_dryer:
+      state: 'off'
   
   
 - name: evening light´s
@@ -79,45 +94,11 @@
 
 - name: morning+lights
   entities:
-    light.redberrys_lights:
-      state: 'on'
-    light.advent_lights:
-      state: 'on'
-    light.fairy_lights_telescope:
-      state: 'on'
-    light.kitchen_fairy_lights:
-      state: 'on'
-
-
-- name: day
-  entities:
-    light.bookshelf_light_left:
+    switch.dishwasher_switch:
       state: 'off'
-    light.bookshelf_light_right:
+    switch.washing_machine:
       state: 'off'
-    light.globe_lamp:
-      state: 'off'
-    light.kitchen_dining_lights:
-      state: 'off'
-    light.kitchen_fairy_lights:
-      state: 'off'
-    light.kitchen_lamp:
-      state: 'off'
-    light.kitchen_side_lights:
-      state: 'off'
-    light.landing_lights:
-      state: 'off'
-    light.lounge_lights:
-      state: 'off'
-    light.boiler_lamp:
-      state: 'off'
-    light.fairy_lights_telescope:
-      state: 'off'
-    light.kitchen_island_lights:
-      state: 'off'
-    light.redberrys_lights:
-      state: 'off'
-    light.advent_lights:
+    switch.tumble_dryer:
       state: 'off'
 
 
