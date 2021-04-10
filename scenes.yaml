@@ -39,9 +39,9 @@
     light.advent_lights:
       state: 'off'
     switch.lila_s_multi_psu_socket_1: 
-      state: 'on'
+      state: 'off'
     switch.thea_s_multi_psu_socket_1:
-      state: 'on'
+      state: 'off'
   
   
   
