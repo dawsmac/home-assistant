@@ -14,13 +14,8 @@
       data_template:
         entity_id: input_select.house_mode
         option: >
-<<<<<<< HEAD
           {% if states('sensor.out_side_lux')| float  > 2000 %}
             Awake
-=======
-          {% if state('sensor.out_side_lux')| float  > 2000 %}
-            'Awake' 
->>>>>>> d15b28fb9ebfaea6bda87eb1780ddd6cc45edc00
           {% else %}
             'Awake+lights'
           {% endif %}
