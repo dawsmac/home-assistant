@@ -12,8 +12,6 @@
   condition:
     - condition: template
       value_template: "{{ state_attr('sun.sun','rising') == false }}"
-    - condition: template
-      value_template: "{{ state_attr('sun.sun', 'elevation') < 6 }}"
     - condition: not
       conditions:
         - condition: state
@@ -24,6 +22,10 @@
       data: {}
       target:
         entity_id: scene.evening_lights
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.house_mode
+        option: 'Awake+lights' 
       
 
 
