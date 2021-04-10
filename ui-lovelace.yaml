@@ -140,6 +140,8 @@ views:
           - entity: sensor.kitchen_temperature
           - entity: sensor.underfloor_temperature
           - entity: switch.dishwasher_switch
+          - entity: switch.washing_machine
+          - entity: switch.tumble_dryer
 
 
       - type: glance
