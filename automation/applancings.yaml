@@ -1,0 +1,47 @@
+- alias: Alert Washing Machine Done
+  description: ''
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_current
+      above: '.75'
+  condition: []
+  action:
+    - wait_for_trigger:
+        - platform: numeric_state
+          entity_id: sensor.washing_machine_current
+          below: '.3'
+          for: '00:10'
+      continue_on_timeout: false
+    - service: notify.notify
+      data:
+        title: Washing machine
+        message: 'Washing machine done, ready for the dryer'
+    - service: tts.google_translate_say
+      data:
+        entity_id: all
+        message: 'Washing machine done, ready for the dryer'
+  mode: restart
+
+
+- alias: Alert Tumble Dryer Done
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.tumble_dryer_current
+      above: '.75'
+  condition: []
+  action:
+    - wait_for_trigger:
+        - platform: numeric_state
+          entity_id: sensor.tumble_dryer_current
+          below: '.3'
+          for: '00:10'
+      continue_on_timeout: false
+    - service: notify.notify
+      data:
+        title: Tumble dryer machine
+        message: 'Tumble dryer is done, ready to be sorted'
+    - service: tts.google_translate_say
+      data:
+        entity_id: all
+        message: 'Tumble dryer is done, ready to be sorted'
+  mode: restart
