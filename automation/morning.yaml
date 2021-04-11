@@ -38,31 +38,15 @@
           - climate.downstairs
       data:
         hvac_mode: heat
-
-
-- alias: Days lights not needed
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.lights
-      from: 'on'
-      to: 'off'
-    - platform: state
-      entity_id: input_select.house_mode
-      to: 'Awake' 
-  condition:
-    - condition: state
-      entity_id: input_select.house_mode
-      state: 'Awake+lights'
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: input_select.house_mode
-          state: "Night"
-  action:
     - service: scene.turn_on
       data: {}
       target:
-        entity_id: scene.evening_lights
+        entity_id: scene.appliances
+
+        
+
+
+
 
 
 

@@ -78,7 +78,7 @@
     - platform: state
       entity_id: sensor.all_pirs
       to: 'true'
-      for: '00:20:00'
+      for: '00:10:00'
   condition:
     condition: not
     conditions:
@@ -89,7 +89,33 @@
     - service: light.turn_off
       entity_id: all
     - service: homeassistant.turn_off
-      entity_id: switch.dishwasher_switch
+      entity_id:
+        - switch.dishwasher_switch
+        - switch.washing_machine
+        - switch.tumble_dryer
+
+- alias: Home turn on appances
+  trigger:
+    - platform: state
+      entity_id: group.persons
+      to: 'not_home'
+      for: 'home'
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: input_select.house_mode
+        state: 'Night'
+  action:
+    - service: light.turn_off
+      entity_id: all
+    - service: homeassistant.turn_off
+      entity_id:
+        - switch.dishwasher_switch
+        - switch.washing_machine
+        - switch.tumble_dryer
+    
+
 
 - alias: Out hours movment
   trigger:
