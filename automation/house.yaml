@@ -109,7 +109,7 @@
   action:
     - service: light.turn_off
       entity_id: all
-    - service: homeassistant.turn_off
+    - service: homeassistant.turn_on
       entity_id:
         - switch.dishwasher_switch
         - switch.washing_machine
