@@ -40,13 +40,7 @@
       state: 'off'
     light.boiler_lamp:
       state: 'off'
-    light.fairy_lights_telescope:
-      state: 'off'
     light.kitchen_island_lights:
-      state: 'off'
-    light.redberrys_lights:
-      state: 'off'
-    light.advent_lights:
       state: 'off'
     switch.lila_s_multi_psu_socket_1: 
       state: 'off'
@@ -59,7 +53,13 @@
     switch.tumble_dryer:
       state: 'off'
     light.garage_lights:
-      state: 'off'    
+      state: 'off'
+    light.playroom_s_light:
+      state: 'off'
+    light.bathroom_mirror:
+      state: 'off'
+    light.bathroom:
+      state: 'off'
   
   
 - name: evening lights
