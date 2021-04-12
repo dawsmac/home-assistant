@@ -17,7 +17,7 @@
           {% if states('sensor.out_side_lux')| float  > 2000 %}
             Awake
           {% else %}
-            'Awake+lights'
+            Awake+lights
           {% endif %}
     - condition: and
       conditions:
