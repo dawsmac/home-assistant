@@ -20,7 +20,33 @@
 
 - name: nightmode
   entities:
-    light.all:
+    light.bookshelf_light_left:
+      state: 'off'
+    light.bookshelf_light_right:
+      state: 'off'
+    light.globe_lamp:
+      state: 'off'
+    light.kitchen_dining_lights:
+      state: 'off'
+    light.kitchen_fairy_lights:
+      state: 'off'
+    light.kitchen_lamp:
+      state: 'off'
+    light.kitchen_side_lights:
+      state: 'off'
+    light.landing_lights:
+      state: 'off'
+    light.lounge_lights:
+      state: 'off'
+    light.boiler_lamp:
+      state: 'off'
+    light.fairy_lights_telescope:
+      state: 'off'
+    light.kitchen_island_lights:
+      state: 'off'
+    light.redberrys_lights:
+      state: 'off'
+    light.advent_lights:
       state: 'off'
     switch.lila_s_multi_psu_socket_1: 
       state: 'off'
@@ -32,7 +58,8 @@
       state: 'off'
     switch.tumble_dryer:
       state: 'off'
-  
+    light.garage_lights:
+      state: 'off'    
   
   
 - name: evening lights
