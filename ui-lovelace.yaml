@@ -217,6 +217,7 @@ views:
         title: TV players
         entities:
           - entity: media_player.playroom_tv
+          - entity: media_player.living_room
       
       - type: glance
         title: Music players
