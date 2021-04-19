@@ -45,3 +45,28 @@
         entity_id: all
         message: 'Tumble dryer is done, ready to be sorted'
   mode: restart
+
+
+
+- alias: Alert Dishwasher Done
+  trigger:
+    - platform: numeric_state
+      entity_id:   sensor.dishwasher_current
+      above: '.75'
+  condition: []
+  action:
+    - wait_for_trigger:
+        - platform: numeric_state
+          entity_id: sensor.dishwasher_current
+          below: '.3'
+          for: '00:10'
+      continue_on_timeout: false
+    - service: notify.notify
+      data:
+        title: Dishwasher alert!
+        message: 'Dishwasher is done, ready to be emptied'
+    - service: tts.google_translate_say
+      data:
+        entity_id: all
+        message: 'Dishwasher is done, ready to be emptied'
+  mode: restart
