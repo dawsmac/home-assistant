@@ -58,7 +58,12 @@ views:
         sensors:
           - entity: sensor.kitchen_humidity
             name: Humidity
-    
+      - type: 'custom:simple-thermostat'
+        entity: climate.office
+        step_size: 1
+        sensors:
+          - entity: sensor.office_humidity
+            name: Humidity
           
       - type: vertical-stack  
         cards:

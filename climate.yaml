@@ -51,3 +51,21 @@
   initial_hvac_mode: "off"
   away_temp: 18
   precision: 0.1
+
+- platform: generic_thermostat
+  name: Office
+  heater: switch.office_heater
+  target_sensor: sensor.office_temperature
+  min_temp: 18
+  max_temp: 23
+  ac_mode: false
+  target_temp: 19.5
+  cold_tolerance: 0.3
+  hot_tolerance: 0
+  min_cycle_duration:
+    seconds: 5
+  keep_alive:
+    minutes: 3
+  initial_hvac_mode: "off"
+  away_temp: 17.0
+  precision: 0.1
