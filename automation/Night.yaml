@@ -76,5 +76,6 @@
         entity_id: 
           - climate.upstairs
           - climate.downstairs
+          - climate.Office
       data:
         temperature: 18
