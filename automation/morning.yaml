@@ -14,7 +14,7 @@
       data_template:
         entity_id: input_select.house_mode
         option: >
-          {% if states('sensor.out_side_lux')| float  > 2000 %}
+          {% if states('sensor.out_side_lux')| float  > 1400 %}
             Awake
           {% else %}
             Awake+lights
@@ -31,11 +31,18 @@
           - climate.downstairs
       data:
         temperature: 20
+    - service: climate.set_temperature 
+      target:
+        entity_id: 
+          - climate.office
+      data:
+        temperature: 17
     - service: climate.set_hvac_mode
       target:
         entity_id: 
           - climate.upstairs
           - climate.downstairs
+          - climate.office
       data:
         hvac_mode: heat
     - service: scene.turn_on
