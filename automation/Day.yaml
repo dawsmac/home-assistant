@@ -1,4 +1,4 @@
-- id: 10123123123
+- id: '101233'
   alias: Day mode PIR enabled
   trigger:
     - platform: state
