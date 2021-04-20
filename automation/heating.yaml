@@ -1,4 +1,5 @@
-- alias: Heating On
+- id: '18'
+  alias: Heating On
   trigger:
     - platform: template
       value_template: >
@@ -17,8 +18,8 @@
         entity_id: switch.boiler_call
 
 
-
-- alias: Hotwater on
+- id: '19'
+  alias: Hotwater on
   trigger:
     - platform: state
       entity_id: switch.hotwater
@@ -50,8 +51,8 @@
       target:
         entity_id: switch.boiler_call
 
-
-- alias: Heating Off
+- id: '20'
+  alias: Heating Off
   trigger:
     - platform: template
       value_template: >
@@ -70,8 +71,8 @@
       target:
         entity_id: switch.boiler_call 
   
-  
-- alias: HA restart hotwater
+- id: '21'
+  alias: HA restart hotwater
   trigger:
     - platform: homeassistant
       event: start
@@ -93,8 +94,8 @@
       target:
         entity_id: switch.boiler_call
 
-  
-- alias: No ones home turn off Heating
+- id: '22'
+  alias: No ones home turn off Heating
   trigger:
     - platform: state
       entity_id: group.persons
@@ -109,7 +110,8 @@
       data:
         preset_mode: away
 
-- alias: home Turn on Heating
+- id: '23'
+  alias: home Turn on Heating
   trigger:
     - platform: state
       entity_id: group.persons

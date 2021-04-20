@@ -1,5 +1,5 @@
-
-- alias: Gone out switch lights and power off
+- id: '5'
+  alias: Gone out switch lights and power off
   trigger:
     - platform: state
       entity_id: sensor.all_pirs
@@ -20,7 +20,8 @@
         - switch.washing_machine
         - switch.tumble_dryer
 
-- alias: Home turn on appances
+- id: '6'
+  alias: Home turn on appances
   trigger:
     - platform: state
       entity_id: group.persons
@@ -41,7 +42,8 @@
         - switch.washing_machine
         - switch.tumble_dryer
 
-- alias: Someone has entered house perimeter (no one is home)
+- id: '7'
+  alias: Someone has entered house perimeter (no one is home)
   trigger:
     - platform: state
       entity_id:
