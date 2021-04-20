@@ -1,4 +1,5 @@
-- alias: Day mode PIR enabled
+- id: 10123123123
+  alias: Day mode PIR enabled
   trigger:
     - platform: state
       entity_id: sensor.us_pirs
