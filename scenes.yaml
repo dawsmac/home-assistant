@@ -82,4 +82,41 @@
       state: 'on'
     switch.thea_s_multi_psu_socket_1:
       state: 'on'
+  
+- name: morning light off
+  entities:
+    light.bookshelf_light_left:
+      state: 'off'
+    light.bookshelf_light_right:
+      state: 'off'
+    light.globe_lamp:
+      state: 'off'
+    light.kitchen_dining_lights:
+      state: 'off'
+    light.kitchen_fairy_lights:
+      state: 'off'
+    light.kitchen_lamp:
+      state: 'off'
+    light.kitchen_side_lights:
+      state: 'off'
+    light.landing_lights:
+      state: 'off'
+    light.lounge_lights:
+      state: 'off'
+    light.boiler_lamp:
+      state: 'off'
+    light.kitchen_island_lights:
+      state: 'off'
+    switch.lila_s_multi_psu_socket_1: 
+      state: 'off'
+    switch.thea_s_multi_psu_socket_1:
+      state: 'off'
+    light.garage_lights:
+      state: 'off'
+    light.playroom_s_light:
+      state: 'off'
+    light.bathroom_mirror:
+      state: 'off'
+    light.bathroom:
+      state: 'off'
 
