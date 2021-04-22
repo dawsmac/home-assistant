@@ -29,6 +29,11 @@
       to: 'off'
       for:
         minutes: 5
+  condition:
+    - condition: state
+      entity_id:
+        - light.hallway_lights
+      state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id: light.hallway_lights
