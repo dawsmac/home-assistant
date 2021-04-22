@@ -116,6 +116,11 @@
       to: 'off'
       for:
         minutes: 5
+  condition:
+    - condition: state
+      entity_id:
+        - light.landing_lights
+      state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id: light.landing_lights
@@ -132,6 +137,11 @@
       to: 'off'
       for:
         minutes: 5
+  condition:
+    - condition: state
+      entity_id:
+        - light.lila_s_bedroom_light
+      state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id: light.lila_s_bedroom_light
@@ -148,6 +158,11 @@
       to: 'off'
       for:
         minutes: 5
+  condition:
+    - condition: state
+      entity_id:
+        - light.thea_s_bedroom_light
+      state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id: light.thea_s_bedroom_light
@@ -166,6 +181,11 @@
       to: 'off'
       for:
         minutes: 5
+  condition:
+    - condition: state
+      entity_id:
+        - light.master_bedroom_light
+      state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id: 
@@ -185,6 +205,11 @@
       to: 'off'
       for:
         minutes: 5
+  condition:
+    - condition: state
+      entity_id:
+        - light.lounge_lights
+      state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id: 
