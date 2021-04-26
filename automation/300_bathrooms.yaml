@@ -1,0 +1,58 @@
+- id: '300'
+  alias: Awake+lights motion master bathroom
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.bathroom_switch
+    to: 'on'
+  condition: 
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.bathroom
+        state: 'off'  
+      - condition: state
+        entity_id: input_select.house_mode
+        state: Awake+lights
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.bathroom
+
+- id: '301'
+  alias: Night motion master bathroom
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.bathroom_switch
+    to: 'on'
+  condition: 
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.bathroom_mirror
+        state: 'off'  
+      - condition: state
+        entity_id: input_select.house_mode
+        state: Night
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.bathroom_mirror
+
+- id: '302'
+  alias: No motion master bathroom
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.bathroom_switch
+    to: 'off'
+  condition:
+    condition: or
+    conditions: 
+      - condition: state
+        entity_id: light.bathroom
+        state: 'on'
+      - condition: state
+        entity_id: light.bathroom_mirror
+        state: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: 
+      - light.bathroom
+      - light.bathroom_mirror
