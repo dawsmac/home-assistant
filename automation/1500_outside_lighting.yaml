@@ -1,4 +1,5 @@
-- alias: Backgate or Backdoor opens 
+- id: '1500'
+  alias: Backgate or Backdoor opens 
   trigger:
     - platform: state
       entity_id: 
@@ -22,8 +23,9 @@
   action:
     - service: homeassistant.turn_on
       entity_id: light.garden_lights
-  
-- alias: Backgate or Backdoor closed
+
+- id: '1501' 
+  alias: Backgate or Backdoor closed
   trigger:
     - platform: state
       entity_id: 
@@ -50,8 +52,8 @@
 ## Open front gate or front door for secrity lights ##
 ######################################################
 
-
-- alias: frnt gate or frnt door opens (Lights)
+- id: '1502'
+  alias: frnt gate or frnt door opens (Lights)
   trigger:
     - platform: state
       entity_id: 
@@ -69,8 +71,8 @@
     - service: homeassistant.turn_on
       entity_id: light.porch_light
 
-
-- alias: frnt gate or frnt door close (Lights)
+- id: '1503'
+  alias: frnt gate or frnt door close (Lights)
   trigger:
     - platform: state
       entity_id: 
