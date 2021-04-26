@@ -27,7 +27,7 @@
           - binary_sensor.garden_gate
         from: "on"
         to: "off"
-    - delay: 00:00:10
+    - delay: 00:01:00
     - service: light.turn_off
       entity_id:
         - light.garden_lights 
@@ -39,38 +39,39 @@
 ## Open front gate or front door for secrity lights ##
 ######################################################
 
-- id: '1502'
-  alias: frnt gate or frnt door opens (Lights)
-  trigger:
-    - platform: state
-      entity_id: 
-        - binary_sensor.front_door
-        - binary_sensor.frontgarden_gate
-      to: 'on'
-  condition: 
-    - condition: numeric_state
-      entity_id: sensor.out_side_lux
-      below: 30
-    - condition: state
-      entity_id: light.porch_light
-      state: 'off'
-  action:
-    - service: homeassistant.turn_on
-      entity_id: light.porch_light
 
-- id: '1503'
-  alias: frnt gate or frnt door close (Lights)
+- id: '1501'
+  alias: 'Porch light frntdoor - frntgate '
   trigger:
     - platform: state
-      entity_id: 
+      entity_id:
         - binary_sensor.front_door
         - binary_sensor.frontgarden_gate
-      to: 'off' 
-  condition: 
-    - condition: state
-      entity_id: light.porch_light
-      state: 'on'
+      from: "off"
+      to: "on"
+  condition:  
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: input_select.house_mode
+            state: Awake+lights
+          - condition: state
+            entity_id: input_select.house_mode
+            state: Night
   action:
-    - delay: 00:05
-    - service: homeassistant.turn_off
-      entity_id: light.porch_light
+    - service: light.turn_on
+      entity_id: 
+        - light.porch_light
+    - wait_for_trigger:
+        platform: state
+        entity_id: 
+          - binary_sensor.front_door
+          - binary_sensor.frontgarden_gate
+        from: "on"
+        to: "off"
+    - delay: 00:01:00
+    - service: light.turn_off
+      entity_id:
+        - light.porch_light 
+  mode: restart
+  max_exceeded: silent
