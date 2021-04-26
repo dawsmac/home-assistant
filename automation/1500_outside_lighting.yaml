@@ -1,17 +1,14 @@
+
 - id: '1500'
-  alias: Backgate or Backdoor opens 
+  alias: 'garden lights garden gate - backdoor'
   trigger:
     - platform: state
-      entity_id: 
+      entity_id:
         - binary_sensor.kitchen_door
         - binary_sensor.garden_gate
-      to: 'on'
-  condition: 
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: light.garden_lights
-        state: 'off'  
+      from: "off"
+      to: "on"
+  condition:  
       - condition: or
         conditions:
           - condition: state
@@ -21,31 +18,22 @@
             entity_id: input_select.house_mode
             state: Night
   action:
-    - service: homeassistant.turn_on
-      entity_id: light.garden_lights
-
-- id: '1501' 
-  alias: Backgate or Backdoor closed
-  trigger:
-    - platform: state
+    - service: light.turn_on
       entity_id: 
-        - binary_sensor.kitchen_door
-        - binary_sensor.garden_gate
-      to: 'off'
-  condition: 
-    - condition: state
-      entity_id: light.garden_lights
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.kitchen_door
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.garden_gate
-      state: 'off'
-  action:
-    - delay: 00:05
-    - service: homeassistant.turn_off
-      entity_id: light.garden_lights
+        - light.garden_lights
+    - wait_for_trigger:
+        platform: state
+        entity_id: 
+          - binary_sensor.kitchen_door
+          - binary_sensor.garden_gate
+        from: "on"
+        to: "off"
+    - delay: 00:00:10
+    - service: light.turn_off
+      entity_id:
+        - light.garden_lights 
+  mode: restart
+  max_exceeded: silent
 
 
 ######################################################
