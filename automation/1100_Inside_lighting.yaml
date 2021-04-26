@@ -3,41 +3,39 @@
 ################################################################
 
 - id: '1100'
-  alias: Motion Sensor Hallway On
+  alias: 'Motion hallway light'
   trigger:
     - platform: state
-      entity_id: binary_sensor.hallway_pir
-      to: 'on'
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: input_select.house_mode
-        state: Night
-      - condition: state
-        entity_id: input_select.house_mode
-        state: Awake+lights
-  action:
-    - service: homeassistant.turn_on
-      entity_id: light.hallway_lights
-    
-- id: '1101'
-  alias: Motion Sensor Hallway Off
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.hallway_pir
-      to: 'off'
-      for:
-        minutes: 5
-  condition:
-    - condition: state
       entity_id:
-        - light.hallway_lights
-      state: 'on'
+        - binary_sensor.hallway_pir
+      from: "off"
+      to: "on"
+  condition:  
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: input_select.house_mode
+            state: Awake+lights
+          - condition: state
+            entity_id: input_select.house_mode
+            state: Night
   action:
-    - service: homeassistant.turn_off
-      entity_id: light.hallway_lights
-  
+    - service: light.turn_on
+      entity_id: 
+        - light.hallway_lights
+    - wait_for_trigger:
+        platform: state
+        entity_id: 
+          - binary_sensor.hallway_pir
+        from: "on"
+        to: "off"
+    - delay: 00:01:00
+    - service: light.turn_off
+      entity_id:
+        - light.hallway_lights 
+  mode: restart
+  max_exceeded: silent
+
 
 ###############################################################
 ## Playroom
@@ -88,42 +86,40 @@
 ## Landing
 ###############################################################
 
-- id: '1104'
-  alias: Motion Sensor Landing On
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.landing_pir
-      to: 'on'
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: input_select.house_mode
-        state: Night
-      - condition: state
-        entity_id: input_select.house_mode
-        state: Awake+lights
-  action:
-    - service: homeassistant.turn_on
-      entity_id: light.landing_lights
-    
 
-- id: '1105'
-  alias: Motion Sensor Landing Off
+- id: '1104'
+  alias: 'Motion landing light'
   trigger:
     - platform: state
-      entity_id: binary_sensor.landing_pir
-      to: 'off'
-      for:
-        minutes: 5
-  condition:
-    - condition: state
+      entity_id:
+        - binary_sensor.landing_pir
+      from: "off"
+      to: "on"
+  condition:  
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: input_select.house_mode
+            state: Awake+lights
+          - condition: state
+            entity_id: input_select.house_mode
+            state: Night
+  action:
+    - service: light.turn_on
+      entity_id: 
+        - light.landing_lights
+    - wait_for_trigger:
+        platform: state
+        entity_id: 
+          - binary_sensor.landing_pir
+        from: "on"
+        to: "off"
+    - delay: 00:01:00
+    - service: light.turn_off
       entity_id:
         - light.landing_lights
-      state: 'on'
-  action:
-    - service: homeassistant.turn_off
-      entity_id: light.landing_lights
+  mode: restart
+  max_exceeded: silent
 
 ###############################################################
 ## Lila´s Room
