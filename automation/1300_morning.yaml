@@ -1,8 +1,4 @@
-<<<<<<< HEAD:automation/1300_morning.yaml
 - id: '1300'  
-=======
-- id: '24'
->>>>>>> 6130a78f15793e02462ffa9f9c838ab139feb844:automation/morning.yaml
   alias: Heating set & house set to morning mode
   trigger:
     - platform: state
@@ -57,9 +53,7 @@
       target:
         entity_id: scene.appliances
 
-<<<<<<< HEAD:automation/1300_morning.yaml
-=======
-- id: '30'
+- id: '1301'
   alias: Morning lights not needed
   trigger:
     - platform: state
@@ -85,7 +79,6 @@
         option: 'Awake' 
 
 
->>>>>>> 6130a78f15793e02462ffa9f9c838ab139feb844:automation/morning.yaml
 
 
 
