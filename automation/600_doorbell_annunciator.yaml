@@ -1,4 +1,5 @@
-- alias: Doorbell Annunciator
+- id: '600'
+  alias: Doorbell Annunciator
   initial_state: true
   # someone pushing the button on my Ring triggers automation
   trigger:
@@ -19,8 +20,8 @@
         message: 'someone is at the front door'
         delay: '00:00:05'
 
-
-- alias: Doorbell Annunciator1
+- id: '601'
+  alias: Doorbell Annunciator1
   initial_state: true
   # someone pushing the button on my Ring triggers automation
   trigger:

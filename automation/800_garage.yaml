@@ -1,8 +1,8 @@
 ###################################################
 ## Open and Closing garage door ## 
 ###################################################
-
-- alias: Garage door unlock
+- id: '800'
+  alias: Garage door unlock
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_door
@@ -15,7 +15,8 @@
     - service: homeassistant.turn_off
       entity_id: switch.garage_door_lock
 
-- alias: Garage door lock
+- id: '801'
+  alias: Garage door lock
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_door

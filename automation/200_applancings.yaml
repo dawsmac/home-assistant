@@ -1,4 +1,4 @@
-- id: '25'
+- id: '200'
   alias: Alert Washing Machine Done
   description: ''
   trigger:
@@ -23,7 +23,7 @@
         message: 'Washing machine done, ready for the dryer'
   mode: restart
 
-- id: '26'
+- id: '201'
   alias: Alert Tumble Dryer Done
   trigger:
     - platform: numeric_state
@@ -48,7 +48,7 @@
   mode: restart
 
 
-- id: '27'
+- id: '202'
   alias: Alert Dishwasher Done
   trigger:
     - platform: numeric_state

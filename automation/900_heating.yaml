@@ -1,4 +1,4 @@
-- id: '18'
+- id: '900'
   alias: Heating On
   trigger:
     - platform: template
@@ -18,7 +18,7 @@
         entity_id: switch.boiler_call
 
 
-- id: '19'
+- id: '901'
   alias: Hotwater on
   trigger:
     - platform: state
@@ -51,7 +51,7 @@
       target:
         entity_id: switch.boiler_call
 
-- id: '20'
+- id: '902'
   alias: Heating Off
   trigger:
     - platform: template
@@ -71,7 +71,7 @@
       target:
         entity_id: switch.boiler_call 
   
-- id: '21'
+- id: '903'
   alias: HA restart hotwater
   trigger:
     - platform: homeassistant
@@ -94,7 +94,7 @@
       target:
         entity_id: switch.boiler_call
 
-- id: '22'
+- id: '904'
   alias: No ones home turn off Heating
   trigger:
     - platform: state
@@ -110,7 +110,7 @@
       data:
         preset_mode: away
 
-- id: '23'
+- id: '905'
   alias: home Turn on Heating
   trigger:
     - platform: state

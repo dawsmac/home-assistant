@@ -1,4 +1,4 @@
-- id: '1'
+- id: '1400'
   alias: Night mode PIR enabled
   trigger:
     - platform: state
@@ -29,7 +29,7 @@
         entity_id: input_select.house_mode
         option: "Night"
   
-- id: '2'
+- id: '1401'
   alias: Night mode manle 
   trigger:
     - platform: state
@@ -41,7 +41,7 @@
       target:
         entity_id: scene.nightmode
 
-- id: '3'
+- id: '1402'
   alias: Out hours movment
   trigger:
     - platform: state
@@ -62,7 +62,7 @@
         message: >
           Night mode enabled: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
 
-- id: '4'
+- id: '1403'
   alias: Night mode heating
   trigger:
     - platform: state
