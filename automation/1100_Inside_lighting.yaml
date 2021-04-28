@@ -210,3 +210,28 @@
     - service: homeassistant.turn_off
       entity_id: 
         - light.lounge_lights
+
+
+###############################################################
+## Kitchen
+###############################################################
+
+- id: '1110'
+  alias: No-motion kitchen light
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.kitchen_pir
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id:
+        - light.lounge_lights
+      state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: 
+        - light.kitchen_dining_lights
+        - light.kitchen_island_lights
+        - light.kitchen_side_lights
