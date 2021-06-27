@@ -8,14 +8,9 @@
       from: "off"
       to: "on"
   condition:  
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: input_select.house_mode
-            state: Awake+lights
-          - condition: state
-            entity_id: input_select.house_mode
-            state: Night
+    - condition: state
+      entity_id: binary_sensor.lights
+      state: "on"
   action:
     - service: light.turn_on
       entity_id: 
@@ -50,14 +45,9 @@
       from: "off"
       to: "on"
   condition:  
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: input_select.house_mode
-            state: Awake+lights
-          - condition: state
-            entity_id: input_select.house_mode
-            state: Night
+    - condition: state
+      entity_id: binary_sensor.lights
+      state: "on"
   action:
     - service: light.turn_on
       entity_id: 
