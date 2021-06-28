@@ -3,6 +3,8 @@
 default_config:
 
 
+
+
 influxdb:
   ssl: false
   host: 192.168.110.113
@@ -32,6 +34,9 @@ logger:
 history: 
 
 http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.110.1
 
 mobile_app:
 
