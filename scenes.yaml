@@ -30,8 +30,6 @@
       state: 'off'
     light.kitchen_fairy_lights:
       state: 'off'
-    light.kitchen_lamp:
-      state: 'off'
     light.kitchen_side_lights:
       state: 'off'
     light.landing_lights:
@@ -94,8 +92,6 @@
     light.kitchen_dining_lights:
       state: 'off'
     light.kitchen_fairy_lights:
-      state: 'off'
-    light.kitchen_lamp:
       state: 'off'
     light.kitchen_side_lights:
       state: 'off'
