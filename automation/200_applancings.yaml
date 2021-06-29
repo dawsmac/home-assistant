@@ -71,3 +71,26 @@
         entity_id: all
         message: 'Dishwasher is done, ready to be emptied'
   mode: restart
+
+- id: '203'
+  alias: Morning Turn on applances
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.morning_alarm
+      to: 'on'
+  condition:
+    - condition: time
+      after: '05:00'
+      before: '09:00'
+    - condition: state
+      entity_id:
+        - input_select.house_mode
+      state: 'Night'
+    - condition: state
+      entity_id: group.persons
+      state: 'home'
+  action:
+    - service: scene.turn_on
+      data: {}
+      target:
+        entity_id: scene.appliances

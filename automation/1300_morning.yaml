@@ -1,8 +1,8 @@
 - id: '1300'  
-  alias: Heating set & house set to morning mode
+  alias: House set to morning mode
   trigger:
     - platform: state
-      entity_id: binary_sensor.alarm_heating_on
+      entity_id: binary_sensor.morning_alarm
       to: 'on'
   condition:
     - condition: time
@@ -11,47 +11,14 @@
     - condition: state
       entity_id:
         - input_select.house_mode
-      state: "Night"
+      state: 'Night'
   action:
     - service: input_select.select_option
-      data_template:
+      data:
         entity_id: input_select.house_mode
-        option: >
-          {% if states('sensor.out_side_lux')| float  > 1400 %}
-            Awake
-          {% else %}
-            Awake+lights
-          {% endif %}
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: group.persons
-          state: "home"
-    - service: climate.set_temperature 
-      target:
-        entity_id: 
-          - climate.upstairs
-          - climate.downstairs
-      data:
-        temperature: 20
-    - service: climate.set_temperature 
-      target:
-        entity_id: 
-          - climate.office
-      data:
-        temperature: 17
-    - service: climate.set_hvac_mode
-      target:
-        entity_id: 
-          - climate.upstairs
-          - climate.downstairs
-          - climate.office
-      data:
-        hvac_mode: heat
-    - service: scene.turn_on
-      data: {}
-      target:
-        entity_id: scene.appliances
+        option: 'Awake'
+
+
 
 - id: '1301'
   alias: Morning lights not needed

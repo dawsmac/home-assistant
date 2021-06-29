@@ -53,9 +53,6 @@
         - condition: state
           entity_id: input_select.house_mode
           state: Night
-        - condition: state
-          entity_id: input_select.house_mode
-          state: Awake+lights
   action:
     - service: homeassistant.turn_on
       entity_id: light.playroom_s_light

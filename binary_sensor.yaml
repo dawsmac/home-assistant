@@ -41,7 +41,7 @@
 
 - platform: template
   sensors:
-    alarm_heating_on:
+    morning_alarm:
       value_template: >-
         {% set alarm_time = as_timestamp(states('sensor.next_alarm')) %}
         {% set time_now = as_timestamp(now()) %}

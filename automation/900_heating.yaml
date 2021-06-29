@@ -25,27 +25,15 @@
       entity_id: switch.hotwater
       to: 'on'
   condition:
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: switch.boiler_call
-          state: 'off'
-        - condition: or
-          conditions: 
-            - condition: state
-              entity_id: input_select.house_mode
-              state: 'Awake+lights'
-            - condition: state
-              entity_id: input_select.house_mode
-              state: 'Awake'
-            - condition: or
-              conditions:
-                - condition: state
-                  entity_id: person.richard
-                  state: 'home'
-                - condition: state
-                  entity_id: person.faye
-                  state: 'home'
+    - condition: state
+      entity_id: switch.boiler_call
+      state: 'off'
+    - condition: state
+      entity_id: input_select.house_mode
+      state: 'Awake'
+    - condition: state
+      entity_id: group.persons
+      state: 'home'
   action:
     - service: switch.turn_on
       target:
@@ -79,9 +67,6 @@
     - platform: state
       entity_id: input_select.house_mode
       to: "Awake"
-    - platform: state
-      entity_id: input_select.house_mode
-      to: "Awake+lights"
   condition: 
     - condition: state
       entity_id: switch.hotwater
@@ -145,3 +130,42 @@
       data:  
         hvac_mode: heat
 
+- id: '906'  
+  alias: Morning heating
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.morning_alarm
+      to: 'on'
+  condition:
+    - condition: time
+      after: '05:00'
+      before: '09:00'
+    - condition: state
+      entity_id:
+        - input_select.house_mode
+      state: 'Night'
+    - condition: state
+      entity_id: group.persons
+      state: 'home'
+  action:
+    - service: climate.set_temperature 
+      target:
+        entity_id: 
+          - climate.upstairs
+          - climate.downstairs
+      data:
+        temperature: 20
+    - service: climate.set_temperature 
+      target:
+        entity_id: 
+          - climate.office
+      data:
+        temperature: 17
+    - service: climate.set_hvac_mode
+      target:
+        entity_id: 
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
+      data:
+        hvac_mode: heat
