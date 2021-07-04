@@ -1,5 +1,5 @@
 ###############################################################
-## Hallway 
+## Hallway light switch on by PIR 
 ################################################################
 
 - id: '1100'
@@ -30,6 +30,35 @@
           - light.hallway_lights 
   mode: restart
   max_exceeded: silent
+
+
+###############################################################
+## Hallway light switch on by Switch
+################################################################
+
+- id: '1111'
+  alias: 'Hallway light switch on by Switch'
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.hallway_lights_switch
+  action:
+      - wait_for_trigger:
+          platform: state
+          entity_id: 
+            - binary_sensor.hallway_pir
+          from: 'on'
+          to: 'off'
+      - delay: 00:00:30
+      - condition: state
+        entity_id: light.hallway_lights
+        state: 'on'
+      - service: light.turn_off
+        entity_id:
+          - light.hallway_lights 
+  mode: restart
+  max_exceeded: silent
+
 
 
 ###############################################################
