@@ -11,8 +11,8 @@
         entity_id: light.bathroom
         state: 'off'  
       - condition: state
-        entity_id: input_select.house_mode
-        state: Awake
+        entity_id: binary_sensor.lights
+        state: 'on'
   action:
   - service: homeassistant.turn_on
     entity_id: light.bathroom
