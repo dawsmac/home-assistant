@@ -54,7 +54,7 @@
     - service: tts.google_translate_say
       data:
         entity_id: media_player.kitchen_speaker
-        message: 'I have finised cleaning your Dishs, ready to be emptied'
+        message: 'I have finished cleaning your Dishes, Would you like to empty me'
   mode: restart
 
 - id: '203'
