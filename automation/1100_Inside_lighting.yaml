@@ -47,8 +47,8 @@
           platform: state
           entity_id: 
             - binary_sensor.hallway_pir
-          from: 'on'
-          to: 'off'
+          from: "on"
+          to: "off"
       - delay: 00:00:30
       - condition: state
         entity_id: light.hallway_lights
