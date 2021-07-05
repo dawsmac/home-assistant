@@ -12,14 +12,9 @@
           entity_id: sensor.washing_machine_current
           below: '.3'
           for: '00:10'
-      continue_on_timeout: false
-    - service: notify.notify
-      data:
-        title: Washing machine
-        message: 'Washing machine done, ready for the dryer'
     - service: tts.google_translate_say
       data:
-        entity_id: all
+        entity_id: media_player.kitchen_speaker
         message: 'Washing machine done, ready for the dryer'
   mode: restart
 
@@ -36,14 +31,9 @@
           entity_id: sensor.tumble_dryer_current
           below: '.3'
           for: '00:10'
-      continue_on_timeout: false
-    - service: notify.notify
-      data:
-        title: Tumble dryer machine
-        message: 'Tumble dryer is done, ready to be sorted'
     - service: tts.google_translate_say
       data:
-        entity_id: all
+        entity_id: media_player.kitchen_speaker
         message: 'Tumble dryer is done, ready to be sorted'
   mode: restart
 
@@ -52,7 +42,7 @@
   alias: Alert Dishwasher Done
   trigger:
     - platform: numeric_state
-      entity_id:   sensor.dishwasher_current
+      entity_id: sensor.dishwasher_current
       above: '.75'
   condition: []
   action:
@@ -61,15 +51,10 @@
           entity_id: sensor.dishwasher_current
           below: '.3'
           for: '00:10'
-      continue_on_timeout: false
-    - service: notify.notify
-      data:
-        title: Dishwasher alert!
-        message: 'Dishwasher is done, ready to be emptied'
     - service: tts.google_translate_say
       data:
-        entity_id: all
-        message: 'Dishwasher is done, ready to be emptied'
+        entity_id: media_player.kitchen_speaker
+        message: 'I have finised cleaning your Dishs, ready to be emptied'
   mode: restart
 
 - id: '203'
