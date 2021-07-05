@@ -137,6 +137,29 @@
   mode: restart
   max_exceeded: silent
 
+- id: '1112'
+  alias: 'Landing light switch on by Switch'
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.landing_lights_switch
+  action:
+      - wait_for_trigger:
+          platform: state
+          entity_id: 
+            - binary_sensor.landing_pir
+          from: "on"
+          to: "off"
+      - delay: 00:00:30
+      - condition: state
+        entity_id: light.landing_lights
+        state: 'on'
+      - service: light.turn_off
+        entity_id:
+          - light.hallway_lights 
+  mode: restart
+  max_exceeded: silent
+
 ###############################################################
 ## Lila´s Room
 ###############################################################  
