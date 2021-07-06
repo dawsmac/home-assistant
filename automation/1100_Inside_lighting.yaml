@@ -156,7 +156,7 @@
         state: 'on'
       - service: light.turn_off
         entity_id:
-          - light.hallway_lights 
+          - light.landing_lights 
   mode: restart
   max_exceeded: silent
 
