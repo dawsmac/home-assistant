@@ -13,7 +13,7 @@
       entity_id: binary_sensor.garden_gate
       to: "on"
       for:
-        minutes: 10
+        minutes: 1
   action:
     - condition: trigger
       id: "normal"
