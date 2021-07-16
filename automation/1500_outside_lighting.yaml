@@ -10,7 +10,8 @@
       to: "on"
     - platform: state
       id: gate_open 
-      entity_id: binary_sensor.garden_gate
+      entity_id: 
+        - binary_sensor.garden_gate
       to: "on"
       for:
         minutes: 1
