@@ -50,7 +50,7 @@
                   milliseconds: 200
             until:
               - condition: trigger
-                entity_id: binary_sensor.something
+                entity_id: binary_sensor.garden_gate
                 state: "on"
   mode: restart
   max_exceeded: silent
