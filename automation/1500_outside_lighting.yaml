@@ -2,14 +2,13 @@
   alias: 'garden lights garden gate - backdoor'
   trigger:
     - platform: state
-      id: normal 
+      id: "normal" 
       entity_id:
         - binary_sensor.kitchen_door
         - binary_sensor.garden_gate
-      from: "off"
-      to: "on"
+      state: "on"
     - platform: state
-      id: gate_open 
+      id: "gate_open" 
       entity_id: 
         - binary_sensor.garden_gate
       to: "on"
