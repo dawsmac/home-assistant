@@ -2,16 +2,26 @@
   alias: 'garden lights garden gate - backdoor'
   trigger:
     - platform: state
+      id: normal 
       entity_id:
         - binary_sensor.kitchen_door
         - binary_sensor.garden_gate
       from: "off"
       to: "on"
-  condition:  
+
+    - platform: state
+      id: gate_open 
+      entity_id: binary_sensor.garden_gate
+      state: "on"
+      for:
+        minutes: 10
+
+  action:
+    - condition: trigger
+      id: "normal"
     - condition: state
       entity_id: binary_sensor.lights
       state: "on"
-  action:
     - service: light.turn_on
       entity_id: 
         - light.garden_lights
@@ -25,7 +35,14 @@
     - delay: 00:01:00
     - service: light.turn_off
       entity_id:
-        - light.garden_lights 
+        - light.garden_lights
+
+    - condition: trigger
+      id: "gate_open"      
+    - service: notify.mobile_app_rich_phone
+      data:
+        message: >
+          Gates has been left open!
   mode: restart
   max_exceeded: silent
 
