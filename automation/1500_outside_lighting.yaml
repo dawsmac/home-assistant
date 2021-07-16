@@ -8,14 +8,12 @@
         - binary_sensor.garden_gate
       from: "off"
       to: "on"
-
     - platform: state
       id: gate_open 
       entity_id: binary_sensor.garden_gate
-      state: "on"
+      to: "on"
       for:
         minutes: 10
-
   action:
     - condition: trigger
       id: "normal"
