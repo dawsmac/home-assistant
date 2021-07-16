@@ -6,7 +6,7 @@
       entity_id:
         - binary_sensor.kitchen_door
         - binary_sensor.garden_gate
-      state: "on"
+      to: "on"
     - platform: state
       id: "gate_open" 
       entity_id: 
