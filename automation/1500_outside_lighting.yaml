@@ -13,42 +13,48 @@
         - binary_sensor.garden_gate
       to: "on"
       for:
-        minutes: 1
+        minutes: 10
   action:
     - choose:
-      - conditions:
-        - condition: trigger
-          id: "normal"
-        - condition: state
-          entity_id: binary_sensor.lights
-          state: "on"
-        sequence:
-          - service: light.turn_on
-            entity_id: 
-              - light.garden_lights
-          - wait_for_trigger:
-              platform: state
+        - conditions:
+            - condition: trigger
+              id: "normal"
+            - condition: state
+              entity_id: binary_sensor.lights
+              state: "on"
+          sequence:
+            - service: light.turn_on
               entity_id: 
-                - binary_sensor.kitchen_door
-                - binary_sensor.garden_gate
-              from: "on"
-              to: "off"
-          - delay: 00:01:00
-          - service: light.turn_off
-            entity_id:
-              - light.garden_lights
-      - conditions:
-        - condition: trigger
-          id: "gate_open"
-        sequence:
-          - service: notify.mobile_app_rich_phone
-            data:
-              message: >
-                Gates has been left open!
+                - light.garden_lights
+            - wait_for_trigger:
+                platform: state
+                entity_id: 
+                  - binary_sensor.kitchen_door
+                  - binary_sensor.garden_gate
+                from: "on"
+                to: "off"
+            - delay: 00:01:00
+            - service: light.turn_off
+              entity_id:
+                - light.garden_lights
+        - conditions:
+            - condition: trigger
+              id: "gate_open"
+          repeat:    
+            sequence:
+              - service: notify.mobile_app_rich_phone
+                data:
+                  message: >
+                    Gates has been left open!
+              - delay:
+                  milliseconds: 200
+            until:
+              - condition: trigger
+                entity_id: binary_sensor.something
+                state: "on"
   mode: restart
   max_exceeded: silent
 
-  
 ######################################################
 ## Open front gate or front door for secrity lights ##
 ######################################################
