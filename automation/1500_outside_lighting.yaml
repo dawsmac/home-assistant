@@ -15,36 +15,40 @@
       for:
         minutes: 1
   action:
-    - condition: trigger
-      id: "normal"
-    - condition: state
-      entity_id: binary_sensor.lights
-      state: "on"
-    - service: light.turn_on
-      entity_id: 
-        - light.garden_lights
-    - wait_for_trigger:
-        platform: state
-        entity_id: 
-          - binary_sensor.kitchen_door
-          - binary_sensor.garden_gate
-        from: "on"
-        to: "off"
-    - delay: 00:01:00
-    - service: light.turn_off
-      entity_id:
-        - light.garden_lights
-
-    - condition: trigger
-      id: "gate_open"      
-    - service: notify.mobile_app_rich_phone
-      data:
-        message: >
-          Gates has been left open!
+    - choose:
+      - conditions:
+        - condition: trigger
+          id: "normal"
+        - condition: state
+          entity_id: binary_sensor.lights
+          state: "on"
+        sequence:
+          - service: light.turn_on
+            entity_id: 
+              - light.garden_lights
+          - wait_for_trigger:
+              platform: state
+              entity_id: 
+                - binary_sensor.kitchen_door
+                - binary_sensor.garden_gate
+              from: "on"
+              to: "off"
+          - delay: 00:01:00
+          - service: light.turn_off
+            entity_id:
+              - light.garden_lights
+      - conditions:
+        - condition: trigger
+          id: "gate_open"
+        sequence:
+          - service: notify.mobile_app_rich_phone
+            data:
+              message: >
+                Gates has been left open!
   mode: restart
   max_exceeded: silent
 
-
+  
 ######################################################
 ## Open front gate or front door for secrity lights ##
 ######################################################
