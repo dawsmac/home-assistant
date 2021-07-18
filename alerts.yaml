@@ -1,0 +1,11 @@
+
+garden_gate:
+  name: Garden gate is open
+  done_message: Garden gate is closed
+  entity_id: binary_sensor.garden_gate
+  state: "on"
+  repeat: 2
+  can_acknowledge: true
+  skip_first: true
+  notifiers:
+    - notify.mobile_app_rich_phone
