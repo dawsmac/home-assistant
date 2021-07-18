@@ -13,7 +13,7 @@
         - binary_sensor.garden_gate
       to: "on"
       for:
-        minutes: 10
+        minutes: 1
   action:
     - choose:
         - conditions:
@@ -40,18 +40,19 @@
         - conditions:
             - condition: trigger
               id: "gate_open"
-          repeat:    
-            sequence:
-              - service: notify.mobile_app_rich_phone
-                data:
-                  message: >
-                    Gates has been left open!
-              - delay:
-                  milliseconds: 200
-            until:
-              - condition: trigger
-                entity_id: binary_sensor.garden_gate
-                state: "on"
+          sequence:
+            repeat:    
+              sequence:
+                - service: notify.mobile_app_rich_phone
+                  data:
+                    message: >
+                      Gates has been left open!
+                - delay:
+                    minutes: 1
+              until:
+                - condition: state
+                  entity_id: binary_sensor.garden_gate
+                  state: "on"
   mode: restart
   max_exceeded: silent
 
