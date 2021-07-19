@@ -7,6 +7,13 @@
         - binary_sensor.kitchen_door
         - binary_sensor.garden_gate
       to: "on"
+    - platform: state
+      id: "gate_open" 
+      entity_id: 
+        - binary_sensor.garden_gate
+      to: "on"
+      for:
+        minutes: 1
   action:
     - choose:
         - conditions:
@@ -30,8 +37,26 @@
             - service: light.turn_off
               entity_id:
                 - light.garden_lights
-  mode: restart
-  max_exceeded: silent
+        - conditions:
+            - condition: trigger
+              id: "gate_open"
+          sequence:
+            repeat:    
+              sequence:
+                - service: notify.mobile_app_rich_phone
+                  data:
+                    message: >
+                      Gates has been left open!
+                    data: 
+                      ttl: 0
+                      priority: high
+                      channel: alarm_stream
+                - delay:
+                    minutes: 1
+              until:
+                - condition: state
+                  entity_id: binary_sensor.garden_gate
+                  state: "on
 
 ######################################################
 ## Open front gate or front door for secrity lights ##
