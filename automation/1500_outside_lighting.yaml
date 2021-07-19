@@ -3,57 +3,28 @@
   alias: 'garden lights garden gate - backdoor'
   trigger:
     - platform: state
-      id: "normal" 
       entity_id:
         - binary_sensor.kitchen_door
         - binary_sensor.garden_gate
       to: "on"
-    - platform: state
-      id: "gate_open" 
-      entity_id: 
-        - binary_sensor.garden_gate
-      to: "on"
-      for:
-        minutes: 10
   action:
-    - choose:
-        - conditions:
-            - condition: trigger
-              id: "normal"
-            - condition: state
-              entity_id: binary_sensor.lights
-              state: "on"
-          sequence:
-            - service: light.turn_on
-              entity_id: 
-                - light.garden_lights
-            - wait_for_trigger:
-                platform: state
-                entity_id: 
-                  - binary_sensor.kitchen_door
-                  - binary_sensor.garden_gate
-                from: "on"
-                to: "off"
-            - delay: 00:01:00
-            - service: light.turn_off
-              entity_id:
-                - light.garden_lights
-        - conditions:
-            - condition: trigger
-              id: "gate_open"
-          sequence:
-            repeat:    
-              sequence:
-                - service: notify.mobile_app_rich_phone
-                  data:
-                    message: >
-                      Gates has been left open!
-                - delay:
-                    minutes: 1
-              until:
-                - condition: state
-                  entity_id: binary_sensor.garden_gate
-                  state: "on"
+    - condition: state
+      entity_id: binary_sensor.lights
+      state: "on"
+    - service: light.turn_on
+      entity_id: 
+        - light.garden_lights
+    - wait_for_trigger:
+        platform: state
+        entity_id: 
+          - binary_sensor.kitchen_door
+          - binary_sensor.garden_gate
+        from: "on"
+        to: "off"
+    - delay: 00:01:00
+    - service: light.turn_off
+      entity_id:
+        - light.garden_lights
   mode: restart
 ######################################################
 ## Open front gate or front door for secrity lights ##
