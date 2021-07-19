@@ -1,5 +1,5 @@
   - platform: group
-    name:     
+    name: mobiles
     services:
       - service: mobile_app_rich_phone
       - service: mobile_app_faye_phone
