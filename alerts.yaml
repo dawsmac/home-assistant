@@ -1,5 +1,5 @@
 
-garden_gate:
+egarden_gate:
   name: Garden gate is open
   done_message: Garden gate is closed
   entity_id: binary_sensor.garden_gate
