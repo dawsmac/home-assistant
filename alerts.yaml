@@ -8,4 +8,4 @@ garden_gate:
   can_acknowledge: true
   skip_first: true
   notifiers:
-    - notify.mobile_app_rich_phone
+    - mobile_app_rich_phone
