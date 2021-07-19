@@ -62,6 +62,6 @@ sensor: !include sensor.yaml
 notify: !include notify.yaml
 binary_sensor: !include binary_sensor.yaml
 input_select: !include input_select.yaml
-alert: !include alerts.yaml
+# alert: !include alerts.yaml
 # resources: !include lovelace/rescources/resources.yaml
 # input_datetime: !include input_datetime.yaml
