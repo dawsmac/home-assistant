@@ -1,6 +1,5 @@
   - platform: group
-    name: Samsung_devices
+    name:     
     services:
-      - service: mobile_app_sm_g970f
-      - service: mobile_app_sm_g973f
-
+      - service: mobile_app_rich_phone
+      - service: mobile_app_faye_phone
