@@ -1,3 +1,4 @@
+
 - id: '1500'
   alias: 'garden lights garden gate - backdoor'
   trigger:
@@ -13,7 +14,7 @@
         - binary_sensor.garden_gate
       to: "on"
       for:
-        minutes: 1
+        minutes: 10
   action:
     - choose:
         - conditions:
@@ -47,16 +48,12 @@
                   data:
                     message: >
                       Gates has been left open!
-                    data: 
-                      ttl: 0
-                      priority: high
-                      channel: alarm_stream
                 - delay:
                     minutes: 1
               until:
                 - condition: state
                   entity_id: binary_sensor.garden_gate
-                  state: "off"
+                  state: "on"
   mode: restart
 ######################################################
 ## Open front gate or front door for secrity lights ##
