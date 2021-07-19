@@ -56,8 +56,8 @@
               until:
                 - condition: state
                   entity_id: binary_sensor.garden_gate
-                  state: "on"
-
+                  state: "off"
+  mode: restart
 ######################################################
 ## Open front gate or front door for secrity lights ##
 ######################################################
