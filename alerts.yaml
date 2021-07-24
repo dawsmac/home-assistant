@@ -7,5 +7,4 @@ garden_gate:
   can_acknowledge: true
   skip_first: true
   notifiers:
-    - mobile_app_rich_phone
-    - mobile_app_richards_macbook_pro
+    - Rich's devices

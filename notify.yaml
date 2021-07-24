@@ -3,3 +3,9 @@
     services:
       - service: mobile_app_rich_phone
       - service: mobile_app_faye_phone
+
+  - platform: group
+    name: Rich's devices
+    services:
+      - service: mobile_app_rich_phone
+      - service: mobile_app_richards_macbook_pro
