@@ -5,7 +5,14 @@
       - service: mobile_app_faye_phone
 
   - platform: group
-    name: Rich's devices
+    name: notification gate left open
     services:
       - service: mobile_app_rich_phone
       - service: mobile_app_richards_macbook_pro
+        data:
+          message: >
+            The Gate has been left open! 
+          data:
+            actions: 
+              - action: "back_gate_alarm"
+                title: "Cancel alarm"

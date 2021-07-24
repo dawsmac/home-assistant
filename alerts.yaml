@@ -7,4 +7,4 @@ garden_gate:
   can_acknowledge: true
   skip_first: true
   notifiers:
-    - Rich's devices
+    - notification_gate_left_open
