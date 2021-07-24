@@ -1,0 +1,11 @@
+- id: Disable Gate left open
+  alias: Disable Gate left open
+  trigger: 
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "back_gate_alarm"
+  action:
+    - service: alert.turn_off
+      target:
+        entity_id: alert.garden_gate
