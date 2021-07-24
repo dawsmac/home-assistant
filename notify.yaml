@@ -13,6 +13,9 @@
           message: >
             The Gate has been left open! 
           data:
+            ttl: 0
+            priority: high
+            channel: alarm_stream
             actions: 
               - action: "back_gate_alarm"
                 title: "Cancel alarm"
