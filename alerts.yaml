@@ -1,5 +1,4 @@
 garden_gate:
-  done_message: Garden gate is closed
   name: Garden gate is open
   entity_id: binary_sensor.garden_gate
   state: "on"
