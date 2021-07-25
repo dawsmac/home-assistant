@@ -14,7 +14,7 @@
           data:
             ttl: 0
             priority: high
-            channel: alarm_stream
+            channel: alarm_stream_max
             actions: 
               - action: "back_gate_alarm"
                 title: "Cancel alarm"
