@@ -77,7 +77,7 @@
         - platform: numeric_state
           entity_id: sensor.bathroom_humidity
           below: '75'
-          for: '00:10'
+          for: '00:05'
     - service: homeassistant.turn_off
       entity_id: switch.bathroom_extractor_fan
   mode: restart
@@ -97,7 +97,7 @@
         - platform: numeric_state
           entity_id: sensor.downstairs_toilet_humidity
           below: '75'
-          for: '00:10'
+          for: '00:05'
     - service: homeassistant.turn_off
       entity_id: switch.downstairs_toilet_extractor_fan
   mode: restart
