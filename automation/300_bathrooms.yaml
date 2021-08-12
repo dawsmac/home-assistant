@@ -88,7 +88,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.downstairs_toilet_humidity
-      above: '85'
+      above: '90'
   condition: []
   action:
     - service: homeassistant.turn_on
@@ -96,7 +96,7 @@
     - wait_for_trigger:
         - platform: numeric_state
           entity_id: sensor.downstairs_toilet_humidity
-          below: '80'
+          below: '85'
           for: '00:05'
     - service: homeassistant.turn_off
       entity_id: switch.downstairs_toilet_extractor_fan
