@@ -14,12 +14,18 @@
   off_delay: 30
 
 - platform: mqtt
-  name: "Sidedrive Movement"
+  name: "Sidedrive Car Movement"
   device_class: motion
-  state_topic: "Blueiris/Sidedrive"
+  state_topic: "Blueiris/Sidedrive_car"
   payload_on: "on"
   off_delay: 30
-
+  
+- platform: mqtt
+  name: "Sidedrive Person Movement"
+  device_class: motion
+  state_topic: "Blueiris/Sidedrive_person"
+  payload_on: "on"
+  off_delay: 30
 
 - platform: mqtt
   name: "Coop Movement"
