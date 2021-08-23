@@ -27,7 +27,8 @@ views:
           - binary_sensor.coop_movement
           - binary_sensor.driveway_movement
           - binary_sensor.porch_movement
-          - binary_sensor.sidedrive_movement
+          - binary_sensor.sidedrive_car_movement
+          - binary_sensor.sidedrive_person_movement
       
       - type: entities
         title: Edenbridge Temp´s
