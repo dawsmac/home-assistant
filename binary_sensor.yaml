@@ -1,7 +1,7 @@
 - platform: mqtt
   name: "Porch Movement"
   device_class: motion
-  state_topic: "Blueiris/Porch"
+  state_topic: "BlueIris/Porch"
   payload_on: "on"
   payload_off: "off"
   off_delay: 30
@@ -9,28 +9,28 @@
 - platform: mqtt
   name: "Backgarden Movement"
   device_class: motion
-  state_topic: "Blueiris/Backgarden"
+  state_topic: "BlueIris/Backgarden"
   payload_on: "on"
   off_delay: 30
 
 - platform: mqtt
   name: "Sidedrive Car Movement"
   device_class: motion
-  state_topic: "Blueiris/Sidedrive_car"
+  state_topic: "BlueIris/Sidedrive_car"
   payload_on: "on"
   off_delay: 30
   
 - platform: mqtt
   name: "Sidedrive Person Movement"
   device_class: motion
-  state_topic: "Blueiris/Sidedrive_person"
+  state_topic: "BlueIris/Sidedrive_person"
   payload_on: "on"
   off_delay: 30
 
 - platform: mqtt
   name: "Coop Movement"
   device_class: motion
-  state_topic: "Blueiris/Coop"
+  state_topic: "BlueIris/Coop"
   payload_on: "on"
   off_delay: 30
 
@@ -38,7 +38,7 @@
 - platform: mqtt
   name: "Driveway Movement"
   device_class: motion
-  state_topic: "Blueiris/Driveway"
+  state_topic: "BlueIris/Driveway"
   payload_on: "on"
   payload_off: "off"
   off_delay: 30
