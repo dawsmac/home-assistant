@@ -49,6 +49,10 @@ lovelace:
 # Text to speech
 tts:
   - platform: google_translate
+    cache: true
+    time_memory: 300
+    base_url: http://192.168.110.110:8123
+    service_name: google_say
 
 group: !include groups.yaml
 automation: !include_dir_merge_list automation
