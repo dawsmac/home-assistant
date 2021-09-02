@@ -7,7 +7,7 @@ default_config:
 
 influxdb:
   ssl: false
-  host: 192.168.110.113
+  host: HA_influxdb
   port: 8086
   database: home_assistant
   tags:
