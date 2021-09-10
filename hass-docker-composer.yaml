@@ -2,6 +2,7 @@
 version: "3"
 services:
   homeassistant:
+    build: .
     image: homeassistant/home-assistant
     container_name: homeassistant_v1
     environment:
