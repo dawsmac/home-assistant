@@ -13,9 +13,9 @@ services:
     restart: unless-stopped
     depends_on:
       - HA_influxdb
-  networks:
-    - hapnet
-    - Automation
+    networks:
+      - hapnet
+      - Automation
 
 networks:
     Automation:
