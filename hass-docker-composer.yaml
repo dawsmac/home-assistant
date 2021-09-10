@@ -9,7 +9,7 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - config:opt/homeassistant
+      - /opt/homeassistant:/config/:rw
     ports:
       - 8123:8123
     restart: unless-stopped
