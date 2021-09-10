@@ -1,0 +1,63 @@
+
+- id: '1500'
+  alias: 'garden lights garden gate - backdoor'
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.kitchen_door
+        - binary_sensor.garden_gate
+      to: "on"
+  action:
+    - condition: state
+      entity_id: binary_sensor.lights
+      state: "on"
+    - service: light.turn_on
+      entity_id: 
+        - light.garden_lights
+    - wait_for_trigger:
+        platform: state
+        entity_id: 
+          - binary_sensor.kitchen_door
+          - binary_sensor.garden_gate
+        from: "on"
+        to: "off"
+    - delay: 00:01:00
+    - service: light.turn_off
+      entity_id:
+        - light.garden_lights
+  mode: restart
+######################################################
+## Open front gate or front door for secrity lights ##
+######################################################
+
+
+- id: '1501'
+  alias: 'Porch light frntdoor - frntgate '
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.front_door
+        - binary_sensor.frontgarden_gate
+      from: "off"
+      to: "on"
+  condition:  
+    - condition: state
+      entity_id: binary_sensor.lights
+      state: "on"
+  action:
+    - service: light.turn_on
+      entity_id: 
+        - light.porch_light
+    - wait_for_trigger:
+        platform: state
+        entity_id: 
+          - binary_sensor.front_door
+          - binary_sensor.frontgarden_gate
+        from: "on"
+        to: "off"
+    - delay: 00:01:00
+    - service: light.turn_off
+      entity_id:
+        - light.porch_light 
+  mode: restart
+  max_exceeded: silent

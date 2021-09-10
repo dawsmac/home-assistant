@@ -1,0 +1,40 @@
+###################################################
+## Open and Closing chickehn coop door to garden ## 
+###################################################
+
+- id: '400'
+  alias: Morning open chicken´s coop door
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.out_side_lux
+    above: 300
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.coop_door_open
+    
+
+- id: '401'
+  alias: Night time for chicken´s close coop door
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.out_side_lux
+    below: 200
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.coop_door_close
+
+- id: '402'
+  alias: Feed the chickhens 
+  trigger:
+  - platform: time
+    at: "08:45:00"
+  condition:
+  - condition: state
+    entity_id: binary_sensor.chickens_coop_door
+    for:
+      hours: 5
+    state: 'off'
+  action:
+    - service: notify.samsung_devices
+      data:
+        message: "No one has Checked on the Chickens food & water!"   

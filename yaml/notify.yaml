@@ -1,0 +1,20 @@
+  - platform: group
+    name: mobiles
+    services:
+      - service: mobile_app_rich_phone
+      - service: mobile_app_faye_phone
+
+  - platform: group
+    name: notification gate left open
+    services:
+      - service: mobile_app_rich_phone
+        data:
+          message: >
+            The Garden gate has been left open! 
+          data:
+            ttl: 0
+            priority: high
+            channel: alarm_stream_max
+            actions: 
+              - action: "back_gate_alarm"
+                title: "Cancel alarm"
