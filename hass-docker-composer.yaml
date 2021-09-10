@@ -13,7 +13,7 @@ services:
       - 8123:8123
     restart: unless-stopped
     depends_on:
-      - HA_influxdb
+      - ha_influxdb
     networks:
       - hapnet
       - Automation
