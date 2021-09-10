@@ -11,8 +11,8 @@ services:
     ports:
       - 8123:8123
     restart: unless-stopped
-  depends_on:
-    - HA_influxdb
+    depends_on:
+      - HA_influxdb
   networks:
     - hapnet
     - Automation
