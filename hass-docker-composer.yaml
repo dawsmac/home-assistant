@@ -2,13 +2,14 @@
 version: "3"
 services:
   homeassistant:
-    build: .
     image: homeassistant/home-assistant
-    container_name: homeassistant_v1
+    container_name: homeassistant
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
+    volumes:
+      - config:opt/homeassistant
     ports:
       - 8123:8123
     restart: unless-stopped
@@ -25,3 +26,7 @@ networks:
     hapnet:
         external: true
         name: hapnet
+
+volumes:
+    config:
+        external: true
