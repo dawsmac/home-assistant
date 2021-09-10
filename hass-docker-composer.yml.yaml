@@ -1,0 +1,26 @@
+---
+version: "3"
+services:
+  homeassistant:
+    image: homeassistant/home-assistant
+    container_name: homeassistant_v1
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    ports:
+      - 8123:8123
+    restart: unless-stopped
+  depends_on:
+    - HA_influxdb
+  networks:
+    - hapnet
+    - Automation
+
+networks:
+    Automation:
+        external: true
+        name: Automation
+    hapnet:
+        external: true
+        name: hapnet

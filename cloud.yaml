@@ -1,4 +1,0 @@
-alexa:
-  filter:
-    include_entities:
-      - switch.tv
