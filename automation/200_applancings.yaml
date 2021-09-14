@@ -18,6 +18,7 @@
           -  media_player.richard_s_echo_dot
         data:
           type: announce
+          method: all
         message: 'Washing machine done, ready for the dryer'
   mode: restart
 
