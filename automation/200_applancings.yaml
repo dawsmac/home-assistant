@@ -14,7 +14,7 @@
           for: '00:10'
     - service: tts.google_translate_say
       data:
-        entity_id: media_player.kitchen_speaker
+        entity_id: media_player.richard_s_echo_dot
         message: 'Washing machine done, ready for the dryer'
   mode: restart
 
@@ -33,7 +33,7 @@
           for: '00:10'
     - service: tts.google_translate_say
       data:
-        entity_id: media_player.kitchen_speaker
+        entity_id: media_player.richard_s_echo_dot 
         message: 'Tumble dryer is done, ready to be sorted'
   mode: restart
 
@@ -53,7 +53,7 @@
           for: '00:10'
     - service: tts.google_translate_say
       data:
-        entity_id: media_player.kitchen_speaker
+        entity_id: media_player.richard_s_echo_dot 
         message: 'I have finished cleaning your Dishes, Would you like to empty me'
   mode: restart
 
