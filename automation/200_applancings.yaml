@@ -16,10 +16,10 @@
       data:
         target:
           -  media_player.richard_s_echo_dot
+        message: 'Washing machine done, ready for the dryer'
         data:
           type: announce
-          method: all
-        message: 'Washing machine done, ready for the dryer'
+        
   mode: restart
 
 - id: '201'
