@@ -12,9 +12,12 @@
           entity_id: sensor.washing_machine_current
           below: '.3'
           for: '00:10'
-    - service: tts.google_translate_say
+    - service: notify.alexa_media
       data:
-        entity_id: media_player.richard_s_echo_dot
+        target:
+          -  media_player.richard_s_echo_dot
+        data:
+          type: announce
         message: 'Washing machine done, ready for the dryer'
   mode: restart
 
