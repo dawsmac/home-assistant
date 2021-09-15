@@ -223,17 +223,24 @@ views:
         title: TV players
         entities:
           - entity: media_player.playroom_tv
-          - entity: media_player.living_room
+          - entity: media_player.samsung_7_series_55
       
       - type: glance
-        title: Music players
+        title: Echo's
         entities:
-          - entity: media_player.lounge
           - entity: media_player.playroom
-          - entity: media_player.kitchen
           - entity: media_player.master_bedroom
           - entity: media_player.thea_bedroom
           - entity: media_player.lila_bedroom
+          - entity: media_player.kitchen_echo
+      
+      - type: glance
+        title: Sonos
+        entities:
+          - entity: media_player.lounge
+          - entity: media_player.kitchen
+          - entity: media_player.garden
+
 
   - title: Chickhen´s
     path: chickhens
