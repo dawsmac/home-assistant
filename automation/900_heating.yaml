@@ -129,7 +129,7 @@
           - climate.downstairs
       data:  
         hvac_mode: heat
-
+  
 - id: '906'  
   alias: Morning heating
   trigger:

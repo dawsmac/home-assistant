@@ -11,3 +11,5 @@ bkg_doors:
     - binary_sensor.kitchen_door
     - binary_sensor.garden_gate
 
+
+
