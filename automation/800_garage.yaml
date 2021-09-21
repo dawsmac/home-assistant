@@ -21,7 +21,7 @@
     - platform: state
       entity_id: group.persons
       to: 'away'
-    - platform:
+    - platform: state
       entity_id: binary_sensor.lights
       to: "on" 
   condition: 
