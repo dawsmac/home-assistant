@@ -8,9 +8,6 @@
       minutes: 5
   condition:
   - condition: state
-    entity_id: input_select.house_mode
-    state:  Evening
-  - condition: state
     entity_id: binary_sensor.lounge_tv_status
     state: 'on'
   action:
