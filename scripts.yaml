@@ -14,7 +14,7 @@ sonos_say:
   - data_template:
       entity_id: '{{ sonos_entity }}'
       message: '{{ message }}'
-    service: tts.google_translate_say
+    service: tts.google_say
   - delay: '{{ delay }}'
   - data_template:
       entity_id: '{{ sonos_entity }}'
