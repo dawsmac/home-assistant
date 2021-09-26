@@ -20,7 +20,6 @@
     - condition: state
       entity_id: media_player.samsung_7_series_55
       state: 'off'
-    - 
   action:
     - service: scene.turn_on
       data: {}
