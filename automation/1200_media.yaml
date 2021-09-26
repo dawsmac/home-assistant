@@ -28,9 +28,6 @@
       - condition: state
         entity_id: media_player.playroom
         state:  'playing'
-      - condition: state
-        entity_id: switch.tv
-        state: 'off'
   action:
   - service: homeassistant.turn_off
     entity_id: switch.tv

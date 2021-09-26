@@ -1,6 +1,5 @@
-
 title: Edenbridge
-views:  
+views:
   - title: main
     path: main
     icon: mdi:information-outline
@@ -12,16 +11,20 @@ views:
           - person.richard
 
       - type: entities
-        title: Sensor´s 
+        title: Sensor´s
         entities:
           - sun.sun
           - sensor.us_pirs
           - sensor.ds_pirs
-          - sensor.out_side_lux
           - input_select.house_mode
-      
+
+      - type: statistics-graph
+        title: Outside Lux
+        entities:
+          - sensor.out_side_lux
+
       - type: entities
-        title: Outside Movement 
+        title: Outside Movement
         entities:
           - binary_sensor.backgarden_movement
           - binary_sensor.coop_movement
@@ -29,13 +32,12 @@ views:
           - binary_sensor.porch_movement
           - binary_sensor.sidedrive_car_movement
           - binary_sensor.sidedrive_person_movement
-      
-      - type: entities
+
+      - type: statistics-graph
         title: Edenbridge Temp´s
         entities:
-          - sensor.outside_temperature
-          - sensor.downstairs_temperature
-          - sensor.upstairs_temperature
+          - sensor.driveway_temperature
+          - sensor.porch_temperature
               
   - title: Heating
     icon: mdi:radiator
