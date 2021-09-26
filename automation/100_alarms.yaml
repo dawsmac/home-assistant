@@ -20,5 +20,4 @@
         message: "Good moring, it time to get up for school"
         data:
           type: announce
-
     - delay: 0:20
