@@ -169,8 +169,6 @@
           - climate.office
       data:
         hvac_mode: heat
-
-
   
 - id: '907'
   alias: Heating On
