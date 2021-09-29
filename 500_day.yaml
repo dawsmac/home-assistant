@@ -1,0 +1,30 @@
+- id: '500'
+  alias: Day mode PIR enabled
+  trigger:
+    - platform: state
+      entity_id: sensor.us_pirs
+      to: 'true'
+      for:
+        minutes: 10
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('sun.sun','rising') == true) }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') > 6 }}"
+  action:
+    - service: climate.set_temperature 
+      target:
+        entity_id: 
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
+      data:
+        temperature: 18
+    - service: climate.set_hvac_mode
+      target:
+        entity_id: 
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
+      data:
+        hvac_mode: heat
