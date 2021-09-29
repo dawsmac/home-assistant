@@ -87,9 +87,3 @@
               {% else %}
               ERROR
               {% endif %}
-  
-  - platform: template
-    sensors:
-      heating_outsidetemp:
-      friendly_name: Forcast for Heating
-      value_template: "{{ state_attr('weather.edenbridge', 'forecast')[2]['templow'] <= 5}}"
