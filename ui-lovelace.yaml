@@ -22,6 +22,12 @@ views:
         title: Outside Lux
         entities:
           - sensor.out_side_lux
+      
+      - type: statistics-graph
+        title: Dishwasher Currnet
+        entities:
+          - sensor.dishwasher_current
+      
 
       - type: entities
         title: Outside Movement
