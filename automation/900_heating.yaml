@@ -92,6 +92,7 @@
         entity_id: 
           - climate.upstairs
           - climate.downstairs
+          - climate.office
       data:
         preset_mode: away
 
@@ -116,19 +117,12 @@
     - service: climate.set_preset_mode 
       target:
         entity_id:
-          - climate.kitchen
           - climate.upstairs
           - climate.downstairs
+          - climate.office
       data:
         preset_mode: none
-    - service: climate.set_hvac_mode
-      target:
-        entity_id:
-          - climate.kitchen
-          - climate.upstairs
-          - climate.downstairs
-      data:  
-        hvac_mode: heat
+
   
 - id: '906'  
   alias: Morning heating
@@ -141,10 +135,6 @@
       after: '05:00'
       before: '09:00'
     - condition: state
-      entity_id:
-        - input_select.house_mode
-      state: 'Night'
-    - condition: state
       entity_id: group.persons
       state: 'home'
   action:
@@ -153,35 +143,41 @@
         entity_id: 
           - climate.upstairs
           - climate.downstairs
+          - climate.office
       data:
         temperature: 20
-    - service: climate.set_temperature 
-      target:
-        entity_id: 
-          - climate.office
-      data:
-        temperature: 17
-    - service: climate.set_hvac_mode
-      target:
-        entity_id: 
-          - climate.upstairs
-          - climate.downstairs
-          - climate.office
-      data:
-        hvac_mode: heat
   
 - id: '907'
-  alias: Heating On
+  alias: forecast for heating
   trigger:
     - platform: template
+      id: "cold"
       value_template: >
         {{ state_attr('weather.edenbridge', 'forecast')[2]['templow'] <= 5}}
+    - platform: template
+      id: "warm"
+      value_template: >
+        {{ state_attr('weather.edenbridge', 'forecast')[2]['templow'] > 5}}
   action:
+    - condition: trigger
+      id: cold
     - service: climate.set_hvac_mode
       target:
         entity_id: 
           - climate.upstairs
           - climate.downstairs
           - climate.office
+          - climate.kitchen
       data:
         hvac_mode: heat
+    - condition: trigger
+      id: warm
+    - service: climate.set_hvac_mode
+      target:
+        entity_id: 
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
+          - climate.kitchen
+      data:
+        hvac_mode: off
