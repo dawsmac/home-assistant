@@ -169,3 +169,21 @@
           - climate.office
       data:
         hvac_mode: heat
+
+
+  
+- id: '907'
+  alias: Heating On
+  trigger:
+    - platform: template
+      value_template: >
+        {{ state_attr('weather.edenbridge', 'forecast')[2]['templow'] <= 5}}
+  action:
+    - service: climate.set_hvac_mode
+      target:
+        entity_id: 
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
+      data:
+        hvac_mode: heat
