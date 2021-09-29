@@ -157,7 +157,7 @@
     - platform: template
       id: "warm"
       value_template: >
-        {{ state_attr('weather.edenbridge', 'forecast')[2]['templow'] > 5}}
+        {{ state_attr('weather.edenbridge', 'forecast')[0]['templow'] > 5}}
   action:
     - condition: trigger
       id: cold
