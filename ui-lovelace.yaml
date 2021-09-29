@@ -247,7 +247,7 @@ views:
   - title: Controls
     path: Controls
     cards:
-      - type: vertical-stack
+      - type: glance
         title: Heating Control´s 
         entities:
           - switch.downstairs_radiators
