@@ -50,13 +50,13 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.dishwasher_current
-      above: '.75'
+      above: '0.75'
   condition: []
   action:
     - wait_for_trigger:
         - platform: numeric_state
           entity_id: sensor.dishwasher_current
-          below: '.3'
+          below: '0.03'
           for: '00:10'
     - service: notify.alexa_media
       data:
@@ -66,22 +66,3 @@
         data:
           type: announce
   mode: restart
-
-- id: '203'
-  alias: Morning Turn on applances
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.morning_alarm
-      to: 'on'
-  condition:
-    - condition: time
-      after: '05:00'
-      before: '09:00'
-    - condition: state
-      entity_id: group.persons
-      state: 'home'
-  action:
-    - service: scene.turn_on
-      data: {}
-      target:
-        entity_id: scene.appliances
