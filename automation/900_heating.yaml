@@ -6,32 +6,30 @@
       value_template: >
         {{ is_state('switch.downstairs_radiators', 'on') or
           is_state('switch.upstairs_radiators', 'on') or
-          is_state('switch.underfloor_heating', 'on') }}
+          is_state('switch.underfloor_heating', 'on') and 
+          is_state('switch.boiler_call', 'off')
+        }}
     - platform: template
       id: nonheating
       value_template: >
         {{ is_state('switch.downstairs_radiators', 'off') and
           is_state('switch.underfloor_heating', 'off') and
           is_state('switch.upstairs_radiators', 'off') and
-          is_state('switch.hotwater', 'off') }}
+          is_state('switch.hotwater', 'off') and 
+          is_state('switch.boiler_call' 'on')
+        }}
   action:
     - condition: trigger
       id: heatingcall
-    - condition: state
-      entity_id: switch.boiler_call
-      state: 'off'
     - service: switch.turn_on
       target:
         entity_id: switch.boiler_call
     - condition: trigger
       id: nonheating
-    - condition: state
-      entity_id: switch.boiler_call
-      state: 'on'
     - service: switch.turn_off
       target:
         entity_id: switch.boiler_call
-
+  
 
 - id: '901'
   alias: Hotwater on
