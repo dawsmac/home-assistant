@@ -21,13 +21,14 @@
   action:
     - condition: trigger
       id: heatingcall
-    - service: switch.turn_on
+    - service: homeassistant.turn_on
       target:
         entity_id: 
           - switch.boiler_call
+          
     - condition: trigger
       id: nonheating
-    - service: switch.turn_off
+    - service: homeassistant.turn_off
       target:
         entity_id: 
           - switch.boiler_call
