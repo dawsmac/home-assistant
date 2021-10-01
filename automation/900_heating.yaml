@@ -36,7 +36,8 @@
               target:
                 entity_id: 
                   - switch.boiler_call
-  
+      default: []
+  mode: single  
 
 - id: '901'
   alias: Hotwater on
