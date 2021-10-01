@@ -191,3 +191,5 @@
                   - climate.kitchen
               data:
                 hvac_mode: off
+      default: []
+  mode: single
