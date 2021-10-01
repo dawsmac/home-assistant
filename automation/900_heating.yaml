@@ -159,25 +159,30 @@
       value_template: >
         {{ state_attr('weather.edenbridge', 'forecast')[0]['templow'] > 5}}
   action:
-    - condition: trigger
-      id: cold
-    - service: climate.set_hvac_mode
-      target:
-        entity_id: 
-          - climate.upstairs
-          - climate.downstairs
-          - climate.office
-          - climate.kitchen
-      data:
-        hvac_mode: heat
-    - condition: trigger
-      id: warm
-    - service: climate.set_hvac_mode
-      target:
-        entity_id: 
-          - climate.upstairs
-          - climate.downstairs
-          - climate.office
-          - climate.kitchen
-      data:
-        hvac_mode: off
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: cold
+          sequence:
+            - service: climate.set_hvac_mode
+              target:
+                entity_id: 
+                  - climate.upstairs
+                  - climate.downstairs
+                  - climate.office
+                  - climate.kitchen
+              data:
+                hvac_mode: heat
+        - conditions:
+            - condition: trigger
+              id: warm
+          sequence:
+            - service: climate.set_hvac_mode
+              target:
+                entity_id: 
+                  - climate.upstairs
+                  - climate.downstairs
+                  - climate.office
+                  - climate.kitchen
+              data:
+                hvac_mode: off
