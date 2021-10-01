@@ -20,11 +20,13 @@ views:
 
       - type: statistics-graph
         title: Outside Lux
+        days_to_show: 7
         entities:
           - sensor.out_side_lux
       
       - type: statistics-graph
         title: Dishwasher Currnet
+        days_to_show: 7
         entities:
           - sensor.dishwasher_current
       
