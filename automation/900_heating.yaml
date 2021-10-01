@@ -23,12 +23,14 @@
       id: heatingcall
     - service: switch.turn_on
       target:
-        entity_id: switch.boiler_call
+        entity_id: 
+          - switch.boiler_call
     - condition: trigger
       id: nonheating
     - service: switch.turn_off
       target:
-        entity_id: switch.boiler_call
+        entity_id: 
+          - switch.boiler_call
   
 
 - id: '901'
