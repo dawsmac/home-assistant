@@ -16,7 +16,7 @@
           is_state('switch.underfloor_heating', 'off') and
           is_state('switch.upstairs_radiators', 'off') and
           is_state('switch.hotwater', 'off') and 
-          is_state('switch.boiler_call' 'on')
+          is_state('switch.boiler_call', 'on')
         }}
   action:
     - condition: trigger
