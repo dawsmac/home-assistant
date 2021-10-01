@@ -70,7 +70,7 @@
   condition: 
     - condition: state
       entity_id: switch.hotwater
-      state:   "off"
+      state:   "on"
     - condition: state
       entity_id: switch.boiler_call
       state: "off"
