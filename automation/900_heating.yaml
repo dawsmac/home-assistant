@@ -14,8 +14,7 @@
         {{ is_state('switch.downstairs_radiators', 'off') and
           is_state('switch.underfloor_heating', 'off') and
           is_state('switch.upstairs_radiators', 'off') and
-          is_state('switch.hotwater', 'off') and 
-          is_state('switch.boiler_call', 'on')
+          is_state('switch.hotwater', 'off')
         }}
     - platform: state
       id: "hotwater"
@@ -54,6 +53,9 @@
         - conditions:
             - condition: trigger
               id: "nonheating"
+            - condition: state
+              entity_id: switch.boiler_call
+              state: "on"
           sequence:
             - service: homeassistant.turn_off
               target:
