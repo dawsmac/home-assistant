@@ -22,7 +22,7 @@
     - choose:
         - conditions:
             - condition: trigger
-              id: heatingcall
+              id: "heatingcall"
           sequence:
             - service: homeassistant.turn_on
               target:
@@ -30,7 +30,7 @@
                   - switch.boiler_call
         - conditions:
             - condition: trigger
-              id: nonheating
+              id: "nonheating"
           sequence:
             - service: homeassistant.turn_off
               target:
