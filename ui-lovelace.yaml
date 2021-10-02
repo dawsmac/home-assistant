@@ -49,6 +49,7 @@ views:
 
       - type: statistics-graph
         title: Edenbridge Inside Temp´s
+        stat_types: mean
         days_to_show: 14
         entities:
           - sensor.lila_room_temperature
