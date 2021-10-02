@@ -20,6 +20,10 @@
       id: "hotwater"
       entity_id: switch.hotwater
       to: 'on'
+    - platfrom: state 
+      id: "awakehw"
+      entity_id: input_select.house_mode
+      to: "Awake"
   action:
     - choose:
         - conditions:
@@ -61,45 +65,35 @@
               target:
                 entity_id: 
                   - switch.boiler_call
+        - conditions:
+            - condition: trigger
+              id: "awakehw"
+            - condition: state
+              entity_id: switch.hotwater
+              state:   "on"
+            - condition: state
+              entity_id: switch.boiler_call
+              state: "off"
+          sequence:
+            - service: homeassistant.turn_off
+              target:
+                entity_id: 
+                  - switch.boiler_call
       default: []
   mode: single  
   
-- id: '903'
-  alias: HA restart hotwater
-  trigger:
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: input_select.house_mode
-      to: "Awake"
-  condition: 
-    - condition: state
-      entity_id: switch.hotwater
-      state:   "on"
-    - condition: state
-      entity_id: switch.boiler_call
-      state: "off"
-  action:
-    - service: switch.turn_on
-      target:
-        entity_id: switch.boiler_call
-
-- id: '904'
+- id: '901'
   alias: Home / Not home Heating
   trigger:
     - platform: state
       id: "homeheating"
       entity_id: group.persons
       to: 'home'
-    - platform: homeassistant
-      id: "homeheating"
-      event: start
     - platform: state
       id: "nothomeheating" 
       entity_id: group.persons
       to: 'not_home'
-      for: "00:05:00"
-    
+      for: "00:05:00"  
   action:
     - choose:
         - conditions:
@@ -120,14 +114,6 @@
         - conditions:             
             - condition: trigger
               id: "homeheating"
-            - condition: or
-              conditions: 
-                - condition: state
-                  entity_id: 'person.richard'
-                  state: 'home' 
-                - condition: state
-                  entity_id: 'person.faye'
-                  state: 'home'
           sequence:
             - service: climate.set_preset_mode
               target:
@@ -139,36 +125,8 @@
               preset_mode: none
       default: []
   mode: single  
-              
-- id: '905'
-  alias: home Turn on Heating
-  trigger:
-    - platform: state
-      entity_id: group.persons
-      to: 'home'
-    - platform: homeassistant
-      event: start
-  condition:
-    - condition: or
-      conditions: 
-        - condition: state
-          entity_id: 'person.richard'
-          state: 'home' 
-        - condition: state
-          entity_id: 'person.faye'
-          state: 'home' 
-  action:
-    - service: climate.set_preset_mode 
-      target:
-        entity_id:
-          - climate.upstairs
-          - climate.downstairs
-          - climate.office
-      data:
-        preset_mode: none
 
-  
-- id: '906'  
+- id: '902'  
   alias: Morning heating
   trigger:
     - platform: state
@@ -191,7 +149,7 @@
       data:
         temperature: 20
   
-- id: '907'
+- id: '903'
   alias: forecast for heating
   trigger:
     - platform: template
