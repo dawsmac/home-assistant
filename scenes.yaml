@@ -6,6 +6,8 @@
       state: 'on'
     light.lounge:
       state: 'off'
+    light.shellyvintage_6edcb8:
+      state: 'on'
 
 - name: appliances
   entities:
@@ -58,8 +60,9 @@
       state: 'off'
     light.bathroom:
       state: 'off'
-  
-  
+    light.shellyvintage_6edcb8:
+      state: 'off'
+
 - name: evening lights
   entities:
     light.bookshelf_light_left:
@@ -76,9 +79,7 @@
       state: 'on'
     light.boiler_lamp:
       state: 'on'
-    switch.lila_s_multi_psu_socket_1:
-      state: 'on'
-    switch.thea_s_multi_psu_socket_1:
+    light.shellyvintage_6edcb8:
       state: 'on'
 
 - name: morning light off
