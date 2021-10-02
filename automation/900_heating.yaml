@@ -99,9 +99,6 @@
         - conditions:
             - condition: trigger
               id: "nothomeheating"
-            - condition: state
-              entity_id: switch.boiler_call
-              state: "off"
           sequence:
             - service: climate.set_preset_mode
               target:
