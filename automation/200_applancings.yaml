@@ -19,7 +19,6 @@
         message: 'Washing machine done, ready for the dryer'
         data:
           type: announce
-        
   mode: restart
 
 - id: '201'

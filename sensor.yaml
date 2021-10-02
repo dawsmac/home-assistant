@@ -28,16 +28,16 @@
               and is_state('binary_sensor.lila_s_pir' , 'off')
               and is_state('binary_sensor.raf_s_pir' , 'off')
               and is_state('binary_sensor.kitchen_pir' , 'off')
-              and is_state('binary_sensor.lounge_pir' , 'off') 
+              and is_state('binary_sensor.lounge_pir' , 'off')
               and is_state ('binary_sensor.playroom_pir' , 'off')
               and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
-  
+
   - platform: min_max
     entity_ids:
       - sensor.porch_temperature
       - sensor.driveway_temperature
     type: mean
-    name: Outside temperature 
+    name: Outside temperature
 
   - platform: min_max
     entity_ids:
@@ -46,7 +46,7 @@
       - sensor.master_room_temperature
       - sensor.thea_room_temperature
     type: mean
-    name: Upstairs temperature 
+    name: Upstairs temperature
 
   - platform: min_max
     entity_ids:
@@ -77,7 +77,7 @@
               {% set time = state_attr('sensor.next_alarm','minutes_left') %}
               {% set hours = ((time | int /  60) | string).split('.')[0] %}
               {% set minutes = time | int % 60 %}
-              {{hours}} timmar och {{minutes}} minuter 
+              {{hours}} timmar och {{minutes}} minuter  
             text_whos_alarm: >-
               {% if states('sensor.rich_phone_next_alarm') == states('sensor.faye_phone_next_alarm') %} Inget alarm
               {% elif ((states('sensor.next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int ==  ((states('sensor.faye_phone_next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int %}

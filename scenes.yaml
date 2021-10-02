@@ -40,7 +40,7 @@
       state: 'off'
     light.kitchen_island_lights:
       state: 'off'
-    switch.lila_s_multi_psu_socket_1: 
+    switch.lila_s_multi_psu_socket_1:
       state: 'off'
     switch.thea_s_multi_psu_socket_1:
       state: 'off'
@@ -69,18 +69,18 @@
     light.faye_s_bedside_lamp:
       state: 'on'
     light.rich_s_bedside_lamp:
-      state: 'on' 
+      state: 'on'
     light.globe_lamp:
       state: 'on'
     light.kitchen_fairy_lights:
-      state: 'on' 
+      state: 'on'
     light.boiler_lamp:
-      state: 'on' 
-    switch.lila_s_multi_psu_socket_1: 
+      state: 'on'
+    switch.lila_s_multi_psu_socket_1:
       state: 'on'
     switch.thea_s_multi_psu_socket_1:
       state: 'on'
-  
+
 - name: morning light off
   entities:
     light.bookshelf_light_left:
@@ -103,7 +103,7 @@
       state: 'off'
     light.kitchen_island_lights:
       state: 'off'
-    switch.lila_s_multi_psu_socket_1: 
+    switch.lila_s_multi_psu_socket_1:
       state: 'off'
     switch.thea_s_multi_psu_socket_1:
       state: 'off'

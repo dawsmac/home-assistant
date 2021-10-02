@@ -10,11 +10,11 @@
       - service: mobile_app_rich_phone
         data:
           message: >
-            The Garden gate has been left open! 
+            The Garden gate has been left open!
           data:
             ttl: 0
             priority: high
             channel: alarm_stream_max
-            actions: 
+            actions:
               - action: "back_gate_alarm"
                 title: "Cancel alarm"

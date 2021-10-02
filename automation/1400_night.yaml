@@ -29,9 +29,9 @@
       data:
         entity_id: input_select.house_mode
         option: "Night"
-  
+
 - id: '1401'
-  alias: Night mode manle 
+  alias: Night mode manle
   trigger:
     - platform: state
       entity_id: input_select.house_mode
@@ -74,9 +74,9 @@
       entity_id: group.persons
       state: 'home'
   action:
-    - service: climate.set_temperature 
+    - service: climate.set_temperature
       target:
-        entity_id: 
+        entity_id:
           - climate.upstairs
           - climate.downstairs
           - climate.Office

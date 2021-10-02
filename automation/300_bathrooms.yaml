@@ -4,15 +4,15 @@
   - platform: state
     entity_id: binary_sensor.bathroom_switch
     to: 'on'
-  condition: 
+  condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: 
+        entity_id:
           - light.bathroom
-        state: 'off'  
+        state: 'off'
       - condition: state
-        entity_id: 
+        entity_id:
           - binary_sensor.lights
         state: 'on'
       - condition: state
@@ -29,12 +29,12 @@
   - platform: state
     entity_id: binary_sensor.bathroom_switch
     to: 'on'
-  condition: 
+  condition:
     condition: and
     conditions:
       - condition: state
         entity_id: light.bathroom_mirror
-        state: 'off'  
+        state: 'off'
       - condition: state
         entity_id: input_select.house_mode
         state: Night
@@ -64,7 +64,7 @@
       - light.bathroom_mirror
 
 - id: '303'
-  alias: Bathroom Extractor needed 
+  alias: Bathroom Extractor needed
   trigger:
     - platform: numeric_state
       entity_id: sensor.bathroom_humidity
@@ -84,7 +84,7 @@
 
 
 - id: '304'
-  alias: Downstairs Bathroom Extractor needed 
+  alias: Downstairs Bathroom Extractor needed
   trigger:
     - platform: numeric_state
       entity_id: sensor.downstairs_toilet_humidity

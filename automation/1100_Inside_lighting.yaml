@@ -263,7 +263,7 @@
       to: 'off'
       for:
         minutes: 5
-  condition:  
+  condition:
     - condition: or
       conditions:
       - condition: state
@@ -277,7 +277,7 @@
         state: 'on'
   action:
     - service: homeassistant.turn_off
-      entity_id: 
+      entity_id:
         - light.kitchen_dining_lights
         - light.kitchen_island_lights
         - light.kitchen_side_lights

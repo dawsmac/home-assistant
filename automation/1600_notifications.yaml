@@ -1,6 +1,6 @@
 - id: Disable Gate left open
   alias: Disable Gate left open
-  trigger: 
+  trigger:
     - platform: event
       event_type: mobile_app_notification_action
       event_data:

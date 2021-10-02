@@ -1,5 +1,5 @@
 ###################################################
-## Open and Closing garage door ## 
+## Open and Closing garage door ##
 ###################################################
 - id: '800'
   alias: Garage door unlock
@@ -7,7 +7,7 @@
     - platform: state
       entity_id: binary_sensor.kitchen_door
       to: 'on'
-  condition: 
+  condition:
     - condition: state
       entity_id: group.persons
       state: 'home'
@@ -23,8 +23,8 @@
       to: 'away'
     - platform: state
       entity_id: binary_sensor.lights
-      to: "on" 
-  condition: 
+      to: "on"
+  condition:
     - condition: state
       entity_id: binary_sensor.garage_door
       state: 'off'

@@ -23,13 +23,13 @@ views:
         days_to_show: 7
         entities:
           - sensor.out_side_lux
-      
+
       - type: statistics-graph
         title: Dishwasher Currnet
         days_to_show: 7
         entities:
           - sensor.dishwasher_current
-      
+
 
       - type: entities
         title: Outside Movement
@@ -49,7 +49,7 @@ views:
           - sensor.driveway_temperature
           - sensor.porch_temperature
 
-              
+
   - title: Heating
     icon: mdi:radiator
     path: heating
@@ -78,7 +78,7 @@ views:
         sensors:
           - entity: sensor.office_humidity
             name: Humidity
-          
+
 
 
   - title: Rooms
@@ -87,7 +87,7 @@ views:
 
     cards:
       - type: glance
-        title: Master bedroom 
+        title: Master bedroom
         entities:
           - entity: light.master_bedroom_light
           - entity: light.faye_s_bedside_lamp
@@ -97,7 +97,7 @@ views:
           - entity: sensor.master_room_temperature
 
       - type: glance
-        title: Lila´s bedroom 
+        title: Lila´s bedroom
         entities:
           - entity: light.lila_s_bedroom_light
           - entity: binary_sensor.lila_s_pir
@@ -106,9 +106,9 @@ views:
           - entity: switch.lila_s_multi_psu_socket_2
           - entity: switch.lila_s_multi_psu_socket_3
           - entity: switch.lila_s_multi_psu_usb
-          
+
       - type: glance
-        title: Thea´s bedroom 
+        title: Thea´s bedroom
         entities:
           - entity: light.thea_s_bedroom_light
           - entity: binary_sensor.thea_s_bedroom_pir
@@ -117,26 +117,26 @@ views:
           - entity: switch.thea_s_multi_psu_socket_2
           - entity: switch.thea_s_multi_psu_socket_3
           - entity: switch.thea_s_multi_psu_usb
-          
+
       - type: glance
-        title: Playroom 
+        title: Playroom
         entities:
           - entity: light.playroom_s_light
           - entity: binary_sensor.playroom_pir
           - entity: light.globe_lamp
           - entity: switch.tv
           - entity: sensor.playroom_temperature
-          
+
       - type: glance
-        title: Lounge 
+        title: Lounge
         entities:
           - entity: light.lounge_bookshelf_lights
           - entity: light.lounge_lights
           - entity: binary_sensor.lounge_pir
           - entity: sensor.lounge_temperature
-          
+
       - type: glance
-        title: Kitchen 
+        title: Kitchen
         entities:
           - entity: light.kitchen_dining_lights
           - entity: light.kitchen_side_lights
@@ -167,7 +167,7 @@ views:
           - entity: switch.garage_door_lock
           - entity: light.garage_lights
           - entity: sensor.driveway_temperature
-      
+
       - type: glance
         title: Office
         entities:
@@ -175,13 +175,13 @@ views:
           - entity: sensor.office_humidity
           - entity: sensor.office_atc_battery_level
           - entity: switch.office_heater
-                    
+
       - type: glance
         title: Back garden
         entities:
-          - entity: binary_sensor.garden_gate 
+          - entity: binary_sensor.garden_gate
           - entity: light.garden_lights
-          
+
       - type: glance
         title: Front garden
         entities:
@@ -199,9 +199,9 @@ views:
           - entity: switch.bathroom_extractor_fan
           - entity: sensor.bathroom_humidity
           - entity: sensor.bathroom_temperature
-      
+
       - type: glance
-        title: Downstairs toilet 
+        title: Downstairs toilet
         entities:
           - entity: switch.downstairs_toilet_extractor_fan
           - entity: sensor.downstairs_toilet_humidity
@@ -226,7 +226,7 @@ views:
         entities:
           - entity: media_player.playroom_tv
           - entity: media_player.samsung_7_series_55
-      
+
       - type: glance
         title: Echo's
         entities:
@@ -235,7 +235,7 @@ views:
           - entity: media_player.thea_bedroom
           - entity: media_player.lila_bedroom
           - entity: media_player.kitchen_echo
-      
+
       - type: glance
         title: Sonos
         entities:
@@ -259,7 +259,7 @@ views:
     path: Controls
     cards:
       - type: glance
-        title: Heating Control´s 
+        title: Heating Control´s
         entities:
           - switch.downstairs_radiators
           - switch.upstairs_radiators

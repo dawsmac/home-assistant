@@ -4,7 +4,7 @@
   - platform: state
     entity_id: binary_sensor.kitchen_pir
     to: 'off'
-    for: 
+    for:
       minutes: 5
   condition:
   - condition: state

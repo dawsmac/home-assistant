@@ -1,4 +1,4 @@
-- id: '1300'  
+- id: '1300'
   alias: House set to morning mode
   trigger:
     - platform: state
@@ -43,7 +43,7 @@
     - service: input_select.select_option
       data:
         entity_id: input_select.house_mode
-        option: 'Awake' 
+        option: 'Awake'
 
 
 

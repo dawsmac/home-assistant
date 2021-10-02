@@ -145,7 +145,7 @@
           - climate.office
       data:
         temperature: 20
-  
+        
 - id: '903'
   alias: forecast for heating
   trigger:

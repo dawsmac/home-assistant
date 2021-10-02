@@ -12,7 +12,7 @@
       entity_id: media_player.kitchen
       state: 'playing'
   # calls the sonos_say script to announce that someone is at the door
-  action:   
+  action:
     - service: script.sonos_say
       data:
         sonos_entity: media_player.kitchen
@@ -34,7 +34,7 @@
       entity_id: media_player.kitchen
       state: 'playing'
   # calls the sonos_say script to announce that someone is at the door
-  action:   
+  action:
     - service: script.sonos_say
       data:
         sonos_entity: media_player.kitchen

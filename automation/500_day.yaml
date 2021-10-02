@@ -12,9 +12,9 @@
     - condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') > 6 }}"
   action:
-    - service: climate.set_temperature 
+    - service: climate.set_temperature
       target:
-        entity_id: 
+        entity_id:
           - climate.upstairs
           - climate.downstairs
           - climate.office
@@ -22,7 +22,7 @@
         temperature: 18
     - service: climate.set_hvac_mode
       target:
-        entity_id: 
+        entity_id:
           - climate.upstairs
           - climate.downstairs
           - climate.office

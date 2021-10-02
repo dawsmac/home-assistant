@@ -19,7 +19,7 @@
   state_topic: "BlueIris/Sidedrive_car"
   payload_on: "on"
   off_delay: 30
-  
+
 - platform: mqtt
   name: "Sidedrive Person Movement"
   device_class: motion
