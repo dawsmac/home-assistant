@@ -88,11 +88,11 @@
     - platform: state
       id: "homeheating"
       entity_id: group.persons
-      to: 'home'
+      to: "home"
     - platform: state
       id: "nothomeheating" 
       entity_id: group.persons
-      to: 'not_home'
+      to: "not_home"
       for: "00:05:00"  
   action:
     - choose:
