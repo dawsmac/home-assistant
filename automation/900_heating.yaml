@@ -83,7 +83,7 @@
   mode: single  
   
 - id: '901'
-  alias: Home / Not home Heating
+  alias: Home or Not home Heating
   trigger:
     - platform: state
       id: "homeheating"
