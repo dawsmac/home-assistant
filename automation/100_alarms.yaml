@@ -14,7 +14,7 @@
   action:
     - service: notify.alexa_media
       data:
-        target: 
+        target:
           - media_player.thea_bedroom
           - media_player.lila_bedroom
         message: "Good moring, it time to get up for school"
