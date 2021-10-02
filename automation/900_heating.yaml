@@ -110,10 +110,9 @@
                 - climate.downstairs
                 - climate.office
               data:
-              preset_mode: away
-        - condition:             
-            - condition: trigger
-              id: "homeheating"
+              preset_mode: away             
+        - condition: trigger
+          id: "homeheating"
           sequence:
             - service: climate.set_preset_mode
               target:
