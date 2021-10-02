@@ -93,7 +93,6 @@
       id: "nothomeheating" 
       entity_id: group.persons
       to: "not_home"
-      for: "00:05:00"  
   action:
     - choose:
         - conditions:
@@ -110,9 +109,10 @@
                 - climate.downstairs
                 - climate.office
               data:
-              preset_mode: away             
-        - condition: trigger
-          id: "homeheating"
+              preset_mode: away
+        - conditions:             
+            - condition: trigger
+              id: "homeheating"
           sequence:
             - service: climate.set_preset_mode
               target:
