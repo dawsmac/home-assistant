@@ -107,7 +107,7 @@
                 - climate.downstairs
                 - climate.office
               data:
-              preset_mode: away
+                preset_mode: away
         - conditions:
             - condition: trigger
               id: "homeheating"
@@ -119,7 +119,7 @@
                 - climate.downstairs
                 - climate.office
               data:
-              preset_mode: none
+                preset_mode: none
       default: []
   mode: single
 
@@ -145,7 +145,7 @@
           - climate.office
       data:
         temperature: 20
-        
+
 - id: '903'
   alias: forecast for heating
   trigger:
