@@ -20,7 +20,7 @@
       id: "hotwater"
       entity_id: switch.hotwater
       to: 'on'
-    - platform: state 
+    - platform: state
       id: "awakehw"
       entity_id: input_select.house_mode
       to: "Awake"
@@ -35,7 +35,7 @@
           sequence:
             - service: homeassistant.turn_on
               target:
-                entity_id: 
+                entity_id:
                   - switch.boiler_call
         - conditions:
             - condition: trigger
@@ -52,7 +52,7 @@
           sequence:
             - service: homeassistant.turn_on
               target:
-                entity_id: 
+                entity_id:
                   - switch.boiler_call
         - conditions:
             - condition: trigger
@@ -63,7 +63,7 @@
           sequence:
             - service: homeassistant.turn_off
               target:
-                entity_id: 
+                entity_id:
                   - switch.boiler_call
         - conditions:
             - condition: trigger
@@ -77,10 +77,10 @@
           sequence:
             - service: homeassistant.turn_on
               target:
-                entity_id: 
+                entity_id:
                   - switch.boiler_call
       default: []
-  mode: single  
+  mode: single
 
 - id: '901'
   alias: Home or Not home Heating
@@ -90,10 +90,10 @@
       entity_id: group.persons
       to: "home"
     - platform: state
-      id: "nothomeheating" 
+      id: "nothomeheating"
       entity_id: group.persons
       to: "not_home"
-      for: "00:05:00"  
+      for: "00:05:00"
   action:
     - choose:
         - conditions:
@@ -102,7 +102,7 @@
           sequence:
             - service: climate.set_preset_mode
               target:
-              entity_id: 
+              entity_id:
                 - climate.upstairs
                 - climate.downstairs
                 - climate.office
@@ -114,16 +114,16 @@
           sequence:
             - service: climate.set_preset_mode
               target:
-              entity_id: 
+              entity_id:
                 - climate.upstairs
                 - climate.downstairs
                 - climate.office
               data:
               preset_mode: none
       default: []
-  mode: single    
+  mode: single
 
-- id: '902'  
+- id: '902'
   alias: Morning heating
   trigger:
     - platform: state
@@ -137,9 +137,9 @@
       entity_id: group.persons
       state: 'home'
   action:
-    - service: climate.set_temperature 
+    - service: climate.set_temperature
       target:
-        entity_id: 
+        entity_id:
           - climate.upstairs
           - climate.downstairs
           - climate.office
@@ -165,7 +165,7 @@
           sequence:
             - service: climate.set_hvac_mode
               target:
-                entity_id: 
+                entity_id:
                   - climate.upstairs
                   - climate.downstairs
                   - climate.office
@@ -178,7 +178,7 @@
           sequence:
             - service: climate.set_hvac_mode
               target:
-                entity_id: 
+                entity_id:
                   - climate.upstairs
                   - climate.downstairs
                   - climate.office
