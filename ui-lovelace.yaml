@@ -42,10 +42,27 @@ views:
           - binary_sensor.sidedrive_person_movement
 
       - type: statistics-graph
-        title: Edenbridge Temp´s
+        title: Edenbridge Outside Temp´s
+        days_to_show: 14
         entities:
-          - sensor.driveway_temperature
-          - sensor.porch_temperature
+          - sensor.outside_temperature 
+
+      - type: statistics-graph
+        title: Edenbridge Inside Temp´s
+        days_to_show: 14
+        entities:
+          - sensor.lila_room_temperature
+          - sensor.thea_room_temperature
+          - sensor.playroom_temperature
+          - sensor.lounge_temperature
+          - sensor.kitchen_temperature
+          - sensor.office_temperature
+          - sensor.bathroom_temperature
+          - sensor.downstairs_toilet_temperature
+          - sensor.master_room_temperature
+          - sensor.hallway_temperature
+          - sensor.landing_temperature
+
               
   - title: Heating
     icon: mdi:radiator
