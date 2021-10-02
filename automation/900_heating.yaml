@@ -101,25 +101,25 @@
               id: "nothomeheating"
           sequence:
             - service: climate.set_preset_mode
-              target:
-              entity_id:
-                - climate.upstairs
-                - climate.downstairs
-                - climate.office
               data:
-                preset_mode: away
+                preset_mode: none
+              target:
+                entity_id:
+                  - climate.upstairs
+                  - climate.downstairs
+                  - climate.office
         - conditions:
             - condition: trigger
               id: "homeheating"
           sequence:
             - service: climate.set_preset_mode
-              target:
-              entity_id:
-                - climate.upstairs
-                - climate.downstairs
-                - climate.office
               data:
-                preset_mode: none
+                preset_mode: away
+              target:
+                entity_id:
+                  - climate.upstairs
+                  - climate.downstairs
+                  - climate.office
       default: []
   mode: single
 
