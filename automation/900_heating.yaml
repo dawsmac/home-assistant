@@ -20,7 +20,7 @@
       id: "hotwater"
       entity_id: switch.hotwater
       to: 'on'
-    - platfrom: state 
+    - platform: state 
       id: "awakehw"
       entity_id: input_select.house_mode
       to: "Awake"
