@@ -85,22 +85,61 @@
         entity_id: switch.boiler_call
 
 - id: '904'
-  alias: No ones home turn off Heating
+  alias: Home / Not home Heating
   trigger:
     - platform: state
+      id: "homeheating"
+      entity_id: group.persons
+      to: 'home'
+    - platform: homeassistant
+      id: "homeheating"
+      event: start
+    - platform: state
+      id: "nothomeheating" 
       entity_id: group.persons
       to: 'not_home'
       for: "00:05:00"
+    
   action:
-    - service: climate.set_preset_mode
-      target:
-        entity_id: 
-          - climate.upstairs
-          - climate.downstairs
-          - climate.office
-      data:
-        preset_mode: away
-
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "nothomeheating"
+            - condition: state
+              entity_id: switch.boiler_call
+              state: "off"
+          sequence:
+            - service: climate.set_preset_mode
+              target:
+              entity_id: 
+                - climate.upstairs
+                - climate.downstairs
+                - climate.office
+              data:
+              preset_mode: away
+        - conditions:             
+            - condition: trigger
+              id: "homeheating"
+            - condition: or
+              conditions: 
+                - condition: state
+                  entity_id: 'person.richard'
+                  state: 'home' 
+                - condition: state
+                  entity_id: 'person.faye'
+                  state: 'home'
+          sequence:
+            - service: climate.set_preset_mode
+              target:
+              entity_id: 
+                - climate.upstairs
+                - climate.downstairs
+                - climate.office
+              data:
+              preset_mode: none
+      default: []
+  mode: single  
+              
 - id: '905'
   alias: home Turn on Heating
   trigger:
