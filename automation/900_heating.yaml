@@ -108,7 +108,7 @@
                 - climate.office
               data:
               preset_mode: away
-        - conditions:             
+        - conditions:
             - condition: trigger
               id: "homeheating"
           sequence:
