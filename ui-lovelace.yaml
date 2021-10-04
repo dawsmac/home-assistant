@@ -90,8 +90,8 @@ views:
         title: Master bedroom
         entities:
           - entity: light.master_bedroom_light
-          - entity: light.faye_s_bedside_lamp
-          - entity: light.rich_s_bedside_lamp
+          - entity: switch.faye_s_bedside_lamp
+          - entity: switch.rich_s_bedside_lamp
           - entity: light.master_bedroom_bedside_lamps
           - entity: binary_sensor.raf_s_pir
           - entity: sensor.master_room_temperature
