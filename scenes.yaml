@@ -28,7 +28,7 @@
       state: 'off'
     light.globe_lamp:
       state: 'off'
-    light.kitchen_dining_lights:
+    light.kitchen_dining:
       state: 'off'
     light.kitchen_fairy_lights:
       state: 'off'
@@ -40,7 +40,7 @@
       state: 'off'
     light.boiler_lamp:
       state: 'off'
-    light.kitchen_island_lights:
+    light.kitchen_island:
       state: 'off'
     switch.lila_s_multi_psu_socket_1:
       state: 'off'
@@ -69,9 +69,9 @@
       state: 'on'
     light.bookshelf_light_right:
       state: 'on'
-    light.faye_s_bedside_lamp:
+    switch.faye_s_bedside_lamp:
       state: 'on'
-    light.rich_s_bedside_lamp:
+    switch.rich_s_bedside_lamp:
       state: 'on'
     light.globe_lamp:
       state: 'on'
@@ -90,11 +90,11 @@
       state: 'off'
     light.globe_lamp:
       state: 'off'
-    light.kitchen_dining_lights:
+    light.kitchen_dining:
       state: 'off'
     light.kitchen_fairy_lights:
       state: 'off'
-    light.kitchen_side_lights:
+    light.kitchen_side:
       state: 'off'
     light.landing_lights:
       state: 'off'
