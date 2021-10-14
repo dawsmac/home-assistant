@@ -46,7 +46,27 @@
         option: 'Awake'
 
 
-
-
-
-
+- id: '1303'
+  alias: Morning Kitchen
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_pir
+      from: "off"
+      to: "on"
+  condition:
+    - condition: template
+      value_template: "{{ state_attr('sun.sun','rising') == true }}"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: input_select.house_mode
+          state: "Night"
+- wait_for_trigger:
+    - platform: state
+      entity_id: binary_sensor.kitchen_pir
+      from: "off"
+      to: "on"
+      action:
+  timeout:
+    minutes: "{{ timeout_minutes }}"
+  continue_on_timeout: false
