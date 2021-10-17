@@ -116,4 +116,3 @@
       state: 'off'
     light.bathroom:
       state: 'off'
-

@@ -50,23 +50,26 @@
   alias: Morning Kitchen
   trigger:
     - platform: state
-      entity_id: binary_sensor.hallway_pir
-      from: "off"
-      to: "on"
+      entity_id: input_select.house_mode
+      from: "Night"
+      to: "Day"
   condition:
     - condition: template
       value_template: "{{ state_attr('sun.sun','rising') == true }}"
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: input_select.house_mode
-          state: "Night"
-- wait_for_trigger:
-    - platform: state
-      entity_id: binary_sensor.kitchen_pir
-      from: "off"
-      to: "on"
-      action:
-  timeout:
-    minutes: "{{ timeout_minutes }}"
-  continue_on_timeout: false
+  action:
+    - wait_for_trigger:
+        - platform: state
+          entity_id: binary_sensor.kitchen_pir
+          from: "off"
+          to: "on"
+          action:
+      timeout:
+        minutes: "00:05:00"
+      continue_on_timeout: false
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.kitchen
+      data:
+        media_content_type: "playlist"
+        media_content_id: "x-rincon-mp3radio://https://radio.virginradio.co.uk/stream?DIST=TuneIn&TGT=TuneIn&maxServers=2&partnertok=eyJhbGciOiJIUzI1NiIsImtpZCI6InR1bmVpbiIsInR5cCI6IkpXVCJ9.eyJ0cnVzdGVkX3BhcnRuZXIiOnRydWUsImlhdCI6MTYzNDQ1NzE2NSwiaXNzIjoidGlzcnYifQ.itqk3ofOm8_NsySjWahGe4lWpUnmxPFegf3VdiUSlIA"
+        volume_level: 0.22
