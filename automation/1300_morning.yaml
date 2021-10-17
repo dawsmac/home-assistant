@@ -59,7 +59,7 @@
   action:
     - wait_for_trigger:
         - platform: state
-          entity_id: binary_sensor.kitchen_pir
+          entity_id: binary_sensor.hallway_pir
           from: "off"
           to: "on"
           action:
