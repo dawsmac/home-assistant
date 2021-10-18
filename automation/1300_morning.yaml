@@ -63,7 +63,7 @@
           from: "off"
           to: "on"
       timeout:
-        minutes: "00:05:00"
+        minutes: "00:15:00"
       continue_on_timeout: false
     - service: media_player.play_media
       target:
