@@ -62,7 +62,6 @@
           entity_id: binary_sensor.hallway_pir
           from: "off"
           to: "on"
-          action:
       timeout:
         minutes: "00:05:00"
       continue_on_timeout: false
