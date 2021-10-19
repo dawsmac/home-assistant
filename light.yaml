@@ -7,9 +7,9 @@
 - platform: group
   name: kgl
   entities:
-    - light.kitchen_island_lights
-    - light.kitchen_side_lights
-    - light.kitchen_dining_lights
+    - light.kitchen_island
+    - light.kitchen_side
+    - light.kitchen_dining
 
 - platform: group
   name: Lounge bookshelf lights

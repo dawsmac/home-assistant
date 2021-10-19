@@ -11,7 +11,7 @@
 
 - name: appliances
   entities:
-    switch.dishwasher_switch:
+    switch.dishwasher:
       state: 'on'
     switch.washing_machine:
       state: 'on'
@@ -46,7 +46,7 @@
       state: 'off'
     switch.thea_s_multi_psu_socket_1:
       state: 'off'
-    switch.dishwasher_switch:
+    switch.dishwasher:
       state: 'off'
     switch.washing_machine:
       state: 'off'
