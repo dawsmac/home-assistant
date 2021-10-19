@@ -8,7 +8,7 @@
   name: kgl
   entities:
     - light.kitchen_island
-    - light.kitchen_side
+    - light.kitchen_side_lights
     - light.kitchen_dining
 
 - platform: group
