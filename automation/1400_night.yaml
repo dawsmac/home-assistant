@@ -20,7 +20,7 @@
     - condition: state
       entity_id: media_player.samsung_7_series_55
       state: 'off'
-    - conditiom: state
+    - condition: state
       entity_id: switch.tv
       state: 'off'
   action:
