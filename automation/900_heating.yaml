@@ -32,6 +32,9 @@
             - condition: state
               entity_id: switch.boiler_call
               state: "off"
+            - condition: state
+              entity_id: group.persons
+              state: "home"
           sequence:
             - service: homeassistant.turn_on
               target:
