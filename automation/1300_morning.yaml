@@ -5,10 +5,9 @@
       id: 'morningalarm'
       entity_id: binary_sensor.morning_alarm
       to: 'on'
-    - platform: state
+    - platform: template
       id: 'morningaway'
-      entity_id: sun.sun
-      to: 'above_horizon'
+      value_template: "{{ ('sun.sun','above_horizon') == true }}"
   action:
     - choose:
         - conditions:
