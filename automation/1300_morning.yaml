@@ -8,6 +8,7 @@
     - platform: template
       id: 'morningaway'
       value_template: "{{ is_state('sun.sun','above_horizon') }}"
+      to: "True"
   action:
     - choose:
         - conditions:
