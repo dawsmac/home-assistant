@@ -1,22 +1,46 @@
 - id: '1300'
-  alias: House set to morning mode
+  alias: morning mode
   trigger:
     - platform: state
+      id: 'morningalarm'
       entity_id: binary_sensor.morning_alarm
       to: 'on'
-  condition:
-    - condition: time
-      after: '05:00'
-      before: '09:00'
-    - condition: state
-      entity_id: input_select.house_mode
-      state: 'Night'
+    - platform: state
+      id: 'morningaway'
+      entity_id:  'above_horizon'
   action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.house_mode
-        option: 'Awake'
-
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: 'morningalarm'
+            - condition: time
+              after: '05:00'
+              before: '09:00'
+            - condition: state
+              entity_id: input_select.house_mode
+              state: 'Night'
+            - condition: state
+              entity_id: group.persons
+              state: 'home'
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.house_mode
+                option: 'Awake'
+        - conditions:
+            - condition: trigger
+              id: 'morningaway'
+            - condition: state
+              entity_id: group.persons
+              state: 'not_home'
+            - condition: state
+              entity_id: input_select.house_mode
+              state: 'Night'
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.house_mode
+                option: 'Awake'
 
 
 - id: '1301'
@@ -39,10 +63,7 @@
       data: {}
       target:
         entity_id: scene.morning_light_off
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.house_mode
-        option: 'Awake'
+
 
 
 - id: '1303'
@@ -51,7 +72,7 @@
     - platform: state
       entity_id: input_select.house_mode
       from: "Night"
-      to: "Day"
+      to: "Awake"
   condition:
     - condition: template
       value_template: "{{ state_attr('sun.sun','rising') == true }}"

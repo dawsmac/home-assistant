@@ -150,6 +150,26 @@
         temperature: 20
 
 - id: '903'
+  alias: Night mode heating
+  trigger:
+    - platform: state
+      entity_id: input_select.house_mode
+      to: 'Night'
+  condition:
+    - condition: state
+      entity_id: group.persons
+      state: 'home'
+  action:
+    - service: climate.set_temperature
+      target:
+        entity_id:
+          - climate.upstairs
+          - climate.downstairs
+          - climate.Office
+      data:
+        temperature: 18
+
+- id: '904'
   alias: forecast for heating
   trigger:
     - platform: template

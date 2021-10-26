@@ -1,51 +1,71 @@
 - id: '1400'
-  alias: Night mode PIR enabled
+  alias: Night mode enabled
   trigger:
     - platform: state
-      entity_id: sensor.us_pirs
+      id: 'nightpirs'
+      entity_id:
+        - binary_sensor.thea_s_bedroom_pir
+        - binary_sensor.lila_s_pir
+        - binary_sensor.raf_s_pir
       to: 'True'
       for:
-        minutes: 20
-  condition:
-    - condition: state
-      entity_id: sensor.ds_pirs
-      state: 'True'
-      for:
-        minutes: 15
-    - condition: template
-      value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
-    - condition: state
+        minutes: 10
+    - platform: state
+      id: 'awaynightmode'
       entity_id: binary_sensor.lights
-      state: 'on'
-    - condition: state
-      entity_id: media_player.samsung_7_series_55
-      state: 'off'
-    - condition: state
-      entity_id: switch.tv
-      state: 'off'
+      from: 'off'
+      to: 'on'
+      for:
+        hours: 5
+    - platform:
   action:
-    - service: scene.turn_on
-      data: {}
-      target:
-        entity_id: scene.nightmode
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.house_mode
-        option: "Night"
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: 'nightpirs'
+            - condition: state
+              entity_id: sensor.ds_pirs
+              state: 'True'
+              for:
+                minutes: 5
+            - condition: template
+              value_template: '{{ (state_attr('sun.sun','rising') == false) }}'
+            - condition: state
+              entity_id: binary_sensor.lights
+              state: 'on'
+            - condition: state
+              entity_id: media_player.samsung_7_series_55
+              state: 'off'
+            - condition: state
+              entity_id: switch.tv
+              state: 'off'
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.house_mode
+                option: Night
+            - service: scene.turn_on
+              data: {}
+              target:
+                entity_id: scene.nightmode
+        - conditions:
+            - condition: trigger
+              id: 'awaynightmode'
+            - condition: state
+              entity_id: group.persons
+              state: 'not_home'
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.house_mode
+                option: Night
+            - service: scene.turn_on
+              data: {}
+              target:
+                entity_id: scene.nightmode
+
 
 - id: '1401'
-  alias: Night mode manle
-  trigger:
-    - platform: state
-      entity_id: input_select.house_mode
-      to: 'Night'
-  action:
-    - service: scene.turn_on
-      data: {}
-      target:
-        entity_id: scene.nightmode
-
-- id: '1402'
   alias: Out hours movment
   trigger:
     - platform: state
@@ -65,23 +85,3 @@
       data:
         message: >
           Night mode enabled: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
-
-- id: '1403'
-  alias: Night mode heating
-  trigger:
-    - platform: state
-      entity_id: input_select.house_mode
-      to: 'Night'
-  condition:
-    - condition: state
-      entity_id: group.persons
-      state: 'home'
-  action:
-    - service: climate.set_temperature
-      target:
-        entity_id:
-          - climate.upstairs
-          - climate.downstairs
-          - climate.Office
-      data:
-        temperature: 18
