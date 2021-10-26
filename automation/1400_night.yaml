@@ -13,11 +13,9 @@
     - platform: state
       id: 'awaynightmode'
       entity_id: binary_sensor.lights
-      from: 'off'
       to: 'on'
       for:
         hours: 5
-    - platform:
   action:
     - choose:
       - conditions:
