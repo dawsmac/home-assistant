@@ -1,5 +1,5 @@
 ###############################################################
-## Hallway light switch on by PIR 
+## Hallway light switch on by PIR
 ################################################################
 
 - id: '1100'
@@ -10,24 +10,24 @@
         - binary_sensor.hallway_pir
       from: "off"
       to: "on"
-  condition:  
+  condition:
     - condition: state
       entity_id: binary_sensor.lights
       state: "on"
   action:
       - service: light.turn_on
-        entity_id: 
+        entity_id:
           - light.hallway_lights
       - wait_for_trigger:
           platform: state
-          entity_id: 
+          entity_id:
             - binary_sensor.hallway_pir
           from: "on"
           to: "off"
       - delay: 00:00:30
       - service: light.turn_off
         entity_id:
-          - light.hallway_lights 
+          - light.hallway_lights
   mode: restart
   max_exceeded: silent
 
@@ -45,7 +45,7 @@
   action:
       - wait_for_trigger:
           platform: state
-          entity_id: 
+          entity_id:
             - binary_sensor.hallway_pir
           from: "on"
           to: "off"
@@ -55,7 +55,7 @@
         state: 'on'
       - service: light.turn_off
         entity_id:
-          - light.hallway_lights 
+          - light.hallway_lights
   mode: restart
   max_exceeded: silent
 
@@ -73,7 +73,7 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: 
+      entity_id:
         - light.globe_lamp
         - input_boolean.guest_room
       state: 'off'
@@ -95,7 +95,7 @@
       for:
         minutes: 5
   condition:
-    - condition: state      
+    - condition: state
       entity_id: input_boolean.guest_room
       state: 'off'
   action:
@@ -116,17 +116,17 @@
         - binary_sensor.landing_pir
       from: "off"
       to: "on"
-  condition:  
+  condition:
     - condition: state
       entity_id: binary_sensor.lights
       state: "on"
   action:
     - service: light.turn_on
-      entity_id: 
+      entity_id:
         - light.landing_lights
     - wait_for_trigger:
         platform: state
-        entity_id: 
+        entity_id:
           - binary_sensor.landing_pir
         from: "on"
         to: "off"
@@ -146,7 +146,7 @@
   action:
       - wait_for_trigger:
           platform: state
-          entity_id: 
+          entity_id:
             - binary_sensor.landing_pir
           from: "on"
           to: "off"
@@ -156,13 +156,13 @@
         state: 'on'
       - service: light.turn_off
         entity_id:
-          - light.landing_lights 
+          - light.landing_lights
   mode: restart
   max_exceeded: silent
 
 ###############################################################
 ## Lila´s Room
-###############################################################  
+###############################################################
 
 - id: '1106'
   alias: Motion Sensor Lila Off
@@ -185,7 +185,7 @@
 ## Thea´s Room
 ###############################################################
 
-- id: '1107'   
+- id: '1107'
   alias: Motion Sensor Thea Off
   trigger:
     - platform: state
@@ -223,7 +223,7 @@
       state: 'on'
   action:
     - service: homeassistant.turn_off
-      entity_id: 
+      entity_id:
         - light.master_bedroom_light
 
 
@@ -247,7 +247,7 @@
       state: 'on'
   action:
     - service: homeassistant.turn_off
-      entity_id: 
+      entity_id:
         - light.lounge_lights
 
 

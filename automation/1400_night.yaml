@@ -18,49 +18,49 @@
         hours: 5
   action:
     - choose:
-      - conditions:
-          - condition: trigger
-            id: 'nightpirs'
-          - condition: state
-            entity_id: sensor.ds_pirs
-            state: 'true'
-            for:
-              minutes: 5
-          - condition: state
-            entity_id: binary_sensor.lights
-            state: 'on'
-          - condition: state
-            entity_id: media_player.samsung_7_series_55
-            state: 'off'
-          - condition: state
-            entity_id: switch.tv
-            state: 'off'
-          - condition: template
-            value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
-        sequence:
-          - service: input_select.select_option
-            data:
-              entity_id: input_select.house_mode
-              option: Night
-          - service: scene.turn_on
-            data: {}
-            target:
-              entity_id: scene.nightmode
-      - conditions:
-          - condition: trigger
-            id: 'awaynightmode'
-          - condition: state
-            entity_id: group.persons
-            state: 'not_home'
-        sequence:
-          - service: input_select.select_option
-            data:
-              entity_id: input_select.house_mode
-              option: Night
-          - service: scene.turn_on
-            data: {}
-            target:
-              entity_id: scene.nightmode
+        - conditions:
+            - condition: trigger
+              id: 'nightpirs'
+            - condition: state
+              entity_id: sensor.ds_pirs
+              state: 'true'
+              for:
+                minutes: 5
+            - condition: state
+              entity_id: binary_sensor.lights
+              state: 'on'
+            - condition: state
+              entity_id: media_player.samsung_7_series_55
+              state: 'off'
+            - condition: state
+              entity_id: switch.tv
+              state: 'off'
+            - condition: template
+              value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.house_mode
+                option: Night
+            - service: scene.turn_on
+              data: {}
+              target:
+                entity_id: scene.nightmode
+        - conditions:
+            - condition: trigger
+              id: 'awaynightmode'
+            - condition: state
+              entity_id: group.persons
+              state: 'not_home'
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.house_mode
+                option: Night
+            - service: scene.turn_on
+              data: {}
+              target:
+                entity_id: scene.nightmode
 
 
 - id: '1401'
