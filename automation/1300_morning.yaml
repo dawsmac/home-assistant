@@ -67,7 +67,7 @@
 
 
 - id: '1303'
-  alias: Morning Kitchen
+  alias: Morning time Kitchen
   trigger:
     - platform: state
       entity_id: input_select.house_mode
@@ -92,3 +92,4 @@
         media_content_type: "playlist"
         media_content_id: "x-rincon-mp3radio://https://radio.virginradio.co.uk/stream?DIST=TuneIn&TGT=TuneIn&maxServers=2&partnertok=eyJhbGciOiJIUzI1NiIsImtpZCI6InR1bmVpbiIsInR5cCI6IkpXVCJ9.eyJ0cnVzdGVkX3BhcnRuZXIiOnRydWUsImlhdCI6MTYzNDQ1NzE2NSwiaXNzIjoidGlzcnYifQ.itqk3ofOm8_NsySjWahGe4lWpUnmxPFegf3VdiUSlIA"
         volume_level: 0.22
+        
