@@ -1,39 +1,41 @@
-- id: '1400'
+- id: "1400"
   alias: Night mode enabled
   trigger:
     - platform: state
-      id: 'nightpirs'
-      entity_id: binary_sensor.thea_s_bedroom_pir
-      to: 'on'
-      for:
-        minutes: 10
+      id: "nightpirs"
+      entity_id:
+        - binary_sensor.thea_s_bedroom_pir
+        - binary_sensor.lila_s_pir
+        - binary_sensor.raf_s_pir
+      to: "off"
+      for: "00:10:00"
     - platform: state
-      id: 'awaynightmode'
+      id: "awaynightmode"
       entity_id: binary_sensor.lights
-      to: 'on'
+      to: "on"
       for:
         hours: 5
   action:
     - choose:
         - conditions:
             - condition: trigger
-              id: 'nightpirs'
+              id: "nightpirs"
             - condition: state
               entity_id: sensor.ds_pirs
-              state: 'true'
+              state: "true"
               for:
                 minutes: 5
             - condition: state
               entity_id: binary_sensor.lights
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: media_player.samsung_7_series_55
-              state: 'off'
+              state: "off"
             - condition: state
               entity_id: switch.tv
-              state: 'off'
+              state: "off"
             - condition: template
-              value_template: "{{ (state_attr('sun.sun','rising') == false) }}"
+              value_template: "{{ (state_attr("sun.sun","rising") == false) }}"
           sequence:
             - service: input_select.select_option
               data:
@@ -45,10 +47,10 @@
                 entity_id: scene.nightmode
         - conditions:
             - condition: trigger
-              id: 'awaynightmode'
+              id: "awaynightmode"
             - condition: state
               entity_id: group.persons
-              state: 'not_home'
+              state: "not_home"
           sequence:
             - service: input_select.select_option
               data:
@@ -60,7 +62,7 @@
                 entity_id: scene.nightmode
 
 
-- id: '1401'
+- id: "1401"
   alias: Out hours movment
   trigger:
     - platform: state
@@ -70,7 +72,7 @@
         - binary_sensor.coop_movement
         - binary_sensor.driveway_movement
         - binary_sensor.sidedrive_movement
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_select.house_mode
@@ -79,4 +81,4 @@
     - service: notify.mobile_app_rich_phone
       data:
         message: >
-          Night mode enabled: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
+          Night mode enabled: At {{states("sensor.time")}} movement on {{trigger.to_state.name}} camera!
