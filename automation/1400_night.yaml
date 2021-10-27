@@ -35,7 +35,7 @@
               entity_id: switch.tv
               state: "off"
             - condition: template
-              value_template: "{{ (state_attr("sun.sun","rising") == false) }}"
+              value_template: "{{ (state_attr('sun.sun', 'rising') == false) }}"
           sequence:
             - service: input_select.select_option
               data:
