@@ -53,7 +53,7 @@
     - platoform: state
       id: "morningnolights"
       entity_id: binary_sensor.lights
-      to: 'off'
+      to: "off"
       for:
         minutes: 5
   action:
