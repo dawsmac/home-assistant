@@ -50,12 +50,7 @@
       id: "morninglight"
       endtity_id: input_select.house_mode
       to: "Awake"
-    - platoform: state
-      id: "morningnolights"
-      entity_id: binary_sensor.lights
-      to: 'off'
-      for:
-        minutes: 5
+ 
   action:
     - choose:
         - conditions:
