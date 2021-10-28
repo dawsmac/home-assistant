@@ -43,7 +43,44 @@
                 option: 'Awake'
 
 
-
+- id: '1301'
+  alias: Morning lights
+  trigger:
+    - platform: state
+      id: "morninglight"
+      endtity_id: input_select.house_mode
+      to: "Awake"
+    - platoform: state
+      id: "morningnolights"
+      entity_id: binary_sensor.lights
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "morninglight"
+            - condition: template
+              value_template: "{{ state_attr('sun.sun','rising') == true }}"
+            - condition: state
+              entity_id: binary_sensor.lights
+              state: "on"
+          sequence:
+            - service: scene.turn_on
+              data: {}
+              target:
+                entity_id: scene.morning_lights
+        - conditions:
+            - condition: trigger
+              id: "morningnolights"
+            - condition: template
+              value_template: "{{ state_attr('sun.sun','rising') == true }}"
+          sequence:
+            - service: scene.turn_on
+              data: {}
+              target:
+                entity_id: scene.morning_nolights
 
 
 - id: '1303'
