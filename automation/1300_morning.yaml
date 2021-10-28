@@ -44,26 +44,43 @@
 
 
 - id: '1301'
-  alias: Morning lights not needed
+  alias: Morning lights
   trigger:
     - platform: state
+      id: "morninglight"
+      endtity_id: input_select.select_option
+      to: "Awake"
+    - platoform: state
+      id: "morningnolights"
       entity_id: binary_sensor.lights
-      from: 'on'
       to: 'off'
-  condition:
-    - condition: template
-      value_template: "{{ state_attr('sun.sun','rising') == true }}"
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: input_select.house_mode
-          state: "Night"
+      for: "00:05:00"
   action:
-    - service: scene.turn_on
-      data: {}
-      target:
-        entity_id: scene.morning_light_off
-
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "morninglight"
+            - condition: template
+              value_template: "{{ state_attr('sun.sun','rising') == true }}"
+            - condition: state
+              entity_id: binary_sensor.lights
+              state: "on"
+          sequence:
+            - service: scene.turn_on
+              data: {}
+              target:
+                entity_id: scene.morning_lights
+        - choose:
+        - conditions:
+            - condition: trigger
+              id: "morningnolights"
+            - condition: template
+              value_template: "{{ state_attr('sun.sun','rising') == true }}"
+          sequence:
+            - service: scene.turn_on
+              data: {}
+              target:
+                entity_id: scene.morning_nolights
 
 
 - id: '1303'
@@ -83,7 +100,7 @@
           from: "off"
           to: "on"
       timeout:
-        minutes: "00:15:00"
+        minutes: "02:00:00"
       continue_on_timeout: false
     - service: media_player.play_media
       target:
@@ -92,4 +109,7 @@
         media_content_type: "playlist"
         media_content_id: "x-rincon-mp3radio://https://radio.virginradio.co.uk/stream?DIST=TuneIn&TGT=TuneIn&maxServers=2&partnertok=eyJhbGciOiJIUzI1NiIsImtpZCI6InR1bmVpbiIsInR5cCI6IkpXVCJ9.eyJ0cnVzdGVkX3BhcnRuZXIiOnRydWUsImlhdCI6MTYzNDQ1NzE2NSwiaXNzIjoidGlzcnYifQ.itqk3ofOm8_NsySjWahGe4lWpUnmxPFegf3VdiUSlIA"
         volume_level: 0.22
-        
+    - service: scene.turn_on
+      data: {}
+      target:
+        entity_id: scene.appliances_on

@@ -9,7 +9,7 @@
     light.shellyvintage_6edcb8:
       state: 'on'
 
-- name: appliances
+- name: appliances_on
   entities:
     switch.dishwasher:
       state: 'on'
@@ -82,7 +82,7 @@
     light.shellyvintage_6edcb8:
       state: 'on'
 
-- name: morning light off
+- name: morning nolights
   entities:
     light.bookshelf_light_left:
       state: 'off'
@@ -90,15 +90,9 @@
       state: 'off'
     light.globe_lamp:
       state: 'off'
-    light.kitchen_dining:
-      state: 'off'
     light.kitchen_fairy_lights:
       state: 'off'
     light.kitchen_side:
-      state: 'off'
-    light.landing_lights:
-      state: 'off'
-    light.lounge_lights:
       state: 'off'
     light.boiler_lamp:
       state: 'off'
@@ -110,9 +104,34 @@
       state: 'off'
     light.garage_lights:
       state: 'off'
-    light.playroom_s_light:
-      state: 'off'
     light.bathroom_mirror:
       state: 'off'
-    light.bathroom:
+    light.shellyvintage_6edcb8:
       state: 'off'
+
+- name: morning lights
+  entities:
+    light.bookshelf_light_left:
+      state: 'on'
+    light.bookshelf_light_right:
+      state: 'on'
+    light.globe_lamp:
+      state: 'on'
+    light.kitchen_fairy_lights:
+      state: 'on'
+    light.kitchen_side:
+      state: 'on'
+    light.lounge_lights:
+      state: 'on'
+    light.boiler_lamp:
+      state: 'on'
+    light.kitchen_island_lights:
+      state: 'on'
+    switch.lila_s_multi_psu_socket_1:
+      state: 'on'
+    switch.thea_s_multi_psu_socket_1:
+      state: 'on'
+    light.garage_lights:
+      state: 'on'
+    light.shellyvintage_6edcb8:
+      state: 'on'
