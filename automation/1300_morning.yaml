@@ -46,6 +46,10 @@
 - id: '1301'
   alias: Morning lights
   trigger:
+    - platform: state
+      id: "morninglight"
+      endtity_id: input_select.house_mode
+      to: "Awake"
     - platoform: state
       id: "morningnolights"
       entity_id: binary_sensor.lights
