@@ -70,7 +70,6 @@
               data: {}
               target:
                 entity_id: scene.morning_lights
-        - choose:
         - conditions:
             - condition: trigger
               id: "morningnolights"
