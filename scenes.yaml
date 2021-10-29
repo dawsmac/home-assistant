@@ -102,8 +102,6 @@
       state: 'off'
     switch.thea_s_multi_psu_socket_1:
       state: 'off'
-    light.garage_lights:
-      state: 'off'
     light.bathroom_mirror:
       state: 'off'
     light.shellyvintage_6edcb8:
@@ -130,8 +128,6 @@
     switch.lila_s_multi_psu_socket_1:
       state: 'on'
     switch.thea_s_multi_psu_socket_1:
-      state: 'on'
-    light.garage_lights:
       state: 'on'
     light.shellyvintage_6edcb8:
       state: 'on'
