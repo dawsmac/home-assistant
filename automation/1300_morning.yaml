@@ -48,7 +48,7 @@
   trigger:
     - platform: state
       id: "morninglight"
-      endtity_id: input_select.house_mode
+      entity_id: input_select.house_mode
       to: "Awake"
     - platoform: state
       id: "morningnolights"
