@@ -21,9 +21,6 @@
     - platform: state
       entity_id: group.persons
       to: 'away'
-    - platform: state
-      entity_id: binary_sensor.lights
-      to: "on"
   condition:
     - condition: state
       entity_id: binary_sensor.garage_door

@@ -1,20 +1,4 @@
 - id: '1200'
-  alias: Switch kitchen light off TV on
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.kitchen_pir
-    to: 'off'
-    for:
-      minutes: 3
-  condition:
-  - condition: state
-    entity_id: media_player.samsung_7_series_55
-    state: 'on'
-  action:
-  - service: light.turn_off
-    entity_id: light.kgl
-
-- id: '1201'
   alias: Switch playroom tv and player
   trigger:
   - platform: state
