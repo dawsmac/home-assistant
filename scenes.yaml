@@ -121,8 +121,6 @@
       state: 'on'
     light.kitchen_side:
       state: 'on'
-    light.lounge_lights:
-      state: 'on'
     light.boiler_lamp:
       state: 'on'
     light.kitchen_island_lights:
