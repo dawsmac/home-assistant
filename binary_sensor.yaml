@@ -63,5 +63,3 @@
     lights:
       friendly_name: "Enable auto lights"
       value_template: "{{ states('sensor.out_side_lux')|float < 1400 }}"
-
-      #ffk#
