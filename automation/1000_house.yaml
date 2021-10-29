@@ -16,7 +16,7 @@
       entity_id: all
     - service: homeassistant.turn_off
       entity_id:
-        - switch.dishwasher_switch
+        - switch.dishwasher
         - switch.washing_machine
         - switch.tumble_dryer
 
@@ -36,7 +36,7 @@
   action:
     - service: homeassistant.turn_on
       entity_id:
-        - switch.dishwasher_switch
+        - switch.dishwasher
         - switch.washing_machine
         - switch.tumble_dryer
 

@@ -24,7 +24,7 @@
             - binary_sensor.hallway_pir
           from: "on"
           to: "off"
-      - delay: 00:00:30
+      - delay: 00:02:00
       - service: light.turn_off
         entity_id:
           - light.hallway_lights
@@ -49,7 +49,7 @@
             - binary_sensor.hallway_pir
           from: "on"
           to: "off"
-      - delay: 00:00:30
+      - delay: 00:02:00
       - condition: state
         entity_id: light.hallway_lights
         state: 'on'
@@ -130,35 +130,13 @@
           - binary_sensor.landing_pir
         from: "on"
         to: "off"
-    - delay: 00:00:30
+    - delay: 00:02:00
     - service: light.turn_off
       entity_id:
         - light.landing_lights
   mode: restart
   max_exceeded: silent
 
-- id: '1112'
-  alias: 'Landing light switch on by Switch'
-  trigger:
-    - platform: state
-      entity_id:
-        - binary_sensor.landing_lights_switch
-  action:
-      - wait_for_trigger:
-          platform: state
-          entity_id:
-            - binary_sensor.landing_pir
-          from: "on"
-          to: "off"
-      - delay: 00:00:30
-      - condition: state
-        entity_id: light.landing_lights
-        state: 'on'
-      - service: light.turn_off
-        entity_id:
-          - light.landing_lights
-  mode: restart
-  max_exceeded: silent
 
 ###############################################################
 ## Lila´s Room
@@ -171,7 +149,7 @@
       entity_id: binary_sensor.lila_s_pir
       to: 'off'
       for:
-        minutes: 5
+        minutes: 10
   condition:
     - condition: state
       entity_id:
@@ -192,7 +170,7 @@
       entity_id: binary_sensor.thea_s_bedroom_pir
       to: 'off'
       for:
-        minutes: 5
+        minutes: 10
   condition:
     - condition: state
       entity_id:
@@ -229,26 +207,9 @@
 
 
 ###############################################################
-## Lounge bedroom
+## Lounge
 ###############################################################
 
-- id: '1109'
-  alias: Motion Sensor Lounge Off
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.lounge_pir
-      to: 'off'
-      for:
-        minutes: 5
-  condition:
-    - condition: state
-      entity_id:
-        - light.lounge_lights
-      state: 'on'
-  action:
-    - service: homeassistant.turn_off
-      entity_id:
-        - light.lounge_lights
 
 
 ###############################################################
@@ -267,10 +228,10 @@
     - condition: or
       conditions:
       - condition: state
-        entity_id: light.kitchen_dining_lights
+        entity_id: light.kitchen_dining
         state: 'on'
       - condition: state
-        entity_id: light.kitchen_island_lights
+        entity_id: light.kitchen_island
         state: 'on'
       - condition: state
         entity_id: light.kitchen_side_lights
@@ -278,6 +239,6 @@
   action:
     - service: homeassistant.turn_off
       entity_id:
-        - light.kitchen_dining_lights
-        - light.kitchen_island_lights
+        - light.kitchen_dining
+        - light.kitchen_island
         - light.kitchen_side_lights
