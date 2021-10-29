@@ -50,7 +50,7 @@
       id: "morninglight"
       entity_id: input_select.house_mode
       to: "Awake"
-    - platoform: state
+    - platform: state
       id: "morningnolights"
       entity_id: binary_sensor.lights
       to: "off"
