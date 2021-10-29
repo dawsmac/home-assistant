@@ -55,7 +55,7 @@
       entity_id: binary_sensor.lights
       to: "off"
       for:
-        minutes: 4
+        minutes: 5
   action:
     - choose:
         - conditions:
