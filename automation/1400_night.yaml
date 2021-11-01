@@ -22,7 +22,7 @@
               id: "nightpirs"
             - condition: state
               entity_id: sensor.ds_pirs
-              state: "true"
+              state: "True"
               for:
                 minutes: 5
             - condition: state
