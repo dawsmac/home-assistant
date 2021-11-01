@@ -13,26 +13,19 @@ views:
       - type: weather-forecast
         entity: weather.edenbridge
 
-      - type: entities
-        title: Sensor´s
-        entities:
-          - sun.sun
-          - sensor.us_pirs
-          - sensor.ds_pirs
-          - input_select.house_mode
+   #######   - type: entities
+   ######     title: Sensor´s
+    #####    entities:
+    ####      - sun.sun
+    ###      - sensor.us_pirs
+    ##      - sensor.ds_pirs
+    #      - input_select.house_mode
 
       - type: statistics-graph
         title: Outside Lux
         days_to_show: 7
         entities:
           - sensor.out_side_lux
-
-      - type: statistics-graph
-        title: Dishwasher Currnet
-        days_to_show: 7
-        entities:
-          - sensor.dishwasher_current
-
 
       - type: entities
         title: Outside Movement
