@@ -4,18 +4,18 @@ default_config:
 recorder:
   purge_keep_days: 7
   db_url: mysql://Hass:tC6543WbXZcbKA@dawsnet_prod_db:3306/Hass?charset=utf8mb4
-  exclude:
-    entities:
-      - binary_sensor.hallway_pir
-      - binary_sensor.kitchen_pir
-      - binary_sensor.landing_pir
-      - binary_sensor.lila_s_pir
-      - binary_sensor.lounge_pir
-      - binary_sensor.playroom_pir
-      - binary_sensor.raf_s_pir
-      - sensor.ds_pirs
-      - sensor.us_pirs
-      - binary_sensor.thea_s_bedroom_pir
+  #exclude:
+  #  entities:
+  #    - binary_sensor.hallway_pir
+  #    - binary_sensor.kitchen_pir
+  #    - binary_sensor.landing_pir
+  #    - binary_sensor.lila_s_pir
+  #    - binary_sensor.lounge_pir
+  #    - binary_sensor.playroom_pir
+  #    - binary_sensor.raf_s_pir
+  #    - sensor.ds_pirs
+  #    - sensor.us_pirs   
+  #    - binary_sensor.thea_s_bedroom_pir
 
 http:
   use_x_forwarded_for: true
