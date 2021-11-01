@@ -9,6 +9,9 @@ views:
         entities:
           - person.faye
           - person.richard
+      
+      - type: weather-forecast
+        entity: weather.edenbridge
 
       - type: entities
         title: Sensor´s
