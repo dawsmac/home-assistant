@@ -12,6 +12,10 @@ views:
       
       - type: weather-forecast
         entity: weather.edenbridge
+      
+      - type: sensor
+        entity: sensor.out_side_lux
+        name: Outside Lux
 
    #######   - type: entities
    ######     title: Sensor´s
