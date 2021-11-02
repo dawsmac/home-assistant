@@ -8,7 +8,7 @@
         - binary_sensor.lila_s_pir
         - binary_sensor.raf_s_pir
       to: "off"
-      for: "00:10:00"
+      for: "00:15:00"
     - platform: state
       id: "awaynightmode"
       entity_id: binary_sensor.lights
