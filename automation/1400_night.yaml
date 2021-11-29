@@ -29,9 +29,6 @@
               entity_id: binary_sensor.lights
               state: "on"
             - condition: state
-              entity_id: media_player.samsung_7_series_55
-              state: "off"
-            - condition: state
               entity_id: switch.tv
               state: "off"
             - condition: template
