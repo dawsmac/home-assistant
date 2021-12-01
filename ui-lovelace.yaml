@@ -175,7 +175,7 @@ views:
           - entity: sensor.office_humidity
           - entity: sensor.office_atc_battery_level
           - entity: switch.office_heater
-          - entity: binary_sensor.offcie_door
+          - entity: binary_sensor.office_door
 
       - type: glance
         title: Back garden
