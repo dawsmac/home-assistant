@@ -5,7 +5,7 @@
       entity_id:
         - binary_sensor.kitchen_door
         - binary_sensor.garden_gate
-        - binary_sensor.garage_door
+        - binary_sensor.office_door
       to: "on"
   action:
     - condition: state
@@ -19,7 +19,7 @@
         entity_id:
           - binary_sensor.kitchen_door
           - binary_sensor.garden_gate
-          - binary_sensor.garage_door
+          - binary_sensor.office_door
         from: "on"
         to: "off"
     - delay: 00:02:00

@@ -13,20 +13,5 @@
       state: 'home'
   action:
     - service: homeassistant.turn_off
-      entity_id: switch.garage_door_lock
+      entity_id: switch.office_door_lock
 
-- id: '801'
-  alias: Garage door lock
-  trigger:
-    - platform: state
-      entity_id: group.persons
-      to: 'away'
-  condition:
-    - condition: state
-      entity_id: binary_sensor.garage_door
-      state: 'off'
-  action:
-    - service: homeassistant.turn_on
-      entity_id: switch.garage_door_lock
-    - service: homeassistant.turn_off
-      entity_id: light.garage_lights

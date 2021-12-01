@@ -62,6 +62,8 @@
       state: 'off'
     light.shellyvintage_6edcb8:
       state: 'off'
+    switch.office_door_lock:
+      state: 'on'
 
 - name: evening lights
   entities:
