@@ -28,11 +28,14 @@
             - condition: state
               entity_id: binary_sensor.lights
               state: "on"
-            - condition: state
-              entity_id: switch.tv
-              state: "off"
-            - condition: template
-              value_template: "{{ (state_attr('sun.sun', 'rising') == false) }}"
+            - condition: time
+              after: "20:00:00"
+              before: "03:00:00"
+            - condition: not
+              conditions:
+                - condition: state
+                  entity_id: media_player.lounge
+                  state: "playing"
           sequence:
             - service: input_select.select_option
               data:
