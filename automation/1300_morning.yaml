@@ -24,16 +24,15 @@
               after: '05:00'
               before: '09:00'
             - condition: state
-              entity_id: input_select.house_mode
-              state: 'Night'
+              entity_id: input_boolean.night_mode
+              state: 'on'
             - condition: state
               entity_id: group.persons
               state: 'home'
           sequence:
-            - service: input_select.select_option
-              data:
-                entity_id: input_select.house_mode
-                option: 'Awake'
+            - service: input_boolean.turn_off
+              target:
+                entity_id: input_boolean.night_mode
         - conditions:
             - condition: trigger
               id: 'morning mode triggered by no-wireless charging'
@@ -41,16 +40,15 @@
               after: '05:00'
               before: '10:00'
             - condition: state
-              entity_id: input_select.house_mode
-              state: 'Night'
+              entity_id: input_boolean.night_mode
+              state: 'on'
             - condition: state
               entity_id: group.persons
               state: 'home'
           sequence:
-            - service: input_select.select_option
-              data:
-                entity_id: input_select.house_mode
-                option: 'Awake'
+            - service: input_boolean.turn_off
+              target:
+                entity_id: input_boolean.night_mode
         - conditions:
             - condition: trigger
               id: 'morningaway'
@@ -58,13 +56,12 @@
               entity_id: group.persons
               state: 'not_home'
             - condition: state
-              entity_id: input_select.house_mode
-              state: 'Night'
+              entity_id: input_boolean.night_mode
+              state: 'on'
           sequence:
-            - service: input_select.select_option
-              data:
-                entity_id: input_select.house_mode
-                option: 'Awake'
+            - service: input_boolean.turn_off
+              target:
+                entity_id: input_boolean.night_mode
 
 
 - id: '1301'
@@ -72,8 +69,8 @@
   trigger:
     - platform: state
       id: "morninglight"
-      entity_id: input_select.house_mode
-      to: "Awake"
+      entity_id: input_boolean.night_mode
+      to: "off"
     - platform: state
       id: "morningnolights"
       entity_id: binary_sensor.lights
@@ -111,9 +108,9 @@
   alias: Morning time Kitchen
   trigger:
     - platform: state
-      entity_id: input_select.house_mode
-      from: "Night"
-      to: "Awake"
+      entity_id: input_boolean.night_mode
+      from: "on"
+      to: "off"
   condition:
     - condition: template
       value_template: "{{ state_attr('sun.sun','rising') == true }}"
