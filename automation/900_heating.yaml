@@ -156,8 +156,8 @@
   alias: Night mode heating
   trigger:
     - platform: state
-      entity_id: input_select.house_mode
-      to: 'Night'
+      entity_id: input_boolean.night_mode
+      to: 'on'
   condition:
     - condition: state
       entity_id: group.persons
