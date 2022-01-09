@@ -9,6 +9,7 @@ swipe_nav:
   wrap: true
   swipe_amount: 30
   animate: swipe
+  
 views:
   - title: main
     path: main
