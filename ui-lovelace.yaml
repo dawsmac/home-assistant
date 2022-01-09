@@ -20,6 +20,9 @@ views:
       - type: button
         entity: input_select.house_mode
         show_state: true
+        state_icons:
+          "Night": "mdi:sleep"
+          "Awake": "mdi:sleep-off"
 
    #######   - type: entities
    ######     title: Sensor´s
