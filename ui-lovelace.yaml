@@ -18,8 +18,8 @@ views:
         name: Outside Lux
       
       - type: button
-        entity: input_boolean.eating_mode
-        show_state: true
+        entity: input_boolean.night_mode
+        show_state: false
         show_icon: true
 
    #######   - type: entities

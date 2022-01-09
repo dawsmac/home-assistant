@@ -15,3 +15,9 @@ testing_switch:
   name: Testing switch
   initial: off
 
+night_mode:
+  name: Night mode
+  initial: off
+  icon: mdi:sleep
+
+
