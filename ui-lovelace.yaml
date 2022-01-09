@@ -1,4 +1,7 @@
 title: Edenbridge
+swipe_nav:
+  wrap: true
+  animate: swipe
 views:
   - title: main
     path: main
