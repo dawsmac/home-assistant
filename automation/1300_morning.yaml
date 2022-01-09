@@ -8,6 +8,13 @@
     - platform: template
       id: 'morningaway'
       value_template: "{{ is_state('sun.sun', 'above_horizon') }}"
+    - platform: state
+      id: 'morning mode triggered by no-wireless charging'
+      entity_id:
+        - sensor.rich_phone_charger_type
+        - sensor.faye_phone_charger_type
+      from: 'wireless'
+      to: 'none'
   action:
     - choose:
         - conditions:
@@ -16,6 +23,23 @@
             - condition: time
               after: '05:00'
               before: '09:00'
+            - condition: state
+              entity_id: input_select.house_mode
+              state: 'Night'
+            - condition: state
+              entity_id: group.persons
+              state: 'home'
+          sequence:
+            - service: input_select.select_option
+              data:
+                entity_id: input_select.house_mode
+                option: 'Awake'
+        - conditions:
+            - condition: trigger
+              id: 'morning mode triggered by no-wireless charging'
+            - condition: time
+              after: '05:00'
+              before: '10:00'
             - condition: state
               entity_id: input_select.house_mode
               state: 'Night'
