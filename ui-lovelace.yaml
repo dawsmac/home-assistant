@@ -18,11 +18,9 @@ views:
         name: Outside Lux
       
       - type: button
-        entity: input_select.house_mode
+        entity: input_boolean.eating_mode
         show_state: true
-        state_icons:
-          "Night": "mdi:sleep"
-          "Awake": "mdi:sleep-off"
+        show_icon: true
 
    #######   - type: entities
    ######     title: Sensor´s

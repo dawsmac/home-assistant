@@ -14,3 +14,4 @@ eating_mode:
 testing_switch:
   name: Testing switch
   initial: off
+
