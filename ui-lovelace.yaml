@@ -16,6 +16,9 @@ views:
       - type: sensor
         entity: sensor.out_side_lux
         name: Outside Lux
+      
+      - type: button
+        entity: input_select.house_mode
 
    #######   - type: entities
    ######     title: Sensor´s
