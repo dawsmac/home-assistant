@@ -89,7 +89,6 @@
               state: "on"
           sequence:
             - service: scene.turn_on
-              data: {}
               target:
                 entity_id: scene.morning_lights
         - conditions:
@@ -99,7 +98,6 @@
               value_template: "{{ state_attr('sun.sun','rising') == true }}"
           sequence:
             - service: scene.turn_on
-              data: {}
               target:
                 entity_id: scene.morning_nolights
 
@@ -131,6 +129,5 @@
         media_content_id: "x-rincon-mp3radio://https://radio.virginradio.co.uk/stream?DIST=TuneIn&TGT=TuneIn&maxServers=2&partnertok=eyJhbGciOiJIUzI1NiIsImtpZCI6InR1bmVpbiIsInR5cCI6IkpXVCJ9.eyJ0cnVzdGVkX3BhcnRuZXIiOnRydWUsImlhdCI6MTYzNDQ1NzE2NSwiaXNzIjoidGlzcnYifQ.itqk3ofOm8_NsySjWahGe4lWpUnmxPFegf3VdiUSlIA"
         volume_level: 0.22
     - service: scene.turn_on
-      data: {}
       target:
         entity_id: scene.appliances_on

@@ -41,7 +41,6 @@
               target:
                 entity_id: input_boolean.night_mode
             - service: scene.turn_on
-              data: {}
               target:
                 entity_id: scene.nightmode
         - conditions:
@@ -55,7 +54,6 @@
               target:
                 entity_id: input_boolean.night_mode
             - service: scene.turn_on
-              data: {}
               target:
                 entity_id: scene.nightmode
 
@@ -74,7 +72,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.night_mode
-      state: on
+      state: 'on'
   action:
     - service: notify.mobile_app_rich_phone
       data:
