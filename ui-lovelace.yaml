@@ -1,15 +1,9 @@
-resources:
-  # increase this version number at end of URL after each update
-  - url: /local/lovelace-swipe-navigation/swipe-navigation.js?v=1.0.0
-    type: module
-
-
 title: Edenbridge
 swipe_nav:
   wrap: true
   swipe_amount: 30
   animate: swipe
-  
+
 views:
   - title: main
     path: main
