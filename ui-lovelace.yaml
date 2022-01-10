@@ -204,7 +204,6 @@ views:
         title: TV players
         entities:
           - entity: media_player.playroom_tv
-          - entity: media_player.samsung_7_series_55
 
       - type: glance
         title: Echo's

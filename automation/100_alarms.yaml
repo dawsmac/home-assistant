@@ -12,12 +12,15 @@
       - thu
       - fri
   action:
-    - service: notify.alexa_media
+    - service: notify.alexa_media_richard_s_4th_echo_dot
       data:
-        target:
-          - media_player.thea_bedroom
-          - media_player.lila_bedroom
-        message: "Good moring, it time to get up for school"
+        message: Good morning Thea, it time to get up for school, don't forget to do your chores
         data:
-          type: announce
-    - delay: 0:20
+        type: announce
+    - service: notify.alexa_media_richard_s_4th_echo_dot
+      data:
+        message: Good moring Lila, it time to get up for school, don't forget to do your chores
+        data:
+        type: announce
+    
+
