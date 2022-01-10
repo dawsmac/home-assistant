@@ -12,12 +12,12 @@
       - thu
       - fri
   action:
-    - service: notify.alexa_media_richard_s_4th_echo_dot
+    - service: media_player.thea_bedroom
       data:
         message: Good morning Thea, it time to get up for school, don't forget to do your chores
         data:
         type: announce
-    - service: notify.alexa_media_richard_s_4th_echo_dot
+    - service: media_player.Lila_bedroom
       data:
         message: Good moring Lila, it time to get up for school, don't forget to do your chores
         data:
