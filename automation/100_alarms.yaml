@@ -16,11 +16,11 @@
       data:
         message: "Good morning Thea, it time to get up for school, don't forget to do your chores"
         data:
-        type: announce
+          type: announce
     - service: media_player.Lila_bedroom
       data:
         message: "Good moring Lila, it time to get up for school, don't forget to do your chores"
         data:
-        type: announce
+          type: announce
     
 
