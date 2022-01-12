@@ -13,10 +13,10 @@
       - fri
   action:
     - service: notify.alexa_media
-      data:
+      data: 
+        message: Good morning Thea & Lila, it's time to get up for school, don't forget to do your chores
+        data:
+          type: announce
         target:
           - media_player.Lila_bedroom
           - media_player.Thea_bedroom
-        message: "Good morning Thea & Lila, it's time to get up for school, don't forget to do your chores"
-        data:
-          type: announce
