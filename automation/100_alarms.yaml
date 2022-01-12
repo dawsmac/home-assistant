@@ -12,15 +12,11 @@
       - thu
       - fri
   action:
-    - service: media_player.thea_bedroom
+    - service: notify.alexa_media
       data:
-        message: "Good morning Thea, it time to get up for school, don't forget to do your chores"
+        target:
+          - media_player.Lila_bedroom
+          - media_player.Thea_bedroom
+        message: "Good morning Thea & Lila, it's time to get up for school, don't forget to do your chores"
         data:
           type: announce
-    - service: media_player.Lila_bedroom
-      data:
-        message: "Good moring Lila, it time to get up for school, don't forget to do your chores"
-        data:
-          type: announce
-    
-
