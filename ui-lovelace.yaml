@@ -245,3 +245,10 @@ views:
           - switch.underfloor_heating
           - switch.hotwater
           - switch.boiler_call
+
+  - title: CCTV
+    path: cctv
+    cards:
+      - type: glance
+        cameras:
+          - camera.backgarden
