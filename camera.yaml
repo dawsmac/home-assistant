@@ -1,0 +1,19 @@
+- platform: generic
+  name: Porch_rtsp
+  stream_source: 'rtsp://admin:Farmer79!!@192.168.110.241/cam/realmonitor?channel=1&subtype=00&authbasic=YWRtaW46RmFybWVyNzkhIQ=='
+  verify_ssl: false
+
+- platform: generic
+  name: Backgarden_rtsp
+  stream_source: 'rtsp://admin:Farmer79!!@192.168.110.242/cam/realmonitor?channel=1&subtype=00&authbasic=YWRtaW46RmFybWVyNzkhIQ=='
+  verify_ssl: false
+
+- platform: generic
+  name: Driveway_rtsp
+  stream_source: 'rtsp://admin:Farmer79!!@192.168.110.243/cam/realmonitor?channel=1&subtype=00&authbasic=YWRtaW46RmFybWVyNzkhIQ=='
+  verify_ssl: false
+
+- platform: generic
+  name: Patio_rtsp
+  stream_source: 'rtsp://admin:Farmer79!!@192.168.110.244:554/h265Preview_01_main'
+  verify_ssl: false
