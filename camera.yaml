@@ -16,8 +16,12 @@
   stream_source: 'rtsp://admin:Farmer79!!@192.168.110.243/cam/realmonitor?channel=1&subtype=00&authbasic=YWRtaW46RmFybWVyNzkhIQ=='
   verify_ssl: false
 
-- platform: generic
+- platform: reolink_dev
   name: Patio_rtsp
-  still_image_url: 'http://192.168.110.244/cgi-bin/api.cgi?cmd=Snap&channel=0&rs=wuuPhkmUCeI9WG7C&user=admin&password=Farmer79!!'
-  stream_source: 'rtsp://admin:Farmer79!!@192.168.110.244:554/h265Preview_01_main'
-  verify_ssl: false
+  host: 192.168.110.244
+  username: admin
+  password: Farmer79!!
+  stream: main
+  protocol: rtsp
+  channel: 1
+  scan_interval: 5
