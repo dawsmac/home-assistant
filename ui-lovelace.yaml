@@ -247,8 +247,12 @@ views:
           - switch.boiler_call
 
   - title: CCTV
+    icon: mdi:camera
     path: cctv
     cards:
       - type: custom:frigate-hass-card
-        camera_entity:
-          - camera.backgarden:
+        camera_entity: camera.backgarden
+        view_default: live  
+        menu_mode: overlay_bottom
+        menu_buttons:
+          live: false
