@@ -23,5 +23,5 @@
   password: Farmer79!!
   stream: main
   protocol: rtsp
-  channel: 1
+  channel: 0
   scan_interval: 5
