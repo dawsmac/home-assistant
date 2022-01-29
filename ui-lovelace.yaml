@@ -258,4 +258,12 @@ views:
             entity: camera.backgarden_rtsp
         view_default: live  
         menu_mode: overlay_bottom
+      - type: custom:frigate-card
+        camera_entity: camera.patio
+        live:
+          provider: webrtc
+          webrtc:
+            entity: camera.patio_2
+        view_default: live  
+        menu_mode: overlay_bottom
     
