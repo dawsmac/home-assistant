@@ -256,8 +256,6 @@ views:
           provider: webrtc
           webrtc:
             entity: camera.backgarden_main
-        view_default: live  
-        menu_mode: overlay_bottom
       
       - type: custom:frigate-card
         camera_entity: camera.patio
@@ -265,8 +263,6 @@ views:
           provider: webrtc
           webrtc:
             entity: camera.patio_2
-        view_default: live  
-        menu_mode: overlay_bottom
       
       - type: custom:frigate-card
         camera_entity: camera.porch
@@ -274,8 +270,6 @@ views:
           provider: webrtc
           webrtc:
             entity: camera.porch_main
-        view_default: live  
-        menu_mode: overlay_bottom
       
       - type: custom:frigate-card
         camera_entity: camera.driveway
@@ -283,8 +277,5 @@ views:
           provider: webrtc
           webrtc:
             entity: camera.driveway_main
-        view_default: live  
-        menu_mode: overlay_bottom
-    
     
     
