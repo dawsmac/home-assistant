@@ -36,8 +36,8 @@ lovelace:
   resources:
     - url: /local/simple-thermostat.js
       type: module
-    - url: /local/lovelace-swipe-navigation/swipe-navigation.js?v=1.0.0
-      type: module
+#  - url: /local/lovelace-swipe-navigation/swipe-navigation.js?v=1.0.0
+#      type: module
     - url: /local/frigate-hass-card.js
       type: module
 
