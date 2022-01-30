@@ -18,6 +18,12 @@ recorder:
   
 ffmpeg:
 
+
+logger:
+  default: warning
+  logs:
+    custom_components.webrtc: debug
+
 http:
   use_x_forwarded_for: true
   trusted_proxies:
