@@ -255,7 +255,7 @@ views:
         live:
           provider: webrtc
           webrtc:
-            entity: camera.backgarden_main
+            entity: camera.backgarden_sub
       
       - type: custom:frigate-card
         camera_entity: camera.patio
@@ -269,13 +269,13 @@ views:
         live:
           provider: webrtc
           webrtc:
-            entity: camera.porch_main
+            entity: camera.porch_sub
       
       - type: custom:frigate-card
         camera_entity: camera.driveway
         live:
           provider: webrtc
           webrtc:
-            entity: camera.driveway_main
+            entity: camera.driveway_sub
     
     
