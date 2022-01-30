@@ -15,7 +15,8 @@ recorder:
   #    - binary_sensor.raf_s_pir
   #    - sensor.ds_pirs
   #    - sensor.us_pirs   
-  #    - binary_sensor.thea_s_bedroom_pir
+  
+ffmpeg:
 
 http:
   use_x_forwarded_for: true
