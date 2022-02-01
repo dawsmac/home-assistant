@@ -255,14 +255,14 @@ views:
         live:
           provider: webrtc
           webrtc:
-            entity: camera.backgarden_sub
+            entity: camera.backgarden
       
       - type: custom:frigate-card
         camera_entity: camera.patio
         live:
           provider: webrtc
           webrtc:
-            entity: camera.patio_2
+            entity: camera.patio
       
       - type: custom:frigate-card
         camera_entity: camera.porch
