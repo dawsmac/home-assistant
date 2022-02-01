@@ -255,7 +255,7 @@ views:
         live:
           provider: webrtc
           webrtc:
-            url: 'rtsp://admin:Farmer79!!@192.168.110.244:554/h265Preview_01_main'
+            url: 'rtsp://admin:Farmer79!!@192.168.110.244:554/h264Preview_01_sub'
       
       - type: custom:frigate-card
         camera_entity: camera.patio
