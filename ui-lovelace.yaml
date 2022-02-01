@@ -276,6 +276,6 @@ views:
         live:
           provider: webrtc
           webrtc:
-            entity: camera.driveway_sub
+            url: 'rtsp://admin:Farmer79!!@192.168.110.243/cam/realmonitor?channel=1&subtype=00&authbasic=YWRtaW46RmFybWVyNzkhIQ=='
     
     
