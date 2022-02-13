@@ -1,24 +1,45 @@
 - id: '600'
-  alias: Doorbell Annunciator
+  alias: Doorbell Annunciator front door
   initial_state: true
   # someone pushing the button on my Ring triggers automation
   trigger:
-    - platform: state
-      entity_id: binary_sensor.porch_movement
-      to: 'on'
+    - platform: mqtt
+      topic: frigate/porch_path_a/person
+      payload: '1'
   # will only fire if the sonos speakers by the pool are playing
-  condition:
-    - condition: state
-      entity_id: media_player.kitchen
-      state: 'playing'
-  # calls the sonos_say script to announce that someone is at the door
   action:
-    - service: script.sonos_say
-      data:
-        sonos_entity: media_player.kitchen
-        volume: 0.7
-        message: 'someone is at the front door'
-        delay: '00:00:05'
+    - wait_for_trigger:
+      - platform: mqtt
+        topic: frigate/porch_path_b/person
+        payload: '1'
+      timeout:
+        minutes: "02:00:00"
+      continue_on_timeout: false
+    - choose:
+      - conditions:
+        - condition: state
+          entity_id: group.persons
+          state: "home"       
+        sequence:
+          - service: notify.alexa_media
+            data: 
+              message: someone is at the front door
+              data:
+                type: announce
+              target:
+                - media_player.kitchen_echo
+    - choose:
+      - conditions:
+        - condition: state
+          entity_id: group.persons
+          state: "not_home"       
+        sequence:
+          - service: script.sonos_say
+            data:
+              sonos_entity: media_player.kitchen
+              volume: 0.7
+              message: 'someone is at the front door'
+              delay: '00:00:05'
 
 - id: '601'
   alias: Doorbell Annunciator1
@@ -41,3 +62,7 @@
         volume: 0.7
         message: 'someone is coming up the garden'
         delay: '00:00:05'
+
+
+
+        frigate/porch_path_b/person
