@@ -9,9 +9,9 @@
   # will only fire if the sonos speakers by the pool are playing
   action:
     - wait_for_trigger:
-      - platform: mqtt
-        topic: frigate/porch_path_b/person
-        payload: '1'
+        - platform: mqtt
+          topic: frigate/porch_path_b/person
+          payload: '1'
       timeout:
         minutes: "02:00:00"
       continue_on_timeout: false
@@ -39,7 +39,7 @@
               volume: 0.7
               message: 'someone is at the front door'
               delay: '00:00:05'
-
+  
 - id: '601'
   alias: Doorbell Annunciator1
   initial_state: true
