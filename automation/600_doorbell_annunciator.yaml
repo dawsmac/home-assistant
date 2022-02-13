@@ -1,12 +1,11 @@
 - id: '600'
   alias: Doorbell Annunciator front door
   initial_state: true
-  # someone pushing the button on my Ring triggers automation
+  # someone walked into Zone A on Frigate
   trigger:
     - platform: mqtt
       topic: frigate/porch_path_a/person
       payload: '1'
-  # will only fire if the sonos speakers by the pool are playing
   action:
     - wait_for_trigger:
         - platform: mqtt
@@ -15,6 +14,7 @@
       timeout:
         minutes: "02:00:00"
       continue_on_timeout: false
+    # will only fire if someone walk into Zopne B and we are home 
     - choose:
       - conditions:
         - condition: state
@@ -27,6 +27,7 @@
             target: media_player.kitchen_echo
             data:
               type: announce
+    # will only fire if someone walk into Zopne B and we are out
     - choose:
       - conditions:
         - condition: state
