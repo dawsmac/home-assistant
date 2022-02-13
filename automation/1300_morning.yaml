@@ -114,10 +114,10 @@
       value_template: "{{ state_attr('sun.sun','rising') == true }}"
   action:
     - wait_for_trigger:
-        - platform: state
-          entity_id: binary_sensor.hallway_pir
-          from: "off"
-          to: "on"
+      - platform: state
+        entity_id: binary_sensor.hallway_pir
+        from: "off"
+        to: "on"
       timeout:
         minutes: "02:00:00"
       continue_on_timeout: false
