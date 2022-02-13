@@ -21,13 +21,12 @@
           entity_id: group.persons
           state: "home"       
         sequence:
-          - service: notify.alexa_media
-            data: 
-              message: someone is at the front door
-              data:
-                type: announce
-              target:
-                - media_player.kitchen_echo
+          service: notify.alexa_media
+          data:
+            message: someone is at the front door
+            target: media_player.kitchen_echo
+            data:
+              type: announce
     - choose:
       - conditions:
         - condition: state
