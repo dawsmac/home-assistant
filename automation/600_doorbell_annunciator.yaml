@@ -62,7 +62,3 @@
         volume: 0.7
         message: 'someone is coming up the garden'
         delay: '00:00:05'
-
-
-
-        frigate/porch_path_b/person
