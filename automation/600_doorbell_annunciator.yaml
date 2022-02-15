@@ -12,7 +12,7 @@
           topic: frigate/porch_path_b/person
           payload: '1'
       timeout:
-        minutes: "02:00:00"
+        minutes: "00:01:00"
       continue_on_timeout: false
     # will only fire if someone walk into Zopne B and we are home 
     - choose:
