@@ -118,8 +118,7 @@
         entity_id: binary_sensor.hallway_pir
         from: "off"
         to: "on"
-      timeout:
-        minutes: "02:00:00"
+      timeout: "02:00:00"
       continue_on_timeout: false
     - service: media_player.play_media
       target:
