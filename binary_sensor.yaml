@@ -1,4 +1,4 @@
-sensor:
+template:
   - name: morning_alarm
     state: >
       {% set alarm_time = as_timestamp(states('sensor.next_alarm')) %}
