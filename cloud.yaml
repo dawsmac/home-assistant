@@ -1,0 +1,7 @@
+alexa:
+  filter:
+    include_entities:
+      - switch.tv
+      - switch.dishwasher
+      - switch.washing_machine
+      - switch.tumble_dryer
