@@ -56,11 +56,8 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 input_boolean: !include input_boolean.yaml
 climate: !include climate.yaml
-light: !include light.yaml
 cloud: !include cloud.yaml
-sensor: !include sensor.yaml
 notify: !include notify.yaml
-binary_sensor: !include binary_sensor.yaml
 input_select: !include input_select.yaml
 alert: !include alerts.yaml
 template: !include template.yaml
