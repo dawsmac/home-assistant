@@ -63,3 +63,4 @@ notify: !include notify.yaml
 binary_sensor: !include binary_sensor.yaml
 input_select: !include input_select.yaml
 alert: !include alerts.yaml
+template: !include template.yaml
