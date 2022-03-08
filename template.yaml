@@ -1,16 +1,16 @@
 binary_sensor:
-    
+  
     - name: "No activity downstairs"
       state: >
-        {{ is_state('binary_sensor.hallway_pir' , 'off')
+        {{ is_state('binary_sensor.hallway_pir' , 'on')
             and is_state('binary_sensor.kitchen_pir' , 'off')
-            and is_state('binary_sensor.lounge_pir' , 'off') }}
+            and is_state('binary_sensor.espresense_lounge_motion' , 'off') }}
 
     - name: "No activity upstairs"
       state: >
         {{ is_state('binary_sensor.landing_pir' , 'off')
             and is_state('binary_sensor.lila_s_pir' , 'off')
-            and is_state('binary_sensor.raf_s_pir' , 'off')
+            and is_state('binary_sensor.espresense_masterbedroom_motion' , 'off')
             and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
 
     - name: All pirs
@@ -18,13 +18,15 @@ binary_sensor:
         {{ is_state('binary_sensor.landing_pir' , 'off')
             and is_state('binary_sensor.hallway_pir' , 'off')
             and is_state('binary_sensor.lila_s_pir' , 'off')
-            and is_state('binary_sensor.raf_s_pir' , 'off')
+            and is_state('binary_sensor.espresense_masterbedroom_motion' , 'off')
             and is_state('binary_sensor.kitchen_pir' , 'off')
-            and is_state('binary_sensor.lounge_pir' , 'off')
-            and is_state ('binary_sensor.playroom_pir' , 'off')
+            and is_state('binary_sensor.espresense_lounge_motion' , 'off')
+            and is_state ('binary_sensor.espresense_playroom_motion' , 'off')
             and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
     
     - name: Enable auto lights
+      delay_off:
+        minutes: 5
       state: >
         {{ states('sensor.out_side_lux')|float < 1400 }}
     
@@ -37,7 +39,7 @@ binary_sensor:
         {% else %}
           {{ unavailable }}
         {% endif %}
-  
+
 
 sensor:
     

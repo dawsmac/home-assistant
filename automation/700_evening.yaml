@@ -5,6 +5,8 @@
       entity_id: binary_sensor.lights
       from: 'off'
       to: 'on'
+      for: "00:05:00"
+
   condition:
     - condition: template
       value_template: "{{ state_attr('sun.sun','rising') == false }}"
