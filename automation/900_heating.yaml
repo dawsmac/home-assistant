@@ -1,5 +1,5 @@
 - id: '900'
-  alias: Heating On
+  alias: Heating >> Boiler on/off
   trigger:
     - platform: template
       id: "heatingcall"
@@ -89,7 +89,7 @@
   mode: single
 
 - id: '901'
-  alias: Home or Not home Heating
+  alias: Heating >> Home/Not home
   trigger:
     - platform: state
       id: "homeheating"
@@ -131,7 +131,7 @@
   mode: single
 
 - id: '902'
-  alias: Morning heating
+  alias: Heating >> Morning
   trigger:
     - platform: state
       entity_id: binary_sensor.morning_alarm
@@ -155,7 +155,7 @@
         hvac_mode: 'heat'
 
 - id: '903'
-  alias: Night mode heating
+  alias: Heating >> Night
   trigger:
     - platform: state
       entity_id: input_boolean.night_mode
@@ -176,7 +176,7 @@
         hvac_mode: 'heat'
 
 - id: '904'
-  alias: forecast for heating
+  alias: Heating >> forecast 
   trigger:
     - platform: template
       id: "cold"
