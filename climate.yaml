@@ -15,7 +15,7 @@
   initial_hvac_mode: "heat"
   sleep_temp: 22
   home_temp: 23
-  way_temp: 20.5
+  away_temp: 20.5
   precision: 0.1
 
 - platform: generic_thermostat
