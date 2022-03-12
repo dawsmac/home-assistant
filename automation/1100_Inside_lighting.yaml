@@ -12,7 +12,7 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: binary_sensor.lights
+      entity_id: binary_sensor.enable_auto_lights
       state: "on"
   action:
       - service: light.turn_on
@@ -118,7 +118,7 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: binary_sensor.lights
+      entity_id: binary_sensor.enable_auto_lights
       state: "on"
   action:
     - service: light.turn_on
