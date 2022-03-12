@@ -114,6 +114,7 @@
                   - climate.upstairs
                   - climate.downstairs
                   - climate.office
+                  - climate.kitchen
         - conditions:
             - condition: trigger
               id: "homeheating"
@@ -126,6 +127,7 @@
                   - climate.upstairs
                   - climate.downstairs
                   - climate.office
+                  - climate.kitchen
             - service: climate.set_hvac_mode
               data:
                 hvac_mode: 'heat'
