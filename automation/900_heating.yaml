@@ -121,6 +121,13 @@
             - service: climate.set_preset_mode
               data:
                 preset_mode: 'home'
+              target:
+                entity_id:
+                  - climate.upstairs
+                  - climate.downstairs
+                  - climate.office
+            - service: climate.set_hvac_mode
+              data:
                 hvac_mode: 'heat'
               target:
                 entity_id:
@@ -144,15 +151,22 @@
       entity_id: group.persons
       state: 'home'
   action:
-    - service: climate.set_temperature
+    - service: climate.set_preset_mode
+      data:
+        preset_mode: 'comfort'
       target:
         entity_id:
           - climate.upstairs
           - climate.downstairs
           - climate.office
+    - service: climate.set_hvac_mode
       data:
-        preset_mode: 'comfort'
         hvac_mode: 'heat'
+      target:
+        entity_id:
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
 
 - id: '903'
   alias: Heating >> Night
@@ -165,15 +179,22 @@
       entity_id: group.persons
       state: 'home'
   action:
-    - service: climate.set_temperature
+    - service: climate.set_preset_mode
+      data:
+        preset_mode: 'sleep'
       target:
         entity_id:
           - climate.upstairs
           - climate.downstairs
-          - climate.Office
+          - climate.office
+    - service: climate.set_hvac_mode
       data:
-        preset_mode: 'sleep'
         hvac_mode: 'heat'
+      target:
+        entity_id:
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
 
 - id: '904'
   alias: Heating >> forecast 
@@ -193,26 +214,24 @@
               id: cold
           sequence:
             - service: climate.set_hvac_mode
+              data:
+                hvac_mode: heat
               target:
                 entity_id:
                   - climate.upstairs
                   - climate.downstairs
                   - climate.office
-                  - climate.kitchen
-              data:
-                hvac_mode: heat
         - conditions:
             - condition: trigger
               id: warm
           sequence:
             - service: climate.set_hvac_mode
+              data:
+                hvac_mode: 'off'
               target:
                 entity_id:
                   - climate.upstairs
                   - climate.downstairs
                   - climate.office
-                  - climate.kitchen
-              data:
-                hvac_mode: 'off'
       default: []
   mode: single
