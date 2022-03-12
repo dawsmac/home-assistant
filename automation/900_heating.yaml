@@ -238,3 +238,34 @@
                   - climate.office
       default: []
   mode: single
+
+- id: '905' 
+  alias: 'Heating >> HA reboot'
+  trigger:
+    - platform: homeassistant
+      event: start
+  condition:
+    alias: "HA rebooted and heating was previously needed "
+    condition: or
+    conditions:
+      - condition: state 
+        entity_id: switch.downstairs_radiators
+        state: "on"
+      - condition: state
+        entity_id: switch.upstairs_radiators
+        state: "on"
+      - condition: state
+        entity_id: switch.underfloor_heating
+        state: "on"
+      - condition: state
+        entity_id: switch.hotwater
+        state: "on"
+  action:
+    - service: homeassistant.turn_on
+      target:
+        entity_id:
+          - switch.boiler_call
+
+
+
+        
