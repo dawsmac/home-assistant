@@ -36,7 +36,7 @@
   away_temp: 18
   sleep_temp: 17
   home_temp: 19.5
-  comfort_temp: 20.5
+  comfort_temp: 21.5
   precision: 0.1
 
 - platform: generic_thermostat
@@ -57,7 +57,7 @@
   away_temp: 18
   sleep_temp: 17
   home_temp: 19.5
-  comfort_temp: 20.5
+  comfort_temp: 20
   precision: 0.1
 
 - platform: generic_thermostat
