@@ -151,6 +151,7 @@
           - climate.office
       data:
         temperature: 20
+        initial_hvac_mode: "heat" 
 
 - id: '903'
   alias: Night mode heating
@@ -171,6 +172,7 @@
           - climate.Office
       data:
         temperature: 18
+        initial_hvac_mode: "heat"
 
 - id: '904'
   alias: forecast for heating
