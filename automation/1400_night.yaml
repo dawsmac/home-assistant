@@ -11,7 +11,7 @@
       for: "00:15:00"
     - platform: state
       id: "awaynightmode"
-      entity_id: binary_sensor.lights
+      entity_id: binary_sensor.enable_auto_lights
       to: "on"
       for:
         hours: 5
@@ -26,7 +26,7 @@
               for:
                 minutes: 5
             - condition: state
-              entity_id: binary_sensor.lights
+              entity_id: binary_sensor.enable_auto_lights
               state: "on"
             - condition: time
               after: "20:00:00"

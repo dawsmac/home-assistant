@@ -73,7 +73,7 @@
       to: "off"
     - platform: state
       id: "morningnolights"
-      entity_id: binary_sensor.lights
+      entity_id: binary_sensor.enable_auto_lights
       to: "off"
       for:
         minutes: 5
@@ -85,7 +85,7 @@
             - condition: template
               value_template: "{{ state_attr('sun.sun','rising') == true }}"
             - condition: state
-              entity_id: binary_sensor.lights
+              entity_id: binary_sensor.enable_auto_lights
               state: "on"
           sequence:
             - service: scene.turn_on
