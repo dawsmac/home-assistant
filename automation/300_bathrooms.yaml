@@ -13,7 +13,7 @@
         state: 'off'
       - condition: state
         entity_id:
-          - binary_sensor.lights
+          - binary_sensor.enable_auto_lights
         state: 'on'
       - condition: state
         entity_id:

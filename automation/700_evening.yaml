@@ -2,7 +2,7 @@
   alias: Evening with lights
   trigger:
     - platform: state
-      entity_id: binary_sensor.lights
+      entity_id: binary_sensor.enable_auto_lights
       from: 'off'
       to: 'on'
       for: "00:05:00"
