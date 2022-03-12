@@ -2,18 +2,20 @@
   name: Kitchen
   heater: switch.underfloor_heating
   target_sensor: sensor.underfloor_heating
-  min_temp: 18
-  max_temp: 23
+  min_temp: 19
+  max_temp: 25
   ac_mode: false
-  target_temp: 20.5
+  target_temp: 21.5
   cold_tolerance: 0.3
   hot_tolerance: 0
   min_cycle_duration:
     seconds: 5
   keep_alive:
     minutes: 3
-  initial_hvac_mode: "off"
-  away_temp: 20.5
+  initial_hvac_mode: "heat"
+  sleep_temp: 22
+  home_temp: 23
+  way_temp: 20.5
   precision: 0.1
 
 - platform: generic_thermostat
@@ -23,7 +25,7 @@
   min_temp: 18
   max_temp: 25
   ac_mode: false
-  target_temp: 19
+  target_temp: 10
   cold_tolerance: 0.3
   hot_tolerance: 0
   min_cycle_duration:
@@ -33,6 +35,8 @@
   initial_hvac_mode: "off"
   away_temp: 18
   sleep_temp: 17
+  home_temp: 19.5
+  comfort_temp: 20.5
   precision: 0.1
 
 - platform: generic_thermostat
@@ -51,6 +55,9 @@
     minutes: 3
   initial_hvac_mode: "off"
   away_temp: 18
+  sleep_temp: 17
+  home_temp: 19.5
+  comfort_temp: 20.5
   precision: 0.1
 
 - platform: generic_thermostat
@@ -68,5 +75,8 @@
   keep_alive:
     minutes: 3
   initial_hvac_mode: "off"
-  away_temp: 15.0
+  away_temp: 18
+  sleep_temp: 17
+  home_temp: 19.5
+  comfort_temp: 20.5
   precision: 0.1
