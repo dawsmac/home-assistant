@@ -244,28 +244,37 @@
   trigger:
     - platform: homeassistant
       event: start
-  condition:
-    alias: "HA rebooted and heating was previously needed "
-    condition: or
-    conditions:
-      - condition: state 
-        entity_id: switch.downstairs_radiators
-        state: "on"
-      - condition: state
-        entity_id: switch.upstairs_radiators
-        state: "on"
-      - condition: state
-        entity_id: switch.underfloor_heating
-        state: "on"
-      - condition: state
-        entity_id: switch.hotwater
-        state: "on"
   action:
+    - condition: or
+      alias: "HA rebooted and heating was previously needed"
+      conditions:
+        - condition: state 
+          entity_id: switch.downstairs_radiators
+          state: "on"
+        - condition: state
+          entity_id: switch.upstairs_radiators
+          state: "on"
+        - condition: state
+          entity_id: switch.underfloor_heating
+          state: "on"
+        - condition: state
+          entity_id: switch.hotwater
+          state: "on"
     - service: homeassistant.turn_on
       target:
         entity_id:
           - switch.boiler_call
+    - condition: state
+      entity_id: group.persons
+      state: "home"
+    - service: climate.set_hvac_mode
+      data:
+        hvac_mode: 'heat'
+      target:
+        entity_id:
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
+          - climate.kitchen
 
 
-
-        
