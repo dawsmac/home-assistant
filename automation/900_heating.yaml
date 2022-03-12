@@ -224,6 +224,16 @@
                   - climate.upstairs
                   - climate.downstairs
                   - climate.office
+            - service: notify.mobile_app_rich_phone
+              data:
+                message: >
+                  Heating >> Looks like it might be getting a little cold
+            - service: notify.alexa_media
+              data:
+                message: Looks like it might be getting a little colder over the next few days setting house heat to on
+                target: media_player.kitchen_echo
+                data:
+                  type: announce
         - conditions:
             - condition: trigger
               id: warm
@@ -236,6 +246,10 @@
                   - climate.upstairs
                   - climate.downstairs
                   - climate.office
+            - service: notify.mobile_app_rich_phone
+              data:
+                message: >
+                  Heating >> Weather look to be getting better for the next few days switching heating off.
       default: []
   mode: single
 
