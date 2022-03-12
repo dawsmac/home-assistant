@@ -136,6 +136,7 @@
                   - climate.upstairs
                   - climate.downstairs
                   - climate.office
+                  - climate.kitchen
       default: []
   mode: single
 
