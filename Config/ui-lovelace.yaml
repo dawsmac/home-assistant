@@ -1,0 +1,281 @@
+title: Edenbridge
+swipe_nav:
+  wrap: true
+  swipe_amount: 30
+  animate: swipe
+
+views:
+  - title: main
+    path: main
+    icon: mdi:information-outline
+    cards:
+      - type: entities
+        title: Who´s at Home
+        entities:
+          - person.faye
+          - person.richard
+      
+      - type: weather-forecast
+        entity: weather.edenbridge
+      
+      - type: sensor
+        entity: sensor.out_side_lux
+        name: Outside Lux
+      
+      - type: button
+        entity: input_boolean.night_mode
+        show_name: false
+        show_state: false
+        show_icon: true
+
+  - title: Heating
+    icon: mdi:radiator
+    path: heating
+    cards:
+      - type: 'custom:simple-thermostat'
+        entity: climate.downstairs
+        step_size: 1
+        sensors:
+          - entity: sensor.playroom_s_room_humidity
+            name: Humidity
+      - type: 'custom:simple-thermostat'
+        entity: climate.upstairs
+        step_size: 1
+        sensors:
+          - entity: sensor.playroom_s_room_humidity
+            name: Humidity
+      - type: 'custom:simple-thermostat'
+        entity: climate.kitchen
+        step_size: 1
+        sensors:
+          - entity: sensor.kitchen_humidity
+            name: Humidity
+      - type: 'custom:simple-thermostat'
+        entity: climate.office
+        step_size: 1
+        sensors:
+          - entity: sensor.office_humidity
+            name: Humidity
+
+
+
+  - title: Rooms
+    path: rooms
+    icon: mdi:home-outline
+
+    cards:
+      - type: glance
+        title: Master bedroom
+        entities:
+          - entity: light.master_bedroom_light
+          - entity: switch.faye_s_bedside_lamp
+          - entity: switch.rich_s_bedside_lamp
+          - entity: light.master_bedroom_bedside_lamps
+          - entity: binary_sensor.raf_s_pir
+          - entity: sensor.master_room_temperature
+
+      - type: glance
+        title: Lila´s bedroom
+        entities:
+          - entity: light.lila_s_bedroom_light
+          - entity: binary_sensor.lila_s_pir
+          - entity: sensor.lila_room_temperature
+          - entity: switch.lila_s_multi_psu_socket_1
+          - entity: switch.lila_s_multi_psu_socket_2
+          - entity: switch.lila_s_multi_psu_socket_3
+          - entity: switch.lila_s_multi_psu_usb
+
+      - type: glance
+        title: Thea´s bedroom
+        entities:
+          - entity: light.thea_s_bedroom_light
+          - entity: binary_sensor.thea_s_bedroom_pir
+          - entity: sensor.thea_room_temperature
+          - entity: switch.thea_s_multi_psu_socket_1
+          - entity: switch.thea_s_multi_psu_socket_2
+          - entity: switch.thea_s_multi_psu_socket_3
+          - entity: switch.thea_s_multi_psu_usb
+
+      - type: glance
+        title: Playroom
+        entities:
+          - entity: light.playroom_s_light
+          - entity: binary_sensor.playroom_pir
+          - entity: light.globe_lamp
+          - entity: switch.tv
+          - entity: sensor.playroom_temperature
+
+      - type: glance
+        title: Lounge
+        entities:
+          - entity: light.lounge_bookshelf_lights
+          - entity: light.lounge_lights
+          - entity: binary_sensor.lounge_pir
+          - entity: sensor.lounge_temperature
+
+      - type: glance
+        title: Kitchen
+        entities:
+          - entity: light.kitchen_dining
+          - entity: light.kitchen_side_lights
+          - entity: light.kitchen_island
+          - entity: light.kitchen_fairy_lights
+          - entity: binary_sensor.kitchen_pir
+          - entity: light.boiler_lamp
+          - entity: sensor.kitchen_temperature
+          - entity: sensor.underfloor_heating
+          - entity: switch.dishwasher
+          - entity: switch.washing_machine
+          - entity: switch.tumble_dryer
+
+
+      - type: glance
+        title: Landing / Hallway
+        entities:
+          - entity: light.landing_lights
+          - entity: light.hallway_lights
+          - entity: sensor.landing_temperature
+          - entity: sensor.hallway_temperature
+          - entity: binary_sensor.hallway_pir
+
+      - type: glance
+        title: Garage
+        entities:
+          
+          - entity: light.garage_lights
+          - entity: sensor.driveway_temperature
+
+      - type: glance
+        title: Office
+        entities:
+          - entity: switch.office_door_lock
+          - entity: sensor.office_temperature
+          - entity: sensor.office_humidity
+          - entity: sensor.office_atc_battery_level
+          - entity: switch.office_heater
+          - entity: binary_sensor.office_door
+
+      - type: glance
+        title: Back garden
+        entities:
+          - entity: binary_sensor.garden_gate
+          - entity: light.garden_lights
+
+      - type: glance
+        title: Front garden
+        entities:
+          - entity: light.porch_light
+          - entity: binary_sensor.front_door
+          - entity: sensor.porch_temperature
+
+      - type: glance
+        title: Bathroom
+        entities:
+          - entity: light.bathroom_mirror
+          - entity: light.bathroom
+          - entity: binary_sensor.bathroom_switch
+          - entity: binary_sensor.bathroom_mirror_switch
+          - entity: switch.bathroom_extractor_fan
+          - entity: sensor.bathroom_humidity
+          - entity: sensor.bathroom_temperature
+
+      - type: glance
+        title: Downstairs toilet
+        entities:
+          - entity: switch.downstairs_toilet_extractor_fan
+          - entity: sensor.downstairs_toilet_humidity
+          - entity: sensor.downstairs_toilet_temperature
+
+  - title: Master's Switch's
+    icon: mdi:toggle-switch
+    path: switchs
+    cards:
+      - type: glance
+        entities:
+          - entity: input_boolean.coop_cleanning
+          - entity: input_boolean.guest_room
+          - entity: input_boolean.eating_mode
+
+  - title: Media
+    path: Media
+    icon: mdi:music
+    cards:
+      - type: glance
+        title: TV players
+        entities:
+          - entity: media_player.playroom_tv
+
+      - type: glance
+        title: Echo's
+        entities:
+          - entity: media_player.playroom
+          - entity: media_player.master_bedroom
+          - entity: media_player.thea_bedroom
+          - entity: media_player.lila_bedroom
+          - entity: media_player.kitchen_echo
+
+      - type: glance
+        title: Sonos
+        entities:
+          - entity: media_player.lounge
+          - entity: media_player.kitchen
+          - entity: media_player.garden
+
+
+  - title: Chickhen´s
+    path: chickhens
+    icon: mdi:bird
+    cards:
+      - type: glance
+        entities:
+          - entity: switch.coop_door_close
+          - entity: switch.coop_door_open
+          - entity: binary_sensor.chickens_coop_door
+          - entity: binary_sensor.chickens_garden_door
+
+  - title: Controls
+    path: Controls
+    cards:
+      - type: glance
+        title: Heating Control´s
+        entities:
+          - switch.downstairs_radiators
+          - switch.upstairs_radiators
+          - binary_sensor.cylinder_thermostats
+          - switch.underfloor_heating
+          - switch.hotwater
+          - switch.boiler_call
+
+  - title: CCTV
+    icon: mdi:camera
+    path: cctv
+    cards:
+      - type: custom:frigate-card
+        camera_entity: camera.backgarden
+        live:
+          provider: webrtc
+          webrtc:
+            url: 'rtsp://admin:Farmer79!!@192.168.110.242/cam/realmonitor?channel=1&subtype=01&authbasic=YWRtaW46RmFybWVyNzkhIQ=='
+      
+      - type: custom:frigate-card
+        camera_entity: camera.patio
+        live:
+          provider: webrtc
+          webrtc:
+            url: 'rtsp://admin:Farmer79!!@192.168.110.244:554/h264Preview_01_sub'
+      
+      - type: custom:frigate-card
+        camera_entity: camera.porch
+        live:
+          provider: webrtc
+          webrtc:
+            url: rtsp://admin:Farmer79!!@192.168.110.241/cam/realmonitor?channel=1&subtype=01&authbasic=YWRtaW46RmFybWVyNzkhIQ==
+      
+      - type: custom:frigate-card
+        camera_entity: camera.driveway
+        live:
+          provider: webrtc
+          webrtc:
+            url: 'rtsp://admin:Farmer79!!@192.168.110.243/cam/realmonitor?channel=1&subtype=01&authbasic=YWRtaW46RmFybWVyNzkhIQ=='
+    
+    

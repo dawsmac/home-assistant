@@ -1,0 +1,64 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+recorder:
+  purge_keep_days: 7
+  db_url: mysql://Hass:tC6543WbXZcbKA@dawsnet_prod_db:3306/Hass?charset=utf8mb4
+  #exclude:
+  #  entities:
+  #    - binary_sensor.hallway_pir
+  #    - binary_sensor.kitchen_pir
+  #    - binary_sensor.landing_pir
+  #    - binary_sensor.lila_s_pir
+  #    - binary_sensor.lounge_pir
+  #    - binary_sensor.playroom_pir
+  #    - binary_sensor.raf_s_pir
+  #    - sensor.ds_pirs
+  #    - sensor.us_pirs   
+  
+ffmpeg:
+
+
+logger:
+  default: warning
+  logs:
+    custom_components.webrtc: debug
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.18.0.0/16
+
+mobile_app:
+
+lovelace:
+  mode: yaml
+  resources:
+    - url: /local/simple-thermostat.js
+      type: module
+    - url: /local/lovelace-swipe-navigation/swipe-navigation.js?v=1.0.0
+      type: module
+    - url: /local/frigate-hass-card.js
+      type: module
+
+# Text to speech
+tts:
+  - platform: google_translate
+    cache: true
+    time_memory: 300
+    cache_dir: /tmp/tts
+    base_url: https://hauto.dawsnet.uk
+    service_name: google_say
+
+group: !include groups.yaml
+automation: !include_dir_merge_list automation
+script: !include scripts.yaml
+scene: !include scenes.yaml
+input_boolean: !include input_boolean.yaml
+climate: !include climate.yaml
+cloud: !include cloud.yaml
+notify: !include notify.yaml
+input_select: !include input_select.yaml
+alert: !include alerts.yaml
+template: !include template.yaml
+sensor: !include sensor.yaml
