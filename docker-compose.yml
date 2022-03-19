@@ -8,14 +8,14 @@ networks:
 
 services:
   homeassistant:
-    image: hass
+    image: homeassistant/home-assistant:latest
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-  #  volumes:
+    volumes:
       #- /opt/Media:/media
-      #- /opt/homeassistant:/config
+      /mnt/docker_data/Homeassistant:/config
     ports:
       - 8123:8123
     #depends_on:
