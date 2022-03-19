@@ -15,7 +15,7 @@ services:
       - TZ=Europe/London
     volumes:
       #- /opt/Media:/media
-      /mnt/docker_data/Homeassistant:/config
+      - /mnt/docker_data/Homeassistant:/config
     ports:
       - 8123:8123
     #depends_on:
