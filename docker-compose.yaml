@@ -8,7 +8,6 @@ networks:
 
 services:
   homeassistant:
-    build: .
     image: homeassistant/home-assistant
     container_name: homeassistant
     environment:
