@@ -1,9 +1,0 @@
-garden_gate:
-  name: Garden gate is open
-  entity_id: binary_sensor.garden_gate
-  state: "on"
-  repeat: 20
-  can_acknowledge: true
-  skip_first: true
-  notifiers:
-    - notification_gate_left_open
