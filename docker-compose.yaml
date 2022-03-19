@@ -8,7 +8,7 @@ networks:
 
 services:
   homeassistant:
-    image: homeassistant/home-assistant
+    image: homeassistant/home-assistant:latest
     container_name: homeassistant
     environment:
       - PUID=1000
