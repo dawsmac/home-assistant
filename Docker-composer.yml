@@ -1,0 +1,28 @@
+
+version: "3.9"
+
+networks:
+    dock_inter:
+        external: true
+        name: dock_inter
+
+services:
+  homeassistant:
+    build: .
+    image: homeassistant/home-assistant
+    container_name: homeassistant
+    privileged: true
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+  #  volumes:
+      #- /opt/Media:/media
+      #- /opt/homeassistant:/config
+    ports:
+      - 8123:8123
+    restart: unless-stopped
+    #depends_on:
+    #  - ha_influxd
+    networks:
+      - dock_inter
