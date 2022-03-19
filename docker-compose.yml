@@ -8,8 +8,7 @@ networks:
 
 services:
   homeassistant:
-    image: homeassistant/home-assistant:latest
-    container_name: homeassistant
+    image: hass
     environment:
       - PUID=1000
       - PGID=1000
