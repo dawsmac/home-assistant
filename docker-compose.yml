@@ -5,9 +5,9 @@ networks:
     dock_inter:
         external: true
         name: dock_inter
-    Automation:
+    swarm-Automation:
         external: true
-        name: Automation
+        name: swarm-Automation
 
 services:
   homeassistant:
@@ -25,7 +25,7 @@ services:
     #  - ha_influxd
     networks:
       - dock_inter
-      - Automation
+      - swarm-Automation
 
 
 
