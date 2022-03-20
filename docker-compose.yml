@@ -24,8 +24,10 @@ services:
     #depends_on:
     #  - ha_influxd
     networks:
-      - dock_inter
-      - swarm-Automation
+      dock_inter:
+        aliases:
+          - interhass
+      swarm-Automation:
 
 
 
