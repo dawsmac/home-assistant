@@ -17,7 +17,7 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      #- /opt/Media:/media
+      - /nfs/Media/Music:/media
       - /mnt/docker_data/Homeassistant:/config
     ports:
       - 8123:8123
