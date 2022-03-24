@@ -101,7 +101,6 @@ views:
         entities:
           - entity: light.playroom_s_light
           - entity: binary_sensor.espresense_playroon_motion
-          - entity: light.globe_lamp
           - entity: switch.tv
           - entity: sensor.playroom_temperature
 
