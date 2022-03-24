@@ -9,4 +9,9 @@
   entities:
     - light.bookshelf_light_left
     - light.bookshelf_light_right
-    
+
+- platform: group
+  name: master bedroom bedside lamps
+  entities:
+    - entity: switch.faye_s_bedside_lamp
+    - entity: switch.rich_s_bedside_lamp
