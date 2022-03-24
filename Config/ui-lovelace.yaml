@@ -71,7 +71,7 @@ views:
           - entity: switch.faye_s_bedside_lamp
           - entity: switch.rich_s_bedside_lamp
           - entity: light.master_bedroom_bedside_lamps
-          - entity: binary_sensor.raf_s_pir
+          - entity: binary_sensor.espresense_masterbedroom_motion
           - entity: sensor.master_room_temperature
 
       - type: glance
@@ -100,7 +100,7 @@ views:
         title: Playroom
         entities:
           - entity: light.playroom_s_light
-          - entity: binary_sensor.playroom_pir
+          - entity: binary_sensor.espresense_playroon_motion
           - entity: light.globe_lamp
           - entity: switch.tv
           - entity: sensor.playroom_temperature
@@ -110,7 +110,7 @@ views:
         entities:
           - entity: light.lounge_bookshelf_lights
           - entity: light.lounge_lights
-          - entity: binary_sensor.lounge_pir
+          - entity: binary_sensor.espresense_lounge_motion
           - entity: sensor.lounge_temperature
 
       - type: glance
