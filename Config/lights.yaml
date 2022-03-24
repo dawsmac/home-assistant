@@ -1,0 +1,6 @@
+- platform: group
+  name: garden lights
+  entities:
+    - light.kitchen_outside_lights
+    - light.driveway_light
+    
