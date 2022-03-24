@@ -137,12 +137,6 @@ views:
           - entity: sensor.hallway_temperature
           - entity: binary_sensor.hallway_pir
 
-      - type: glance
-        title: Garage
-        entities:
-          
-          - entity: light.garage_lights
-          - entity: sensor.driveway_temperature
 
       - type: glance
         title: Office
@@ -153,12 +147,14 @@ views:
           - entity: sensor.office_atc_battery_level
           - entity: switch.office_heater
           - entity: binary_sensor.office_door
+          - entity: light.garage_lights
 
       - type: glance
         title: Back garden
         entities:
           - entity: binary_sensor.garden_gate
           - entity: light.garden_lights
+          - entity: sensor.driveway_temperature
 
       - type: glance
         title: Front garden
