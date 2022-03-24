@@ -6,7 +6,6 @@
 
 - platform: group
   name: lounge bookshelf lights
-  view: no
   entities:
     - light.bookshelf_light_left
     - light.bookshelf_light_right
