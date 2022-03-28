@@ -13,5 +13,5 @@
 - platform: group
   name: master bedroom bedside lamps
   entities:
-    - entity: switch.faye_s_bedside_lamp
-    - entity: switch.rich_s_bedside_lamp
+    - switch.faye_s_bedside_lamp
+    - switch.rich_s_bedside_lamp
