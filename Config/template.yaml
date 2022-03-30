@@ -2,7 +2,7 @@ binary_sensor:
   
     - name: "No activity downstairs"
       state: >
-        {{ is_state('binary_sensor.hallway_pir' , 'on')
+        {{ is_state('binary_sensor.hallway_pir' , 'off')
             and is_state('binary_sensor.kitchen_pir' , 'off')
             and is_state('binary_sensor.espresense_lounge_motion' , 'off') }}
 

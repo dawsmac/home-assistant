@@ -21,8 +21,8 @@
             - condition: trigger
               id: "nightpirs"
             - condition: state
-              entity_id: sensor.ds_pirs
-              state: "True"
+              entity_id: binary_sensor.no_activity_downstairs
+              state: "on"
               for:
                 minutes: 5
             - condition: state
