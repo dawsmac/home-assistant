@@ -2,7 +2,7 @@
   alias: Day mode PIR enabled
   trigger:
     - platform: state
-      entity_id: sensor.us_pirs
+      entity_id: binary_sensor.no_activity_upstairs
       to: 'true'
       for:
         minutes: 10
