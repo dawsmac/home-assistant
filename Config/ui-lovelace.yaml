@@ -246,10 +246,14 @@ views:
     path: cctv
     cards:
       - type: custom:frigate-card
-        cameras:
-          - camera.backgarden
-   
-      
+        camera_entity: camera.backgarden
+        frigate:
+          mode: above
+          buttons:
+            image: true
+            live: true
+            frigate: true
+            frigate_ui: true
   #    - type: custom:frigate-card
   #      live:
   #      camera_entity: camera.patio
