@@ -50,7 +50,7 @@
           for: 00:02:00
       - condition: state
         entity_id: light.hallway_lights
-        state: 'off'
+        state: 'on'
       - service: light.turn_off
         entity_id:
           - light.hallway_lights
