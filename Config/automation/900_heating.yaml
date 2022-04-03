@@ -209,59 +209,60 @@
           - climate.downstairs
           - climate.office
 
-- id: '904'
-  alias: Heating >> forecast 
-  trigger:
-    - platform: template
-      id: "cold"
-      value_template: >
-        {{ state_attr('weather.edenbridge', 'forecast')[2]['templow'] <= 5}}
-    - platform: template
-      id: "warm"
-      value_template: >
-        {{ state_attr('weather.edenbridge', 'forecast')[0]['templow'] > 5}}
-  action:
-    - choose:
-        - conditions:
-            - condition: trigger
-              id: cold
-          sequence:
-            - service: climate.set_hvac_mode
-              data:
-                hvac_mode: heat
-              target:
-                entity_id:
-                  - climate.upstairs
-                  - climate.downstairs
-                  - climate.office
-            - service: notify.mobile_app_rich_phone
-              data:
-                message: >
-                  Heating >> Looks like it might be getting a little cold
-            - service: notify.alexa_media
-              data:
-                message: Looks like it might be getting a little colder over the next few days setting house heat to on
-                target: media_player.kitchen_echo
-                data:
-                  type: announce
-        - conditions:
-            - condition: trigger
-              id: warm
-          sequence:
-            - service: climate.set_hvac_mode
-              data:
-                hvac_mode: 'off'
-              target:
-                entity_id:
-                  - climate.upstairs
-                  - climate.downstairs
-                  - climate.office
-            - service: notify.mobile_app_rich_phone
-              data:
-                message: >
-                  Heating >> Weather look to be getting better for the next few days switching heating off.
-      default: []
-  mode: single
+
+# #- id: '904'
+#   alias: Heating >> forecast 
+#   trigger:
+#     - platform: template
+#       id: "cold"
+#       value_template: >
+#         {{ state_attr('weather.openweathermap','forecast')[4]['temperature'] <= 5}}
+#     - platform: template
+#       id: "warm"
+#       value_template: >
+#         {{ state_attr('weather.openweathermap','forecast')[0]['temperature'] <= 5}}
+#   action:
+#     - choose:
+#         - conditions:
+#             - condition: trigger
+#               id: cold
+#           sequence:
+#             - service: climate.set_hvac_mode
+#               data:
+#                 hvac_mode: heat
+#               target:
+#                 entity_id:
+#                   - climate.upstairs
+#                   - climate.downstairs
+#                   - climate.office
+#             - service: notify.mobile_app_rich_phone
+#               data:
+#                 message: >
+#                   Heating >> Looks like it might be getting a little cold
+#             - service: notify.alexa_media
+#               data:
+#                 message: Looks like it might be getting a little colder over the next few days setting house heating to on
+#                 target: media_player.kitchen_echo
+#                 data:
+#                   type: announce
+#         - conditions:
+#             - condition: trigger
+#               id: warm
+#           sequence:
+#             - service: climate.set_hvac_mode
+#               data:
+#                 hvac_mode: 'off'
+#               target:
+#                 entity_id:
+#                   - climate.upstairs
+#                   - climate.downstairs
+#                   - climate.office
+#             - service: notify.mobile_app_rich_phone
+#               data:
+#                 message: >
+#                   Heating >> Weather look to be getting better for the next few days switching heating off.
+#       default: []
+#   mode: single
 
 - id: '905' 
   alias: 'Heating >> HA reboot'
@@ -298,7 +299,6 @@
         entity_id:
           - climate.upstairs
           - climate.downstairs
-          - climate.office
           - climate.kitchen
 
 
