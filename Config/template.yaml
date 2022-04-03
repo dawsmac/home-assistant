@@ -1,4 +1,4 @@
-binary_sensor:
+- binary_sensor:
   
     - name: "No activity downstairs"
       state: >
@@ -40,12 +40,11 @@ binary_sensor:
           {{ unavailable }}
         {% endif %}
 
-
-sensor:
-    
-    - name: next alarm
+- sensor: 
+      
+    - name: next_alarm
       state: >
-        {{ [states('sensor.faye_phone_next_alarm'), states('sensor.rich_phone_next_alarm')] | min }}
+        value_template: "{{ [states('sensor.sm_faye_next_alarm'), states('sensor.sm_g991b_next_alarm')] | min }}"
         attribute_templates:
           alarm_time: >-
             {{ as_timestamp(states('sensor.next_alarm')) | timestamp_custom('%H:%M') }}
@@ -56,15 +55,13 @@ sensor:
             {% set time = state_attr('sensor.next_alarm','minutes_left') %}
             {% set hours = ((time | int /  60) | string).split('.')[0] %}
             {% set minutes = time | int % 60 %}
-            {{hours}} hours and {{minutes}} minutes
+            {{hours}} timmar och {{minutes}} minuter 
           text_whos_alarm: >-
-            {% if states('sensor.rich_phone_next_alarm') == states('sensor.faye_phone_next_alarm') %} Inget alarm
-            {% elif ((states('sensor.next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int ==  ((states('sensor.faye_phone_next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int %}
-            Faye´s
-            {% elif ((states('sensor.next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int ==  ((states('sensor.rich_phone_next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int %}
-            Rich´s
+            {% if states('sensor.sm_g991b_next_alarm') == states('sensor.sm_faye_next_alarm') %} Inget alarm
+            {% elif ((states('sensor.next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int ==  ((states('sensor.sm_faye_next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int %}
+            Hannah
+            {% elif ((states('sensor.next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int ==  ((states('sensor.sm_g991b_next_alarm')|as_timestamp|int - now()|as_timestamp|int)/60)|int %}
+            Filip
             {% else %}
             ERROR
             {% endif %}
-
-    
