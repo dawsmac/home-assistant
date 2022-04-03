@@ -1,20 +1,25 @@
 - id: '1300'
   alias: morning mode
   trigger:
-    - platform: state
+
+    - platform: time
+      at:
+        - sensor.sm_faye_next_alarm
+        - sensor.sm_g991b_next_alarm
       id: 'morningalarm'
-      entity_id: binary_sensor.morning_alarm
-      to: 'on'
+  
     - platform: template
-      id: 'morningaway'
       value_template: "{{ is_state('sun.sun', 'above_horizon') }}"
+      id: 'morningaway'
+
     - platform: state
       id: 'morning mode triggered by no-wireless charging'
       entity_id:
-        - sensor.rich_phone_charger_type
-        - sensor.faye_phone_charger_type
+        - sensor.sm_faye_charger_type
+        - sensor.sm_faye_charger_type
       from: 'wireless'
       to: 'none'
+
   action:
     - choose:
         - conditions:
@@ -33,6 +38,7 @@
             - service: input_boolean.turn_off
               target:
                 entity_id: input_boolean.night_mode
+
         - conditions:
             - condition: trigger
               id: 'morning mode triggered by no-wireless charging'
@@ -49,6 +55,7 @@
             - service: input_boolean.turn_off
               target:
                 entity_id: input_boolean.night_mode
+
         - conditions:
             - condition: trigger
               id: 'morningaway'
@@ -105,10 +112,10 @@
 - id: '1303'
   alias: Morning time Kitchen
   trigger:
-    - platform: state
-      entity_id: input_boolean.night_mode
-      from: "on"
-      to: "off"
+    - platform: time
+      at:
+        - sensor.sm_faye_next_alarm
+        - sensor.sm_g991b_next_alarm
   condition:
     - condition: template
       value_template: "{{ state_attr('sun.sun','rising') == true }}"
@@ -124,9 +131,22 @@
       target:
         entity_id: media_player.kitchen
       data:
-        media_content_type: "playlist"
-        media_content_id: "x-rincon-mp3radio://https://radio.virginradio.co.uk/stream?DIST=TuneIn&TGT=TuneIn&maxServers=2&partnertok=eyJhbGciOiJIUzI1NiIsImtpZCI6InR1bmVpbiIsInR5cCI6IkpXVCJ9.eyJ0cnVzdGVkX3BhcnRuZXIiOnRydWUsImlhdCI6MTYzNDQ1NzE2NSwiaXNzIjoidGlzcnYifQ.itqk3ofOm8_NsySjWahGe4lWpUnmxPFegf3VdiUSlIA"
+        media_content_id: FV:2/7
+        media_content_type: favorite_item_id
         volume_level: 0.22
+      metadata:
+        title: Virgin Radio UK
+        thumbnail: >-
+          https://d1uner0r1fcap8.cloudfront.net/image?w=60&image=https%3A%2F%2Fcdn-profiles.tunein.com%2Fs266113%2Fimages%2Flogog.png%3Ft%3D1&partnerId=tunein
+        media_class: genre
+        children_media_class: null
+        navigateIds:
+          - {}
+          - media_content_type: favorites
+            media_content_id: ''
+          - media_content_type: favorites_folder
+            media_content_id: object.item.audioItem.audioBroadcast
+      
     - service: scene.turn_on
       target:
         entity_id: scene.appliances_on
