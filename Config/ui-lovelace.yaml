@@ -27,8 +27,6 @@ views:
         show_name: false
         show_state: false
         show_icon: true
-      - type: sensor
-        entity: sensor.next_alarm
 
   - title: Heating
     icon: mdi:radiator
