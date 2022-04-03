@@ -142,14 +142,26 @@
 
 - id: '902'
   alias: Heating >> Morning
+  description: '30 min befor the morning alarm goes off the heating will come oo'
+  mode: single
   trigger:
-    - platform: state
-      entity_id: binary_sensor.morning_alarm
-      to: 'on'
+    - platform: template
+      value_template: |-
+        {{now().strftime('%a %h %d %H:%M %Z %Y') ==
+                (((state_attr('sensor.sm_g991b_next_alarm', 'Time in Milliseconds') |
+                int / 1000) + 10*30 ) | timestamp_custom('%a %h %d %H:%M %Z %Y')) }}
+    - platform: template
+      value_template: |-
+        {{now().strftime('%a %h %d %H:%M %Z %Y') ==
+                (((state_attr('sensor.sm_faye_next_alarm', 'Time in Milliseconds') |
+                int / 1000) + 10*30 ) | timestamp_custom('%a %h %d %H:%M %Z %Y')) }}
   condition:
     - condition: time
-      after: '05:00'
+      after: '04:30'
       before: '09:00'
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: "on"
     - condition: state
       entity_id: group.persons
       state: 'home'
@@ -161,7 +173,6 @@
         entity_id:
           - climate.upstairs
           - climate.downstairs
-          - climate.office
     - service: climate.set_hvac_mode
       data:
         hvac_mode: 'heat'
@@ -169,7 +180,6 @@
         entity_id:
           - climate.upstairs
           - climate.downstairs
-          - climate.office
 
 - id: '903'
   alias: Heating >> Night
