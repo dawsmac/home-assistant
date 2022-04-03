@@ -99,7 +99,7 @@
       id: "nothomeheating"
       entity_id: group.persons
       to: "not_home"
-      for: "00:05:00"
+      for: "01:00:00"
   action:
     - choose:
         - conditions:
