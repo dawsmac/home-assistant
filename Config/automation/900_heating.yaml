@@ -141,8 +141,8 @@
   mode: single
 
 - id: '902'
-  alias: Heating >> Morning
-  description: '30 min befor the morning alarm goes off the heating will come oo'
+  alias: Heating >> Morning Workday
+  description: '30 min befor the morning alarm goes off the heating will come on '
   mode: single
   trigger:
     - platform: template
