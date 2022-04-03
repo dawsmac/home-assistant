@@ -46,7 +46,7 @@
           platform: state
           entity_id:
             - binary_sensor.hallway_pir
-          to: "on"
+          to: "off"
           for: 00:02:00
       - condition: state
         entity_id: light.hallway_lights
