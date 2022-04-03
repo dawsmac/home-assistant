@@ -16,7 +16,7 @@ views:
           - person.richard
       
       - type: weather-forecast
-        entity: weather.edenbridge
+        entity: weather.openweathermap
       
       - type: sensor
         entity: sensor.out_side_lux
