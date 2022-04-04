@@ -63,3 +63,18 @@ template: !include template.yaml
 sensor: !include sensor.yaml
 light: !include lights.yaml
 binary_sensor: !include  binary_sensor.yaml
+
+
+amcrest:
+  - host: 192.168.110.241
+    name: porch_rstp
+    username: admin
+    password: Farmer79!!
+  - host: 192.168.110.242
+    name: garden_rstp
+    username: admin
+    password: Farmer79!!
+  - host: 192.168.110.243
+    name: driveway_rstp
+    username: admin
+    password: Farmer79!!
