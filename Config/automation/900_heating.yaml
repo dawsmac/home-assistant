@@ -146,15 +146,15 @@
   mode: single
   trigger:
     - platform: template
-      value_template: |-
+      value_template: >-
         {{now().strftime('%a %h %d %H:%M %Z %Y') ==
                 (((state_attr('sensor.sm_g991b_next_alarm', 'Time in Milliseconds') |
-                int / 1000) + 10*30 ) | timestamp_custom('%a %h %d %H:%M %Z %Y')) }}
+                int / 1000) - 30*60 ) | timestamp_custom('%a %h %d %H:%M %Z %Y')) }}
     - platform: template
-      value_template: |-
+      value_template: >-
         {{now().strftime('%a %h %d %H:%M %Z %Y') ==
                 (((state_attr('sensor.sm_faye_next_alarm', 'Time in Milliseconds') |
-                int / 1000) + 10*30 ) | timestamp_custom('%a %h %d %H:%M %Z %Y')) }}
+                int / 1000) - 30*60 ) | timestamp_custom('%a %h %d %H:%M %Z %Y')) }}
   condition:
     - condition: time
       after: '04:30'
