@@ -3,7 +3,9 @@ default_config:
 
 recorder:
   purge_keep_days: 7
-  db_url: mysql://Hass:tC6543WbXZcbKA@mariadb:3306/Hass?charset=utf8mb4
+  db_url: !secret mysql
+
+  
   #exclude:
   #  entities:
   #    - binary_sensor.hallway_pir
@@ -63,18 +65,4 @@ template: !include template.yaml
 sensor: !include sensor.yaml
 light: !include lights.yaml
 binary_sensor: !include  binary_sensor.yaml
-
-
-amcrest:
-  - host: 192.168.110.241
-    name: porch_rstp
-    username: admin
-    password: Farmer79!!
-  - host: 192.168.110.242
-    name: garden_rstp
-    username: admin
-    password: Farmer79!!
-  - host: 192.168.110.243
-    name: driveway_rstp
-    username: admin
-    password: Farmer79!!
+amcrest: !include amcrest.yaml
