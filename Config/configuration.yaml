@@ -5,31 +5,17 @@ recorder:
   purge_keep_days: 7
   db_url: !secret mysql
 
-  
-  #exclude:
-  #  entities:
-  #    - binary_sensor.hallway_pir
-  #    - binary_sensor.kitchen_pir
-  #    - binary_sensor.landing_pir
-  #    - binary_sensor.lila_s_pir
-  #    - binary_sensor.lounge_pir
-  #    - binary_sensor.playroom_pir
-  #    - binary_sensor.raf_s_pir
-  #    - sensor.ds_pirs
-  #    - sensor.us_pirs   
-  
 ffmpeg:
 
 logger:
   default: warning
-  logs:
-    custom_components.webrtc: debug
 
 http:
   use_x_forwarded_for: true
   trusted_proxies:
     - 10.0.1.0/24
 
+# planning to use a mobile application that integrates with Home Assistant
 mobile_app:
 
 lovelace:
@@ -48,7 +34,7 @@ tts:
     cache: true
     time_memory: 300
     cache_dir: /tmp/tts
-    base_url: https://hauto.dawsnet.uk
+    base_url: !secret url
     service_name: google_say
 
 group: !include groups.yaml
@@ -59,7 +45,6 @@ input_boolean: !include input_boolean.yaml
 climate: !include climate.yaml
 cloud: !include cloud.yaml
 notify: !include notify.yaml
-input_select: !include input_select.yaml
 alert: !include alerts.yaml
 template: !include template.yaml
 sensor: !include sensor.yaml
