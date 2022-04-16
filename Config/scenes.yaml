@@ -134,9 +134,9 @@
 
 - name: Kitchen_lowlighting
   entities:
-    light.kitchen_side:
+    light.kitchen_side_lights:
       state: 'on'
     light.boiler_lamp:
       state: 'on'
     light.kitchen_fairy_lights:
-      state: 'off'
+      state: 'on'
