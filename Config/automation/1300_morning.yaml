@@ -38,6 +38,17 @@
         volume_level: 0.22
       target:
         entity_id: media_player.kitchen
+
     - service: scene.turn_on
       target:
         entity_id: scene.appliances_on
+
+    - condition: state
+      entity_id: binary_sensor.enable_auto_lights
+      state: "on"
+      - service: scene.turn_on
+        data: {}
+        target:
+          entity_id: scene.kitchen_lowlighting
+  
+  

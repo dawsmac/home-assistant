@@ -131,3 +131,12 @@
       state: 'on'
     light.shellyvintage_6edcb8:
       state: 'on'
+
+- name: Kitchen_lowlighting
+  entities:
+    light.kitchen_side:
+      state: 'on'
+    light.boiler_lamp:
+      state: 'on'
+    light.kitchen_fairy_lights:
+      state: 'off'
