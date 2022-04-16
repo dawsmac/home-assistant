@@ -22,7 +22,6 @@
       data:
         media_content_id: FV:2/7
         media_content_type: favorite_item_id
-        volume_level: 0.22
       metadata:
         title: Virgin Radio UK
         thumbnail: >-
@@ -35,6 +34,11 @@
             media_content_id: ''
           - media_content_type: favorites_folder
             media_content_id: object.item.audioItem.audioBroadcast
+    - service: media_player.volume_set
+      data:
+        volume_level: 0.22
+      target:
+        entity_id: media_player.kitchen
     - service: scene.turn_on
       target:
         entity_id: scene.appliances_on
