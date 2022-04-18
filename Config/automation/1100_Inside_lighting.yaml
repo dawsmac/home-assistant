@@ -103,33 +103,6 @@
               entity_id:
                 - light.playroom_s_light
 
-    
-
-
-  condition:
-    - condition: state
-      entity_id: input_boolean.guest_room
-      state: 'off'
-
-
-          - condition: state
-      entity_id: binary_sensor.enable_auto_lights
-      state: "on"
-  action:
-      
-      - wait_for_trigger:
-          platform: state
-          entity_id:
-            - binary_sensor.espresense_playroon_motion
-          to: "off"
-          for: 00:02:00
-      - service: light.turn_off
-        entity_id:
-          - light.playroom_s_light
-  mode: restart
-  max_exceeded: silent
-
-
 
 ###############################################################
 ## Landing
