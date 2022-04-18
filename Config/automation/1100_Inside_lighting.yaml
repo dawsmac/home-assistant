@@ -68,21 +68,55 @@
   alias: 'Motion Playroom On'
   trigger:
     - platform: state
-      entity_id:
-        - binary_sensor.espresense_playroon_motion
-      from: "off"
+      entity_id: binary_sensor.espresense_playroon_motion
       to: "on"
+      id: "pir_light_playroom_on"
+    - platform: state
+      entity_id: binary_sensor.espresense_playroon_motion
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_playroom_off"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_playroom_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: state
+              entity_id: input_boolean.guest_room
+              state: 'off'
+          sequence:
+            - service: light.turn_on
+              entity_id:
+                - light.playroom_s_light
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_playroom_off"
+            - condition: state
+              entity_id: light.playroom_s_light
+              state: "on"
+          sequence:
+            - service: light.turn_off
+              entity_id:
+                - light.playroom_s_light
+
+    
+
+
   condition:
-    - condition: state
-      entity_id: binary_sensor.enable_auto_lights
-      state: "on"
     - condition: state
       entity_id: input_boolean.guest_room
       state: 'off'
+
+
+          - condition: state
+      entity_id: binary_sensor.enable_auto_lights
+      state: "on"
   action:
-      - service: light.turn_on
-        entity_id:
-          - light.playroom_s_light
+      
       - wait_for_trigger:
           platform: state
           entity_id:
