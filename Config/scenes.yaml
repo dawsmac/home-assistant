@@ -132,7 +132,7 @@
     light.shellyvintage_6edcb8:
       state: 'on'
 
-- name: Kitchen_lowlighting
+- name: Kitchen_morning
   entities:
     light.kitchen_side_lights:
       state: 'on'
@@ -140,3 +140,10 @@
       state: 'on'
     light.kitchen_fairy_lights:
       state: 'on'
+    switch.dishwasher:
+      state: 'on'
+    switch.washing_machine:
+      state: 'on'
+    switch.tumble_dryer:
+      state: 'on'
+
