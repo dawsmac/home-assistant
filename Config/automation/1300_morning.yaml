@@ -18,6 +18,10 @@
           to: "on"
       timeout: "02:00:00"
       continue_on_timeout: false
+    - service: scene.turn_on
+      data: {}
+      target:
+        entity_id: scene.appliances_on
     - choose:
         - conditions:
             - condition: state
@@ -27,7 +31,7 @@
             - service: scene.turn_on
               data: {}
               target:
-                entity_id: scene.kitchen_morning
+                entity_id: scene.Kitchen_morning_lowlights
     - choose:
         - conditions:  
             - condition: state
