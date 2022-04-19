@@ -31,7 +31,7 @@
     - choose:
         - conditions:  
             - condition: state
-              entity_id: Workday Sensor
+              entity_id: binary_sensor.workday_sensor
               state: "off"
           sequence:
             - service: media_player.play_media
