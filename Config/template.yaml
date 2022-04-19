@@ -29,3 +29,9 @@
         minutes: 5
       state: >
         {{ states('sensor.out_side_lux')|float < 1200 }}
+    
+    - name: Enable auto outside lights
+      delay_off:
+        minutes: 5
+      state: >
+        {{ states('sensor.out_side_lux')|float < 200 }}
