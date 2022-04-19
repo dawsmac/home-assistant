@@ -275,7 +275,7 @@
   action:
     - service: light.turn_off
       target: 
-        entity_ids:
+        entity_id:
           - light.kitchen_dining
           - light.kitchen_island
           - light.kitchen_side_lights
