@@ -1,71 +1,50 @@
-###############################################################
-## Hallway light switch on by PIR
-################################################################
+####################################
+## Hallway light switch on by PIR ##
+####################################
 
 - id: '1100'
-  alias: 'Motion hallway light'
+  alias: 'Lights Hallway Main'
   trigger:
     - platform: state
-      entity_id:
-        - binary_sensor.hallway_pir
-      from: "off"
+      entity_id: binary_sensor.hallway_pir
       to: "on"
-  condition:
-    - condition: state
-      entity_id: binary_sensor.enable_auto_lights
-      state: "on"
-  action:
-      - service: light.turn_on
-        entity_id:
-          - light.hallway_lights
-      - wait_for_trigger:
-          platform: state
-          entity_id:
-            - binary_sensor.hallway_pir
-          to: "off"
-          for: 00:02:00
-      - service: light.turn_off
-        entity_id:
-          - light.hallway_lights
-  mode: restart
-  max_exceeded: silent
-
-
-###############################################################
-## Hallway light switch on by Switch
-################################################################
-
-- id: '1111'
-  alias: 'Hallway light switch on by Switch'
-  trigger:
+      id: "pir_light_hallway_on"
     - platform: state
-      entity_id:
-        - binary_sensor.hallway_lights_switch
+      entity_id: binary_sensor.hallway_pir
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_hallway_off"
   action:
-      - wait_for_trigger:
-          platform: state
-          entity_id:
-            - binary_sensor.hallway_pir
-          to: "off"
-          for: 00:02:00
-      - condition: state
-        entity_id: light.hallway_lights
-        state: 'on'
-      - service: light.turn_off
-        entity_id:
-          - light.hallway_lights
-  mode: restart
-  max_exceeded: silent
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_hallway_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: light.hallway_lights
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_hallway_off"
+            - condition: state
+              entity_id: light.hallway_lights
+              state: "on"
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: light.hallway_lights
+
+####################
+## Playroom light ##
+####################
 
 
-
-###############################################################
-## Playroom
-###############################################################
-
-
-- id: '1102'
-  alias: 'Motion Playroom On'
+- id: '1101'
+  alias: 'Lights Playroom main'
   trigger:
     - platform: state
       entity_id: binary_sensor.espresense_playroon_motion
@@ -89,8 +68,8 @@
               state: 'off'
           sequence:
             - service: light.turn_on
-              entity_id:
-                - light.playroom_s_light
+              target:
+                entity_id: light.playroom_s_light
     - choose:
         - conditions:
             - condition: trigger
@@ -100,86 +79,144 @@
               state: "on"
           sequence:
             - service: light.turn_off
-              entity_id:
-                - light.playroom_s_light
+              target: 
+                entity_id: light.playroom_s_light
 
 
-###############################################################
-## Landing
-###############################################################
+####################
+## Landing lights ##
+####################
 
-
-- id: '1103'
-  alias: 'Motion landing light'
+- id: '1102'
+  alias: 'Lights Landing Main'
   trigger:
     - platform: state
-      entity_id:
-        - binary_sensor.landing_pir
-      from: "off"
+      entity_id: binary_sensor.landing_pir
       to: "on"
-  condition:
-    - condition: state
-      entity_id: binary_sensor.enable_auto_lights
-      state: "on"
+      id: "pir_light_landing_on"
+    - platform: state
+      entity_id: binary_sensor.landing_pir
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_landing_off"
   action:
-    - service: light.turn_on
-      entity_id:
-        - light.landing_lights
-    - wait_for_trigger:
-        platform: state
-        entity_id:
-          - binary_sensor.landing_pir
-        from: "on"
-        to: "off"
-    - delay: 00:02:00
-    - service: light.turn_off
-      entity_id:
-        - light.landing_lights
-  mode: restart
-  max_exceeded: silent
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_landing_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.landing_lights
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_landing_off"
+            - condition: state
+              entity_id: light.landing_lights
+              state: "on"
+          sequence:
+            - service: light.turn_off
+              target: 
+                entity_id: light.landing_lights
 
 
 ###############################################################
 ## Lila´s Room
 ###############################################################
 
-- id: '1104'
-  alias: Motion Sensor Lila Off
+
+- id: '1103'
+  alias: 'Lights Lila Main'
   trigger:
     - platform: state
       entity_id: binary_sensor.lila_s_pir
-      to: 'off'
-      for:
-        minutes: 10
-  condition:
-    - condition: state
-      entity_id:
-        - light.lila_s_bedroom_light
-      state: 'on'
+      to: "on"
+      id: "pir_light_lila_on"
+    - platform: state
+      entity_id: binary_sensor.lila_s_pir
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_lila_off"
   action:
-    - service: homeassistant.turn_off
-      entity_id: light.lila_s_bedroom_light
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_lila_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: state
+              entity_id: sensor.kids_bedtime
+              state: 'off'
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.lila_s_bedroom_light
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_lila_off"
+            - condition: state
+              entity_id: light.lila_s_bedroom_light
+              state: "on"
+            - condition: state
+              entity_id: switch.lila_bedroom_do_not_disturb_switch
+              state: "off"
+          sequence:
+            - service: light.turn_off
+              target: 
+                entity_id: light.lila_s_bedroom_light
 
 ###############################################################
 ## Thea´s Room
 ###############################################################
 
-- id: '1105'
-  alias: Motion Sensor Thea Off
+
+- id: '1104'
+  alias: 'Lights Thea Main'
   trigger:
     - platform: state
       entity_id: binary_sensor.thea_s_bedroom_pir
-      to: 'off'
-      for:
-        minutes: 10
-  condition:
-    - condition: state
-      entity_id:
-        - light.thea_s_bedroom_light
-      state: 'on'
+      to: "on"
+      id: "pir_light_thea_on"
+    - platform: state
+      entity_id: binary_sensor.thea_s_bedroom_pir
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_thea_off"
   action:
-    - service: homeassistant.turn_off
-      entity_id: light.thea_s_bedroom_light
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_lila_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: state
+              entity_id: sensor.kids_bedtime
+              state: 'off'
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.thea_s_bedroom_light
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_lila_off"
+            - condition: state
+              entity_id: light.lila_s_bedroom_light
+              state: "on"
+            - condition: state
+              entity_id: switch.thea_bedroom_do_not_disturb_switch
+              state: "off"
+          sequence:
+            - service: light.turn_off
+              target: 
+                entity_id: light.thea_s_bedroom_light
 
 
 
@@ -193,17 +230,16 @@
     - platform: state
       entity_id: binary_sensor.raf_s_pir
       to: 'off'
-      for:
-        minutes: 5
+      for: '00:02:00'
   condition:
     - condition: state
       entity_id:
         - light.master_bedroom_light
       state: 'on'
   action:
-    - service: homeassistant.turn_off
-      entity_id:
-        - light.master_bedroom_light
+    - service: light.turn_off
+      target: 
+        entity_id: light.master_bedroom_light
 
 
 
@@ -223,8 +259,7 @@
     - platform: state
       entity_id: binary_sensor.kitchen_pir
       to: 'off'
-      for:
-        minutes: 5
+      for: '00:02:00'
   condition:
     - condition: or
       conditions:
@@ -238,8 +273,9 @@
         entity_id: light.kitchen_side_lights
         state: 'on'
   action:
-    - service: homeassistant.turn_off
-      entity_id:
-        - light.kitchen_dining
-        - light.kitchen_island
-        - light.kitchen_side_lights
+    - service: light.turn_off
+      target: 
+        entity_id:
+          - light.kitchen_dining
+          - light.kitchen_island
+          - light.kitchen_side_lights
