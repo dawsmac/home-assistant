@@ -27,7 +27,7 @@
             - service: scene.turn_on
               data: {}
               target:
-                entity_id: scene.Kitchen_morning
+                entity_id: scene.kitchen_morning
     - choose:
         - conditions:  
             - condition: state
