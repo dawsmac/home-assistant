@@ -18,7 +18,7 @@
   action:
     - service: scene.turn_on
       data: {}
-      target:
+      target: 
         entity_id: scene.evening_lights
 
 - id: '701'
