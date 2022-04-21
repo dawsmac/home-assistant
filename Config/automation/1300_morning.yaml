@@ -61,7 +61,7 @@
                 volume_level: 0.22
               target:
                 entity_id: media_player.kitchen
-  
+  mode: restart
       
   
   
@@ -76,7 +76,7 @@
 #             entity_id: scene.kitchen_lowlighting
 # #     - choose:
 #         - conditions:
-#             - condition: trigger
+#             - condition: triggerP
 #               id: cold
 #           sequence:
 #             - service: climate.set_hvac_mode
