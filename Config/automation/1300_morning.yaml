@@ -62,10 +62,7 @@
               target:
                 entity_id: media_player.kitchen
   mode: restart
-      
-  
-  
-  
+
 
 #          - condition: state
 #           entity_id: binary_sensor.enable_auto_lights

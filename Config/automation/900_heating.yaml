@@ -20,10 +20,6 @@
       id: "hotwater"
       entity_id: switch.hotwater
       to: 'on'
-    - platform: state
-      id: "awakehw"
-      entity_id: input_select.house_mode
-      to: "Awake"
   action:
     - choose:
         - conditions:
@@ -46,9 +42,9 @@
             - condition: state
               entity_id: switch.boiler_call
               state: "off"
-            - condition: state
-              entity_id: input_select.house_mode
-              state: "Awake"
+            - condition: time
+              after: "04:25:00"
+              before: "23:00:00"
             - condition: state
               entity_id: group.persons
               state: "home"
@@ -68,24 +64,6 @@
               target:
                 entity_id:
                   - switch.boiler_call
-        - conditions:
-            - condition: trigger
-              id: "awakehw"
-            - condition: state
-              entity_id: switch.hotwater
-              state:   "on"
-            - condition: state
-              entity_id: switch.boiler_call
-              state: "off"
-            - condition: state
-              entity_id: group.persons
-              state: "home"
-          sequence:
-            - service: homeassistant.turn_on
-              target:
-                entity_id:
-                  - switch.boiler_call
-      default: []
   mode: single
 
 - id: '901'
@@ -141,7 +119,7 @@
   mode: single
 
 - id: '902'
-  alias: Heating >> Morning Workday
+  alias: Heating >> Morning
   description: '30 min befor the morning alarm goes off the heating will come on '
   mode: single
   trigger:
@@ -160,26 +138,65 @@
       after: '04:30'
       before: '09:00'
     - condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: "on"
-    - condition: state
       entity_id: group.persons
       state: 'home'
   action:
-    - service: climate.set_preset_mode
-      data:
-        preset_mode: 'comfort'
-      target:
-        entity_id:
-          - climate.upstairs
-          - climate.downstairs
-    - service: climate.set_hvac_mode
-      data:
-        hvac_mode: 'heat'
-      target:
-        entity_id:
-          - climate.upstairs
-          - climate.downstairs
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: binary_sensor.workday_sensor
+              state: "on"
+          sequence:
+            - service: climate.set_preset_mode
+              data:
+                preset_mode: 'comfort'
+              target:
+                entity_id:
+                  - climate.upstairs
+                  - climate.downstairs
+                  - climate.office
+            - service: climate.set_hvac_mode
+              data:
+                hvac_mode: 'heat'
+              target:
+                entity_id:
+                  - climate.upstairs
+                  - climate.downstairs
+                  - climate.office
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: binary_sensor.workday_sensor
+              state: "off"
+          sequence:
+            - service: climate.set_preset_mode
+              data:
+                preset_mode: 'comfort'
+              target:
+                entity_id:
+                  - climate.upstairs
+                  - climate.downstairs
+            - service: climate.set_hvac_mode
+              data:
+                hvac_mode: 'heat'
+              target:
+                entity_id:
+                  - climate.upstairs
+                  - climate.downstairs
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: switch.hotwater
+              state: 'on'
+            - condition: state
+              entity_id: switch.boiler_call
+              state: 'off'
+          sequence:
+            - service: homeassistant.turn_off
+              target:
+                entity_id:
+                  - switch.boiler_call
+
 
 - id: '903'
   alias: Heating >> Night
@@ -208,61 +225,6 @@
           - climate.upstairs
           - climate.downstairs
           - climate.office
-
-
-# #- id: '904'
-#   alias: Heating >> forecast 
-#   trigger:
-#     - platform: template
-#       id: "cold"
-#       value_template: >
-#         {{ state_attr('weather.openweathermap','forecast')[4]['temperature'] <= 5}}
-#     - platform: template
-#       id: "warm"
-#       value_template: >
-#         {{ state_attr('weather.openweathermap','forecast')[0]['temperature'] <= 5}}
-#   action:
-#     - choose:
-#         - conditions:
-#             - condition: trigger
-#               id: cold
-#           sequence:
-#             - service: climate.set_hvac_mode
-#               data:
-#                 hvac_mode: heat
-#               target:
-#                 entity_id:
-#                   - climate.upstairs
-#                   - climate.downstairs
-#                   - climate.office
-#             - service: notify.mobile_app_rich_phone
-#               data:
-#                 message: >
-#                   Heating >> Looks like it might be getting a little cold
-#             - service: notify.alexa_media
-#               data:
-#                 message: Looks like it might be getting a little colder over the next few days setting house heating to on
-#                 target: media_player.kitchen_echo
-#                 data:
-#                   type: announce
-#         - conditions:
-#             - condition: trigger
-#               id: warm
-#           sequence:
-#             - service: climate.set_hvac_mode
-#               data:
-#                 hvac_mode: 'off'
-#               target:
-#                 entity_id:
-#                   - climate.upstairs
-#                   - climate.downstairs
-#                   - climate.office
-#             - service: notify.mobile_app_rich_phone
-#               data:
-#                 message: >
-#                   Heating >> Weather look to be getting better for the next few days switching heating off.
-#       default: []
-#   mode: single
 
 - id: '905' 
   alias: 'Heating >> HA reboot'
