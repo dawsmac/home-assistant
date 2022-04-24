@@ -30,13 +30,13 @@
       state: 'off'
     light.kitchen_dining:
       state: 'off'
-    light.kitchen_fairy_lights:
+    light.kitchen_fairy:
       state: 'off'
-    light.kitchen_side_lights:
+    light.kitchen_side:
       state: 'off'
-    light.landing_lights:
+    light.landing_main:
       state: 'off'
-    light.lounge_lights:
+    light.lounge_main:
       state: 'off'
     light.boiler_lamp:
       state: 'off'
@@ -52,13 +52,13 @@
       state: 'off'
     switch.tumble_dryer:
       state: 'off'
-    light.garage_lights:
+    light.office_main:
       state: 'off'
-    light.playroom_s_light:
+    light.playroom_main:
       state: 'off'
-    light.bathroom_mirror:
+    light.bathroom_main_mirror:
       state: 'off'
-    light.bathroom:
+    light.bathroom_main:
       state: 'off'
     light.shellyvintage_6edcb8:
       state: 'off'
@@ -77,7 +77,7 @@
       state: 'on'
     light.globe_lamp:
       state: 'on'
-    light.kitchen_fairy_lights:
+    light.kitchen_fairy:
       state: 'on'
     light.boiler_lamp:
       state: 'on'
@@ -92,7 +92,7 @@
       state: 'off'
     light.globe_lamp:
       state: 'off'
-    light.kitchen_fairy_lights:
+    light.kitchen_fairy:
       state: 'off'
     light.kitchen_side:
       state: 'off'
@@ -104,7 +104,7 @@
       state: 'off'
     switch.thea_s_multi_psu_socket_1:
       state: 'off'
-    light.bathroom_mirror:
+    light.bathroom_main_mirror:
       state: 'off'
     light.shellyvintage_6edcb8:
       state: 'off'
@@ -117,7 +117,7 @@
       state: 'on'
     light.globe_lamp:
       state: 'on'
-    light.kitchen_fairy_lights:
+    light.kitchen_fairy:
       state: 'on'
     light.kitchen_side:
       state: 'on'
@@ -134,10 +134,10 @@
 
 - name: Kitchen_morning_lowlights
   entities:
-    light.kitchen_side_lights:
+    light.kitchen_side:
       state: 'on'
     light.boiler_lamp:
       state: 'on'
-    light.kitchen_fairy_lights:
+    light.kitchen_fairy:
       state: 'on'
 

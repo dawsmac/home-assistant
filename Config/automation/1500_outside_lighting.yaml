@@ -48,7 +48,7 @@
   action:
     - service: light.turn_on
       entity_id:
-        - light.porch_light
+        - light.porch
     - wait_for_trigger:
         platform: state
         entity_id:
@@ -59,6 +59,6 @@
     - delay: 00:01:00
     - service: light.turn_off
       entity_id:
-        - light.porch_light
+        - light.porch
   mode: restart
   max_exceeded: silent
