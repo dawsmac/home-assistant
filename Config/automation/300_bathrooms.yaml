@@ -33,14 +33,14 @@
     condition: and
     conditions:
       - condition: state
-        entity_id: light.bathroom_main_mirror
+        entity_id: light.bathroom_mirror
         state: 'off'
       - condition: state
         entity_id: input_select.house_mode
         state: Night
   action:
   - service: homeassistant.turn_on
-    entity_id: light.bathroom_main_mirror
+    entity_id: light.bathroom_mirror
 
 - id: '302'
   alias: No motion master bathroom
@@ -55,13 +55,13 @@
         entity_id: light.bathroom_main
         state: 'on'
       - condition: state
-        entity_id: light.bathroom_main_mirror
+        entity_id: light.bathroom_mirror
         state: 'on'
   action:
   - service: homeassistant.turn_off
     entity_id: 
       - light.bathroom_main
-      - light.bathroom_main_mirror
+      - light.bathroom_mirror
 
 - id: '303'
   alias: Bathroom Extractor needed

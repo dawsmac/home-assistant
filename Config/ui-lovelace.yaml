@@ -166,10 +166,8 @@ views:
       - type: glance
         title: Bathroom
         entities:
-          - entity: light.bathroom_main_mirror
+          - entity: light.bathroom_mirror
           - entity: light.bathroom_main
-          - entity: binary_sensor.bathroom_switch
-          - entity: binary_sensor.bathroom_mirror_switch
           - entity: switch.bathroom_extractor_fan
           - entity: sensor.bathroom_humidity
           - entity: sensor.bathroom_temperature
