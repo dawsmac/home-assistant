@@ -1,8 +1,8 @@
 - name: Lounge evening lights
   entities:
-    light.bookshelf_light_left:
+    light.lounge_bookshelf_llight:
       state: 'on'
-    light.bookshelf_light_right:
+    light.lounge_bookshelf_rlight:
       state: 'on'
     light.lounge:
       state: 'off'
@@ -22,9 +22,9 @@
 
 - name: nightmode
   entities:
-    light.bookshelf_light_left:
+    light.lounge_bookshelf_llight:
       state: 'off'
-    light.bookshelf_light_right:
+    light.lounge_bookshelf_rlight:
       state: 'off'
     light.globe_lamp:
       state: 'off'
@@ -67,9 +67,9 @@
 
 - name: evening lights
   entities:
-    light.bookshelf_light_left:
+    light.lounge_bookshelf_llight:
       state: 'on'
-    light.bookshelf_light_right:
+    light.lounge_bookshelf_rlight:
       state: 'on'
     switch.faye_s_bedside_lamp:
       state: 'on'
@@ -86,9 +86,9 @@
 
 - name: morning nolights
   entities:
-    light.bookshelf_light_left:
+    light.lounge_bookshelf_llight:
       state: 'off'
-    light.bookshelf_light_right:
+    light.lounge_bookshelf_rlight:
       state: 'off'
     light.globe_lamp:
       state: 'off'
@@ -111,9 +111,9 @@
 
 - name: morning lights
   entities:
-    light.bookshelf_light_left:
+    light.lounge_bookshelf_llight:
       state: 'on'
-    light.bookshelf_light_right:
+    light.lounge_bookshelf_rlight:
       state: 'on'
     light.globe_lamp:
       state: 'on'
