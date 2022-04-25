@@ -69,18 +69,3 @@
 ## Morning lights off ##
 ########################
 
-- id: '1301'
-  alias: Morning Kitchen lights not needed anymore
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.enable_auto_lights
-      to: 'on'
-  condition:
-    - condition: template
-      value_template: "{{ state_attr('sun.sun','rising') == true }}"
-    - condition: state
-      entity_id: entity ID
-      tate: "state"
-  action:
-
-
