@@ -9,7 +9,7 @@
     conditions:
       - condition: state
         entity_id:
-          - light.bathroom_main
+          - light.bathroom_main_light
         state: 'off'
       - condition: state
         entity_id:
@@ -21,7 +21,7 @@
         state: Awake
   action:
   - service: homeassistant.turn_on
-    entity_id: light.bathroom_main
+    entity_id: light.bathroom_main_light
 
 - id: '301'
   alias: Night motion master bathroom
@@ -52,7 +52,7 @@
     condition: or
     conditions: 
       - condition: state
-        entity_id: light.bathroom_main
+        entity_id: light.bathroom_main_light
         state: 'on'
       - condition: state
         entity_id: light.bathroom_mirror
@@ -60,7 +60,7 @@
   action:
   - service: homeassistant.turn_off
     entity_id: 
-      - light.bathroom_main
+      - light.bathroom_main_light
       - light.bathroom_mirror
 
 - id: '303'
