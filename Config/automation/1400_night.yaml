@@ -4,8 +4,8 @@
     - platform: state
       id: "nightpirs"
       entity_id:
-        - binary_sensor.thea_s_bedroom_pir
-        - binary_sensor.lila_s_pir
+        - binary_sensor.thea_bedroom_pir
+        - binary_sensor.lila_bedroom_pir
         - binary_sensor.raf_s_pir
       to: "off"
       for: "00:15:00"

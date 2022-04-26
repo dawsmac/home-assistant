@@ -68,9 +68,7 @@ views:
         title: Master bedroom
         entities:
           - entity: light.master_bedroom_main
-          - entity: switch.faye_s_bedside_lamp
           - entity: switch.rich_s_bedside_lamp
-          - entity: light.master_bedroom_bedside_lamps
           - entity: binary_sensor.espresense_masterbedroom_motion
           - entity: sensor.master_room_temperature
 
@@ -78,7 +76,7 @@ views:
         title: Lila´s bedroom
         entities:
           - entity: light.lila_bedroom_main
-          - entity: binary_sensor.lila_s_pir
+          - entity: binary_sensor.lila_bedroom_pir
           - entity: sensor.lila_room_temperature
           - entity: switch.lila_s_multi_psu_socket_1
           - entity: switch.lila_s_multi_psu_socket_2
@@ -89,7 +87,7 @@ views:
         title: Thea´s bedroom
         entities:
           - entity: light.thea_bedroom_main
-          - entity: binary_sensor.thea_s_bedroom_pir
+          - entity: binary_sensor.thea_bedroom_pir
           - entity: sensor.thea_room_temperature
           - entity: switch.thea_s_multi_psu_socket_1
           - entity: switch.thea_s_multi_psu_socket_2
@@ -167,7 +165,7 @@ views:
         title: Bathroom
         entities:
           - entity: light.bathroom_mirror
-          - entity: light.bathroom_main
+          - entity: light.bathroom_main_light
           - entity: switch.bathroom_extractor_fan
           - entity: sensor.bathroom_humidity
           - entity: sensor.bathroom_temperature

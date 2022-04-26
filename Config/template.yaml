@@ -9,20 +9,20 @@
     - name: "No activity upstairs"
       state: >
         {{ is_state('binary_sensor.landing_pir' , 'off')
-            and is_state('binary_sensor.lila_s_pir' , 'off')
+            and is_state('binary_sensor.lila_bedroom_pir' , 'off')
             and is_state('binary_sensor.espresense_masterbedroom_motion' , 'off')
-            and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
+            and is_state('binary_sensor.thea_bedroom_pir' , 'off') }}
 
     - name: All pirs
       state: >
         {{ is_state('binary_sensor.landing_pir' , 'off')
             and is_state('binary_sensor.hallway_pir' , 'off')
-            and is_state('binary_sensor.lila_s_pir' , 'off')
+            and is_state('binary_sensor.lila_bedroom_pir' , 'off')
             and is_state('binary_sensor.espresense_masterbedroom_motion' , 'off')
             and is_state('binary_sensor.kitchen_pir' , 'off')
             and is_state('binary_sensor.espresense_lounge_motion' , 'off')
             and is_state ('binary_sensor.espresense_playroom_motion' , 'off')
-            and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
+            and is_state('binary_sensor.thea_bedroom_pir' , 'off') }}
     
     - name: Enable auto lights
       delay_off:
