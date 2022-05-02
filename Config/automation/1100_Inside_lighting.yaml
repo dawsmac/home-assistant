@@ -25,18 +25,18 @@
           sequence:
             - service: light.turn_on
               target:
-                entity_id: light.hallway_main
+                entity_id: light.hallway_lights
     - choose:
         - conditions:
             - condition: trigger
               id: "pir_light_hallway_off"
             - condition: state
-              entity_id: light.hallway_main
+              entity_id: light.hallway_lights
               state: "on"
           sequence:
             - service: light.turn_off
               target:
-                entity_id: light.hallway_main
+                entity_id: light.hallway_lights
 
 ####################
 ## Playroom light ##
@@ -69,18 +69,18 @@
           sequence:
             - service: light.turn_on
               target:
-                entity_id: light.playroom_main
+                entity_id: light.playroom_s_light
     - choose:
         - conditions:
             - condition: trigger
               id: "pir_light_playroom_off"
             - condition: state
-              entity_id: light.playroom_main
+              entity_id: light.playroom_s_light
               state: "on"
           sequence:
             - service: light.turn_off
               target: 
-                entity_id: light.playroom_main
+                entity_id: light.playroom_s_light
 
 
 ####################
@@ -110,18 +110,18 @@
           sequence:
             - service: light.turn_on
               target: 
-                entity_id: light.landing_main
+                entity_id: light.landing_lights
     - choose:
         - conditions:
             - condition: trigger
               id: "pir_light_landing_off"
             - condition: state
-              entity_id: light.landing_main
+              entity_id: light.landing_lights
               state: "on"
           sequence:
             - service: light.turn_off
               target: 
-                entity_id: light.landing_main
+                entity_id: light.landing_lights
 
 
 ###############################################################
@@ -133,11 +133,11 @@
   alias: 'Lights Lila Main'
   trigger:
     - platform: state
-      entity_id: binary_sensor.lila_bedroom_pir
+      entity_id: binary_sensor.lila_s_pir
       to: "on"
       id: "pir_light_lila_on"
     - platform: state
-      entity_id: binary_sensor.lila_bedroom_pir
+      entity_id: binary_sensor.lila_s_pir
       to: "off"
       for: '00:02:00'
       id: "pir_light_lila_off"
@@ -149,9 +149,9 @@
             - condition: state
               entity_id: binary_sensor.enable_auto_lights
               state: "on"
-            - condition: state
-              entity_id: sensor.kids_bedtime
-              state: 'off'
+            - condition: time
+              before: "18:30:00"
+              after: "08:30:00"
           sequence:
             - service: light.turn_on
               target: 
@@ -169,7 +169,7 @@
           sequence:
             - service: light.turn_off
               target: 
-                entity_id: light.lila_bedroom_main
+                entity_id: llight.lila_bedroom_main
 
 ###############################################################
 ## Thea´s Room
@@ -180,11 +180,11 @@
   alias: 'Lights Thea Main'
   trigger:
     - platform: state
-      entity_id: binary_sensor.thea_bedroom_pir
+      entity_id: binary_sensor.thea_s_bedroom_pir
       to: "on"
       id: "pir_light_thea_on"
     - platform: state
-      entity_id: binary_sensor.thea_bedroom_pir
+      entity_id: binary_sensor.thea_s_bedroom_pir
       to: "off"
       for: '00:02:00'
       id: "pir_light_thea_off"
@@ -192,23 +192,22 @@
     - choose:
         - conditions:
             - condition: trigger
-              id: "pir_light_lila_on"
+              id: "pir_light_thea_on"
             - condition: state
               entity_id: binary_sensor.enable_auto_lights
               state: "on"
-            - condition: state
-              entity_id: sensor.kids_bedtime
-              state: 'off'
+            - condition: time
+              before: "18:30:00"
+              after: "08:30:00"
           sequence:
             - service: light.turn_on
               target: 
                 entity_id: light.thea_bedroom_main
-    - choose:
         - conditions:
             - condition: trigger
-              id: "pir_light_lila_off"
+              id: "pir_light_thea_off"
             - condition: state
-              entity_id: light.lila_bedroom_main
+              entity_id: light.thea_bedroom_main
               state: "on"
             - condition: state
               entity_id: switch.thea_bedroom_do_not_disturb_switch
@@ -234,12 +233,12 @@
   condition:
     - condition: state
       entity_id:
-        - light.master_bedroom_main
+        - light.master_bedroom_light
       state: 'on'
   action:
     - service: light.turn_off
       target: 
-        entity_id: light.master_bedroom_main
+        entity_id: light.master_bedroom_light
 
 
 
@@ -270,7 +269,7 @@
         entity_id: light.kitchen_island
         state: 'on'
       - condition: state
-        entity_id: light.kitchen_side
+        entity_id: light.kitchen_side_lights
         state: 'on'
   action:
     - service: light.turn_off
@@ -278,4 +277,7 @@
         entity_id:
           - light.kitchen_dining
           - light.kitchen_island
-          - light.kitchen_side
+          - light.kitchen_side_lights
+
+
+
