@@ -133,11 +133,11 @@
   alias: 'Lights Lila Main'
   trigger:
     - platform: state
-      entity_id: binary_sensor.lila_s_pir
+      entity_id: binary_sensor.lila_bedroom_pir
       to: "on"
       id: "pir_light_lila_on"
     - platform: state
-      entity_id: binary_sensor.lila_s_pir
+      entity_id: binary_sensor.lila_bedroom_pir
       to: "off"
       for: '00:02:00'
       id: "pir_light_lila_off"
@@ -180,11 +180,11 @@
   alias: 'Lights Thea Main'
   trigger:
     - platform: state
-      entity_id: binary_sensor.thea_s_bedroom_pir
+      entity_id: binary_sensor.thea_bedroom_pir
       to: "on"
       id: "pir_light_thea_on"
     - platform: state
-      entity_id: binary_sensor.thea_s_bedroom_pir
+      entity_id: binary_sensor.thea_bedroom_pir
       to: "off"
       for: '00:02:00'
       id: "pir_light_thea_off"
@@ -227,7 +227,7 @@
   alias: Motion Sensor Masterbedroom Off
   trigger:
     - platform: state
-      entity_id: binary_sensor.raf_s_pir
+      entity_id: binary_sensor.espresense_masterbedroom_motion
       to: 'off'
       for: '00:02:00'
   condition:
