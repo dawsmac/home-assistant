@@ -223,7 +223,7 @@
 ## Master bedroom
 ###############################################################
 
-- id: '1106'
+- id: '1105'
   alias: Motion Sensor Masterbedroom Off
   trigger:
     - platform: state
@@ -246,13 +246,53 @@
 ## Lounge
 ###############################################################
 
+- id: '1106'
+  alias: 'Lights Landing Main'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.espresense_lounge_motion
+      to: "off"
+      for: '00:05:00'
+      id: "pir_lounge_off"
+    - platform: state
+      entity_id: binary_sensor.espresense_lounge_motion
+      to: "on"
+      id: "pir_lounge_on"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_lounge_off"
+            - condition: state
+              entity_id: light.lounge_main
+              state: "on"
+            - condition: state
+              entity_id: device_tracker.samsung
+              state: "Away"
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.lounge_main
+        - conditions:
+            - condition: trigger
+              id: "pir_lounge_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: state
+              entity_id: device_tracker.samsung
+              state: "Away"
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.lounge_main
 
 
 ###############################################################
 ## Kitchen
 ###############################################################
 
-- id: '1110'
+- id: '1107'
   alias: No-motion kitchen light
   trigger:
     - platform: state
