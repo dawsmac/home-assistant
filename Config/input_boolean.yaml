@@ -11,13 +11,17 @@ eating_mode:
   name: Eating
   initial: off
 
-testing_switch:
-  name: Testing switch
-  initial: off
-
 night_mode:
   name: Night mode
   initial: off
   icon: mdi:sleep
 
+richinbed:
+  name: Rich is in bed
+  initial: off
+  icon: mdi:sleep
 
+fayeinbed:
+  name: Faye is in bed
+  initial: off
+  icon: mdi:sleep
