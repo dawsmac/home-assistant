@@ -2,12 +2,11 @@
   alias: Night mode enabled
   trigger:
     - platform: state
-      id: "nightpirs"
+      id: "nightbed"
       entity_id:
-        - binary_sensor.thea_bedroom_pir
-        - binary_sensor.lila_bedroom_pir
-        - binary_sensor.raf_s_pir
-      to: "off"
+        - input_boolean.richinbed
+        - input_boolean.fayeinbed
+      to: "on"
       for: "00:15:00"
     - platform: state
       id: "awaynightmode"
@@ -19,7 +18,7 @@
     - choose:
         - conditions:
             - condition: trigger
-              id: "nightpirs"
+              id: "nightbed"
             - condition: state
               entity_id: binary_sensor.no_activity_downstairs
               state: "on"
