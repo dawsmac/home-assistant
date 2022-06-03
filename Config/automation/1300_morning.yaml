@@ -1,10 +1,12 @@
 - id: '1300'
   alias: Morning time Kitchen
   trigger:
-    - platform: time
-      at:
-        - sensor.sm_faye_next_alarm
-        - sensor.sm_g991b_next_alarm
+    - platform: state
+      entity_id:
+        - input_boolean.richinbed
+        - input_boolean.fayeinbed
+      to: "off"
+      for: "00:01:00"
   condition:
     - condition: template
       value_template: "{{ state_attr('sun.sun','rising') == true }}"
@@ -64,8 +66,29 @@
   mode: restart
 
 
+##########################################
+## Morning switch night mode off ##
+##########################################
 
-########################
-## Morning lights off ##
-########################
 
+- id: '1301'
+  alias: Morning switch night mode off
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.richinbed
+        - input_boolean.fayeinbed
+      to: "off"
+      for: "00:02:00"
+  condition:
+    - condition: time
+      after: "05:00:00"
+      before: "10:00:00"
+    - condition: state
+      entity_id: group.persons
+      state: home
+  action:
+    - service: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.night_mode
+  mode: restart
