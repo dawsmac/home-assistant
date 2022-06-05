@@ -21,12 +21,19 @@
         - switch.tumble_dryer
 
 - id: '1001'
-  alias: Home turn on appances
+  alias: Home/nothome Appliances
   trigger:
     - platform: state
+      id: "home_appliances"
       entity_id: group.persons
       from: 'not_home'
       to: 'home'
+    - platform: state
+      id: "nothome_appliances"
+      entity_id: group.persons
+      from: 'home'
+      to: 'not_home'
+      for: "00:10:00" 
   condition:
     condition: not
     conditions:
@@ -34,11 +41,26 @@
         entity_id: input_boolean.night_mode
         state: 'on'
   action:
-    - service: homeassistant.turn_on
-      entity_id:
-        - switch.dishwasher
-        - switch.washing_machine
-        - switch.tumble_dryer
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "home_appliances"
+          sequence:
+            - service: homeassistant.turn_on
+              entity_id:
+                - switch.dishwasher
+                - switch.washing_machine
+                - switch.tumble_dryer
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "nothome_appliances"
+          sequence:
+            - service: homeassistant.turn_off
+              entity_id:
+                - switch.dishwasher
+                - switch.washing_machine
+                - switch.tumble_dryer
 
 - id: '1002'
   alias: Someone has entered house perimeter (no one is home)
