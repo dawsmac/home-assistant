@@ -2,12 +2,7 @@
 version: "3.9"
 
 networks:
-    dock_inter:
-        external: true
-        name: dock_inter
-    swarm-Automation:
-        external: true
-        name: swarm-Automation
+    Automation:
 
 services:
   homeassistant:
@@ -24,10 +19,7 @@ services:
     #depends_on:
     #  - ha_influxd
     networks:
-      dock_inter:
-        aliases:
-          - interhass
-      swarm-Automation:
+      Automation:
 
 
 
