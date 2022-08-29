@@ -1,8 +1,9 @@
-
 version: "3.9"
 
 networks:
-    Automation:
+    swarm-IOT:
+        external: true
+        name: swarm-IOT
 
 services:
   homeassistant:
@@ -19,7 +20,7 @@ services:
     #depends_on:
     #  - ha_influxd
     networks:
-      Automation:
-
-
-
+    #  dock_inter:
+     #   aliases:
+      #    - interhass
+       swarm-IOT:
