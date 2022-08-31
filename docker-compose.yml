@@ -24,3 +24,5 @@ services:
      #   aliases:
       #    - interhass
        swarm-IOT:
+         aliases:
+          - Hass
