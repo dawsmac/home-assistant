@@ -21,8 +21,8 @@ services:
     #  - ha_influxd
     networks:
     #  dock_inter:
-     #   aliases:
+    #   aliases:
       #    - interhass
-       swarm-IOT:
-         aliases:
+      swarm-IOT:
+        aliases:
           - Hass
