@@ -17,6 +17,8 @@ services:
       - /mnt/docker_data/home-assistant/Config/:/config
     ports:
       - 8123:8123
+    dns:
+      - 192.168.110.1
     #depends_on:
     #  - ha_influxd
     networks:
