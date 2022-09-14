@@ -47,11 +47,11 @@
   alias: 'Lights Playroom main'
   trigger:
     - platform: state
-      entity_id: binary_sensor.espresense_playroon_motion
+      entity_id: binary_sensor.playroon_pir
       to: "on"
       id: "pir_light_playroom_on"
     - platform: state
-      entity_id: binary_sensor.espresense_playroon_motion
+      entity_id: binary_sensor.playroon_pir
       to: "off"
       for: '00:02:00'
       id: "pir_light_playroom_off"
@@ -133,11 +133,11 @@
   alias: 'Lights Lila Main'
   trigger:
     - platform: state
-      entity_id: binary_sensor.lila_bedroom_pir
+      entity_id: binary_sensor.lilas_bedroom_pir
       to: "on"
       id: "pir_light_lila_on"
     - platform: state
-      entity_id: binary_sensor.lila_bedroom_pir
+      entity_id: binary_sensor.lilas_bedroom_pir
       to: "off"
       for: '00:02:00'
       id: "pir_light_lila_off"
@@ -180,11 +180,11 @@
   alias: 'Lights Thea Main'
   trigger:
     - platform: state
-      entity_id: binary_sensor.thea_bedroom_pir
+      entity_id: binary_sensor.theas_bedroom_pir
       to: "on"
       id: "pir_light_thea_on"
     - platform: state
-      entity_id: binary_sensor.thea_bedroom_pir
+      entity_id: binary_sensor.theas_bedroom_pir
       to: "off"
       for: '00:02:00'
       id: "pir_light_thea_off"
@@ -227,7 +227,7 @@
   alias: Motion Sensor Masterbedroom Off
   trigger:
     - platform: state
-      entity_id: binary_sensor.espresense_masterbedroom_motion
+      entity_id: binary_sensor.masterbedroom_pir
       to: 'off'
       for: '00:02:00'
   condition:
@@ -247,15 +247,15 @@
 ###############################################################
 
 - id: '1106'
-  alias: 'Lights Landing Main'
+  alias: 'Lights lounge Main'
   trigger:
     - platform: state
-      entity_id: binary_sensor.espresense_lounge_motion
+      entity_id: binary_sensor.lounge_pir
       to: "off"
       for: '00:05:00'
       id: "pir_lounge_off"
     - platform: state
-      entity_id: binary_sensor.espresense_lounge_motion
+      entity_id: binary_sensor.lounge_pir
       to: "on"
       id: "pir_lounge_on"
   action:
