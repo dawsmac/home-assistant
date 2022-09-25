@@ -28,7 +28,7 @@ services:
     #  - ha_influxd
     
     networks:
-      swarm-IOT:
+      IOT:
         aliases:
           - Hass
       swarm_private:
