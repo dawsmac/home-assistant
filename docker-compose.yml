@@ -1,9 +1,12 @@
 version: "3.9"
 
 networks:
-    swarm-IOT:
-        external: true
-        name: swarm-IOT
+  IOT:
+    external: true
+    name: swarm-IOT
+  swarm_private:
+    external: true
+    name: swarm_private
 
 services:
   homeassistant:
@@ -23,10 +26,11 @@ services:
 
     #depends_on:
     #  - ha_influxd
+    
     networks:
-    #  dock_inter:
-    #   aliases:
-      #    - interhass
       swarm-IOT:
         aliases:
           - Hass
+      swarm_private:
+        aliases:
+          - interfrigate
