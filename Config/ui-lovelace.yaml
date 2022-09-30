@@ -97,7 +97,7 @@ views:
       - type: glance
         title: Playroom
         entities:
-          - entity: light.playroom_main
+          - entity: light.playroom_light_switch
           - entity: binary_sensor.espresense_playroon_motion
           - entity: switch.tv
           - entity: sensor.playroom_temperature
