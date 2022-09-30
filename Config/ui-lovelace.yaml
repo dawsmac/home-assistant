@@ -75,8 +75,8 @@ views:
       - type: glance
         title: Lila´s bedroom
         entities:
-          - entity: light.lila_bedroom_main
-          - entity: binary_sensor.lila_bedroom_pir
+          - entity: light.lila_main_light
+          - entity: binary_sensor.lilas_bedroom_pir
           - entity: sensor.lila_room_temperature
           - entity: switch.lila_s_multi_psu_socket_1
           - entity: switch.lila_s_multi_psu_socket_2
