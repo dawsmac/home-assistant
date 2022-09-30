@@ -99,7 +99,6 @@ views:
         entities:
           - entity: light.playroom_light_switch
           - entity: binary_sensor.playroon_pir
-          - entity: switch.tv
           - entity: sensor.playroom_temperature
 
       - type: glance
@@ -129,8 +128,8 @@ views:
       - type: glance
         title: Landing / Hallway
         entities:
-          - entity: light.landing_main
-          - entity: light.hallway_main
+          - entity: light.landing_light
+          - entity: light.hallway_light
           - entity: sensor.landing_temperature
           - entity: sensor.hallway_temperature
           - entity: binary_sensor.hallway_pir
