@@ -128,8 +128,8 @@ views:
       - type: glance
         title: Landing / Hallway
         entities:
-          - entity: light.landing_light
-          - entity: light.hallway_light
+          - entity: light.landing_light_s
+          - entity: light.hallway_light_s
           - entity: sensor.landing_temperature
           - entity: sensor.hallway_temperature
           - entity: binary_sensor.hallway_pir
