@@ -67,16 +67,16 @@ views:
       - type: glance
         title: Master bedroom
         entities:
-          - entity: light.master_bedroom_main
+          - entity: light.lila_s_bedroom_light
           - entity: switch.rich_s_bedside_lamp
-          - entity: binary_sensor.espresense_masterbedroom_motion
+          - entity: binary_sensor.master_bedroom_pir
           - entity: sensor.master_room_temperature
 
       - type: glance
         title: Lila´s bedroom
         entities:
           - entity: light.lila_main_light
-          - entity: binary_sensor.lilas_bedroom_pir
+          - entity: binary_sensor.lila_bedroom_pir
           - entity: sensor.lila_room_temperature
           - entity: switch.lila_s_multi_psu_socket_1
           - entity: switch.lila_s_multi_psu_socket_2
@@ -87,7 +87,7 @@ views:
         title: Thea´s bedroom
         entities:
           - entity: light.thea_bedroom_main
-          - entity: binary_sensor.thea_bedroom_pir
+          - entity: binary_sensor.thea_s_bedroom_pir
           - entity: sensor.thea_room_temperature
           - entity: switch.thea_s_multi_psu_socket_1
           - entity: switch.thea_s_multi_psu_socket_2
@@ -97,8 +97,8 @@ views:
       - type: glance
         title: Playroom
         entities:
-          - entity: light.playroom_light_switch
-          - entity: binary_sensor.playroon_pir
+          - entity: light.playroom_light_s
+          - entity: binary_sensor.playroom_pir
           - entity: sensor.playroom_temperature
 
       - type: glance
@@ -128,11 +128,12 @@ views:
       - type: glance
         title: Landing / Hallway
         entities:
-          - entity: light.landing_light_s
+          - entity: light.landing_lights
           - entity: light.hallway_light_s
           - entity: sensor.landing_temperature
           - entity: sensor.hallway_temperature
           - entity: binary_sensor.hallway_pir
+          - entity: binary_sensor.landing_pir
 
 
       - type: glance
