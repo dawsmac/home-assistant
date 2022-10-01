@@ -67,7 +67,7 @@ views:
       - type: glance
         title: Master bedroom
         entities:
-          - entity: light.lila_s_bedroom_light
+          - entity: light.master_bedroom_light
           - entity: switch.rich_s_bedside_lamp
           - entity: binary_sensor.master_bedroom_pir
           - entity: sensor.master_room_temperature
@@ -75,7 +75,7 @@ views:
       - type: glance
         title: Lila´s bedroom
         entities:
-          - entity: light.lila_main_light
+          - entity: light.lila_s_bedroom_light
           - entity: binary_sensor.lila_bedroom_pir
           - entity: sensor.lila_room_temperature
           - entity: switch.lila_s_multi_psu_socket_1
@@ -140,6 +140,7 @@ views:
         title: Office
         entities:
           - entity: switch.office_door_lock
+          - entity: light.office_loft_light
           - entity: sensor.office_temperature
           - entity: sensor.office_humidity
           - entity: sensor.office_atc_battery_level
