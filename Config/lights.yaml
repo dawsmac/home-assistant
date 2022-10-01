@@ -7,5 +7,5 @@
 - platform: group
   name: lounge bookshelf lights
   entities:
-    - light.lounge_bookshelf_llight
-    - light.lounge_bookshelf_rlight
+    - light.bookshelf_light_left
+    - light.bookshelf_light_right

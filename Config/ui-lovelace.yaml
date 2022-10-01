@@ -105,8 +105,8 @@ views:
         title: Lounge
         entities:
           - entity: light.lounge_bookshelf_lights
-          - entity: light.lounge_main
-          - entity: binary_sensor.espresense_lounge_motion
+          - entity: light.lounge_main_light
+          - entity: binary_sensor.lounge_pir
           - entity: sensor.lounge_temperature
 
       - type: glance
