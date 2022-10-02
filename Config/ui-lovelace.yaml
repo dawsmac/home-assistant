@@ -100,7 +100,7 @@ views:
           - entity: light.lounge_bookshelf_lights
           - entity: light.lounge_main_light
           - entity: binary_sensor.lounge_pir
-          - entity: sensor.lounge_temperature
+          - entity: sensor.lounge_th_4ab5_temperature
 
       - type: glance
         title: Kitchen
