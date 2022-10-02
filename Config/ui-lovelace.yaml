@@ -115,7 +115,7 @@ views:
           - entity: light.kitchen_dining
           - entity: light.kitchen_side
           - entity: light.kitchen_island
-          - entity: light.kitchen_fairy
+          - entity: light.kitchen_fairylights
           - entity: binary_sensor.kitchen_pir
           - entity: light.boiler_lamp
           - entity: sensor.kitchen_temperature
