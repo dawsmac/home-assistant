@@ -113,7 +113,7 @@ views:
         title: Kitchen
         entities:
           - entity: light.kitchen_dining
-          - entity: light.kitchen_side
+          - entity: light.side_lights
           - entity: light.kitchen_island
           - entity: light.fairy_lights
           - entity: binary_sensor.kitchen_pir
