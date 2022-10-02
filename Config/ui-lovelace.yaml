@@ -80,21 +80,13 @@ views:
           - entity: light.lila_s_bedroom_light
           - entity: binary_sensor.lila_bedroom_pir
           - entity: sensor.lila_th_968e_temperature
-          - entity: switch.lila_s_multi_psu_socket_1
-          - entity: switch.lila_s_multi_psu_socket_2
-          - entity: switch.lila_s_multi_psu_socket_3
-          - entity: switch.lila_s_multi_psu_usb
-
+          
       - type: glance
         title: Thea´s bedroom
         entities:
           - entity: light.thea_bedroom_main
           - entity: binary_sensor.thea_s_bedroom_pir
           - entity: sensor.thea_th_b94c_temperature
-          - entity: switch.thea_s_multi_psu_socket_1
-          - entity: switch.thea_s_multi_psu_socket_2
-          - entity: switch.thea_s_multi_psu_socket_3
-          - entity: switch.thea_s_multi_psu_usb
 
       - type: glance
         title: Playroom
