@@ -136,7 +136,6 @@ views:
           - entity: light.office_loft_light
           - entity: sensor.office_th_c4d6_temperature
           - entity: sensor.office_th_c4d6_humidity
-          - entity: switch.office_heater
           - entity: binary_sensor.office_door
           - entity: light.office_main
 
@@ -227,6 +226,7 @@ views:
           - switch.upstairs_radiators
           - binary_sensor.cylinder_thermostats
           - switch.underfloor_heating
+          - switch.office_heater
           - switch.hotwater
           - switch.boiler_call
 
