@@ -136,7 +136,6 @@ views:
           - entity: light.office_loft_light
           - entity: sensor.office_th_c4d6_temperature
           - entity: sensor.office_th_c4d6_humidity
-          - entity: sensor.office_atc_battery_level
           - entity: switch.office_heater
           - entity: binary_sensor.office_door
           - entity: light.office_main
