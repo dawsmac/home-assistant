@@ -124,8 +124,8 @@ views:
         entities:
           - entity: light.landing_lights
           - entity: light.hallway_light_s
-          - entity: sensor.landing_temperature
-          - entity: sensor.hallway_temperature
+          - entity: sensor.landing_th_b54e_temperature
+          - entity: sensor.hallway_th_e88a_temperature
           - entity: binary_sensor.hallway_pir
           - entity: binary_sensor.landing_pir
 
@@ -152,7 +152,7 @@ views:
       - type: glance
         title: Front garden
         entities:
-          - entity: light.porch
+          - entity: light.porch_light
           - entity: binary_sensor.front_door
           - entity: sensor.porch_temperature
 
@@ -160,7 +160,7 @@ views:
         title: Bathroom
         entities:
           - entity: light.bathroom_mirror
-          - entity: light.bathroom_main_light
+          - entity: light.bathroom_light
           - entity: switch.bathroom_extractor_fan
           - entity: sensor.m_broom_th_4aeb_temperature
           - entity: sensor.m_broom_th_4aeb_humidity
