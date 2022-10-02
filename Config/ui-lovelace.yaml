@@ -70,14 +70,14 @@ views:
           - entity: light.master_bedroom_light
           - entity: switch.rich_s_bedside_lamp
           - entity: binary_sensor.master_bedroom_pir
-          - entity: sensor.master_room_temperature
+          - entity: sensor.m_room_th_d068_temperature
 
       - type: glance
         title: Lila´s bedroom
         entities:
           - entity: light.lila_s_bedroom_light
           - entity: binary_sensor.lila_bedroom_pir
-          - entity: sensor.lila_room_temperature
+          - entity: sensor.lila_th_968e_temperature
           - entity: switch.lila_s_multi_psu_socket_1
           - entity: switch.lila_s_multi_psu_socket_2
           - entity: switch.lila_s_multi_psu_socket_3
@@ -88,7 +88,7 @@ views:
         entities:
           - entity: light.thea_bedroom_main
           - entity: binary_sensor.thea_s_bedroom_pir
-          - entity: sensor.thea_room_temperature
+          - entity: sensor.thea_th_b94c_temperature
           - entity: switch.thea_s_multi_psu_socket_1
           - entity: switch.thea_s_multi_psu_socket_2
           - entity: switch.thea_s_multi_psu_socket_3
