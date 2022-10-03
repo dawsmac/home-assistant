@@ -51,7 +51,7 @@
       to: "on"
       id: "pir_light_playroom_on"
     - platform: state
-      entity_id: binary_sensor.playroon_pir
+      entity_id: binary_sensor.playroom_pir
       to: "off"
       for: '00:02:00'
       id: "pir_light_playroom_off"
