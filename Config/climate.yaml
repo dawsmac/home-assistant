@@ -5,7 +5,7 @@
   min_temp: 19
   max_temp: 25
   ac_mode: false
-  target_temp: 21.5
+  target_temp: 21
   cold_tolerance: 0.3
   hot_tolerance: 0
   min_cycle_duration:
@@ -13,9 +13,9 @@
   keep_alive:
     minutes: 3
   initial_hvac_mode: "heat"
-  sleep_temp: 22
-  home_temp: 23
-  away_temp: 20.5
+  sleep_temp: 20
+  home_temp: 21
+  away_temp: 19
   precision: 0.1
 
 - platform: generic_thermostat
@@ -33,8 +33,8 @@
   keep_alive:
     minutes: 3
   initial_hvac_mode: "off"
-  away_temp: 18
-  sleep_temp: 17
+  away_temp: 16
+  sleep_temp: 16
   home_temp: 19.5
   comfort_temp: 19.5
   precision: 0.1
@@ -54,8 +54,8 @@
   keep_alive:
     minutes: 3
   initial_hvac_mode: "off"
-  away_temp: 18
-  sleep_temp: 17
+  away_temp: 17
+  sleep_temp: 16
   home_temp: 19.5
   comfort_temp: 19.5
   precision: 0.1
@@ -75,8 +75,8 @@
   keep_alive:
     minutes: 3
   initial_hvac_mode: "off"
-  away_temp: 18
-  sleep_temp: 17
+  away_temp: 17
+  sleep_temp: 16
   home_temp: 19.5
   comfort_temp: 20.5
   precision: 0.1
