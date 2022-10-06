@@ -42,7 +42,7 @@
 - platform: generic_thermostat
   name: Downstairs
   heater: switch.downstairs_radiators
-  target_sensor: sensor.lounge_temperature
+  target_sensor: sensor.downstairs_temperature
   min_temp: 18
   max_temp: 25
   ac_mode: false
@@ -63,7 +63,7 @@
 - platform: generic_thermostat
   name: Office
   heater: switch.office_heater
-  target_sensor: sensor.office_temperature
+  target_sensor: sensor.office_th_c4d6_temperature
   min_temp: 15
   max_temp: 23
   ac_mode: false
