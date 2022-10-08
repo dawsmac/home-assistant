@@ -82,7 +82,7 @@ views:
           - entity: sensor.lila_th_968e_temperature
 
       - type: glance
-        title: Thea´s bedroom test
+        title: Thea´s bedroom
         entities:
           - entity: light.thea_s_bedroom_light
           - entity: binary_sensor.thea_s_bedroom_pir
