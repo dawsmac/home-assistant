@@ -6,6 +6,8 @@
         - binary_sensor.kitchen_door
         - binary_sensor.garden_gate
         - binary_sensor.office_door
+        - binary_sensor.driveway_person_occupancy
+        - binary_sensor.side_road_all_occupancy
       to: "on"
   action:
     - condition: state
@@ -20,6 +22,8 @@
           - binary_sensor.kitchen_door
           - binary_sensor.garden_gate
           - binary_sensor.office_door
+          - binary_sensor.driveway_person_occupancy
+          - binary_sensor.side_road_all_occupancy
         from: "on"
         to: "off"
     - delay: 00:02:00
@@ -39,6 +43,7 @@
       entity_id:
         - binary_sensor.front_door
         - binary_sensor.frontgarden_gate
+        - binary_sensor.porch_path_a_person_occupancy
       from: "off"
       to: "on"
   condition:
@@ -54,9 +59,10 @@
         entity_id:
           - binary_sensor.front_door
           - binary_sensor.frontgarden_gate
+          - binary_sensor.porch_path_a_person_occupancy
         from: "on"
         to: "off"
-    - delay: 00:01:00
+    - delay: 00:02:00
     - service: light.turn_off
       entity_id:
         - light.porch
