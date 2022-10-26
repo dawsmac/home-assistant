@@ -1,4 +1,4 @@
-- id: 1601
+- id: '1601'
   alias: Disable Gate left open
   trigger:
     - platform: event
@@ -11,7 +11,7 @@
         entity_id: alert.garden_gate
 
 
-- id: 1602
+- id: '1602'
   alias: Notify of events
   trigger:
     - platform: mqtt

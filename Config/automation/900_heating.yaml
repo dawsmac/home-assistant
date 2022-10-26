@@ -126,12 +126,12 @@
     - platform: template
       value_template: >-
         {{now().strftime('%a %h %d %H:%M %Z %Y') ==
-                (((state_attr('sensor.sm_g991b_next_alarm', 'Time in Milliseconds') |
+                (((state_attr('sensor.rich_s21_next_alarm', 'Time in Milliseconds') |
                 int / 1000) - 30*60 ) | timestamp_custom('%a %h %d %H:%M %Z %Y')) }}
     - platform: template
       value_template: >-
         {{now().strftime('%a %h %d %H:%M %Z %Y') ==
-                (((state_attr('sensor.sm_faye_next_alarm', 'Time in Milliseconds') |
+                (((state_attr('sensor.faye_s10e_next_alarm', 'Time in Milliseconds') |
                 int / 1000) - 30*60 ) | timestamp_custom('%a %h %d %H:%M %Z %Y')) }}
   condition:
     - condition: time
