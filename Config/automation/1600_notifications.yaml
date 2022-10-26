@@ -10,8 +10,8 @@
       target:
         entity_id: alert.garden_gate
 
-        
-- id: 1601
+
+- id: 1602
   alias: Notify of events
   trigger:
     - platform: mqtt
