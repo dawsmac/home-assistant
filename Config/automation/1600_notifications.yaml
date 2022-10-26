@@ -21,7 +21,7 @@
       entity_id: group.persons
       state: 'not_home'
   action:
-    - service: notify.mobile_app_rich_phone
+    - service: notify.mobile_app_rich_s21
       data_template:
         message: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
         data:
