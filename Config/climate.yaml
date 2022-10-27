@@ -2,10 +2,10 @@
   name: Kitchen
   heater: switch.underfloor_heating
   target_sensor: sensor.kitchen_th_819f_temperature
-  min_temp: 19
-  max_temp: 25
+  min_temp: 18.5
+  max_temp: 22
   ac_mode: false
-  target_temp: 21
+  target_temp: 20
   cold_tolerance: 0.3
   hot_tolerance: 0
   min_cycle_duration:
@@ -13,17 +13,17 @@
   keep_alive:
     minutes: 3
   initial_hvac_mode: "heat"
-  sleep_temp: 20
-  home_temp: 21
-  away_temp: 19
+  sleep_temp: 18.5
+  home_temp: 20
+  away_temp: 18
   precision: 0.1
 
 - platform: generic_thermostat
   name: Upstairs
   heater: switch.upstairs_radiators
   target_sensor: sensor.upstairs_temperature
-  min_temp: 18
-  max_temp: 25
+  min_temp: 16
+  max_temp: 21
   ac_mode: false
   target_temp: 10
   cold_tolerance: 0.3
@@ -33,10 +33,10 @@
   keep_alive:
     minutes: 3
   initial_hvac_mode: "off"
-  away_temp: 16
+  away_temp: 16.5
   sleep_temp: 16
   home_temp: 19.5
-  comfort_temp: 19.5
+  comfort_temp: 20
   precision: 0.1
 
 - platform: generic_thermostat
@@ -44,7 +44,7 @@
   heater: switch.downstairs_radiators
   target_sensor: sensor.downstairs_temperature
   min_temp: 18
-  max_temp: 25
+  max_temp: 20
   ac_mode: false
   target_temp: 19
   cold_tolerance: 0.3
@@ -54,7 +54,7 @@
   keep_alive:
     minutes: 3
   initial_hvac_mode: "off"
-  away_temp: 17
+  away_temp: 16.5
   sleep_temp: 16
   home_temp: 19.5
   comfort_temp: 19.5
@@ -75,8 +75,8 @@
   keep_alive:
     minutes: 3
   initial_hvac_mode: "off"
-  away_temp: 17
-  sleep_temp: 16
-  home_temp: 19.5
+  away_temp: 15
+  sleep_temp: 16.5
+  Work: 19.5
   comfort_temp: 20.5
   precision: 0.1
