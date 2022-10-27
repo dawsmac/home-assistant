@@ -28,9 +28,6 @@
             - condition: state
               entity_id: switch.boiler_call
               state: "off"
-            - condition: state
-              entity_id: group.persons
-              state: "home"
           sequence:
             - service: homeassistant.turn_on
               target:
@@ -44,7 +41,7 @@
               state: "off"
             - condition: time
               after: "04:25:00"
-              before: "23:00:00"
+              before: "21:30:00"
             - condition: state
               entity_id: group.persons
               state: "home"
@@ -93,6 +90,16 @@
                   - climate.downstairs
                   - climate.office
                   - climate.kitchen
+            - service: climate.set_hvac_mode
+              data:
+                hvac_mode: 'heat'
+              target:
+                entity_id:
+                  - climate.upstairs
+                  - climate.downstairs
+                  - climate.office
+                  - climate.kitchen
+
         - conditions:
             - condition: trigger
               id: "homeheating"
@@ -115,6 +122,14 @@
                   - climate.downstairs
                   - climate.office
                   - climate.kitchen
+            - condition: state
+              entity_id: switch.hotwater
+              state: "on"
+            - service: homeassistant.turn_on
+              target:
+                entity_id:
+                  - switch.boiler_call
+
       default: []
   mode: single
 
