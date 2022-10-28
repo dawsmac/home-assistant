@@ -31,6 +31,10 @@
       hours: 5
     state: 'off'
   action:
-    - service: notify.samsung_devices
+    - service: notify.mobile_app_rich_s21
       data:
-        message: "No one has Checked on the Chickens food & water!"
+        message: No one has checked on the there food & water!
+        title: Chickhen's
+
+
+
