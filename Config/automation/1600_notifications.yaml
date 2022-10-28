@@ -12,7 +12,7 @@
 
 
 - id: '1602'
-  alias: Notify of events
+  alias: Notify of events in driveway
   trigger:
     - platform: mqtt
       topic: frigate/events
@@ -22,6 +22,26 @@
       state: 'not_home'
     - "{{ trigger.payload_json['after']['label'] == 'person' }}"
     - "{{ 'drive' in trigger.payload_json['after']['entered_zones'] }}"
+  action:
+    - service: notify.mobile_app_rich_s21
+      data_template:
+        message: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
+        data:
+            image: 'http:/192.168.110.240:5000/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg?format=android'
+            tag: '{{trigger.payload_json["after"]["id"]}}'
+            when: '{{trigger.payload_json["after"]["start_time"]|int}}'
+
+- id: '1603'
+  alias: Notify of events in porch
+  trigger:
+    - platform: mqtt
+      topic: frigate/events
+  condition:
+    - condition: state
+      entity_id: group.persons
+      state: 'not_home'
+    - "{{ trigger.payload_json['after']['label'] == 'person' }}"
+    - "{{ 'porch_path_a' in trigger.payload_json['after']['entered_zones'] }}"
   action:
     - service: notify.mobile_app_rich_s21
       data_template:
