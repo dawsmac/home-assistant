@@ -1,5 +1,5 @@
   - platform: group
-    name: notify.mobiles
+    name: notify.all
     services:
       - service: mobile_app_rich_s21
       - service: notify.mobile_app_richards_macbook_pro_home
