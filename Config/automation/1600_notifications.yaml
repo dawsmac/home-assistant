@@ -21,6 +21,7 @@
       entity_id: group.persons
       state: 'not_home'
     - "{{ trigger.payload_json['after']['label'] == 'person' }}"
+    - "{{ 'drive' in trigger.payload_json['after']['entered_zones'] }}"
   action:
     - service: notify.mobile_app_rich_s21
       data_template:
