@@ -2,9 +2,9 @@
     name: notify.all
     services:
       - service: mobile_app_rich_s21
-      - service: notify.mobile_app_richards_macbook_pro_home
-      - service: notify.mobile_app_richards_macbook_pro
-      - service: notify.mobile_app_faye_s10e
+      - service: mobile_app_richards_macbook_pro_home
+      - service: mobile_app_richards_macbook_pro
+      - service: mobile_app_faye_s10e
 
 
   - platform: group
