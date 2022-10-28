@@ -31,7 +31,7 @@
       hours: 5
     state: 'off'
   action:
-    - service: notify.mobile_app_rich_s21
+    - service: notify.all
       data:
         message: No one has checked on the there food & water!
         title: Chickhen's
