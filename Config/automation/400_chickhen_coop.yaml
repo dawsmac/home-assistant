@@ -31,7 +31,7 @@
       hours: 5
     state: 'off'
   action:
-    - service: notify.all
+    - service: notify.notify_all
       data:
         message: No one has checked on the there food & water!
         title: Chickhen's
