@@ -4,7 +4,7 @@
   trigger:
   - platform: numeric_state
     entity_id: sensor.out_side_lux
-    above: 300
+    above: 100
   action:
   - service: homeassistant.turn_on
     entity_id: switch.coop_door_open
@@ -14,7 +14,7 @@
   trigger:
   - platform: numeric_state
     entity_id: sensor.out_side_lux
-    below: 100
+    below: 50
   action:
   - service: homeassistant.turn_on
     entity_id: switch.coop_door_close
