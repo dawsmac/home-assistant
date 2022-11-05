@@ -11,6 +11,7 @@ homeassistant:
         trusted_networks:
           - 192.168.110.249/32
           - 192.168.111.0/24
+          - 192.168.112.0/24
   
 ffmpeg:
 
