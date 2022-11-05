@@ -22,8 +22,9 @@ logger:
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - 192.168.111.1
+    - 192.168.111.0/24
     - 192.168.88.0/24
+    - 192.168.110.0/24
 
 # planning to use a mobile application that integrates with Home Assistant
 mobile_app:
