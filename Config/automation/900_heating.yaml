@@ -74,7 +74,7 @@
       id: "nothomeheating"
       entity_id: group.persons
       to: "not_home"
-      for: "01:00:00"
+      for: "00:45:00"
   action:
     - choose:
         - conditions:
@@ -168,14 +168,12 @@
               target:
                 entity_id:
                   - climate.upstairs
-                  - climate.office
             - service: climate.set_hvac_mode
               data:
                 hvac_mode: 'heat'
               target:
                 entity_id:
                   - climate.upstairs
-                  - climate.office
     - choose:
         - conditions:
             - condition: state
@@ -217,6 +215,8 @@
     - platform: state
       entity_id: input_boolean.night_mode
       to: 'on'
+    - platform: time
+      at: "22:30:00"
   condition:
     - condition: state
       entity_id: group.persons
@@ -230,6 +230,7 @@
           - climate.upstairs
           - climate.downstairs
           - climate.office
+          - climate.kitchen
     - service: climate.set_hvac_mode
       data:
         hvac_mode: 'heat'
@@ -238,8 +239,9 @@
           - climate.upstairs
           - climate.downstairs
           - climate.office
+          - climate.kitchen
 
-- id: '905' 
+- id: '904' 
   alias: 'Heating >> HA reboot'
   trigger:
     - platform: homeassistant
@@ -276,4 +278,36 @@
           - climate.downstairs
           - climate.kitchen
 
+- id: '905'
+  alias: Heating >> Daytime upstair's heating off.
+  description: 'When non activey upstair for 30min in morning '
+  mode: single
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.no_activity_upstairs
+      to: 'on'
+      for: '00:30:00'
+  condition:
+    - condition: time
+      after: '09:30'
+      before: '12:00'
+    - condition: state
+      entity_id: group.persons
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+  action:
+    - service: climate.set_preset_mode
+      data:
+        preset_mode: 'home'
+      target:
+        entity_id:
+          - climate.upstairs
+    - service: climate.set_hvac_mode
+      data:
+        hvac_mode: 'heat'
+      target:
+        entity_id:
+          - climate.upstairs
 
