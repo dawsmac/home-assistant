@@ -66,11 +66,13 @@
 - id: '303'
   alias: Bathroom Extractor needed
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.bathroom_humidity
-      above: '85'
-  condition: []
-  action:
+  - platform: state
+    entity_id: sensor.m_broom_th_4aeb_humidity
+  condition:
+    - condition: template
+      value_template: >
+        {{ trigger.from_state.state | is_number and trigger.to_state.state | is_number and trigger.to_state.state / trigger.from_state.state >= 1.1 }}
+  action: 
     - service: homeassistant.turn_on
       entity_id: switch.bathroom_extractor_fan
     - wait_for_trigger:
