@@ -17,10 +17,9 @@
 
 - platform: min_max
   entity_ids:
-    - sensor.lounge_th_4ab5_temperature
-    - sensor.lounge_th_4ab5_temperature
     - sensor.broom_d_th_e160_temperature
     - sensor.hallway_th_e88a_temperature
+    - sensor.playrom_th_c5d5_temperature
   type: mean
   name: Downstairs temperature
 
