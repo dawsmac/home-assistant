@@ -7,11 +7,11 @@ recorder:
 
 homeassistant:
   auth_providers:
-      - type: trusted_networks
-        trusted_networks:
-          - 192.168.110.0/24
-        trusted_users:
-          192.168.110.249: Kitchen_Fire_id
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.110.0/24
+      trusted_users:
+        192.168.110.249: kitchen_fire_id
 
 ffmpeg:
 
