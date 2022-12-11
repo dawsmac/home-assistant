@@ -28,7 +28,7 @@ services:
     #  - ha_influxd
     
     networks:
-      swarm-IOT:
+      IOT:
         aliases:
           - Hass
         ipv4_address: 192.168.110.225
