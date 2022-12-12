@@ -5,19 +5,21 @@ default_config:
 homeassistant:
   external_url: "https://hauto.dawsnet.uk"
   internal_url: "http://192.168.110.225:8123"
-  
-recorder:
-  purge_keep_days: 7
-  db_url: !secret mysql
 
-
-auth_providers:
+  auth_providers:
   - type: homeassistant
   - type: trusted_networks
     trusted_networks:
       - 192.168.110.0/24
     trusted_users:
       192.168.110.249: Kitchen_Fire
+  
+recorder:
+  purge_keep_days: 7
+  db_url: !secret mysql
+
+
+
 
 ffmpeg:
 
