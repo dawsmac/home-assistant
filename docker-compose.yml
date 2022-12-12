@@ -3,7 +3,7 @@ version: "3.9"
 networks:
   IOT_HASS:
     external: true
-    name: swarm-IOT
+    name: swarm-HASS
   swarm_private:
     external: true
     name: swarm_private
