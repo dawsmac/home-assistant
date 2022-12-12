@@ -8,6 +8,7 @@ recorder:
 
 auth_providers:
   - type: trusted_networks
+  - type: homeassistant
     trusted_networks:
       - 192.168.110.0/24
     trusted_users:
