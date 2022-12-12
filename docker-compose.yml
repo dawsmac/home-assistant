@@ -29,10 +29,10 @@ services:
     
     networks:
       IOT:
+        ipv4_address: "192.168.110.225"
         aliases:
           - Hass
-        ipv4_address: 192.168.110.225
-
+        
       swarm_private:
         aliases:
           - interfrigate
