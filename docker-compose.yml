@@ -1,9 +1,9 @@
 version: "3.9"
 
 networks:
-  IOT_HASS:
+  IOT:
     external: true
-    name: swarm-HASS
+    name: swarm-IOT
   swarm_private:
     external: true
     name: swarm_private
@@ -28,7 +28,7 @@ services:
     #  - ha_influxd
     
     networks:
-      IOT_HASS:
+      IOT:
         aliases:
           - Hass
         
