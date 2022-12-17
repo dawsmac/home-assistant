@@ -4,7 +4,7 @@ default_config:
 
 homeassistant:
   external_url: "https://hauto.dawsnet.uk"
-  internal_url: "http://192.168.110.225:8123"
+  internal_url: "http://hauto.dawsnet.uk:8123"
 
   auth_providers:
   - type: homeassistant
