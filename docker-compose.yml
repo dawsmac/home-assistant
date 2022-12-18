@@ -1,5 +1,6 @@
 version: "3.9"
 
+
 networks:
   IOT:
     external: true
@@ -20,12 +21,18 @@ services:
       - /mnt/docker_data/home-assistant/Config/:/config
     ports:
       - 8123:8123
-    
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 30s
+
     labels:
       com.docker.swarm.reschedule-policies: on-node-failure
 
-    #depends_on:
-    #  - ha_influxd
+    depends_on:
+      - mariadb
     
     networks:
       IOT:
