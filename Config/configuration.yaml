@@ -10,6 +10,7 @@ homeassistant:
   - type: homeassistant
   - type: trusted_networks
     trusted_networks:
+      - 192.168.111.0/24
       - 192.168.110.0/24
     trusted_users:
       192.168.110.249: 50b110297e4343608b1ade3506bfa8c0
