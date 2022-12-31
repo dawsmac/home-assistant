@@ -27,6 +27,7 @@ services:
         delay: 5s
         max_attempts: 3
         window: 30s
+      endpoint_mode: dnsrr
 
     labels:
       com.docker.swarm.reschedule-policies: on-node-failure
