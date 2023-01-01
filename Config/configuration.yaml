@@ -25,7 +25,7 @@ recorder:
 ffmpeg:
 
 logger:
-  default: warning
+  default: debug
 
 http:
   use_x_forwarded_for: true
