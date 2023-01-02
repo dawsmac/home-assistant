@@ -2,10 +2,6 @@
 
 default_config:
 
-homeassistant:
-  external_url: "https://hauto.dawsnet.uk"
-  internal_url: "http://hauto.dawsnet.uk:8123"
-
 
 http:
   use_x_forwarded_for: true
