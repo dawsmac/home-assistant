@@ -68,7 +68,6 @@ views:
         title: Master bedroom
         entities:
           - entity: light.master_bedroom_light
-          - entity: switch.rich_s_bedside_lamp
           - entity: binary_sensor.master_bedroom_pir
           - entity: sensor.m_room_th_d068_temperature
           - entity: sensor.m_room_th_d068_humidity
