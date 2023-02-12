@@ -97,8 +97,9 @@ views:
         title: Lounge
         entities:
           - entity: light.lounge_bookshelf_lights
-          - entity: light.lounge_main_light
+       #   - entity: light.lounge_main_light
           - entity: binary_sensor.lounge_pir
+          - entity: light.lounge_lamp
           - entity: sensor.lounge_th_4ab5_temperature
 
       - type: glance
@@ -131,8 +132,8 @@ views:
       - type: glance
         title: Office
         entities:
-          - entity: switch.office_door_lock
-          - entity: light.office_loft_light
+   #       - entity: switch.office_door_lock
+   #       - entity: light.office_loft_light
           - entity: sensor.office_th_c4d6_temperature
           - entity: sensor.office_th_c4d6_humidity
           - entity: binary_sensor.office_door
@@ -149,7 +150,7 @@ views:
         title: Front garden
         entities:
           - entity: light.porch_light
-          - entity: binary_sensor.front_door
+     #     - entity: binary_sensor.front_door
           - entity: sensor.porch_temperature
 
       - type: glance
@@ -194,7 +195,9 @@ views:
           - entity: media_player.master_bedroom
           - entity: media_player.thea_bedroom
           - entity: media_player.lila_bedroom
-          - entity: media_player.kitchen_echo
+          - entity: media_player.kitchen_2
+          - entity: media_player.office
+          
 
       - type: glance
         title: Sonos
@@ -202,6 +205,7 @@ views:
           - entity: media_player.lounge
           - entity: media_player.kitchen
           - entity: media_player.garden
+          - entity: media_player.richard's_sonos_one
 
 
   - title: Chickhen´s
