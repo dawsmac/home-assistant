@@ -205,7 +205,7 @@ views:
           - entity: media_player.lounge
           - entity: media_player.kitchen
           - entity: media_player.garden
-          - entity: media_player.richard's_sonos_one
+          - entity: media_player.richard_s_sonos_one
 
 
   - title: Chickhen´s
