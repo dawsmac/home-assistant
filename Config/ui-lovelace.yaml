@@ -97,7 +97,7 @@ views:
         title: Lounge
         entities:
           - entity: light.lounge_bookshelf_lights
-       #   - entity: light.lounge_main_light
+          - entity: light.lounge_main_light
           - entity: binary_sensor.lounge_pir
           - entity: light.lounge_lamp
           - entity: sensor.lounge_th_4ab5_temperature
@@ -133,12 +133,13 @@ views:
       - type: glance
         title: Office
         entities:
-   #       - entity: switch.office_door_lock
-   #       - entity: light.office_loft_light
+          - entity: switch.office_door_lock
+          - entity: light.office_loft_light
           - entity: sensor.office_th_c4d6_temperature
           - entity: sensor.office_th_c4d6_humidity
           - entity: binary_sensor.office_door
-          - entity: light.office_main
+          - entity: light.office_light_s
+
 
       - type: glance
         title: Back garden
@@ -151,7 +152,7 @@ views:
         title: Front garden
         entities:
           - entity: light.porch_light
-     #     - entity: binary_sensor.front_door
+          - entity: binary_sensor.front_door
           - entity: sensor.porch_temperature
 
       - type: glance
