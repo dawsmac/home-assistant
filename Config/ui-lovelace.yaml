@@ -101,6 +101,7 @@ views:
           - entity: binary_sensor.lounge_pir
           - entity: light.lounge_lamp
           - entity: sensor.lounge_th_4ab5_temperature
+          - entity: light.lounge_side_lights
 
       - type: glance
         title: Kitchen
