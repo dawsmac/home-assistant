@@ -67,21 +67,13 @@
 
 - name: evening lights
   entities:
-    light.lounge_bookshelf_llight:
+    switch.playroom_fairy_lights:
       state: 'on'
-    light.lounge_bookshelf_rlight:
+    light.lounge_side_lights:
       state: 'on'
-    switch.faye_s_bedside_lamp:
-      state: 'on'
-    switch.rich_s_bedside_lamp:
-      state: 'on'
-    light.globe_lamp:
-      state: 'on'
-    light.kitchen_fairy:
+    light.fairy_lights:
       state: 'on'
     light.boiler_lamp:
-      state: 'on'
-    light.shellyvintage_6edcb8:
       state: 'on'
 
 - name: morning nolights
