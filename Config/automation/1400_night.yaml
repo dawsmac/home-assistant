@@ -39,9 +39,21 @@
             - service: input_boolean.turn_on
               target:
                 entity_id: input_boolean.night_mode
-            - service: scene.turn_on
+            - service: light.turn_off
+              data: {}
               target:
-                entity_id: scene.nightmode
+                area_id:
+                  - garden
+                  - kitchen
+                  - hallway
+                  - main_bathroom
+                  - playroom
+                  - thea_bedroom
+                  - lounge
+                  - landing
+                  - lila_bedroom
+                  - office
+
         - conditions:
             - condition: trigger
               id: "awaynightmode"
@@ -52,9 +64,21 @@
             - service: input_boolean.turn_on
               target:
                 entity_id: input_boolean.night_mode
-            - service: scene.turn_on
+            - service: light.turn_off
+              data: {}
               target:
-                entity_id: scene.nightmode
+                area_id:
+                  - garden
+                  - kitchen
+                  - hallway
+                  - main_bathroom
+                  - playroom
+                  - thea_bedroom
+                  - lounge
+                  - landing
+                  - lila_bedroom
+                  - office
+
 
 
 - id: "1401"
