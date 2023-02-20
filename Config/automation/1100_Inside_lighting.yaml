@@ -298,7 +298,7 @@
     - platform: state
       entity_id: binary_sensor.kitchen_pir
       to: 'off'
-      for: '00:02:00'
+      for: '00:01:00'
   condition:
     - condition: or
       conditions:
