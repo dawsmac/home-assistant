@@ -117,6 +117,7 @@ views:
           - entity: switch.dishwasher
           - entity: switch.washing_machine
           - entity: switch.tumble_dryer
+          - entity: binary_sensor.kitchen_door
 
 
       - type: glance
