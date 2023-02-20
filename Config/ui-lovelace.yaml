@@ -86,6 +86,7 @@ views:
           - entity: light.thea_s_bedroom_light
           - entity: binary_sensor.thea_s_bedroom_pir
           - entity: sensor.thea_th_b94c_temperature
+          - entity: light.thea_s_mirror_lights
 
       - type: glance
         title: Playroom
@@ -93,6 +94,7 @@ views:
           - entity: light.playroom_light_s
           - entity: binary_sensor.playroom_pir
           - entity: sensor.playrom_th_c5d5_temperature
+          - entity: switch.playroom_fairy_lights
       - type: glance
         title: Lounge
         entities:
