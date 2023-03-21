@@ -43,7 +43,6 @@ tts:
     cache: true
     time_memory: 300
     cache_dir: /tmp/tts
-    base_url: !secret url
     service_name: google_say
 
 group: !include groups.yaml
