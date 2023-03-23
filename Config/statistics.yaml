@@ -1,5 +1,4 @@
-- platform: statistics
-  name: Downstairs Bathroom Humidity Average Linear 24h
+- name: Downstairs Bathroom Humidity Average Linear 24h
   entity_id: sensor.bathroom_humidity
   state_characteristic: average_linear
   max_age:
