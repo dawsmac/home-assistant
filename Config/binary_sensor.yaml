@@ -2,3 +2,12 @@
   country: GB
   workdays: [mon, tue, wed, thu, fri]
   excludes: [sat, sun, holiday]
+
+- platform: template
+  sensors:
+    master_bath_fan_sb:
+      value_template: >-
+        {% set humid = states('sensor.bathroom_humidity')|int(default=0) %}
+        {% set avg = states('sensor.downstairs_bathroom_humidity_average_linear_24h')|int(default=0) %}
+        {% set thresh = 5 %}
+        {{ (humid - avg) > thresh }}
