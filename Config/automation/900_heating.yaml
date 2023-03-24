@@ -208,7 +208,6 @@
                 entity_id:
                   - switch.boiler_call
 
-
 - id: '903'
   alias: Heating >> Night
   trigger:
@@ -285,7 +284,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.no_activity_upstairs
-      to: 'on'
+      to: 'off'
       for: '00:30:00'
   condition:
     - condition: time
