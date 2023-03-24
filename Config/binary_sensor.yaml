@@ -5,9 +5,23 @@
 
 - platform: template
   sensors:
-    master_bath_fan_sb:
+    downst_bath_fan:
       value_template: >-
         {% set humid = states('sensor.broom_d_th_e160_humidity')|int(default=0) %}
         {% set avg = states('sensor.downstairs_bathroom_humidity_average_linear_24h')|int(default=0) %}
         {% set thresh = 5 %}
         {{ (humid - avg) > thresh }}
+
+- platform: template
+  sensors:
+    upstairs_bath_fan:
+      value_template: >-
+        {% set humid = states('sensor.m_broom_th_4aeb_humidity')|int(default=0) %}
+        {% set avg = states('sensor.upstairs_bathroom_humidity_average_linear_24h')|int(default=0) %}
+        {% set thresh = 5 %}
+        {{ (humid - avg) > thresh }}
+
+
+
+
+  
