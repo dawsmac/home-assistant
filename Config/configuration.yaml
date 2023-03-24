@@ -21,7 +21,7 @@ recorder:
 ffmpeg:
 
 logger:
-  default: debug
+ 
 
 
 # planning to use a mobile application that integrates with Home Assistant
