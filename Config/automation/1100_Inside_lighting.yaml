@@ -266,9 +266,6 @@
             - condition: state
               entity_id: light.lounge_main_light
               state: "on"
-            - condition: state
-              entity_id: device_tracker.samsung
-              state: "Away"
           sequence:
             - service: light.turn_on
               target: 
@@ -279,9 +276,6 @@
             - condition: state
               entity_id: binary_sensor.enable_auto_lights
               state: "on"
-            - condition: state
-              entity_id: device_tracker.samsung
-              state: "Away"
           sequence:
             - service: light.turn_on
               target: 
