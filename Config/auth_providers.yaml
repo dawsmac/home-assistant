@@ -1,0 +1,11 @@
+- type: homeassistant
+- type: trusted_networks
+  trusted_networks:
+    - 192.168.88.0/24
+    - 192.168.111.1/23
+    - 192.168.110.0/24
+
+ # trusted_users:
+ #   192.168.0.80: 7989d710709249ee98e8f0cc8a3f38f3
+
+#  allow_bypass_login: true

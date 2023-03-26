@@ -1,0 +1,17 @@
+name: Edenbridge
+latitude: 51.3398
+longitude: -2.5035
+elevation: 112.0
+country: GB
+language: en-GB
+currency: GBP
+time_zone: Europe/London
+unit_system: metric
+# customize: !include customize.yaml
+#allowlist_external_dirs:
+#  - /data/homeassistant
+auth_providers: !include auth_providers.yaml
+external_url: https://hauto.dawsnet.uk
+internal_url: https://hauto.dawsnet.uk
+allowlist_external_urls:
+  - http://127.0.0.1:8123
