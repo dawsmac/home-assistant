@@ -25,6 +25,11 @@
             - service: light.turn_off
               target:
                 entity_id: light.lounge_main_light
+            - service: light.turn_on
+              data:
+                brightness_pct: 40
+              target:
+                entity_id: light.lounge_lamp
             
         - conditions:
             - condition: trigger
@@ -40,3 +45,8 @@
             - service: light.turn_on
               target: 
                 entity_id: light.lounge_main_light
+            - service: light.turn_on
+              data:
+                brightness_pct: 80
+              target:
+                entity_id: light.lounge_lamp
