@@ -1,30 +1,25 @@
-# Configure a default setup of Home Assistant (frontend, api, etc)
+
+homeassistant: !include homeassistant.yaml
+
+logger:
+  default: info
+  logs:
+    homeassistant.helpers.template: error
 
 default_config:
 
 
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 192.168.88.0/24
-  cors_allowed_origins:
-    - https://hauto.dawsnet.uk
+http: !include http.yaml
+
+discovery:
 
   
 recorder:
   purge_keep_days: 7
   db_url: !secret mysql
 
-
-
-
 ffmpeg:
 
-logger:
- 
-
-
-# planning to use a mobile application that integrates with Home Assistant
 mobile_app:
 
 lovelace:
