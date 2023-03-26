@@ -17,14 +17,15 @@
             - condition: state
               entity_id: light.lounge_main_light
               state: "on"
-          sequence:
-            - service: light.turn_off
-              target: 
-              entity_id: light.lounge_main_light
             - condition: state
               entity_id: media_player.lounge
               attribute: source
               state: TV
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: light.lounge_main_light
+            
         - conditions:
             - condition: trigger
               id: "tv_paused"
