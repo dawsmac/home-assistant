@@ -267,7 +267,7 @@
               entity_id: light.lounge_main_light
               state: "on"
           sequence:
-            - service: light.turn_on
+            - service: light.turn_off
               target: 
                 entity_id: light.lounge_main_light
         - conditions:
