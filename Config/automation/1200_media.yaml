@@ -1,17 +1,41 @@
-# - id: '1200'
-#   alias: Switch playroom tv and player
-#   trigger:
-#   - platform: state
-#     entity_id: binary_sensor.playroom_pir
-#     to:  'off'
-#     for:
-#       minutes: 10
-#   condition:
-#     condition: not
-#     conditions:
-#       - condition: state
-#         entity_id: media_player.playroom_tv
-#         state:  'playing'
-#   action:
-#   - service: homeassistant.turn_off
-#     entity_id: switch.tv
+- id: '1200'
+  alias: Switch light off when tv goes on and on when paused 
+  trigger:
+    - platform: state
+      entity_id: media_player.lounge
+      to: "playing"
+      id: "tv_on"
+    - platform: state
+      entity_id: media_player.lounge
+      to: "paused"
+      id: "tv_paused"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "tv_on"
+            - condition: state
+              entity_id: light.lounge_main_light
+              state: "on"
+          sequence:
+            - service: light.turn_off
+              target: 
+              entity_id: light.lounge_main_light
+            - condition: state
+              entity_id: media_player.lounge
+              attribute: source
+              state: TV
+        - conditions:
+            - condition: trigger
+              id: "tv_paused"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: state
+              entity_id: media_player.lounge
+              attribute: source
+              state: TV
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.lounge_main_light

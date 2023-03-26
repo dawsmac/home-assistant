@@ -276,6 +276,9 @@
             - condition: state
               entity_id: binary_sensor.enable_auto_lights
               state: "on"
+            - condition: state
+              entity_id: light.lounge_side_lights
+              state: "off"
           sequence:
             - service: light.turn_on
               target: 
