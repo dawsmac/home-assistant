@@ -1,10 +1,10 @@
   - platform: group
     name: notify.all
     services:
-      - service: mobile_app_rich_
+      - service: mobile_app_rich_phone
       - service: mobile_app_richards_macbook_pro_home
       - service: mobile_app_richards_macbook_pro
-      - service: mobile_app_faye_s10e
+      - service: mobile_app_faye_phone
 
 
   - platform: group
