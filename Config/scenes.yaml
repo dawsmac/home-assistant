@@ -22,48 +22,16 @@
 
 - name: nightmode
   entities:
-    light.lounge_bookshelf_llight:
-      state: 'off'
-    light.lounge_bookshelf_rlight:
-      state: 'off'
-    light.globe_lamp:
-      state: 'off'
-    light.kitchen_dining:
-      state: 'off'
-    light.kitchen_fairy:
-      state: 'off'
-    light.kitchen_side:
-      state: 'off'
-    light.landing_main:
-      state: 'off'
-    light.lounge_main:
-      state: 'off'
-    light.boiler_lamp:
-      state: 'off'
-    light.kitchen_island:
-      state: 'off'
-    switch.lila_s_multi_psu_socket_1:
-      state: 'off'
-    switch.thea_s_multi_psu_socket_1:
-      state: 'off'
     switch.dishwasher:
       state: 'off'
     switch.washing_machine:
       state: 'off'
     switch.tumble_dryer:
       state: 'off'
-    light.office_main:
-      state: 'off'
-    light.playroom_main:
-      state: 'off'
-    light.bathroom_mirror:
-      state: 'off'
-    light.bathroom_main:
-      state: 'off'
-    light.shellyvintage_6edcb8:
-      state: 'off'
     switch.office_door_lock:
-      state: 'on'
+      state: 'off'
+    switch.playroom_fairy_lights:
+      state: 'off'
 
 - name: evening lights
   entities:

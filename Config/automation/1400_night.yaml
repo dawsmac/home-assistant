@@ -78,8 +78,12 @@
                   - landing
                   - lila_bedroom
                   - office
-
-
+            - service: scene.turn_on
+              target:
+                entity_id: scene.nightmode
+              metadata: {}
+              
+              
 
 - id: "1401"
   alias: Out hours movment
