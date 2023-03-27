@@ -53,6 +53,11 @@
                   - landing
                   - lila_bedroom
                   - office
+            - service: scene.turn_on
+              target:
+                entity_id: scene.nightmode
+              metadata: {}
+              
 
         - conditions:
             - condition: trigger
