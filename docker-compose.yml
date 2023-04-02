@@ -27,7 +27,7 @@ services:
         delay: 5s
         max_attempts: 3
         window: 30s
-    mac_address: 02:42:c0:a8:6e:f0
+    mac_address: 02:42:c0:a8:6e:f2
 
     labels:
       com.docker.swarm.reschedule-policies: on-node-failure
