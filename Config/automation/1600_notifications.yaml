@@ -27,7 +27,7 @@
       data_template:
         message: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
         data:
-            image: 'http:/frigate:5000/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg?format=android'
+            image: 'https://hauto.dawsnet.uk/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg?format=android'
             tag: '{{trigger.payload_json["after"]["id"]}}'
             when: '{{trigger.payload_json["after"]["start_time"]|int}}'
 
@@ -47,6 +47,6 @@
       data_template:
         message: 'A {{trigger.payload_json["after"]["label"]}} was detected.'
         data:
-            image: 'http:/frigate:5000/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg?format=android'
+            image: 'https://hauto.dawsnet.uk/api/frigate/notifications/{{trigger.payload_json["after"]["id"]}}/thumbnail.jpg?format=android'
             tag: '{{trigger.payload_json["after"]["id"]}}'
             when: '{{trigger.payload_json["after"]["start_time"]|int}}'
