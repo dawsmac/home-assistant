@@ -5,9 +5,9 @@ networks:
   IOT:
     external: true
     name: swarm-IOT
-  swarm_private:
-    external: true
-    name: swarm_private
+#  swarm_private:
+#    external: true
+#    name: swarm_private
 
 services:
   homeassistant:
@@ -27,20 +27,19 @@ services:
         delay: 5s
         max_attempts: 3
         window: 30s
-    mac_address: 02:42:c0:a8:6e:f2
 
     labels:
       com.docker.swarm.reschedule-policies: on-node-failure
 
-    depends_on:
-      - mariadb
+   # depends_on:
+   #   - mariadb
     
     networks:
       IOT:
         aliases:
           - Hass
         
-      swarm_private:
-        aliases:
-          - interfrigate
+#     swarm_private:
+#       aliases:
+#         - interfrigate
 
