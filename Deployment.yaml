@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: homeassistant
+  name: homeassistant
+  namespace: homeassistant
+spec:
+  selector:
+    matchLabels:
+      app: homeassistant
+  template:
+    metadata:
+      labels:
+        app: homeassistant
+    spec:
+      containers:
+        - image: ghcr.io/home-assistant/home-assistant:stable
+          imagePullPolicy: Always
+          name: homeassistant
+          env:
+            - name: TZ
+              value: "Europe/London"
+          securityContext:
+            privileged: true
+          ports:
+            - containerPort: 8123
+              protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: '/config'
+            - name: localtime
+              mountPath: '/etc/localtime'
+              readOnly: true
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 100m
+            limits:
+              memory: 2Gi
+              cpu: 1
+      restartPolicy: Always
+      volumes:
+        - name: config
+          hostPath:
+            path: /home/dawsmac/container_data/home-assistant/Config
+        - name: localtime
+          hostPath:
+            path: /etc/localtime

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: homeassistant
+  name: homeassistant
+  namespace: homeassistant
+spec:
+  ports:
+  - port: 8123
+    nodePort: 8123
+    name: port8123
+    protocol: TCP
+  selector:
+    app: homeassistant
+  type: LoadBalancer
