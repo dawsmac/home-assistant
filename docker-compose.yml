@@ -2,9 +2,9 @@ version: "3.9"
 
 
 networks:
-  crio:
+  IOT:
     external: true
-    name: crio
+    name: IOT
 #  swarm_private:
 #    external: true
 #    name: swarm_private
@@ -38,11 +38,13 @@ services:
    #   - mariadb
     
     networks:
-      crio:
+      IOT:
         aliases:
           - Hass
         
 #     swarm_private:
 #       aliases:
 #         - interfrigate
+
+
 
