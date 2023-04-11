@@ -2,9 +2,9 @@ version: "3.9"
 
 
 networks:
-  IOT:
+  Mangment:
     external: true
-    name: IOT
+    name: Mangment
 #  swarm_private:
 #    external: true
 #    name: swarm_private
@@ -38,7 +38,7 @@ services:
    #   - mariadb
     
     networks:
-      IOT:
+      Mangment:
         aliases:
           - Hass
         
