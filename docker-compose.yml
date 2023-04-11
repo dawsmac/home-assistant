@@ -1,10 +1,10 @@
 version: "3.9"
 
 
-#networks:
-#  IOT:
-#    external: true
-#    name: swarm-IOT
+networks:
+  crio:
+    external: true
+    name: crio
 #  swarm_private:
 #    external: true
 #    name: swarm_private
@@ -37,10 +37,10 @@ services:
    # depends_on:
    #   - mariadb
     
- #   networks:
- #     IOT:
- #       aliases:
- #         - Hass
+    networks:
+      crio:
+        aliases:
+          - Hass
         
 #     swarm_private:
 #       aliases:
