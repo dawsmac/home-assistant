@@ -1,10 +1,10 @@
 version: "3.9"
 
 
-networks:
-  IOT:
-    external: true
-    name: swarm-IOT
+#networks:
+#  IOT:
+#    external: true
+#    name: swarm-IOT
 #  swarm_private:
 #    external: true
 #    name: swarm_private
@@ -18,9 +18,10 @@ services:
       - TZ=Europe/London
     volumes:
     # - /nfs/Media/Music:/media
-      - /mnt/docker_data/home-assistant/Config/:/config
+      - /home/dawsmac/container_data/home-assistant/Config/:/config
     ports:
       - 8123:8123
+
     deploy:
       restart_policy:
         condition: on-failure
@@ -28,16 +29,16 @@ services:
         max_attempts: 3
         window: 30s
 
-    labels:
-      com.docker.swarm.reschedule-policies: on-node-failure
+ #   labels:
+ #     com.docker.swarm.reschedule-policies: on-node-failure
 
    # depends_on:
    #   - mariadb
     
-    networks:
-      IOT:
-        aliases:
-          - Hass
+ #   networks:
+ #     IOT:
+ #       aliases:
+ #         - Hass
         
 #     swarm_private:
 #       aliases:
