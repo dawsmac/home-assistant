@@ -21,7 +21,7 @@ services:
       - /home/dawsmac/container_data/home-assistant/Config/:/config
     ports:
       - 8123:8123
-    expose: [8123]
+    network_mode: "host"
 
     deploy:
       restart_policy:
