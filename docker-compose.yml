@@ -39,6 +39,7 @@ services:
     
     networks:
       Mangment:
+        ipv4_address: "192.168.111.44"
         aliases:
           - Hass
         
