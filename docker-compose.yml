@@ -2,9 +2,9 @@ version: "3.9"
 
 
 networks:
-  Mangment:
-    external: true
-    name: Mangment
+  #Mangment:
+  #  external: true
+  #  name: Mangment
   IOT:
     external: true
     name: IOT
@@ -38,10 +38,10 @@ services:
    #   - mariadb
     
     networks:
-      Mangment:
-        ipv4_address: "192.168.111.44"
-        aliases:
-          - Hass
+    #  Mangment:
+    #    ipv4_address: "192.168.111.44"
+    #    aliases:
+    #      - Hass
       IOT:
         aliases:
           - interfrigate
