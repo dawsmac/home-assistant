@@ -11,8 +11,7 @@ spec:
     nodePort: 8123
     name: port8123
     protocol: TCP
+  externalTrafficPolicy: Local
   selector:
     app: hass
   type: LoadBalancer
-  externalIPs:
-  - 192.168.111.21-192.168.111.23
