@@ -16,4 +16,4 @@ spec:
     app: hass
   type: LoadBalancer
   externalIPs:
-  - 192.168.111.21-192.168.111.23
+  - 0.0.0.0
