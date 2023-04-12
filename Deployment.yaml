@@ -4,7 +4,7 @@ metadata:
   labels:
     app: homeassistant
   name: homeassistant
-  namespace: homeassistant
+  namespace: hassspace
 spec:
   selector:
     matchLabels:
