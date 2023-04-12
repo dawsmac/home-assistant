@@ -17,7 +17,7 @@ spec:
       containers:
         - image: ghcr.io/home-assistant/home-assistant:stable
           imagePullPolicy: Always
-          name: homeassistant
+          name: hass
           env:
             - name: TZ
               value: "Europe/London"

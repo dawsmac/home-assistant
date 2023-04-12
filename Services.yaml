@@ -4,7 +4,7 @@ metadata:
   labels:
     app: homeassistant
   name: homeassistant
-  namespace: homeassistant
+  namespace: hassspace
 spec:
   ports:
   - port: 8123
@@ -12,5 +12,5 @@ spec:
     name: port8123
     protocol: TCP
   selector:
-    app: homeassistant
+    app: hass
   type: LoadBalancer
