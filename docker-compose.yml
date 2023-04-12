@@ -5,9 +5,9 @@ networks:
   Mangment:
     external: true
     name: Mangment
-#  swarm_private:
-#    external: true
-#    name: swarm_private
+  IOT:
+    external: true
+    name: IOT
 
 services:
   homeassistant:
@@ -42,10 +42,9 @@ services:
         ipv4_address: "192.168.111.44"
         aliases:
           - Hass
-        
-#     swarm_private:
-#       aliases:
-#         - interfrigate
+      swarm_private:
+        aliases:
+          - interfrigate
 
 
 
