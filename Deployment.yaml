@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: homeassistant
+    app: hass
   name: homeassistant
   namespace: hassspace
 spec:
   selector:
     matchLabels:
-      app: homeassistant
+      app: hass
   template:
     metadata:
       labels:
-        app: homeassistant
+        app: hass
     spec:
       containers:
         - image: ghcr.io/home-assistant/home-assistant:stable

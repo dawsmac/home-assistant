@@ -15,5 +15,3 @@ spec:
   selector:
     app: hass
   type: LoadBalancer
-  externalIPs:
-  - 0.0.0.0
