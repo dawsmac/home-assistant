@@ -32,6 +32,8 @@ spec:
             - name: localtime
               mountPath: '/etc/localtime'
               readOnly: true
+            - name: avahi
+              mountPath: '/var/run/dbus'
           resources:
             requests:
               memory: 128Mi
@@ -47,3 +49,5 @@ spec:
         - name: localtime
           hostPath:
             path: /etc/localtime
+        - name: avahi
+            path /var/run/dbus
