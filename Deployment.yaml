@@ -50,4 +50,5 @@ spec:
           hostPath:
             path: /etc/localtime
         - name: avahi
-            path /var/run/dbus
+          hostPath:
+            path: /var/run/dbus
