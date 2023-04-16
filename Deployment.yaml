@@ -6,7 +6,6 @@ spec:
   selector:
     matchLabels:
       app: hass
-  strategy: Recreate
   template:
     metadata:
       labels:
