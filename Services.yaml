@@ -14,5 +14,4 @@ spec:
   externalTrafficPolicy: Local
   selector:
     app: hass
-    db: mariadb
   type: LoadBalancer
