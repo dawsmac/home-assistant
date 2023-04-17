@@ -6,12 +6,12 @@ metadata:
   name: homeassistant
   namespace: hassspace
 spec:
+  selector:
+    app: hass
   ports:
   - port: 8123
     nodePort: 8123
     name: port8123
     protocol: TCP
   externalTrafficPolicy: Local
-  selector:
-    app: hass
   type: LoadBalancer

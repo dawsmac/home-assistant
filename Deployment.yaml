@@ -2,6 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: homeassistant
+  namespace: hassspace
 spec:
   selector:
     matchLabels:
