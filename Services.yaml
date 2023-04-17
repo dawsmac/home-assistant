@@ -10,7 +10,7 @@ spec:
     app: hass
   ports:
   - port: 8123
-    nodePort: 38123
+    nodePort: 30002
     name: port8123
     protocol: TCP
   externalTrafficPolicy: Local
