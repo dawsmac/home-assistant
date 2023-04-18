@@ -147,7 +147,7 @@ views:
       - type: glance
         title: Back garden
         entities:
-          - entity: binary_sensor.garden_gate
+          #- entity: binary_sensor.garden_gate
           - entity: light.garden_lights
           - entity: sensor.driveway_temperature
 
