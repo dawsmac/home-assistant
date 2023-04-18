@@ -15,3 +15,5 @@ spec:
     protocol: TCP
   externalTrafficPolicy: Local
   type: LoadBalancer
+  externalIPs:
+    - 192.168.111.111
