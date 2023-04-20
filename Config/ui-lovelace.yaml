@@ -12,7 +12,7 @@ views:
       - type: entities
         title: Who´s at Home
         entities:
-          - person.faye
+          - person.faye_dawson
           - person.richard_dawson
       
       - type: weather-forecast
