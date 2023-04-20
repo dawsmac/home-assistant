@@ -94,7 +94,7 @@ views:
           - entity: light.playroom_light_s
           - entity: binary_sensor.playroom_pir
           - entity: sensor.playrom_th_c5d5_temperature
-          - entity: switch.playroom_fairy_lights
+          - entity: light.playroom_fairy_lights
       - type: glance
         title: Lounge
         entities:
