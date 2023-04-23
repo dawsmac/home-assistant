@@ -31,8 +31,11 @@ views:
   - title: CCTV
     icon: mdi:camera
     path: cctv
-    cards:
-
+    cameras:
+      - camera.backgarden
+      - camera.driveway
+      - camera.patio
+      - camera.porch
 
   - title: Heating
     icon: mdi:radiator
