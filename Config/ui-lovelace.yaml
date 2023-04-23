@@ -32,10 +32,23 @@ views:
     icon: mdi:camera
     path: cctv
     cameras:
-      - camera.backgarden
-      - camera.driveway
-      - camera.patio
-      - camera.porch
+      - camera_entity: camera.backgarden
+    live_provider: ha
+    engine: auto
+    hide: false
+    frigate:
+      url: http://192.168.111.23:30005
+      client_id: frigate
+      camera_name: backgarden
+      labels:
+        - person
+    triggers:
+      motion: false
+      occupancy: true
+      entities:
+        - binary_sensor.kitchen_door
+    
+    
 
   - title: Heating
     icon: mdi:radiator
