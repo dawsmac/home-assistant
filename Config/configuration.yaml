@@ -25,7 +25,7 @@ mobile_app:
 lovelace:
   mode: yaml
   resources:
-    - url: /local/simple-thermostat.js
+    - url: /hacsfiles/simple-thermostat/simple-thermostat.js
       type: module
     - url: /local/lovelace-swipe-navigation/swipe-navigation.js?v=1.0.0
       type: module
