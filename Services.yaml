@@ -3,17 +3,15 @@ kind: Service
 metadata:
   labels:
     app: homeassistant
-  name: homeassistant
+  name: hass
   namespace: hassspace
 spec:
   selector:
     app: hass
   ports:
-  - port: 8123
-    nodePort: 30002
-    name: port8123
+  - name: port8123
+    port: 8123
     protocol: TCP
+    nodePort: 30002
   externalTrafficPolicy: Local
   type: LoadBalancer
-  externalIPs:
-    - 192.168.111.111
