@@ -28,6 +28,12 @@ views:
         show_state: false
         show_icon: true
 
+  - title: CCTV
+    icon: mdi:camera
+    path: cctv
+    cards:
+
+
   - title: Heating
     icon: mdi:radiator
     path: heating
