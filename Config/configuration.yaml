@@ -40,6 +40,11 @@ tts:
     cache_dir: /tmp/tts
     service_name: google_say
 
+media_player:
+  - platform: Loungetv
+    host: 192.168.110.3
+    mac: bc:7e:8b:bb:0f:82
+
 group: !include groups.yaml
 automation: !include_dir_merge_list automation
 #script: !include scripts.yaml
