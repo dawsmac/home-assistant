@@ -41,7 +41,7 @@ tts:
     service_name: google_say
 
 media_player:
-  - platform: Loungetv
+  - platform: samsungtv_tizen
     host: 192.168.110.3
     mac: bc:7e:8b:bb:0f:82
 
