@@ -88,3 +88,1015 @@
         data:
           type: announce
   mode: restart
+
+
+- id: '300'
+  alias: Awake+lights motion master bathroom
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.bathroom_main_light_switch
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id:
+          - light.bathroom_main_light
+        state: 'off'
+      - condition: state
+        entity_id:
+          - binary_sensor.enable_auto_lights
+        state: 'on'
+      - condition: state
+        entity_id:
+          - input_boolean.night_mode
+        state: 'off'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.bathroom_main_light
+
+- id: '301'
+  alias: Night motion master bathroom
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.bathroom_main_light_switch
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.bathroom_mirror
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.night_mode
+        state: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.bathroom_mirror
+
+- id: '302'
+  alias: No motion master bathroom
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.bathroom_main_light_switch
+    to: 'off'
+  condition:
+    condition: or
+    conditions: 
+      - condition: state
+        entity_id: light.bathroom_main_light
+        state: 'on'
+      - condition: state
+        entity_id: light.bathroom_mirror
+        state: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: 
+      - light.bathroom_main_light
+      - light.bathroom_mirror
+
+- id: '303'
+  alias: Upstairs Bathroom Extractor needed
+  trigger:
+  - entity_id: binary_sensor.upstairs_bath_fan
+    for: 00:00:30
+    platform: state
+  condition: []
+  action:
+  - data:
+      entity_id: switch.bathroom_extractor_fan
+    service_template: switch.turn_{{trigger.to_state.state}}
+
+- id: '304'
+  alias: Downstairs Bathroom Extractor needed
+  trigger:
+  - entity_id: binary_sensor.downst_bath_fan
+    for: 00:00:30
+    platform: state
+  condition: []
+  action:
+  - data:
+      entity_id: switch.downstairs_toilet_extractor_fan
+    service_template: switch.turn_{{trigger.to_state.state}}
+
+
+
+- id: '400'
+  alias: Morning open chicken´s coop door
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.out_side_lux
+    above: 100
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.coop_door_open
+
+- id: '401'
+  alias: Night time for chicken´s close coop door
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.out_side_lux
+    below: 50
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.coop_door_close
+
+- id: '402'
+  alias: Feed the chickhens
+  trigger:
+  - platform: time
+    at: "08:45:00"
+  condition:
+  - condition: state
+    entity_id: binary_sensor.chickens_coop_door
+    for:
+      hours: 5
+    state: 'off'
+  action:
+    - service: notify.notify_all
+      data:
+        message: No one has checked on the there food & water!
+        title: Chickhen's
+
+- id: '1000'
+  alias: Gone out switch lights and power off
+  trigger:
+    - platform: state
+      entity_id: sensor.all_pirs
+      to: 'true'
+      for: '00:10:00'
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: group.persons
+        state: 'home'
+  action:
+    - service: light.turn_off
+      entity_id: all
+    - service: homeassistant.turn_off
+      entity_id:
+        - switch.dishwasher
+        - switch.washing_machine
+        - switch.tumble_dryer
+
+- id: '1001'
+  alias: Home/nothome Appliances
+  trigger:
+    - platform: state
+      id: "home_appliances"
+      entity_id: group.persons
+      from: 'not_home'
+      to: 'home'
+    - platform: state
+      id: "nothome_appliances"
+      entity_id: group.persons
+      from: 'home'
+      to: 'not_home'
+      for: "00:10:00" 
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: input_boolean.night_mode
+        state: 'on'
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "home_appliances"
+          sequence:
+            - service: homeassistant.turn_on
+              entity_id:
+                - switch.dishwasher
+                - switch.washing_machine
+                - switch.tumble_dryer
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "nothome_appliances"
+          sequence:
+            - service: homeassistant.turn_off
+              entity_id:
+                - switch.dishwasher
+                - switch.washing_machine
+                - switch.tumble_dryer
+
+- id: '1002'
+  alias: Someone has entered house perimeter (no one is home)
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.porch_movement
+        - binary_sensor.backgarden_movement
+        - binary_sensor.driveway_movement
+      to: 'on'
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: group.persons
+        state: 'home'
+  action:
+    - service: notify.mobile_app_rich_phone
+      data:
+        message: >
+          Everyone is out: At {{states('sensor.time')}} movement on {{trigger.to_state.name}} camera!
+
+- id: '500'
+  alias: Day mode PIR enabled
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.no_activity_upstairs
+      to: 'true'
+      for:
+        minutes: 10
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('sun.sun','rising') == true) }}"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') > 6 }}"
+  action:
+    - service: climate.set_temperature
+      target:
+        entity_id:
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
+      data:
+        temperature: 18
+    - service: climate.set_hvac_mode
+      target:
+        entity_id:
+          - climate.upstairs
+          - climate.downstairs
+          - climate.office
+      data:
+        hvac_mode: heat
+
+- id: '600'
+  alias: Doorbell Annunciator front door
+  initial_state: true
+  # someone walked into Zone A on Frigate
+  trigger:
+    - platform: mqtt
+      topic: frigate/porch_path_a/person
+      payload: '1'
+  action:
+    - wait_for_trigger:
+        - platform: mqtt
+          topic: frigate/porch_path_b/person
+          payload: '1'
+      timeout: "00:01:00"
+      continue_on_timeout: false
+    # will only fire if someone walk into Zopne B and we are home 
+    - choose:
+      - conditions:
+        - condition: state
+          entity_id: group.persons
+          state: "home"       
+        sequence:
+          service: notify.alexa_media
+          data:
+            message: someone is at the front door
+            target: media_player.kitchen_echo
+            data:
+              type: announce
+    # will only fire if someone walk into Zopne B and we are out
+    - choose:
+      - conditions:
+        - condition: state
+          entity_id: group.persons
+          state: "not_home"       
+        sequence:
+          - service: script.sonos_say
+            data:
+              sonos_entity: media_player.kitchen
+              volume: 0.7
+              message: 'someone is at the front door'
+              delay: '00:00:05'
+  
+- id: '601'
+  alias: Doorbell Annunciator1
+  initial_state: true
+  # someone pushing the button on my Ring triggers automation
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.driveway_movement
+      to: 'on'
+  # will only fire if the sonos speakers by the pool are playing
+  condition:
+    - condition: state
+      entity_id: media_player.kitchen
+      state: 'playing'
+  # calls the sonos_say script to announce that someone is at the door
+  action:
+    - service: script.sonos_say
+      data:
+        sonos_entity: media_player.kitchen
+        volume: 0.7
+        message: 'someone is coming up the garden'
+        delay: '00:00:05'
+
+- id: '700'
+  alias: Evening with lights
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.enable_auto_lights
+      from: 'off'
+      to: 'on'
+      for: "00:05:00"
+
+  condition:
+    - condition: template
+      value_template: "{{ state_attr('sun.sun','rising') == false }}"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: input_boolean.night_mode
+          state: "on"
+  action:
+    - service: scene.turn_on
+      data: {}
+      target: 
+        entity_id: scene.evening_lights
+
+- id: '701'
+  alias: Christmas ligths on
+  trigger: 
+    - platform: time
+      at: "16:30:00"
+  action:
+    - service: homeassistant.turn_on
+      entity_id:
+        - switch.mega1
+        - switch.mega2
+
+
+- id: '702'
+  alias: Christmas ligths off
+  trigger: 
+    - platform: time
+      at: "00:00:00"
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+        - switch.mega1
+        - switch.mega2
+        
+        
+
+####################################
+## Hallway light switch on by PIR ##
+####################################
+
+- id: '1100'
+  alias: 'Lights Hallway Main'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_pir
+      to: "on"
+      id: "pir_light_hallway_on"
+    - platform: state
+      entity_id: binary_sensor.hallway_pir
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_hallway_off"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_hallway_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: light.hallway_light_s
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_hallway_off"
+            - condition: state
+              entity_id: light.hallway_light_s
+              state: "on"
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: light.hallway_light_s
+
+####################
+## Playroom light ##
+####################
+
+
+- id: '1101'
+  alias: 'Lights Playroom main'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.playroom_pir
+      to: "on"
+      id: "pir_light_playroom_on"
+    - platform: state
+      entity_id: binary_sensor.playroom_pir
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_playroom_off"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_playroom_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: state
+              entity_id: input_boolean.guest_room
+              state: 'off'
+          sequence:
+            - service: light.turn_on
+              target:
+                entity_id: light.playroom_light_s
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_playroom_off"
+            - condition: state
+              entity_id: light.playroom_light_s
+              state: "on"
+          sequence:
+            - service: light.turn_off
+              target: 
+                entity_id: light.playroom_light_s
+
+
+####################
+## Landing lights ##
+####################
+
+- id: '1102'
+  alias: 'Lights Landing Main'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.landing_pir
+      to: "on"
+      id: "pir_light_landing_on"
+    - platform: state
+      entity_id: binary_sensor.landing_pir
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_landing_off"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_landing_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.landing_lights
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_landing_off"
+            - condition: state
+              entity_id: light.landing_lights
+              state: "on"
+          sequence:
+            - service: light.turn_off
+              target: 
+                entity_id: light.landing_lights
+
+
+###############################################################
+## Lila´s Room
+###############################################################
+
+
+- id: '1103'
+  alias: 'Lights Lila Main'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.lila_bedroom_pir
+      to: "on"
+      id: "pir_light_lila_on"
+    - platform: state
+      entity_id: binary_sensor.lila_bedroom_pir
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_lila_off"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_lila_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: time
+              before: "18:30:00"
+              after: "08:30:00"
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.lila_s_bedroom_light
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_lila_off"
+            - condition: state
+              entity_id: light.lila_s_bedroom_light
+              state: "on"
+            - condition: state
+              entity_id: switch.lila_bedroom_do_not_disturb_switch
+              state: "off"
+          sequence:
+            - service: light.turn_off
+              target: 
+                entity_id: light.lila_s_bedroom_light
+
+###############################################################
+## Thea´s Room
+###############################################################
+
+
+- id: '1104'
+  alias: 'Lights Thea Main'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.thea_s_bedroom_pir
+      to: "on"
+      id: "pir_light_thea_on"
+    - platform: state
+      entity_id: binary_sensor.thea_s_bedroom_pir
+      to: "off"
+      for: '00:02:00'
+      id: "pir_light_thea_off"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_light_thea_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: time
+              before: "18:30:00"
+              after: "08:30:00"
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.thea_s_bedroom_light
+        - conditions:
+            - condition: trigger
+              id: "pir_light_thea_off"
+            - condition: state
+              entity_id: light.thea_s_bedroom_light
+              state: "on"
+            - condition: state
+              entity_id: switch.thea_bedroom_do_not_disturb_switch
+              state: "off"
+          sequence:
+            - service: light.turn_off
+              target: 
+                entity_id: light.thea_s_bedroom_light
+
+
+
+###############################################################
+## Master bedroom
+###############################################################
+
+- id: '1105'
+  alias: Motion Sensor Masterbedroom Off
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.master_bedroom_pir
+      to: 'off'
+      for: '00:02:00'
+  condition:
+    - condition: state
+      entity_id:
+        - light.master_bedroom_light
+      state: 'on'
+  action:
+    - service: light.turn_off
+      target: 
+        entity_id: light.master_bedroom_light
+
+
+
+###############################################################
+## Lounge
+###############################################################
+
+- id: '1106'
+  alias: 'Lights lounge Main'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.lounge_pir
+      to: "off"
+      for: '00:05:00'
+      id: "pir_lounge_off"
+    - platform: state
+      entity_id: binary_sensor.lounge_pir
+      to: "on"
+      id: "pir_lounge_on"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "pir_lounge_off"
+            - condition: state
+              entity_id: light.lounge_main_light
+              state: "on"
+          sequence:
+            - service: light.turn_off
+              target: 
+                entity_id: light.lounge_main_light
+        - conditions:
+            - condition: trigger
+              id: "pir_lounge_on"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: state
+              entity_id: light.lounge_side_lights
+              state: "off"
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.lounge_main_light
+
+
+###############################################################
+## Kitchen
+###############################################################
+
+- id: '1107'
+  alias: No-motion kitchen light
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.kitchen_pir
+      to: 'off'
+      for: '00:01:00'
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: light.kitchen_dining
+        state: 'on'
+      - condition: state
+        entity_id: light.kitchen_island
+        state: 'on'
+      - condition: state
+        entity_id: light.side_lights
+        state: 'on'
+  action:
+    - service: light.turn_off
+      target: 
+        entity_id:
+          - light.kitchen_dining
+          - light.kitchen_island
+          - light.side_lights
+
+
+
+- id: '1200'
+  alias: Switch light off when tv goes on and on when paused 
+  trigger:
+    - platform: state
+      entity_id: media_player.lounge
+      to: "playing"
+      id: "tv_on"
+    - platform: state
+      entity_id: media_player.lounge
+      to: "paused"
+      id: "tv_paused"
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "tv_on"
+            - condition: state
+              entity_id: light.lounge_main_light
+              state: "on"
+            - condition: state
+              entity_id: media_player.lounge
+              attribute: source
+              state: TV
+          sequence:
+            - service: light.turn_off
+              target:
+                entity_id: light.lounge_main_light
+            - service: light.turn_on
+              data:
+                brightness_pct: 40
+              target:
+                entity_id: light.lounge_lamp
+            
+        - conditions:
+            - condition: trigger
+              id: "tv_paused"
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: state
+              entity_id: media_player.lounge
+              attribute: source
+              state: TV
+          sequence:
+            - service: light.turn_on
+              target: 
+                entity_id: light.lounge_main_light
+            - service: light.turn_on
+              data:
+                brightness_pct: 80
+              target:
+                entity_id: light.lounge_lamp
+- id: '1300'
+  alias: Morning time Kitchen
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.richinbed
+        - input_boolean.fayeinbed
+      to: "off"
+      for: "00:01:00"
+  condition:
+    - condition: template
+      value_template: "{{ state_attr('sun.sun','rising') == true }}"
+    - condition: state
+      entity_id: group.persons
+      state: home
+  action:
+    - wait_for_trigger:
+        - platform: state
+          entity_id: binary_sensor.hallway_pir
+          to: "on"
+      timeout: "02:00:00"
+      continue_on_timeout: false
+    - service: scene.turn_on
+      data: {}
+      target:
+        entity_id: scene.appliances_on
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+          sequence:
+            - service: scene.turn_on
+              data: {}
+              target:
+                entity_id: scene.Kitchen_morning_lowlights
+    - choose:
+        - conditions:  
+            - condition: state
+              entity_id: binary_sensor.workday_sensor
+              state: "off"
+          sequence:
+            - service: media_player.play_media
+              target:
+                entity_id: media_player.kitchen
+              data:
+                media_content_id: FV:2/7
+                media_content_type: favorite_item_id
+              metadata:
+                title: Virgin Radio UK
+                thumbnail: >-
+                  https://d1uner0r1fcap8.cloudfront.net/image?w=60&image=https%3A%2F%2Fcdn-profiles.tunein.com%2Fs266113%2Fimages%2Flogog.png%3Ft%3D1&partnerId=tunein
+                media_class: genre
+                children_media_class: null
+                navigateIds:
+                  - {}
+                  - media_content_type: favorites
+                    media_content_id: ''
+                  - media_content_type: favorites_folder
+                    media_content_id: object.item.audioItem.audioBroadcast
+            - service: media_player.volume_set
+              data:
+                volume_level: 0.22
+              target:
+                entity_id: media_player.kitchen
+  mode: restart
+
+
+##########################################
+## Morning switch night mode off ##
+##########################################
+
+
+- id: '1301'
+  alias: Morning switch night mode off
+  trigger:
+    - platform: state
+      entity_id:
+        - input_boolean.richinbed
+        - input_boolean.fayeinbed
+      to: "off"
+      for: "00:02:00"
+  condition:
+    - condition: time
+      after: "05:00:00"
+      before: "10:00:00"
+    - condition: state
+      entity_id: group.persons
+      state: home
+  action:
+    - service: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.night_mode
+  mode: restart
+
+- id: "1400"
+  alias: Night mode enabled
+  trigger:
+    - platform: state
+      id: "nightbed"
+      entity_id:
+        - input_boolean.richinbed
+        - input_boolean.fayeinbed
+      to: "on"
+      for: "00:15:00"
+    - platform: state
+      id: "awaynightmode"
+      entity_id: binary_sensor.enable_auto_lights
+      to: "on"
+      for:
+        hours: 5
+  action:
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: "nightbed"
+            - condition: state
+              entity_id: binary_sensor.no_activity_downstairs
+              state: "on"
+              for:
+                minutes: 5
+            - condition: state
+              entity_id: binary_sensor.enable_auto_lights
+              state: "on"
+            - condition: time
+              after: "20:00:00"
+              before: "03:00:00"
+            - condition: not
+              conditions:
+                - condition: state
+                  entity_id: media_player.lounge
+                  state: "playing"
+          sequence:
+            - service: input_boolean.turn_on
+              target:
+                entity_id: input_boolean.night_mode
+            - service: light.turn_off
+              data: {}
+              target:
+                area_id:
+                  - garden
+                  - kitchen
+                  - hallway
+                  - main_bathroom
+                  - playroom
+                  - thea_bedroom
+                  - lounge
+                  - landing
+                  - lila_bedroom
+                  - office
+            - service: scene.turn_on
+              target:
+                entity_id: scene.nightmode
+              metadata: {}
+              
+
+        - conditions:
+            - condition: trigger
+              id: "awaynightmode"
+            - condition: state
+              entity_id: group.persons
+              state: "not_home"
+          sequence:
+            - service: input_boolean.turn_on
+              target:
+                entity_id: input_boolean.night_mode
+            - service: light.turn_off
+              data: {}
+              target:
+                area_id:
+                  - garden
+                  - kitchen
+                  - hallway
+                  - main_bathroom
+                  - playroom
+                  - thea_bedroom
+                  - lounge
+                  - landing
+                  - lila_bedroom
+                  - office
+            - service: scene.turn_on
+              target:
+                entity_id: scene.nightmode
+              metadata: {}
+              
+              
+
+- id: "1401"
+  alias: Out hours movment
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.porch_movement
+        - binary_sensor.backgarden_movement
+        - binary_sensor.coop_movement
+        - binary_sensor.driveway_movement
+        - binary_sensor.sidedrive_movement
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
+  action:
+    - service: notify.mobile_app_rich_phone
+      data:
+        message: >
+          Night mode enabled: At {{states("sensor.time")}} movement on {{trigger.to_state.name}} camera!
+
+
+- id: '1500'
+  alias: 'garden lights garden gate - backdoor'
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.kitchen_door
+        - binary_sensor.garden_gate
+        - binary_sensor.office_door
+        - binary_sensor.driveway_person_occupancy
+        - binary_sensor.side_road_all_occupancy
+      to: "on"
+  action:
+    - condition: state
+      entity_id: binary_sensor.enable_auto_outside_lights
+      state: "on"
+    - service: light.turn_on
+      entity_id:
+        - light.garden_lights
+    - wait_for_trigger:
+        platform: state
+        entity_id:
+          - binary_sensor.kitchen_door
+          - binary_sensor.garden_gate
+          - binary_sensor.office_door
+          - binary_sensor.driveway_person_occupancy
+          - binary_sensor.side_road_all_occupancy
+        from: "on"
+        to: "off"
+    - delay: 00:02:00
+    - service: light.turn_off
+      entity_id:
+        - light.garden_lights
+  mode: single
+######################################################
+## Open front gate or front door for secrity lights ##
+######################################################
+
+
+- id: '1501'
+  alias: 'Porch light frntdoor - frntgate '
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.front_door
+        - binary_sensor.frontgarden_gate
+        - binary_sensor.porch_path_a_person_occupancy
+      from: "off"
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.enable_auto_outside_lights
+      state: "on"
+  action:
+    - service: light.turn_on
+      entity_id:
+        - light.porch
+    - wait_for_trigger:
+        platform: state
+        entity_id:
+          - binary_sensor.front_door
+          - binary_sensor.frontgarden_gate
+          - binary_sensor.porch_path_a_person_occupancy
+        from: "on"
+        to: "off"
+    - delay: 00:02:00
+    - service: light.turn_off
+      entity_id:
+        - light.porch
+  mode: restart
+  max_exceeded: silent
+
+
+
