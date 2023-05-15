@@ -12,7 +12,7 @@ spec:
       labels:
         app: hass
     spec:
-      nodeName: node01.dawsnet.uk
+      nodeName: node03.dawsnet.uk
       containers:
         - image: ghcr.io/home-assistant/home-assistant:stable
           imagePullPolicy: Always
