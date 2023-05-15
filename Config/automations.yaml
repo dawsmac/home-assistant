@@ -20,3 +20,71 @@
           - media_player.Thea_bedroom
         data:
           type: announce
+
+- id: '200'
+  alias: Alert Washing Machine Done
+  description: ''
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_current
+      above: '.75'
+  condition: []
+  action:
+    - wait_for_trigger:
+        - platform: numeric_state
+          entity_id: sensor.washing_machine_current
+          below: '.3'
+          for: '00:10'
+    - service: notify.alexa_media
+      data:
+        target:
+          -  media_player.kitchen_echo
+        message: 'Washing machine done, ready for the dryer'
+        data:
+          type: announce
+  mode: restart
+
+- id: '201'
+  alias: Alert Tumble Dryer Done
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.tumble_dryer_current
+      above: '.75'
+  condition: []
+  action:
+    - wait_for_trigger:
+        - platform: numeric_state
+          entity_id: sensor.tumble_dryer_current
+          below: '.3'
+          for: '00:10'
+    - service: notify.alexa_media
+      data:
+        target:
+          -  media_player.kitchen_echo
+        message: 'Tumble dryer is done, ready to be sorted'
+        data:
+          type: announce
+  mode: restart
+
+
+- id: '202'
+  alias: Alert Dishwasher Done
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.dishwasher_current
+      above: '0.75'
+  condition: []
+  action:
+    - wait_for_trigger:
+        - platform: numeric_state
+          entity_id: sensor.dishwasher_current
+          below: '0.03'
+          for: '00:10'
+    - service: notify.alexa_media
+      data:
+        target:
+          -  media_player.kitchen_echo
+        message: 'I have finished cleaning your Dishes, Would you like to empty me'
+        data:
+          type: announce
+  mode: restart
