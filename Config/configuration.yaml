@@ -49,7 +49,7 @@ tts:
 #    3229c399-9b11-4d9c-ad3d-02b204108af0
 
 group: !include groups.yaml
-automation: !include_dir_merge_list automation
+automation: !include automation.yaml
 #script: !include scripts.yaml
 scene: !include scenes.yaml
 input_boolean: !include input_boolean.yaml
