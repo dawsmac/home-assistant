@@ -1,7 +1,7 @@
 persons:
   name: Anyone home?
   entities:
-    - person.faye
+    - person.faye_dawson
     - person.richard_dawson
 
 bkg_doors:
