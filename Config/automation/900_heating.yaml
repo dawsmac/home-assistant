@@ -1,3 +1,4 @@
+
 - id: '900'
   alias: Heating >> Boiler on/off
   trigger:
