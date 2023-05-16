@@ -7,3 +7,5 @@ garden_gate:
   skip_first: true
   notifiers:
     - notification_gate_left_open
+
+#
