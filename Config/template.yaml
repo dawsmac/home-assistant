@@ -35,3 +35,6 @@
         minutes: 5
       state: >
         {{ states('sensor.out_side_lux')|float < 200 }}
+
+
+#

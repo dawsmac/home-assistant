@@ -5,3 +5,6 @@ alexa:
       - switch.dishwasher
       - switch.washing_machine
       - switch.tumble_dryer
+
+
+#
