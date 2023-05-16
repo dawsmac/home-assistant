@@ -1,4 +1,3 @@
-
 homeassistant: !include homeassistant.yaml
 
 logger:
@@ -52,7 +51,7 @@ tts:
 automation: !include automations.yaml
 #script: !include scripts.yaml
 scene: !include scenes.yaml
-input_boolean: !include input_boolean.yaml
+#input_boolean: !include input_boolean.yaml
 climate: !include climate.yaml
 cloud: !include cloud.yaml
 notify: !include notify.yaml
