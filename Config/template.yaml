@@ -6,6 +6,12 @@
             and is_state('binary_sensor.kitchen_pir' , 'off')
             and is_state('binary_sensor.lounge_pir' , 'off') }}
 
+   - name: "noheating"
+     state: >      
+     {{ is_state('switch.downstairs_radiators', 'off') and
+        is_state('switch.upstairs_radiators', 'off') and
+        is_state('switch.hotwater', 'off') }}
+
     - name: "No activity upstairs"
       state: >
         {{ is_state('binary_sensor.landing_pir' , 'off')
