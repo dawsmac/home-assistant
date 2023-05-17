@@ -7,9 +7,13 @@
   
     - name: "noheating"
       state: >      
-        {{ is_state('switch.downstairs_radiators', 'off')
+        {% if is_state('switch.downstairs_radiators', 'off')
             and is_state('switch.upstairs_radiators', 'off')
-            and is_state('switch.hotwater', 'off') }}
+            and is_state('switch.hotwater', 'off') %}
+            on
+        {% else %}
+          off
+        {% endif %}
   
     - name: "No activity upstairs"
       state: >
