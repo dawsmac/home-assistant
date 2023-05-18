@@ -172,6 +172,11 @@ views:
           #- entity: binary_sensor.garden_gate
           - entity: light.garden_lights
           - entity: sensor.driveway_temperature
+      
+      - type: glance
+        title: Top Patio
+        entities:
+          - entity:  light.top_patio_light_speaker
 
       - type: glance
         title: Front garden
