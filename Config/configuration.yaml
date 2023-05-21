@@ -47,7 +47,7 @@ tts:
 #    mac: bc:7e:8b:bb:0f:82
 #    3229c399-9b11-4d9c-ad3d-02b204108af0
 
-#group: !include groups.yaml
+group: !include groups.yaml
 automation: !include automations.yaml
 #script: !include scripts.yaml
 scene: !include scenes.yaml
@@ -59,4 +59,4 @@ alert: !include alerts.yaml
 template: !include template.yaml
 sensor: !include sensor.yaml
 light: !include lights.yaml
-#binary_sensor: !include  binary_sensor.yaml
+binary_sensor: !include  binary_sensor.yaml
