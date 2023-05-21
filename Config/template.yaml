@@ -52,7 +52,7 @@
       state: >
         {{ states('sensor.out_side_lux')|float < 200 }}
 
-    - name: "heating_crtl"
+    - name: heating_crtl
       state: > 
         {{is_state('binary_sensor.heating_controls', 'off')
             or is_state('binary_sensor.underfloor_heating', 'off')
