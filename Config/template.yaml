@@ -10,14 +10,15 @@
       state: >      
         {% if is_state('switch.downstairs_radiators', 'off')
             and is_state('switch.upstairs_radiators', 'off')
-            and is_state('switch.hotwater', 'off') %}
+            and is_state('switch.hotwater', 'off') 
+            and is_state('switch.underfloor_heating', 'on'%}
             off
         {% else %}
           {{ is_state('switch.downstairs_radiators', 'on') or
         is_state('switch.upstairs_radiators', 'on') or
         is_state('switch.underfloor_heating', 'on')
         is_state('switch.underfloor_heating', 'on')
-        }}
+        }
         on
         {% endif %}
   
