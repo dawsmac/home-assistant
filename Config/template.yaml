@@ -6,22 +6,6 @@
             and is_state('binary_sensor.lounge_pir' , 'off') }}
 
   
-    - name: "heating"
-      state: >      
-        {% if is_state('switch.downstairs_radiators', 'off')
-            and is_state('switch.upstairs_radiators', 'off')
-            and is_state('switch.hotwater', 'off') 
-            and is_state('switch.underfloor_heating', 'on'%}
-            off
-        {% else %}
-          {{ is_state('switch.downstairs_radiators', 'on') or
-        is_state('switch.upstairs_radiators', 'on') or
-        is_state('switch.underfloor_heating', 'on')
-        is_state('switch.underfloor_heating', 'on')
-        }
-        on
-        {% endif %}
-  
     - name: "No activity upstairs"
       state: >
         {{ is_state('binary_sensor.landing_pir' , 'off')
@@ -51,11 +35,4 @@
         minutes: 5
       state: >
         {{ states('sensor.out_side_lux')|float < 200 }}
-
-    - name: heating_crtl
-      state: > 
-        {{is_state('binary_sensor.heating_controls', 'off')
-            or is_state('binary_sensor.underfloor_heating', 'off')
-            or is_state('binary_sensor.heating_controls', 'off') }}
-            
 
