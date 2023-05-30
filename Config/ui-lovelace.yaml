@@ -227,9 +227,8 @@ views:
           - entity: media_player.master_bedroom
           - entity: media_player.thea_bedroom
           - entity: media_player.lila_bedroom
-          - entity: media_player.kitchen_2
-          - entity: media_player.office
-          
+          - entity: media_player.dinning
+          - entity: media_player.lounge_echo
 
       - type: glance
         title: Sonos
