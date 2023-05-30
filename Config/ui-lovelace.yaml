@@ -234,10 +234,10 @@ views:
       - type: glance
         title: Sonos
         entities:
-          - entity: media_player.lounge
+          - entity: media_player.living_room
           - entity: media_player.kitchen
-          - entity: media_player.garden
-          - entity: media_player.richard_s_sonos_one
+          - entity: media_player.office
+          - entity: media_player.theas_bedroom
 
 
   - title: Chickhen´s

@@ -1,9 +1,9 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: cheap
+  name: first-pool
   namespace: metallb-system
 spec:
   addresses:
-  - 192.168.110.111/30
+  - 192.168.110.111/32
   autoAssign: false

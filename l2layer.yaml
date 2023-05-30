@@ -4,6 +4,8 @@ metadata:
   name: vlan10
   namespace: metallb-system
 spec:
+  ipAddressPools:
+  - first-pool
   interfaces:
-  - vlan6@enp2s0
-  - vlan6@enp3s0
+  - vlan6
+  
