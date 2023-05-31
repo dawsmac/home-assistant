@@ -21,8 +21,8 @@ ffmpeg:
 
 mobile_app:
 
-lovelace:
-  mode: yaml
+#lovelace:
+#  mode: yaml
   resources:
     - url: /hacsfiles/simple-thermostat/simple-thermostat.js
       type: module
