@@ -23,29 +23,15 @@ mobile_app:
 
 #lovelace:
 #  mode: yaml
-  resources:
-    - url: /hacsfiles/simple-thermostat/simple-thermostat.js
-      type: module
-    - url: /local/lovelace-swipe-navigation/swipe-navigation.js?v=1.0.0
-      type: module
-    - url: /hacsfiles/frigate-hass-card/frigate-hass-card.js
-      type: module
+#  resources:
+#    - url: /hacsfiles/simple-thermostat/simple-thermostat.js
+#      type: module
+#    - url: /local/lovelace-swipe-navigation/swipe-navigation.js?v=1.0.0
+#      type: module
+#    - url: /hacsfiles/frigate-hass-card/frigate-hass-card.js
+#      type: module
 
-# Text to speech
-tts:
-  - platform: google_translate
-    cache: true
-    time_memory: 300
-    cache_dir: /tmp/tts
-    service_name: google_say
 
-#media_player:
-#  - platform: samsungtv_tizen
-#    name: loungetv
-#    update_method: ping
-#    host: 192.168.110.3
-#    mac: bc:7e:8b:bb:0f:82
-#    3229c399-9b11-4d9c-ad3d-02b204108af0
 
 group: !include groups.yaml
 automation: !include automations.yaml
