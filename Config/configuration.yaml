@@ -39,7 +39,6 @@ automation: !include automations.yaml
 scene: !include scenes.yaml
 #input_boolean: !include input_boolean.yaml
 climate: !include climate.yaml
-cloud: !include cloud.yaml
 notify: !include notify.yaml
 alert: !include alerts.yaml
 template: !include template.yaml
