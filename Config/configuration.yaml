@@ -41,3 +41,4 @@ alert: !include alerts.yaml
 template: !include template.yaml
 sensor: !include sensor.yaml
 light: !include lights.yaml
+binary_sensor: ! binary_sensor.yaml

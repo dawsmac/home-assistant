@@ -1,0 +1,22 @@
+- platform: ping
+  host: shelly1pm-D3B90D.dawsnet.uk/
+  name: "Unerfloorheating"
+  count: 2
+  scan_interval: 30
+
+
+- platform: ping
+  host: http://shellyswitch25-7bebb6.dawsnet.uk/
+  name: "Unerfloorheating"
+  count: 2
+  scan_interval: 30
+
+
+- platform: ping
+  host: heating-controls.dawsnet.uk
+  name: "heating-controls"
+  count: 2
+  scan_interval: 30
+
+
+
