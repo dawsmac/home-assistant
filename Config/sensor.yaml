@@ -1,33 +1,4 @@
 
-- platform: min_max
-  entity_ids:
-    - sensor.porch_temperature
-    - sensor.driveway_temperature
-  type: mean
-  name: Outside temperature
-
-- platform: min_max
-  entity_ids:
-    - sensor.landing_th_b54e_temperature
-    - sensor.lila_th_968e_temperature
-    - sensor.m_room_th_d068_temperature
-    - sensor.thea_th_b94c_temperature
-  type: mean
-  name: Upstairs temperature
-
-- platform: min_max
-  entity_ids:
-    - sensor.broom_d_th_e160_temperature
-    - sensor.hallway_th_e88a_temperature
-    - sensor.playrom_th_c5d5_temperature
-  type: mean
-  name: Downstairs temperature
-
-- platform: time_date
-  display_options:
-    - 'time'
-    - 'date'
-
 - platform: statistics
   name: Downstairs Bathroom Humidity Average Linear 24h
   entity_id: sensor.broom_d_th_e160_humidity
@@ -41,8 +12,3 @@
   state_characteristic: average_linear
   max_age:
     hours: 24
-
-
-    #
-
-    #
