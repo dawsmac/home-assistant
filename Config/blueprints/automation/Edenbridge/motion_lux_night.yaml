@@ -1,0 +1,106 @@
+blueprint:
+  name: Motion-activated Light dimmer
+  description: Turn on a light when motion is detected, dimmer
+  domain: automation
+  author: dawsnet
+  input:
+    motion_entity:
+      name: Motion Sensor
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: motion
+    lux_entity:
+      name: Light level sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: illuminance  
+    lux_vaule:
+      name: lux level
+      description: leave of lux before sensor enable motion
+      default: 500
+      selector:
+        number:
+          min: 0
+          max: 5000
+          unit_of_measurement: lx
+    light_target:
+      name: Light
+      selector:
+        target:
+          entity:
+            domain: light
+    no_motion_wait:
+      name: Wait time
+      description: Time to leave the light on after last motion is detected.
+      default: 120
+      selector:
+        number:
+          min: 0
+          max: 3600
+          unit_of_measurement: minutes
+    brighness_night_target:
+      name: light brightness
+      description: Night time light brighness 
+      default: 10
+      selector:
+        number:
+          min: 0
+          max: 255
+
+
+# If motion is detected within the delay,
+# we restart the script.
+mode: restart
+max_exceeded: silent
+
+trigger:
+  - platform: state
+    entity_id: !input motion_entity
+    from: "off"
+    to: "on"
+    id: "on"
+  - platform: state
+    entity_id: !input motion_entity
+    to: "off"
+    id: "off"
+    for:
+      minutes: !input no_motion_wait
+
+condition: []
+
+action:
+  - if:
+      - condition: trigger
+        id: "on"
+      - condition: numeric_state
+        entity_id: !input lux_entity
+        below: !input  lux_vaule
+      - condition: state
+        entity_id: input_boolean.night_mode
+        to: "off"
+    then:
+      - service: light.turn_on
+        target: !input light_target
+  - if:
+      - condition: trigger
+        id: "on"
+      - condition: numeric_state
+        entity_id: !input lux_entity
+        below: !input  lux_vaule
+      - condition: state
+        entity_id: input_boolean.night_mode
+        to: "on"
+    then:
+      - service: light.turn_on
+        target: !input light_target
+        data:
+          brightness: !input brighness_night_target
+  - if: 
+      - condition: trigger
+        id: "off"
+    then:
+      - service: light.turn_off
+        target: !input light_target
+  
