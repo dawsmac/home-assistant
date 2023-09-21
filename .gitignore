@@ -9,7 +9,7 @@
 !automation
 !Dockerfile
 !Config
-!blueprints/automation/Edenbridge
+!blueprints/automation/Edenbridge/
 
 
 # Ignore folders.
