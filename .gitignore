@@ -9,6 +9,7 @@
 !automation
 !Dockerfile
 !Config
+!blueprints
 
 
 # Ignore folders.
