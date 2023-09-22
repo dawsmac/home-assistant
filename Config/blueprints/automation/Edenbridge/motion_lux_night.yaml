@@ -58,49 +58,40 @@ max_exceeded: silent
 trigger:
   - platform: state
     entity_id: !input motion_entity
-    from: "off"
     to: "on"
-    id: "on"
-  - platform: state
-    entity_id: !input motion_entity
-    to: "off"
-    id: "off"
-    for:
-      minutes: !input no_motion_wait
-
-condition: []
-
+    
+condition: 
+  - condition: numeric_state
+    entity_id: !input lux_entity
+    below: !input  lux_vaule
+  
 action:
-  - if:
-      - condition: trigger
-        id: "on"
-      - condition: numeric_state
-        entity_id: !input lux_entity
-        below: !input  lux_vaule
-      - condition: state
-        entity_id: input_boolean.night_mode
-        to: "off"
-    then:
-      - service: light.turn_on
-        target: !input light_target
-  - if:
-      - condition: trigger
-        id: "on"
-      - condition: numeric_state
-        entity_id: !input lux_entity
-        below: !input  lux_vaule
-      - condition: state
-        entity_id: input_boolean.night_mode
-        to: "on"
-    then:
-      - service: light.turn_on
-        target: !input light_target
-        data:
-          brightness: !input brighness_night_target
-  - if: 
-      - condition: trigger
-        id: "off"
-    then:
-      - service: light.turn_off
-        target: !input light_target
+  - choose:
+    - alias: 'Motion night mode enabled'    
+      conditions:
+        - condition: state
+          entity_id: input_boolean.night_mode
+          to: "on"
+      sequence:
+        - service: light.turn_on
+          target: !input light_target
+          data:
+            brightness: !input brighness_night_target
+    - alias: 'Motion nigh mode disabled'    
+      conditions:
+        - condition: state
+          entity_id: input_boolean.night_mode
+          to: "off"
+      sequence:
+        - service: light.turn_on
+          target: !input light_target
+  - wait_for_trigger:
+    platform: state
+    entity_id: !input motion_sensor
+    from: "on"
+    to: "off"
+  - delay: 
+      minutes: '{{ states(no_motion_wait) | int(0) }}'
+  - service: light.turn_off
+    target: !input light_target
   
