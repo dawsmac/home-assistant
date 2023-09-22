@@ -87,7 +87,7 @@ action:
           target: !input light_target
   - wait_for_trigger:
     platform: state
-    entity_id: !input motion_sensor
+    entity_id: !input motion_entity
     from: "on"
     to: "off"
   - delay: 
