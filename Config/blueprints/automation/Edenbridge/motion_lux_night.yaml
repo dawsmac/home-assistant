@@ -23,7 +23,7 @@ blueprint:
       selector:
         number:
           min: 0
-          max: 5000
+          max: 15000
           unit_of_measurement: lx
     light_target:
       name: Light
@@ -59,7 +59,7 @@ trigger:
   - platform: state
     entity_id: !input motion_entity
     to: "on"
-    
+
 condition: 
   - condition: numeric_state
     entity_id: !input lux_entity
