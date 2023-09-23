@@ -31,6 +31,22 @@ blueprint:
         target:
           entity:
             domain: light
+    evening_brighness_target:
+      name: Evening time brightness
+      description: What brightness to turn on the lights to 
+      default: 100
+      selector:
+        number:
+          min: 0
+          max: 255
+    night_brighness_target:
+      name: Night time brightness
+      description: What brightness to turn on the lights to
+      default: 10
+      selector:
+        number:
+          min: 0
+          max: 255
     no_motion_wait:
       name: Wait time
       description: Time to leave the light on after last motion is detected.
@@ -40,14 +56,7 @@ blueprint:
           min: 0
           max: 30
           unit_of_measurement: minutes
-    brighness_night_target:
-      name: light brightness
-      description: Night time light brighness 
-      default: 10
-      selector:
-        number:
-          min: 0
-          max: 255
+  
 
 
 # If motion is detected within the delay,
@@ -75,7 +84,7 @@ action:
             - service: light.turn_on
               target: !input light_target
               data:
-                brightness: !input brighness_night_target       
+                brightness: !input night_brighness_target       
             - wait_for_trigger:
                 - platform: state
                   entity_id: !input motion_entity
@@ -92,6 +101,8 @@ action:
           sequence:
             - service: light.turn_on
               target: !input light_target
+              data:
+                brightness: !input evening_brighness_target
             - wait_for_trigger:
                 - platform: state
                   entity_id: !input motion_entity
