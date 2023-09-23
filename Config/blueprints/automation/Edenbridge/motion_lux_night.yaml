@@ -9,7 +9,6 @@ blueprint:
       selector:
         entity:
           domain: binary_sensor
-          device_class: motion
     lux_entity:
       name: Light level sensor
       selector:
