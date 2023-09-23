@@ -38,7 +38,7 @@ blueprint:
       selector:
         number:
           min: 0
-          max: 3600
+          max: 30
           unit_of_measurement: minutes
     brighness_night_target:
       name: light brightness
@@ -67,7 +67,6 @@ condition:
 
 action:
     - choose:
-        - alias: 'Motion night mode enabled'   
         - conditions: 
               - condition: state
                 entity_id: input_boolean.night_mode
@@ -76,8 +75,7 @@ action:
             - service: light.turn_on
               target: !input light_target
               data:
-                brightness: !input brighness_night_target
-        - alias: 'Motion nigh mode disabled'     
+                brightness: !input brighness_night_target   
         - conditions:
             - condition: state
               entity_id: input_boolean.night_mode
@@ -91,7 +89,7 @@ action:
               from: "on"
               to: "off"
             - delay: 
-                minutes: '{{ states(no_motion_wait) | int(0) }}'
+                minutes: '{{states(no_motion_wait) | int(0) }}'
             - service: light.turn_off
               target: !input light_target
             
