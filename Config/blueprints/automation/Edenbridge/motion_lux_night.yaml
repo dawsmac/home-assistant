@@ -27,6 +27,7 @@ blueprint:
           unit_of_measurement: lx
     additional_conditions:
       name: Additional conditions
+      selector:
     light_target:
       name: Light
       selector:
