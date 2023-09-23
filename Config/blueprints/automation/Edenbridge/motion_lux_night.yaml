@@ -64,34 +64,34 @@ condition:
   - condition: numeric_state
     entity_id: !input lux_entity
     below: !input  lux_vaule
-  
+
 action:
-  - choose:
-    - alias: 'Motion night mode enabled'    
-      conditions:
-        - condition: state
-          entity_id: input_boolean.night_mode
-          to: "on"
-      sequence:
-        - service: light.turn_on
-          target: !input light_target
-          data:
-            brightness: !input brighness_night_target
-    - alias: 'Motion nigh mode disabled'    
-      conditions:
-        - condition: state
-          entity_id: input_boolean.night_mode
-          to: "off"
-      sequence:
-        - service: light.turn_on
-          target: !input light_target
-  - wait_for_trigger:
-    platform: state
-    entity_id: !input motion_entity
-    from: "on"
-    to: "off"
-  - delay: 
-      minutes: '{{ states(no_motion_wait) | int(0) }}'
-  - service: light.turn_off
-    target: !input light_target
-  
+    - choose:
+        - alias: 'Motion night mode enabled'   
+        - conditions: 
+              - condition: state
+                entity_id: input_boolean.night_mode
+                to: "on"
+          sequence:
+            - service: light.turn_on
+              target: !input light_target
+              data:
+                brightness: !input brighness_night_target
+        - alias: 'Motion nigh mode disabled'     
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.night_mode
+              to: "off"
+          sequence:
+            - service: light.turn_on
+              target: !input light_target
+            - wait_for_trigger:
+              platform: state
+              entity_id: !input motion_entity
+              from: "on"
+              to: "off"
+            - delay: 
+                minutes: '{{ states(no_motion_wait) | int(0) }}'
+            - service: light.turn_off
+              target: !input light_target
+            
