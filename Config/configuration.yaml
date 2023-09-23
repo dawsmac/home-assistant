@@ -38,7 +38,6 @@ scene: !include scenes.yaml
 climate: !include climate.yaml
 notify: !include notify.yaml
 alert: !include alerts.yaml
-template: !include template.yaml
+#template: !include template.yaml
 sensor: !include sensor.yaml
-light: !include lights.yaml
 #binary_sensor: ! binary_sensor.yaml
