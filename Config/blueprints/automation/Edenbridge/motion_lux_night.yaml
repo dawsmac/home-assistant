@@ -27,7 +27,12 @@ blueprint:
           unit_of_measurement: lx
     additional_conditions:
       name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
       selector:
+        condition:
     light_target:
       name: Light
       selector:
