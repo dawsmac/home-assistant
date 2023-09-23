@@ -25,6 +25,8 @@ blueprint:
           min: 0
           max: 15000
           unit_of_measurement: lx
+    additional_conditions:
+      name: Additional conditions
     light_target:
       name: Light
       selector:
@@ -56,6 +58,7 @@ blueprint:
           min: 0
           max: 30
           unit_of_measurement: minutes
+
   
 
 
@@ -73,6 +76,7 @@ condition:
   - condition: numeric_state
     entity_id: !input lux_entity
     below: !input lux_vaule
+  - condition: !input additional_conditions
 
 action:
     - choose:
