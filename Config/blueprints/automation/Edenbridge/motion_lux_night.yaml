@@ -68,9 +68,9 @@ condition:
 action:
     - choose:
         - conditions: 
-              - condition: state
-                entity_id: input_boolean.night_mode
-                to: "on"
+            - condition: state
+              entity_id: input_boolean.night_mode
+              to: "on"
           sequence:
             - service: light.turn_on
               target: !input light_target
