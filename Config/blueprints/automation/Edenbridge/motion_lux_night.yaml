@@ -34,7 +34,7 @@ blueprint:
     no_motion_wait:
       name: Wait time
       description: Time to leave the light on after last motion is detected.
-      default: 120
+      default: 5
       selector:
         number:
           min: 0
@@ -88,8 +88,6 @@ action:
               entity_id: !input motion_entity
               from: "on"
               to: "off"
-            - delay: 
-                minutes: '{{states(no_motion_wait) | int(0) }}'
+            - delay: !input no_motion_wait
             - service: light.turn_off
               target: !input light_target
-            
