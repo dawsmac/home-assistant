@@ -63,7 +63,7 @@ trigger:
 condition: 
   - condition: numeric_state
     entity_id: !input lux_entity
-    below: !input  lux_vaule
+    below: !input lux_vaule
 
 action:
     - choose:
