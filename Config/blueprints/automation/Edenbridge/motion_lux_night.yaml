@@ -12,6 +12,8 @@ blueprint:
           device_class: 
           - motion
           - door
+          - occupancy
+
           
     lux_entity:
       name: Light level sensor
