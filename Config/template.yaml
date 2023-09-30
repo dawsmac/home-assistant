@@ -1,38 +1,6 @@
-- binary_sensor:  
-    - name: "No activity downstairs"
-      state: >
-        {{ is_state('binary_sensor.hallway_pir' , 'off')
-            and is_state('binary_sensor.kitchen_pir' , 'off')
-            and is_state('binary_sensor.lounge_pir' , 'off') }}
-
-  
-    - name: "No activity upstairs"
-      state: >
-        {{ is_state('binary_sensor.landing_pir' , 'off')
-            and is_state('binary_sensor.lila_bedroom_pir' , 'off')
-            and is_state('binary_sensor.master_bedroom_pir' , 'off')
-            and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
-
-    - name: All pirs
-      state: >
-        {{ is_state('binary_sensor.landing_pir' , 'off')
-            and is_state('binary_sensor.hallway_pir' , 'off')
-            and is_state('binary_sensor.lila_bedroom_pir' , 'off')
-            and is_state('binary_sensor.master_bedroom_pir' , 'off')
-            and is_state('binary_sensor.kitchen_pir' , 'off')
-            and is_state('binary_sensor.lounge_pir' , 'off')
-            and is_state ('binary_sensor.playroon_pir' , 'off')
-            and is_state('binary_sensor.thea_s_bedroom_pir' , 'off') }}
-    
-    - name: Enable auto lights
-      delay_off:
-        minutes: 5
-      state: >
-        {{ states('sensor.out_side_lux')|float < 1200 }}
-      
-    - name: Enable auto outside lights
-      delay_off:
-        minutes: 5
-      state: >
-        {{ states('sensor.out_side_lux')|float < 200 }}
-
+- binary_sensor:
+      - name: "Pressure 1 or 2 High"
+        state: >
+          {{ states('sensor.pressure_1')|float > 1.00
+            or states('sensor.pressure_2')|float > 1.00 }}
+        delay_on: "00:05:00"
