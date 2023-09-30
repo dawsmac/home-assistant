@@ -1,5 +1,5 @@
 - binary_sensor:
-      - name: "Night mode home"
+      - name: "night mode home"
         state: >
           {% set time = states('sensor.time') %}
           {{ states('sensor.pressure_1')|float > 1.00
