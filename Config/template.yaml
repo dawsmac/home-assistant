@@ -6,7 +6,7 @@
               or states('sensor.pressure_2')|float > 1.00  and
               ( '20:00' < time < '24:00' ) or ( '00:00' >= time < '10:00' ) 
               and states('sensor.out_side_lux')|float < 25 }}
-        delay_on: "00:00:30"
+        delay_on: "00:20:00"
       
   
 
