@@ -64,7 +64,7 @@
 - platform: generic_thermostat
   name: Office
   heater: switch.office_heater
-  target_sensor: sensor.office_th_c4d6_temperature
+  target_sensor: sensor.a4_c1_38_f3_c4_d6_c4d6_temperature
   min_temp: 15
   max_temp: 23
   ac_mode: false
