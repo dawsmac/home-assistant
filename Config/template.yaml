@@ -4,7 +4,7 @@
             {% set time = states('sensor.time') %}
               {{ states('sensor.pressure_1')|float > 1.00
               or states('sensor.pressure_2')|float > 1.00  and
-              ( '20:00' < time < '24:00' ) or ( '00:00' >= time < '05:00' ) 
+              ( '20:00' < time < '24:00' ) or ( '00:00' <= time < '05:00' ) 
               and states('sensor.out_side_lux')|float < 25 }}
         delay_on: "00:20:00"
       
