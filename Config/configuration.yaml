@@ -24,3 +24,4 @@ notify: !include notify.yaml
 alert: !include alerts.yaml
 template: !include template.yaml
 sensor: !include sensor.yaml
+scene: !include scenes.yaml
